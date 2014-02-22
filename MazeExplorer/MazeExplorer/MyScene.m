@@ -46,8 +46,11 @@
     return self;
 }
 
+
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins */
+    
+    /*
     
     for (UITouch *touch in touches) {
         CGPoint location = [touch locationInNode:self];
@@ -62,6 +65,23 @@
         
         [self addChild:sprite];
     }
+     
+     */
+    
+    if (UITouchPhaseBegan) {
+        
+        /* 
+         
+         This is my initial attempt at getting touches to work. -M.P. 
+         
+         */
+        
+        NSLog(@"YOU TOUCHED THE THING. GOOD JOB.");
+    }
+    
+    
+    
+    
 }
 
 -(void)update:(CFTimeInterval)currentTime {
