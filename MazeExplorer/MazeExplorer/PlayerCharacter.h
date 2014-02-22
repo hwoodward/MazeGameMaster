@@ -6,6 +6,8 @@
 //
 //
 
+// Honestly, we'll probably end up replacing our character with a node. This can hopefully at least hold inventory stuff. 
+
 #import <Foundation/Foundation.h>
 
 @interface PlayerCharacter : NSObject
