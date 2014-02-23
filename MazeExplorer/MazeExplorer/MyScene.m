@@ -13,6 +13,9 @@
 
 @property (nonatomic) UISwipeGestureRecognizer* swipeGR;
 @property float cellWidth;
+@property (nonatomic) SKSpriteNode *player;
+@property (nonatomic) Maze* maze;
+
 
 @end
 
@@ -26,6 +29,7 @@
         
         
         [self mazeSetUp];
+        [self addPlayer];
     }
     
     return self;
@@ -35,11 +39,14 @@
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins */
     NSArray *cells = [self children];
-    SKAction *move = [SKAction moveByX:0.0 y:-_cellWidth duration:1.0];
+    SKAction *moveDown = [SKAction moveByX:0.0 y:-_cellWidth duration:1.0];
+    SKAction *moveUp = [SKAction moveByX:0.0 y:_cellWidth duration:1.0];
     for (int i = 0; i< [cells count]; i++) {
         SKSpriteNode *cell = (SKSpriteNode *)[cells objectAtIndex:i];
-        [cell runAction:move];
+        [cell runAction:moveDown];
     }
+    [_player runAction: moveUp];
+    
 }
 
 
@@ -50,21 +57,20 @@
 
 - (void)mazeSetUp
 {
-    Maze* stringMaze = [[Maze alloc]
-                        initMazeWithString:@"***********  *     **      *******     **     *  ** *   * *** *  *   ****  *  ***    *   ***********"
+    _maze = [[Maze alloc]
+                        initMazeWithString:@"*E*********  *     **      *******     **     *  ** *   * *** *  *   ****  *  ***    *   ***S*******"
                         andWidth:10];
-    [stringMaze printMaze];
+    [_maze printMaze];
     
-    _cellWidth = fmin(self.frame.size.width / [stringMaze numCols],
-                          self.frame.size.height / [stringMaze numRows]);
+    _cellWidth = fmin(self.frame.size.width / [_maze numCols],
+                          self.frame.size.height / [_maze numRows]);
     CGSize cellSize = CGSizeMake(_cellWidth, _cellWidth);
-    for (int i = 0; i < [stringMaze numCols]; i++)
+    for (int i = 0; i < [_maze numCols]; i++)
     {
-        for (int j = 0; j < [stringMaze numRows]; j++)
+        for (int j = 0; j < [_maze numRows]; j++)
         {
-            SKColor *cellColor;
-            if ([stringMaze isWallCellWithRow:j andColumn:i]) {
-                cellColor = [SKColor blackColor];
+            SKColor *cellColor = [SKColor blackColor];
+            if ([_maze isWallCellWithRow:j andColumn:i]) {
                 SKSpriteNode *cellNode = [[SKSpriteNode alloc] initWithColor: cellColor size:cellSize];
                 cellNode.position = CGPointMake(_cellWidth*i + (_cellWidth/2),
                                                 self.frame.size.height - _cellWidth*j - _cellWidth/2);
@@ -73,6 +79,25 @@
             }
         }
     }
+    CGPoint start = [_maze startLoc];
+    SKSpriteNode *startNode = [[SKSpriteNode alloc] initWithColor:[SKColor cyanColor] size:cellSize];
+    startNode.position = CGPointMake(_cellWidth*start.x + (_cellWidth/2),
+                                     self.frame.size.height - _cellWidth*start.y - _cellWidth/2);
+    [self addChild:startNode];
+    CGPoint end = [_maze endLoc];
+    SKSpriteNode *endNode = [[SKSpriteNode alloc] initWithColor:[SKColor magentaColor] size:cellSize];
+    endNode.position = CGPointMake(_cellWidth*end.x + (_cellWidth/2),
+                                     self.frame.size.height - _cellWidth*end.y - _cellWidth/2);
+    [self addChild:endNode];
+}
+
+-(void)addPlayer
+{
+    _player = [[SKSpriteNode alloc] initWithColor:[SKColor redColor] size:CGSizeMake(_cellWidth-20, _cellWidth-20)];
+    float playerX = (_maze.numCols*_cellWidth)/2;
+    float playerY = self.frame.size.height - ((_maze.numRows*_cellWidth)/2);
+    _player.position = CGPointMake(playerX, playerY); //Will change later
+    [self addChild:_player];
 }
 
 

@@ -12,6 +12,8 @@
 
 @property (readonly) int numRows;
 @property (readonly) int numCols;
+@property (readonly) CGPoint startLoc;
+@property (readonly) CGPoint endLoc;
 
 - (void)printMaze;
 

@@ -79,10 +79,16 @@
     for (int i = 0; i < height; i++) {
         NSMutableArray* row = [[NSMutableArray alloc] init];
         for (int j = 0; j < width; j++) {
+            NSString *contents =[mazeString substringWithRange:NSMakeRange((i*width)+j, 1)];
             MazeCell* cell =
             [[MazeCell alloc] initWithRow:j andColumn:i
-                              andContents:[mazeString substringWithRange:NSMakeRange((i*width)+j, 1)]];
+                              andContents:contents];
             [row addObject:cell];
+            if (![contents compare:@"S"]) {
+                _startLoc = CGPointMake(j, i);
+            } else if (![contents compare:@"E"]) {
+                _endLoc = CGPointMake(j, i);
+            }
         }
         [_cells addObject: row];
     }
