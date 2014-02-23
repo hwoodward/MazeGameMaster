@@ -17,7 +17,7 @@
 
 @property NSMutableArray *inventory; //Not sure if this will actually be useful. 
 
-@property bool *haveString;
+@property bool *haveYarn;
 
 -(void) moveUp;
 -(void) moveDown;
