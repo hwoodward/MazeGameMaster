@@ -25,23 +25,9 @@
                                        CGRectGetMidY(self.frame));
         
         [self addChild:myLabel];
+        
+        [self mazeSetUp];
     }
-    
-    Maze* maze = [[Maze alloc] init];
-    [maze printMaze];
-    if ([maze isWallCellWithRow:2 andColumn:1]) {
-        NSLog(@"Yay, I haven't got this totally backwards");
-    } else {
-        NSLog(@"Well, shit");
-    }
-    if (![maze isWallCellWithRow:0 andColumn:1]) {
-        NSLog(@"Yay, I haven't got this totally backwards");
-    } else {
-        NSLog(@"Well, shit");
-    }
-    
-    Maze* stringMaze = [[Maze alloc] initMazeWithString:@"*****  **  **  *****" andWidth:4];
-    [stringMaze printMaze];
     
     return self;
 }
@@ -66,6 +52,34 @@
 
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
+}
+
+- (void)mazeSetUp
+{
+    Maze* stringMaze = [[Maze alloc]
+                        initMazeWithString:@"***********  *     **      *******     **     *  ** *   * *** *  *   ****  *  ***    *   ***********"
+                        andWidth:10];
+    
+    float cellWidth = fmin(self.frame.size.width / [stringMaze numCols],
+                          self.frame.size.height / [stringMaze numRows]);
+    CGSize cellSize = CGSizeMake(cellWidth, cellWidth);
+    for (int i = 0; i < [stringMaze numCols]; i++)
+    {
+        for (int j = 0; j < [stringMaze numRows]; j++)
+        {
+            SKColor *cellColor;
+            if ([stringMaze isWallCellWithRow:j andColumn:i]) {
+                cellColor = [SKColor blackColor];
+            } else {
+                cellColor = [SKColor brownColor];
+            }
+            SKSpriteNode *cellNode = [[SKSpriteNode alloc] initWithColor: cellColor size:cellSize];
+            cellNode.position = CGPointMake(cellWidth*i + (cellWidth/2),
+                                            self.frame.size.height - cellWidth*j - cellWidth/2);
+            
+            [self addChild:cellNode];
+        }
+    }
 }
 
 @end
