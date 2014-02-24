@@ -17,6 +17,14 @@
 
 @implementation Maze
 
+
+/*
+ * Method: init
+ * 
+ * This generates a basic maze. 
+ * A basic maze is a 10x10 area enclosed by walls. There isn't a start or an end. 
+ * Don't make a basic maze. Use a string initialized maze.
+ */
 - (id)init
 {
     self = [super init];
@@ -43,6 +51,13 @@
     return self;
 }
 
+/*
+ * Method: printMaze
+ * 
+ * This combines all the strings from the MazeCells' contents and prints
+ * it out to the console. 
+ * This is for debugging purposes, and shouldn't be called in final code.
+ */
 - (void)printMaze
 {
     NSMutableString* maze = [[NSMutableString alloc] init];
@@ -59,12 +74,40 @@
     NSLog(@"%@", maze);
 }
 
+/*
+ * Method: isWallCellWithRow: and Column:
+ *
+ * inputs: row and column indeces
+ * The method will ask the MazeCell if it is a wall, and return the results of that.
+ */
 - (BOOL)isWallCellWithRow:(int)row andColumn:(int)col
 {
     MazeCell* cell = [[_cells objectAtIndex:row] objectAtIndex:col];
     return [cell isWall];
 }
 
+
+/*
+ * Method: initMazeWithString: andWidth:
+ * Use this init. Not the basic init.
+ * 
+ * inputs: an NSString that contains all of the rows of the maze and the desired width.
+ * The method will calculate the height based on the string length and the width input,
+ * and then will convert each width of the NSString into a row of the maze. 
+ * There is no checking to make sure that the string is the right length to come out evenly,
+ * so don't be silly (unless you feel like adding checks). The program will error and exit
+ * if you do that. 
+ * Key for string to maze translation:
+ * "*" --> wall
+ * " " --> empty space (corridor)
+ * "S" --> starting location (NOTE: There should only be ONE of these per maze, or weirdness will ensue)
+ * "E" --> End location (NOTE: For now, there should only be one of these. If you want to build support
+ *                       multiple exits, be my guest)
+ *
+ * Final note: I am sorry for the fact that it is impossible to follow the row/column of a cell in this
+ * piece of code. I got it backwards about five times, finally got it straight, and haven't had the 
+ * heart to touch it since. Again, apologies. 
+ */
 - (id)initMazeWithString:(NSString*) mazeString
                 andWidth:(int) width
 {

@@ -26,7 +26,7 @@
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins */
-    
+    //Right now, this just drops us into a MazeScene
     SKTransition *transition = [SKTransition flipVerticalWithDuration:.5];
     SKScene *mazeScene = [[MazeScene alloc] initWithSize:CGSizeMake(self.frame.size.width, self.frame.size.height - 50)];
     [self.view presentScene:mazeScene transition:transition];
