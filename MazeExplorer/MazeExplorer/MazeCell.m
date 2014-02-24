@@ -24,7 +24,7 @@
 
 - (BOOL)isWall
 {
-    return [_contents compare:@"*"];
+    return ![_contents compare:@"*"];
 }
 
 @end
