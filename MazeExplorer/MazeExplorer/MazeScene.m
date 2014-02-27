@@ -153,6 +153,77 @@ static const int CELLNUM = 11;
 //    
 //}
 
+/*
+ Method: touchesBegan: Allows the player to move up, down, left, and right 
+ in the maze. Shifts the maze appropriately.
+ */
+
+//Attempting to make a version of this that responds to up, down, left, right touches
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    CGPoint fingerpos = [[touches anyObject] locationInView:self.view];
+    
+    NSLog(@"%@", NSStringFromCGPoint(fingerpos));
+    
+    float xMidpoint = 400;
+    float yMidpoint = 400;
+    
+    //The farthest point I've been able to touch: {760, 996}
+    
+    //The midpoint on the left: {6, 444}
+    //The midpoint on the right: {763, 509}
+    //The midpoint on top: {384, 23}
+    //The midpoint on the bottom: {397, 1008}
+    
+    //So, the x midpoint is about 400, and the y midpoint is about 500.
+    //The origin is at the top-left-hand corner. Y'know, because that makes sense.
+    
+    //For now, I'll ignore the fact that we'll theoretically have an inventory panel at the bottom.
+    
+    NSArray *cells = [self children];
+    SKAction *moveDown = [SKAction moveByX:0.0 y:-_cellWidth duration:1.0];
+    SKAction *moveUp = [SKAction moveByX:0.0 y:_cellWidth duration:1.0];
+    SKAction *moveLeft = [SKAction moveByX:-_cellWidth y:0.0 duration:1.0];
+    SKAction *moveRight = [SKAction moveByX:_cellWidth y:0.0 duration:1.0];
+    
+    //Going up:
+    if (fingerpos.y < yMidpoint-100 && fingerpos.x > xMidpoint-100 && fingerpos.x < xMidpoint+100){
+        for (int i = 0; i< [cells count]; i++) {
+            SKSpriteNode *cell = (SKSpriteNode *)[cells objectAtIndex:i];
+            [cell runAction:moveDown];
+        }
+        [_player runAction: moveUp];
+    }
+    
+    //Going down:
+    else if (fingerpos.y > yMidpoint+100 && fingerpos.x > xMidpoint-100 && fingerpos.x < xMidpoint+100){
+        for (int i = 0; i< [cells count]; i++) {
+            SKSpriteNode *cell = (SKSpriteNode *)[cells objectAtIndex:i];
+            [cell runAction:moveUp];
+        }
+        [_player runAction: moveDown];
+       
+    }
+    
+    //Going left:
+    else if (fingerpos.x < xMidpoint-100 && fingerpos.y > yMidpoint-100 && fingerpos.y < yMidpoint+100){
+        for (int i = 0; i< [cells count]; i++) {
+            SKSpriteNode *cell = (SKSpriteNode *)[cells objectAtIndex:i];
+            [cell runAction:moveRight];
+        }
+        [_player runAction: moveLeft];
+    }
+    
+    //Going right:
+    else if (fingerpos.x > xMidpoint+100 && fingerpos.y > yMidpoint-100 && fingerpos.y < yMidpoint+100){
+        for (int i = 0; i< [cells count]; i++) {
+            SKSpriteNode *cell = (SKSpriteNode *)[cells objectAtIndex:i];
+            [cell runAction:moveLeft];
+        }
+        [_player runAction: moveRight];
+    }
+    
+}
 
 
 @end
