@@ -26,8 +26,6 @@
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins */
-<<<<<<< HEAD
-    
     
     for (UITouch *touch in touches) {
         CGPoint location = [touch locationInNode:self];
@@ -56,12 +54,10 @@
     
     */
     
-=======
     //Right now, this just drops us into a MazeScene
     SKTransition *transition = [SKTransition flipVerticalWithDuration:.5];
     SKScene *mazeScene = [[MazeScene alloc] initWithSize:CGSizeMake(self.frame.size.width, self.frame.size.height - 50)];
     [self.view presentScene:mazeScene transition:transition];
->>>>>>> e44af24a1bdb660057584fef32b958e6be3fb3fd
     
 }
 
