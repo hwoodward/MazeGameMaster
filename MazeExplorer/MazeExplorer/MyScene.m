@@ -8,6 +8,8 @@
 
 #import "MyScene.h"
 #import "Maze.h"
+#import "MazeScene.h"
+
 
 @implementation MyScene
 
@@ -16,32 +18,7 @@
         /* Setup your scene here */
         
         self.backgroundColor = [SKColor colorWithRed:0.15 green:0.15 blue:0.3 alpha:1.0];
-        
-        SKLabelNode *myLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
-        
-        myLabel.text = @"Hello, World!";
-        myLabel.fontSize = 30;
-        myLabel.position = CGPointMake(CGRectGetMidX(self.frame),
-                                       CGRectGetMidY(self.frame));
-        
-        [self addChild:myLabel];
     }
-    
-    Maze* maze = [[Maze alloc] init];
-    [maze printMaze];
-    if ([maze isWallCellWithRow:2 andColumn:1]) {
-        NSLog(@"Yay, I haven't got this totally backwards");
-    } else {
-        NSLog(@"Well, shit");
-    }
-    if (![maze isWallCellWithRow:0 andColumn:1]) {
-        NSLog(@"Yay, I haven't got this totally backwards");
-    } else {
-        NSLog(@"Well, shit");
-    }
-    
-    Maze* stringMaze = [[Maze alloc] initMazeWithString:@"*****  **  **  *****" andWidth:4];
-    [stringMaze printMaze];
     
     return self;
 }
@@ -49,6 +26,7 @@
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins */
+<<<<<<< HEAD
     
     
     for (UITouch *touch in touches) {
@@ -78,11 +56,21 @@
     
     */
     
+=======
+    //Right now, this just drops us into a MazeScene
+    SKTransition *transition = [SKTransition flipVerticalWithDuration:.5];
+    SKScene *mazeScene = [[MazeScene alloc] initWithSize:CGSizeMake(self.frame.size.width, self.frame.size.height - 50)];
+    [self.view presentScene:mazeScene transition:transition];
+>>>>>>> e44af24a1bdb660057584fef32b958e6be3fb3fd
     
 }
+
+
 
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
 }
+
+
 
 @end

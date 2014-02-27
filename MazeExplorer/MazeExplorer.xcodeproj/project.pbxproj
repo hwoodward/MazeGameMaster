@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+<<<<<<< HEAD
 		93314D0B18B5E75300144303 /* PlayerCharacter.m in Sources */ = {isa = PBXBuildFile; fileRef = 93314D0A18B5E75300144303 /* PlayerCharacter.m */; };
+=======
+		A1023ABB18BAE1A7005632DF /* MazeScene.m in Sources */ = {isa = PBXBuildFile; fileRef = A1023ABA18BAE1A7005632DF /* MazeScene.m */; };
+>>>>>>> e44af24a1bdb660057584fef32b958e6be3fb3fd
 		A17694FE18B01E1B00DDCB91 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A17694FD18B01E1B00DDCB91 /* Foundation.framework */; };
 		A176950018B01E1B00DDCB91 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A17694FF18B01E1B00DDCB91 /* CoreGraphics.framework */; };
 		A176950218B01E1B00DDCB91 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A176950118B01E1B00DDCB91 /* UIKit.framework */; };
@@ -40,8 +44,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+<<<<<<< HEAD
 		93314D0918B5E75300144303 /* PlayerCharacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerCharacter.h; sourceTree = "<group>"; };
 		93314D0A18B5E75300144303 /* PlayerCharacter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerCharacter.m; sourceTree = "<group>"; };
+=======
+		A1023AB918BAE1A7005632DF /* MazeScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MazeScene.h; sourceTree = "<group>"; };
+		A1023ABA18BAE1A7005632DF /* MazeScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MazeScene.m; sourceTree = "<group>"; };
+>>>>>>> e44af24a1bdb660057584fef32b958e6be3fb3fd
 		A17694FA18B01E1B00DDCB91 /* MazeExplorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MazeExplorer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A17694FD18B01E1B00DDCB91 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A17694FF18B01E1B00DDCB91 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -143,6 +152,8 @@
 				A176951518B01E1B00DDCB91 /* ViewController.m */,
 				A176951718B01E1B00DDCB91 /* MyScene.h */,
 				A176951818B01E1C00DDCB91 /* MyScene.m */,
+				A1023AB918BAE1A7005632DF /* MazeScene.h */,
+				A1023ABA18BAE1A7005632DF /* MazeScene.m */,
 				A176951A18B01E1C00DDCB91 /* Spaceship.png */,
 				A176951C18B01E1C00DDCB91 /* Images.xcassets */,
 				A176950618B01E1B00DDCB91 /* Supporting Files */,
@@ -279,7 +290,11 @@
 				A176953B18B01F3000DDCB91 /* Maze.m in Sources */,
 				A176951918B01E1C00DDCB91 /* MyScene.m in Sources */,
 				A176951618B01E1B00DDCB91 /* ViewController.m in Sources */,
+<<<<<<< HEAD
 				93314D0B18B5E75300144303 /* PlayerCharacter.m in Sources */,
+=======
+				A1023ABB18BAE1A7005632DF /* MazeScene.m in Sources */,
+>>>>>>> e44af24a1bdb660057584fef32b958e6be3fb3fd
 				A176951018B01E1B00DDCB91 /* AppDelegate.m in Sources */,
 				A176953E18B01F5100DDCB91 /* MazeCell.m in Sources */,
 				A176950C18B01E1B00DDCB91 /* main.m in Sources */,
