@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		93314D0B18B5E75300144303 /* PlayerCharacter.m in Sources */ = {isa = PBXBuildFile; fileRef = 93314D0A18B5E75300144303 /* PlayerCharacter.m */; };
+		93A48E1318BF1B470008E8ED /* MazeScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A48E1218BF1B470008E8ED /* MazeScene.m */; };
 		A17694FE18B01E1B00DDCB91 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A17694FD18B01E1B00DDCB91 /* Foundation.framework */; };
 		A176950018B01E1B00DDCB91 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A17694FF18B01E1B00DDCB91 /* CoreGraphics.framework */; };
 		A176950218B01E1B00DDCB91 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A176950118B01E1B00DDCB91 /* UIKit.framework */; };
@@ -42,6 +43,8 @@
 /* Begin PBXFileReference section */
 		93314D0918B5E75300144303 /* PlayerCharacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerCharacter.h; sourceTree = "<group>"; };
 		93314D0A18B5E75300144303 /* PlayerCharacter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerCharacter.m; sourceTree = "<group>"; };
+		93A48E1118BF1B470008E8ED /* MazeScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MazeScene.h; sourceTree = "<group>"; };
+		93A48E1218BF1B470008E8ED /* MazeScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MazeScene.m; sourceTree = "<group>"; };
 		A17694FA18B01E1B00DDCB91 /* MazeExplorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MazeExplorer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A17694FD18B01E1B00DDCB91 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A17694FF18B01E1B00DDCB91 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -141,6 +144,8 @@
 				A176951118B01E1B00DDCB91 /* Main.storyboard */,
 				A176951418B01E1B00DDCB91 /* ViewController.h */,
 				A176951518B01E1B00DDCB91 /* ViewController.m */,
+				93A48E1118BF1B470008E8ED /* MazeScene.h */,
+				93A48E1218BF1B470008E8ED /* MazeScene.m */,
 				A176951718B01E1B00DDCB91 /* MyScene.h */,
 				A176951818B01E1C00DDCB91 /* MyScene.m */,
 				A176951A18B01E1C00DDCB91 /* Spaceship.png */,
@@ -277,6 +282,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A176953B18B01F3000DDCB91 /* Maze.m in Sources */,
+				93A48E1318BF1B470008E8ED /* MazeScene.m in Sources */,
 				A176951918B01E1C00DDCB91 /* MyScene.m in Sources */,
 				A176951618B01E1B00DDCB91 /* ViewController.m in Sources */,
 				93314D0B18B5E75300144303 /* PlayerCharacter.m in Sources */,
