@@ -141,35 +141,35 @@ static const int CELLNUM = 11;
  *
  */
 
--(bool)isNode: (NSString*)relativeDirection withPoint:(CGPoint*) playerPoint
+-(bool)isNode: (NSString*)relativeDirection withPoint:(CGPoint) playerPoint
 {
     CGPoint pointToCompare;
     SKNode* returnedNode;
     // Tests to see if there's a node north of you.
     if ([relativeDirection isEqualToString:@"north"]){
-        pointToCompare.x = playerPoint->x;
-        pointToCompare.y = playerPoint->y-1;
+        pointToCompare.x = playerPoint.x;
+        pointToCompare.y = playerPoint.y-1;
         
         returnedNode = [self nodeAtPoint:pointToCompare];
     }
     // Tests to see if there's a node south of you.
     else if ([relativeDirection isEqualToString:@"south"]){
-        pointToCompare.x = playerPoint->x;
-        pointToCompare.y = playerPoint->y+1;
+        pointToCompare.x = playerPoint.x;
+        pointToCompare.y = playerPoint.y+1;
         
         returnedNode = [self nodeAtPoint:pointToCompare];
     }
     // Tests to see if there's a node east of you.
     else if ([relativeDirection isEqualToString:@"east"]){
-        pointToCompare.x = playerPoint->x+1;
-        pointToCompare.y = playerPoint->y;
+        pointToCompare.x = playerPoint.x+1;
+        pointToCompare.y = playerPoint.y;
         
         returnedNode = [self nodeAtPoint:pointToCompare];
     }
     // Tests to see if there's a node west of you.
     else if ([relativeDirection isEqualToString:@"west"]){
-        pointToCompare.x = playerPoint->x-1;
-        pointToCompare.y = playerPoint->y;
+        pointToCompare.x = playerPoint.x-1;
+        pointToCompare.y = playerPoint.y;
         
         returnedNode = [self nodeAtPoint:pointToCompare];
     }
@@ -238,7 +238,7 @@ static const int CELLNUM = 11;
     SKAction *moveRight = [SKAction moveByX:_cellWidth y:0.0 duration:1.0];
     
     //Going up:
-    if (fingerpos.y < yMidpoint-100 && fingerpos.x > xMidpoint-100 && fingerpos.x < xMidpoint+100){
+    if (fingerpos.y < yMidpoint-100 && fingerpos.x > xMidpoint-100 && fingerpos.x < xMidpoint+100 && ![self isNode:@"north" withPoint: _player.anchorPoint]){
         for (int i = 0; i< [cells count]; i++) {
             SKSpriteNode *cell = (SKSpriteNode *)[cells objectAtIndex:i];
             [cell runAction:moveDown];
@@ -247,7 +247,7 @@ static const int CELLNUM = 11;
     }
     
     //Going down:
-    else if (fingerpos.y > yMidpoint+100 && fingerpos.x > xMidpoint-100 && fingerpos.x < xMidpoint+100){
+    else if (fingerpos.y > yMidpoint+100 && fingerpos.x > xMidpoint-100 && fingerpos.x < xMidpoint+100 && ![self isNode:@"south" withPoint: _player.anchorPoint]){
         for (int i = 0; i< [cells count]; i++) {
             SKSpriteNode *cell = (SKSpriteNode *)[cells objectAtIndex:i];
             [cell runAction:moveUp];
@@ -257,7 +257,7 @@ static const int CELLNUM = 11;
     }
     
     //Going left:
-    else if (fingerpos.x < xMidpoint-100 && fingerpos.y > yMidpoint-100 && fingerpos.y < yMidpoint+100){
+    else if (fingerpos.x < xMidpoint-100 && fingerpos.y > yMidpoint-100 && fingerpos.y < yMidpoint+100 && ![self isNode:@"west" withPoint: _player.anchorPoint]){
         for (int i = 0; i< [cells count]; i++) {
             SKSpriteNode *cell = (SKSpriteNode *)[cells objectAtIndex:i];
             [cell runAction:moveRight];
@@ -266,7 +266,7 @@ static const int CELLNUM = 11;
     }
     
     //Going right:
-    else if (fingerpos.x > xMidpoint+100 && fingerpos.y > yMidpoint-100 && fingerpos.y < yMidpoint+100){
+    else if (fingerpos.x > xMidpoint+100 && fingerpos.y > yMidpoint-100 && fingerpos.y < yMidpoint+100 && ![self isNode:@"east" withPoint: _player.anchorPoint]){
         for (int i = 0; i< [cells count]; i++) {
             SKSpriteNode *cell = (SKSpriteNode *)[cells objectAtIndex:i];
             [cell runAction:moveLeft];
