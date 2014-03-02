@@ -103,7 +103,7 @@ static const int CELLNUM = 11;
                                      self.frame.size.height - _cellWidth*start.y - _cellWidth/2);
     [self addChild:startNode];
     CGPoint end = [_maze endLoc];
-    SKSpriteNode *endNode = [[SKSpriteNode alloc] initWithColor:[SKColor magentaColor] size:cellSize];
+    SKSpriteNode *endNode = [[SKSpriteNode alloc] initWithColor:[SKColor blueColor] size:cellSize];
     endNode.position = CGPointMake(_cellWidth*end.x + (_cellWidth/2),
                                    self.frame.size.height - _cellWidth*end.y - _cellWidth/2);
     [self addChild:endNode];
