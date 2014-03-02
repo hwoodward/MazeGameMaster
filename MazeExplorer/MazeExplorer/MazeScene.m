@@ -134,6 +134,57 @@ static const int CELLNUM = 11;
 }
 
 /*
+ * Method: isNode
+ *
+ * Takes in a direction relative to the player and the player's location.
+ * Returns a boolean saying if there's another node in that direction.
+ *
+ */
+
+-(bool)isNode: (NSString*)relativeDirection withPoint:(CGPoint*) playerPoint
+{
+    CGPoint pointToCompare;
+    SKNode* returnedNode;
+    // Tests to see if there's a node north of you.
+    if ([relativeDirection isEqualToString:@"north"]){
+        pointToCompare.x = playerPoint->x;
+        pointToCompare.y = playerPoint->y-1;
+        
+        returnedNode = [self nodeAtPoint:pointToCompare];
+    }
+    // Tests to see if there's a node south of you.
+    else if ([relativeDirection isEqualToString:@"south"]){
+        pointToCompare.x = playerPoint->x;
+        pointToCompare.y = playerPoint->y+1;
+        
+        returnedNode = [self nodeAtPoint:pointToCompare];
+    }
+    // Tests to see if there's a node east of you.
+    else if ([relativeDirection isEqualToString:@"east"]){
+        pointToCompare.x = playerPoint->x+1;
+        pointToCompare.y = playerPoint->y;
+        
+        returnedNode = [self nodeAtPoint:pointToCompare];
+    }
+    // Tests to see if there's a node west of you.
+    else if ([relativeDirection isEqualToString:@"west"]){
+        pointToCompare.x = playerPoint->x-1;
+        pointToCompare.y = playerPoint->y;
+        
+        returnedNode = [self nodeAtPoint:pointToCompare];
+    }
+    
+    //nodeAtPoint returns the node it was called on if there's no node at the point.
+    if (returnedNode == self){
+        return false;
+    }
+    else
+    {
+        return true;
+    }
+}
+
+/*
  * Method: touchesBegan: withEvent:
  *
  * Currently commented out. This will just shift the maze down, leaving the 
