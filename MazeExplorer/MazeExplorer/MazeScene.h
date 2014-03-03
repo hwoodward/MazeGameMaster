@@ -7,7 +7,10 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "ObstacleScene.h"
 
-@interface MazeScene : SKScene
+@interface MazeScene : SKScene <ObstacleSceneDelegate>
+
+-(void) obstacleDidFinish;
 
 @end

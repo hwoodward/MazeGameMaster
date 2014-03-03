@@ -19,7 +19,9 @@
 @property CGPoint playerLoc;
 //@property CGPoint startLoc;
 @property CGPoint endLoc;
-@property CGPoint obstLoc;
+//@property CGPoint obstLoc;
+
+@property (nonatomic) SKView *obstView;
 
 @end
 
@@ -226,14 +228,16 @@ static const int CELLNUM = 11;
 //Attempting to make a version of this that responds to up, down, left, right touches
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     
-    CGPoint fingerpos = [[touches anyObject] locationInView:self.view];
+    if (_obstView == Nil) {
     
-    NSLog(@"%@", NSStringFromCGPoint(fingerpos));
+        CGPoint fingerpos = [[touches anyObject] locationInView:self.view];
+    
+        NSLog(@"%@", NSStringFromCGPoint(fingerpos));
     
     // I'm sorry, there's a simpler way to get the midpoint,
     // and it works with or without the resource panel. -E
-    float xMidpoint = self.view.frame.size.width/2;
-    float yMidpoint = self.view.frame.size.height/2;
+        float xMidpoint = self.view.frame.size.width/2;
+        float yMidpoint = self.view.frame.size.height/2;
     
     //float xMidpoint = 400;
     //float yMidpoint = 400;
@@ -248,76 +252,83 @@ static const int CELLNUM = 11;
     //So, the x midpoint is about 400, and the y midpoint is about 500.
     //The origin is at the top-left-hand corner. Y'know, because that makes sense.
     
-    //For now, I'll ignore the fact that we'll theoretically have an inventory panel at the bottom.
+        //For now, I'll ignore the fact that we'll theoretically have an inventory panel at the bottom.
     
-    NSArray *cells = [self children];
-    SKAction *moveDown = [SKAction moveByX:0.0 y:-_cellWidth duration:1.0];
-    SKAction *moveUp = [SKAction moveByX:0.0 y:_cellWidth duration:1.0];
-    SKAction *moveLeft = [SKAction moveByX:-_cellWidth y:0.0 duration:1.0];
-    SKAction *moveRight = [SKAction moveByX:_cellWidth y:0.0 duration:1.0];
+        NSArray *cells = [self children];
+        SKAction *moveDown = [SKAction moveByX:0.0 y:-_cellWidth duration:1.0];
+        SKAction *moveUp = [SKAction moveByX:0.0 y:_cellWidth duration:1.0];
+        SKAction *moveLeft = [SKAction moveByX:-_cellWidth y:0.0 duration:1.0];
+        SKAction *moveRight = [SKAction moveByX:_cellWidth y:0.0 duration:1.0];
+        NSString *cont;
+        //Going up:
+        if (fingerpos.y < yMidpoint-100 && fingerpos.x > xMidpoint-100 && fingerpos.x < xMidpoint+100){
+        
+            _playerLoc.y--;
+            cont = [_maze getContentsWithRow:_playerLoc.y andColumn:_playerLoc.x];
+
+            for (int i = 0; i< [cells count]; i++) {
+                SKSpriteNode *cell = (SKSpriteNode *)[cells objectAtIndex:i];
+                [cell runAction:moveDown];
+            }
+        
+            [_player runAction: moveUp];
+        }
     
-    //Going up:
-    if (fingerpos.y < yMidpoint-100 && fingerpos.x > xMidpoint-100 && fingerpos.x < xMidpoint+100){
+        //Going down:
+        else if (fingerpos.y > yMidpoint+100 && fingerpos.x > xMidpoint-100 && fingerpos.x < xMidpoint+100){
         
-        _playerLoc.y--;
-        NSString *cont = [_maze getContentsWithRow:_playerLoc.y andColumn:_playerLoc.x];
-        if (![cont compare:@"O"]) {
-            NSLog(@"Obstacle!!");
-        }
-        for (int i = 0; i< [cells count]; i++) {
-            SKSpriteNode *cell = (SKSpriteNode *)[cells objectAtIndex:i];
-            [cell runAction:moveDown];
-        }
-        
-        [_player runAction: moveUp];
-    }
-    
-    //Going down:
-    else if (fingerpos.y > yMidpoint+100 && fingerpos.x > xMidpoint-100 && fingerpos.x < xMidpoint+100){
-        
-        _playerLoc.y++;
-        NSString *cont = [_maze getContentsWithRow:_playerLoc.y andColumn:_playerLoc.x];
-        if (![cont compare:@"O"]) {
-            NSLog(@"Obstacle!!");
-        }
-        for (int i = 0; i< [cells count]; i++) {
-            SKSpriteNode *cell = (SKSpriteNode *)[cells objectAtIndex:i];
-            [cell runAction:moveUp];
-        }
-        [_player runAction: moveDown];
+            _playerLoc.y++;
+            cont = [_maze getContentsWithRow:_playerLoc.y andColumn:_playerLoc.x];
+
+            for (int i = 0; i< [cells count]; i++) {
+                SKSpriteNode *cell = (SKSpriteNode *)[cells objectAtIndex:i];
+                [cell runAction:moveUp];
+            }
+            [_player runAction: moveDown];
        
-    }
+        }
     
-    //Going left:
-    else if (fingerpos.x < xMidpoint-100 && fingerpos.y > yMidpoint-100 && fingerpos.y < yMidpoint+100){
+        //Going left:
+        else if (fingerpos.x < xMidpoint-100 && fingerpos.y > yMidpoint-100 && fingerpos.y < yMidpoint+100){
         
-        _playerLoc.x--;
-        NSString *cont = [_maze getContentsWithRow:_playerLoc.y andColumn:_playerLoc.x];
+            _playerLoc.x--;
+            cont = [_maze getContentsWithRow:_playerLoc.y andColumn:_playerLoc.x];
+    
+            for (int i = 0; i< [cells count]; i++) {
+                SKSpriteNode *cell = (SKSpriteNode *)[cells objectAtIndex:i];
+                [cell runAction:moveRight];
+            }
+            [_player runAction: moveLeft];
+        }
+    
+        //Going right:
+        else if (fingerpos.x > xMidpoint+100 && fingerpos.y > yMidpoint-100 && fingerpos.y < yMidpoint+100){
+        
+            _playerLoc.x++;
+            cont = [_maze getContentsWithRow:_playerLoc.y andColumn:_playerLoc.x];
+        
+            for (int i = 0; i< [cells count]; i++) {
+                SKSpriteNode *cell = (SKSpriteNode *)[cells objectAtIndex:i];
+                [cell runAction:moveLeft];
+            }
+            [_player runAction: moveRight];
+        }
         if (![cont compare:@"O"]) {
             NSLog(@"Obstacle!!");
+            _obstView = [[SKView alloc] initWithFrame:self.view.frame];
+            ObstacleScene *obstScene = [[ObstacleScene alloc] initWithSize:self.frame.size];
+            [obstScene setDelegate:self];
+            [self.view addSubview:_obstView];
+            [_obstView presentScene:obstScene];
         }
-        for (int i = 0; i< [cells count]; i++) {
-            SKSpriteNode *cell = (SKSpriteNode *)[cells objectAtIndex:i];
-            [cell runAction:moveRight];
-        }
-        [_player runAction: moveLeft];
     }
     
-    //Going right:
-    else if (fingerpos.x > xMidpoint+100 && fingerpos.y > yMidpoint-100 && fingerpos.y < yMidpoint+100){
-        
-        _playerLoc.x++;
-        NSString *cont = [_maze getContentsWithRow:_playerLoc.y andColumn:_playerLoc.x];
-        if (![cont compare:@"O"]) {
-            NSLog(@"Obstacle!!");
-        }
-        for (int i = 0; i< [cells count]; i++) {
-            SKSpriteNode *cell = (SKSpriteNode *)[cells objectAtIndex:i];
-            [cell runAction:moveLeft];
-        }
-        [_player runAction: moveRight];
-    }
-    
+}
+
+- (void)obstacleDidFinish
+{
+    [_obstView removeFromSuperview];
+    _obstView = Nil;
 }
 
 

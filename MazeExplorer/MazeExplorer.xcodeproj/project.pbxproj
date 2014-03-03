@@ -29,6 +29,7 @@
 		A176953018B01E1C00DDCB91 /* MazeExplorerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A176952F18B01E1C00DDCB91 /* MazeExplorerTests.m */; };
 		A176953B18B01F3000DDCB91 /* Maze.m in Sources */ = {isa = PBXBuildFile; fileRef = A176953A18B01F3000DDCB91 /* Maze.m */; };
 		A176953E18B01F5100DDCB91 /* MazeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A176953D18B01F5100DDCB91 /* MazeCell.m */; };
+		A1C2DA8518C41B0B00288B36 /* ObstacleScene.m in Sources */ = {isa = PBXBuildFile; fileRef = A1C2DA8418C41B0B00288B36 /* ObstacleScene.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,8 @@
 		A176953A18B01F3000DDCB91 /* Maze.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Maze.m; path = ../Maze.m; sourceTree = "<group>"; };
 		A176953C18B01F5100DDCB91 /* MazeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MazeCell.h; sourceTree = "<group>"; };
 		A176953D18B01F5100DDCB91 /* MazeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MazeCell.m; sourceTree = "<group>"; };
+		A1C2DA8318C41B0B00288B36 /* ObstacleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObstacleScene.h; sourceTree = "<group>"; };
+		A1C2DA8418C41B0B00288B36 /* ObstacleScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObstacleScene.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +152,8 @@
 				A176951518B01E1B00DDCB91 /* ViewController.m */,
 				93A48E1118BF1B470008E8ED /* MazeScene.h */,
 				93A48E1218BF1B470008E8ED /* MazeScene.m */,
+				A1C2DA8318C41B0B00288B36 /* ObstacleScene.h */,
+				A1C2DA8418C41B0B00288B36 /* ObstacleScene.m */,
 				A176951718B01E1B00DDCB91 /* MyScene.h */,
 				A176951818B01E1C00DDCB91 /* MyScene.m */,
 				A125363618C2D70D0033FE44 /* ResourceScene.h */,
@@ -293,6 +298,7 @@
 				93314D0B18B5E75300144303 /* PlayerCharacter.m in Sources */,
 				A176951018B01E1B00DDCB91 /* AppDelegate.m in Sources */,
 				A176953E18B01F5100DDCB91 /* MazeCell.m in Sources */,
+				A1C2DA8518C41B0B00288B36 /* ObstacleScene.m in Sources */,
 				A176950C18B01E1B00DDCB91 /* main.m in Sources */,
 				A125363818C2D70D0033FE44 /* ResourceScene.m in Sources */,
 			);
