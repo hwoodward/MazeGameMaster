@@ -155,50 +155,52 @@ static const int CELLNUM = 11;
  * Takes in a direction relative to the player and the player's location.
  * Returns a boolean saying if there's another node in that direction.
  *
+ * Commented out for now because I found another way to check for walls. -Marjorie
+ *
  */
 
--(bool)isNode: (NSString*)relativeDirection withPoint:(CGPoint) playerPoint
-{
-    CGPoint pointToCompare;
-    SKNode* returnedNode;
-    // Tests to see if there's a node north of you.
-    if ([relativeDirection isEqualToString:@"north"]){
-        pointToCompare.x = playerPoint.x;
-        pointToCompare.y = playerPoint.y-1;
-        
-        returnedNode = [self nodeAtPoint:pointToCompare];
-    }
-    // Tests to see if there's a node south of you.
-    else if ([relativeDirection isEqualToString:@"south"]){
-        pointToCompare.x = playerPoint.x;
-        pointToCompare.y = playerPoint.y+1;
-        
-        returnedNode = [self nodeAtPoint:pointToCompare];
-    }
-    // Tests to see if there's a node east of you.
-    else if ([relativeDirection isEqualToString:@"east"]){
-        pointToCompare.x = playerPoint.x+1;
-        pointToCompare.y = playerPoint.y;
-        
-        returnedNode = [self nodeAtPoint:pointToCompare];
-    }
-    // Tests to see if there's a node west of you.
-    else if ([relativeDirection isEqualToString:@"west"]){
-        pointToCompare.x = playerPoint.x-1;
-        pointToCompare.y = playerPoint.y;
-        
-        returnedNode = [self nodeAtPoint:pointToCompare];
-    }
-    
-    //nodeAtPoint returns the node it was called on if there's no node at the point.
-    if (returnedNode == self){
-        return false;
-    }
-    else
-    {
-        return true;
-    }
-}
+//-(bool)isNode: (NSString*)relativeDirection withPoint:(CGPoint) playerPoint
+//{
+//    CGPoint pointToCompare;
+//    SKNode* returnedNode;
+//    // Tests to see if there's a node north of you.
+//    if ([relativeDirection isEqualToString:@"north"]){
+//        pointToCompare.x = playerPoint.x;
+//        pointToCompare.y = playerPoint.y-1;
+//        
+//        returnedNode = [self nodeAtPoint:pointToCompare];
+//    }
+//    // Tests to see if there's a node south of you.
+//    else if ([relativeDirection isEqualToString:@"south"]){
+//        pointToCompare.x = playerPoint.x;
+//        pointToCompare.y = playerPoint.y+1;
+//        
+//        returnedNode = [self nodeAtPoint:pointToCompare];
+//    }
+//    // Tests to see if there's a node east of you.
+//    else if ([relativeDirection isEqualToString:@"east"]){
+//        pointToCompare.x = playerPoint.x+1;
+//        pointToCompare.y = playerPoint.y;
+//        
+//        returnedNode = [self nodeAtPoint:pointToCompare];
+//    }
+//    // Tests to see if there's a node west of you.
+//    else if ([relativeDirection isEqualToString:@"west"]){
+//        pointToCompare.x = playerPoint.x-1;
+//        pointToCompare.y = playerPoint.y;
+//        
+//        returnedNode = [self nodeAtPoint:pointToCompare];
+//    }
+//    
+//    //nodeAtPoint returns the node it was called on if there's no node at the point.
+//    if (returnedNode == self){
+//        return false;
+//    }
+//    else
+//    {
+//        return true;
+//    }
+//}
 
 /*
  * Method: touchesBegan: withEvent:
@@ -222,7 +224,8 @@ static const int CELLNUM = 11;
 
 /*
  Method: touchesBegan: Allows the player to move up, down, left, and right 
- in the maze. Shifts the maze appropriately.
+ in the maze. Shifts the maze appropriately. Makes sure that the player can't
+ go through walls. Moves to the obstacle scene if the player hits an obstacle.
  */
 
 //Attempting to make a version of this that responds to up, down, left, right touches
@@ -261,8 +264,13 @@ static const int CELLNUM = 11;
         SKAction *moveLeft = [SKAction moveByX:-_cellWidth y:0.0 duration:1.0];
         SKAction *moveRight = [SKAction moveByX:_cellWidth y:0.0 duration:1.0];
         NSString *cont;
+        BOOL didMove = NO;
+        
         //Going up:
-        if (fingerpos.y < yMidpoint-100 && fingerpos.x > xMidpoint-100 && fingerpos.x < xMidpoint+100){
+        //This ridiculously long if statement ensures that the player is touching in the right place, that the destination
+        // is not a wall, and that the original position is not the start node.
+        // The cont compare part may need to be changed if some of our ends are not at the top of the screen.
+        if (fingerpos.y < yMidpoint-100 && fingerpos.x > xMidpoint-100 && fingerpos.x < xMidpoint+100 && ![_maze isWallCellWithRow: _playerLoc.y-1 andColumn: _playerLoc.x]){
         
             _playerLoc.y--;
             cont = [_maze getContentsWithRow:_playerLoc.y andColumn:_playerLoc.x];
@@ -273,10 +281,14 @@ static const int CELLNUM = 11;
             }
         
             [_player runAction: moveUp];
+            didMove = YES;
         }
     
         //Going down:
-        else if (fingerpos.y > yMidpoint+100 && fingerpos.x > xMidpoint-100 && fingerpos.x < xMidpoint+100){
+        //This ridiculously long if statement ensures that the player is touching in the right place, that the destination
+        // is not a wall, and that the original position is not the start node.
+        // The cont compare part may need to be changed if some of our starts are not at the bottom of the screen.
+        else if (fingerpos.y > yMidpoint+100 && fingerpos.x > xMidpoint-100 && fingerpos.x < xMidpoint+100 && ![_maze isWallCellWithRow: _playerLoc.y+1 andColumn: _playerLoc.x]){
         
             _playerLoc.y++;
             cont = [_maze getContentsWithRow:_playerLoc.y andColumn:_playerLoc.x];
@@ -286,11 +298,15 @@ static const int CELLNUM = 11;
                 [cell runAction:moveUp];
             }
             [_player runAction: moveDown];
+            didMove = YES;
+            
        
         }
     
         //Going left:
-        else if (fingerpos.x < xMidpoint-100 && fingerpos.y > yMidpoint-100 && fingerpos.y < yMidpoint+100){
+        //This ridiculously long if statement ensures that the player is touching in the right place, and that the
+        // destination is not a wall.
+        else if (fingerpos.x < xMidpoint-100 && fingerpos.y > yMidpoint-100 && fingerpos.y < yMidpoint+100 && ![_maze isWallCellWithRow: _playerLoc.y andColumn: _playerLoc.x-1]){
         
             _playerLoc.x--;
             cont = [_maze getContentsWithRow:_playerLoc.y andColumn:_playerLoc.x];
@@ -299,10 +315,13 @@ static const int CELLNUM = 11;
                 [cell runAction:moveRight];
             }
             [_player runAction: moveLeft];
+            didMove = YES;
         }
 
         //Going right:
-        else if (fingerpos.x > xMidpoint+100 && fingerpos.y > yMidpoint-100 && fingerpos.y < yMidpoint+100){
+        //This ridiculously long if statement ensures that the player is touching in the right place, and that the
+        // destination is not a wall.
+        else if (fingerpos.x > xMidpoint+100 && fingerpos.y > yMidpoint-100 && fingerpos.y < yMidpoint+100 && ![_maze isWallCellWithRow: _playerLoc.y andColumn: _playerLoc.x+1]){
         
             _playerLoc.x++;
             cont = [_maze getContentsWithRow:_playerLoc.y andColumn:_playerLoc.x];
@@ -312,8 +331,11 @@ static const int CELLNUM = 11;
                 [cell runAction:moveLeft];
             }
             [_player runAction: moveRight];
+            didMove = YES;
         }
-        if (![cont compare:@"O"]) {
+        //This should only run if the player actually moves.
+        //Opens up the obstacle scene if you run into an obstacle.
+        if (![cont compare:@"O"] && didMove) {
             NSLog(@"Obstacle!!");
             _obstView = [[SKView alloc] initWithFrame:self.view.frame];
             ObstacleScene *obstScene = [[ObstacleScene alloc] initWithSize:self.frame.size];
@@ -321,6 +343,7 @@ static const int CELLNUM = 11;
             [self.view addSubview:_obstView];
             [_obstView presentScene:obstScene];
         }
+        didMove = NO; 
     }
     
 }
