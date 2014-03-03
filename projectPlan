@@ -2,21 +2,21 @@ Project plan:
 
 Status at the end of phase 1:
 We have a maze class with a person, obstacles, and resources, along with an array of maze-cells. It will have internal functionality for moving the person around and storing how many resources a person has.
-We will also have a main scene with two 'frames', one displaying a subset of the maze centered on the person which updates as the person moves, and one displaying resources (not fully functional).
+We will also have a main scene with two 'frames', one displaying a subset of the maze centered on the person which updates as the person moves, and one for displaying resources (not fully functional).
 When the person walks over a resource their resource total increases, and when they encounter an obstacle an obstacle scene launches (currently it is not a functional obstacle).
-There may also be a yarn class existing, but it may not be fully functional.
-Finally we will have a way to exit the program.
 
 Phase 2:
-Week one: Finish any problems with obstacle launching and yarn, and extend the resource scene to display different types of resources, which can be selected (although all they should do is acknowledge your selection, nothing functional). Make the placement of obstacles and resources semi-random and which ones are placed also randomized.
-Week two: Create a level selector that opens on launch, with an exit button and an option to launch the maze or display instructions. launching the maze put you at the start and reaching the end of the maze send you back to the level selector.
-Week three: Create at least one obstacle and resource that function. If possible implement either health or the maze overview display.
+End with a minimally playable game. There will be a level selector and all the scenes and classes will interact properly.
+However there will be few (probably only one) obstacle and resource and their locations will be hard coded. THere will probably be at most two levels.
+Week one: Get the maze scene talking to the resource scene so that we can display accurate resource information. Enhance obstacle functionality, and document the code base.
+Week two: Create a level selector and expand resource interaction to allow the resource scene to tell the maze scene when a resource is used. The level selector will open on launch, have an exit button, and be returned to on completion of the maze.
+Week three: Create at least one obstacle and resource that function. 
 
 Phase 3:
-Week one: Create more obstacles and resources as functional classes. Remove non-functional obstacles. Implement health and map overview (if already implemented extend health to scorekeeping and possibly extend map overview to only show visited locations, if desired maybe make it pop-up and or display yarn).
-Week two: Create another level. Implement score keeping.
-Week three: Create more levels, implement further obstacles and resources, polish any features that are as yet unfinished.
-
+This phase we will add more obstacles, and the additional features we want to include which are not essential to game play.
+Week one: Add more obstacles, resources, and levels. At least one, preferably more, of each.
+Week two: Implement semi-random placement of obstacles and resources, continue adding obstacles and resources. 
+Week three: Polish existing obstacles and such, if time permits implement health.
 
 USER STORIES INCLUDED BELOW:
 
@@ -31,19 +31,13 @@ Overall Design:
 As (I’m not sure who) I want the game to restart at the beginning of the level and not pause. 
 
 Main Display:
-2. As a player who likes to be challenged I don’t want to see the entire maze at once on the screen so I have to remember and explore some.
 3. As a tired plane passenger I want the main view of the maze to be large so that I don’t have to squint to see the maze and what is in it.
-7. As a player I want to be able to tell if I have yarn or other resources available on the main view so I don’t have to constantly switch between tabs.
-8. As an explorer I want an overview map showing where I have been, so I can see what areas of the maze I have and haven’t explored.
-9. As someone who wants to be challenged I don’t want an overview map that lets me see bits of the maze I haven’t yet explored, so I can’t just find the easiest path through the maze really quickly.
+7. As a player I want to be able to tell if I what resources I have available on the main view so I don’t have to constantly switch between tabs.
 
 Resources:
 4. As an explorer, I want there to be resources hidden in the maze to incentivize exploring.
-10. As someone who gets lost, I want to be able to use yarn to mark where I have been so I can tell where I have been.
-11. As someone who accidentally goes in loops I want to be able to follow yarn (undo) and realize when I was in a loop. 
-12. As someone who has finally figured out what is going on in an area I want to be able to collect yarn without backtracking so I can move on without tediously retracing my steps twice.
 20. As someone who gets mad when I am one wall away from the exit/finish, I want a pickaxe so I can demolish the wall. 
-21. As a user who wants to be challenged I want a pick axe to be damaged after being used to demolish a wall so that I can’t just carve a path through the maze and around all the obstacles.
+21. As a user who wants to be challenged I want obstacles to be single use so that I have to manage my resources.
 As someone who wants the levels to be completely separate I don’t want resources to roll over from previous levels.
 
 Obstacles:
@@ -51,21 +45,17 @@ Obstacles:
 6. As a player, I was obstacles to be randomized so each play through is different. 
 14. As a new player, I want obstacles to be easier/fewer on low levels. 
 19. As someone struggling with obstacles, I want resources to help me solve them. 
-22. As someone who gets frustrated, I want to be able to pass an obstacle without solving it so that I can keep playing. 
+22. As someone who gets frustrated, I want to be able to exit an obstacle without solving it so that I can keep playing. 
 23. As someone who likes balanced games, I want skipping obstacles to cost health so that you are discouraged from doing so. 
-
-
-Scoring:
-24. As a player who works hard to pass all the obstacles without losing health I want my score to be higher if I have high health.
-25. As a person traveling with family I want there to be no penalty for playing slowly so I can play slowly while talking with my family.
-27. As an explorer I want there to be a score bonus for exploring a level really thoroughly.
-28. As someone who plays this game frequently I want to keep track of my high score.
 
 Obstacle Ideas:
 4. As a fan of Indiana Jones I want there to be a pit obstacle which can be overcome by using a rope to swing across the pit.
 5. As a fan of logic puzzles I want there to be a lock obstacle which makes you either smash the lock, hurting yourself, or solve a logic puzzle.
 1. As someone who likes simon I want there to be a simon based obstacle.
 2. As someone who is bad at simon I want a notepad resource so I can write down the pattern and pass the simon obstacle more easily.
-3. As someone who wants the game to be difficult I want notepads to have a limited number of uses so you eventually have to either play simon or find a new notepad.
-6. As a fan of minesweeper I would like a minesweeper based obstacle.
-7. As someone bad at minesweeper I would like a long stick item to allow me to check squares before I click them in minesweeper, thus surviving setting of a bomb.
+Cave-in: need to drag boulders (which can't overlap) to clear a path (marked by an outline on the screen).
+Fill in the pit: drag a boulder to fill in the pit so you cna get across.
+Tannengrams
+Matching
+Click speed (need to outrun a dangerous animal?)
+follow a line (need to avoid the booby traps?)
