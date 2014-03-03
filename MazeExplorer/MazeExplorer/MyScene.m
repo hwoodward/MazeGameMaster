@@ -7,8 +7,7 @@
 //
 
 #import "MyScene.h"
-#import "MazeScene.h"
-#import "ResourceScene.h"
+
 
 @interface MyScene ()
 
@@ -40,18 +39,22 @@
     if (!_didPresentGameViews) {
         
         _mazeView = [[SKView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.width)];
-        SKScene *mazeScene = [[MazeScene alloc] initWithSize:CGSizeMake(self.frame.size.width, self.frame.size.width)];
+        MazeScene *mazeScene = [[MazeScene alloc] initWithSize:CGSizeMake(self.frame.size.width, self.frame.size.width)];
+        [mazeScene setDelegate:self];
+        
         [self.view addSubview:_mazeView];
         [_mazeView presentScene:mazeScene];
         
         _resourceView = [[SKView alloc] initWithFrame:CGRectMake(0, self.frame.size.width,
                                                                  self.frame.size.width,
                                                                 self.frame.size.height-self.frame.size.width)];
-        SKScene *resourceScene = [[ResourceScene alloc]
+        ResourceScene *resourceScene = [[ResourceScene alloc]
                                   initWithSize:CGSizeMake(self.frame.size.width,
                                                           self.frame.size.height-self.frame.size.width)];
+        [resourceScene setDelegate:self];
         [self.view addSubview:_resourceView];
         [_resourceView presentScene:resourceScene];
+        
         
         _didPresentGameViews = YES;
     }
