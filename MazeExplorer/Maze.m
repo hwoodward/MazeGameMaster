@@ -87,6 +87,14 @@
 }
 
 
+// This should be changed to the enum type later
+- (NSString*)getContentsWithRow:(int)row andColumn:(int)col
+{
+    MazeCell* cell = [[_cells objectAtIndex:row] objectAtIndex:col];
+    return [cell contents];
+}
+
+
 /*
  * Method: initMazeWithString: andWidth:
  * Use this init. Not the basic init.

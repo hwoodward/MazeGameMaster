@@ -21,5 +21,7 @@
 
 - (id)initMazeWithString:(NSString*) mazeString
                 andWidth:(int) width;
+- (NSString*)getContentsWithRow:(int)row
+                      andColumn:(int)col;
 
 @end
