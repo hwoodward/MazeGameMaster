@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		93314D0B18B5E75300144303 /* PlayerCharacter.m in Sources */ = {isa = PBXBuildFile; fileRef = 93314D0A18B5E75300144303 /* PlayerCharacter.m */; };
+		93A48E1318BF1B470008E8ED /* MazeScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A48E1218BF1B470008E8ED /* MazeScene.m */; };
+		A125363818C2D70D0033FE44 /* ResourceScene.m in Sources */ = {isa = PBXBuildFile; fileRef = A125363718C2D70D0033FE44 /* ResourceScene.m */; };
 		A17694FE18B01E1B00DDCB91 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A17694FD18B01E1B00DDCB91 /* Foundation.framework */; };
 		A176950018B01E1B00DDCB91 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A17694FF18B01E1B00DDCB91 /* CoreGraphics.framework */; };
 		A176950218B01E1B00DDCB91 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A176950118B01E1B00DDCB91 /* UIKit.framework */; };
@@ -26,6 +29,7 @@
 		A176953018B01E1C00DDCB91 /* MazeExplorerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A176952F18B01E1C00DDCB91 /* MazeExplorerTests.m */; };
 		A176953B18B01F3000DDCB91 /* Maze.m in Sources */ = {isa = PBXBuildFile; fileRef = A176953A18B01F3000DDCB91 /* Maze.m */; };
 		A176953E18B01F5100DDCB91 /* MazeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A176953D18B01F5100DDCB91 /* MazeCell.m */; };
+		A1C2DA8518C41B0B00288B36 /* ObstacleScene.m in Sources */ = {isa = PBXBuildFile; fileRef = A1C2DA8418C41B0B00288B36 /* ObstacleScene.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +43,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		93314D0918B5E75300144303 /* PlayerCharacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerCharacter.h; sourceTree = "<group>"; };
+		93314D0A18B5E75300144303 /* PlayerCharacter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerCharacter.m; sourceTree = "<group>"; };
+		93A48E1118BF1B470008E8ED /* MazeScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MazeScene.h; sourceTree = "<group>"; };
+		93A48E1218BF1B470008E8ED /* MazeScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MazeScene.m; sourceTree = "<group>"; };
+		A125363618C2D70D0033FE44 /* ResourceScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceScene.h; sourceTree = "<group>"; };
+		A125363718C2D70D0033FE44 /* ResourceScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceScene.m; sourceTree = "<group>"; };
 		A17694FA18B01E1B00DDCB91 /* MazeExplorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MazeExplorer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A17694FD18B01E1B00DDCB91 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A17694FF18B01E1B00DDCB91 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -66,6 +76,8 @@
 		A176953A18B01F3000DDCB91 /* Maze.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Maze.m; path = ../Maze.m; sourceTree = "<group>"; };
 		A176953C18B01F5100DDCB91 /* MazeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MazeCell.h; sourceTree = "<group>"; };
 		A176953D18B01F5100DDCB91 /* MazeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MazeCell.m; sourceTree = "<group>"; };
+		A1C2DA8318C41B0B00288B36 /* ObstacleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObstacleScene.h; sourceTree = "<group>"; };
+		A1C2DA8418C41B0B00288B36 /* ObstacleScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObstacleScene.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,13 +143,21 @@
 				A176953A18B01F3000DDCB91 /* Maze.m */,
 				A176953C18B01F5100DDCB91 /* MazeCell.h */,
 				A176953D18B01F5100DDCB91 /* MazeCell.m */,
+				93314D0918B5E75300144303 /* PlayerCharacter.h */,
+				93314D0A18B5E75300144303 /* PlayerCharacter.m */,
 				A176950E18B01E1B00DDCB91 /* AppDelegate.h */,
 				A176950F18B01E1B00DDCB91 /* AppDelegate.m */,
 				A176951118B01E1B00DDCB91 /* Main.storyboard */,
 				A176951418B01E1B00DDCB91 /* ViewController.h */,
 				A176951518B01E1B00DDCB91 /* ViewController.m */,
+				93A48E1118BF1B470008E8ED /* MazeScene.h */,
+				93A48E1218BF1B470008E8ED /* MazeScene.m */,
+				A1C2DA8318C41B0B00288B36 /* ObstacleScene.h */,
+				A1C2DA8418C41B0B00288B36 /* ObstacleScene.m */,
 				A176951718B01E1B00DDCB91 /* MyScene.h */,
 				A176951818B01E1C00DDCB91 /* MyScene.m */,
+				A125363618C2D70D0033FE44 /* ResourceScene.h */,
+				A125363718C2D70D0033FE44 /* ResourceScene.m */,
 				A176951A18B01E1C00DDCB91 /* Spaceship.png */,
 				A176951C18B01E1C00DDCB91 /* Images.xcassets */,
 				A176950618B01E1B00DDCB91 /* Supporting Files */,
@@ -272,11 +292,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				A176953B18B01F3000DDCB91 /* Maze.m in Sources */,
+				93A48E1318BF1B470008E8ED /* MazeScene.m in Sources */,
 				A176951918B01E1C00DDCB91 /* MyScene.m in Sources */,
 				A176951618B01E1B00DDCB91 /* ViewController.m in Sources */,
+				93314D0B18B5E75300144303 /* PlayerCharacter.m in Sources */,
 				A176951018B01E1B00DDCB91 /* AppDelegate.m in Sources */,
 				A176953E18B01F5100DDCB91 /* MazeCell.m in Sources */,
+				A1C2DA8518C41B0B00288B36 /* ObstacleScene.m in Sources */,
 				A176950C18B01E1B00DDCB91 /* main.m in Sources */,
+				A125363818C2D70D0033FE44 /* ResourceScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -489,6 +513,7 @@
 				A176953518B01E1C00DDCB91 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A176953618B01E1C00DDCB91 /* Build configuration list for PBXNativeTarget "MazeExplorerTests" */ = {
 			isa = XCConfigurationList;
@@ -497,6 +522,7 @@
 				A176953818B01E1C00DDCB91 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

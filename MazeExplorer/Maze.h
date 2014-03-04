@@ -12,6 +12,8 @@
 
 @property (readonly) int numRows;
 @property (readonly) int numCols;
+@property (readonly) CGPoint startLoc;
+@property (readonly) CGPoint endLoc;
 
 - (void)printMaze;
 
@@ -19,5 +21,7 @@
 
 - (id)initMazeWithString:(NSString*) mazeString
                 andWidth:(int) width;
+- (NSString*)getContentsWithRow:(int)row
+                      andColumn:(int)col;
 
 @end

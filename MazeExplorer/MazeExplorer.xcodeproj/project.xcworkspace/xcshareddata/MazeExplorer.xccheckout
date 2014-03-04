@@ -5,19 +5,19 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>1BFAD798-B8C9-41FA-A4D6-07E15EC64028</string>
+	<string>50E31697-0CCB-44E2-AB96-A303EC2B8629</string>
 	<key>IDESourceControlProjectName</key>
 	<string>MazeExplorer</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>9A244465-F40D-4569-B3A1-425BA7F4A21A</key>
+		<key>46399C5D-68CF-4DAB-A6DB-D2D316F49418</key>
 		<string>https://github.com/hwoodward/MazeGameMaster.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>MazeExplorer/MazeExplorer.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>9A244465-F40D-4569-B3A1-425BA7F4A21A</key>
+		<key>46399C5D-68CF-4DAB-A6DB-D2D316F49418</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -25,16 +25,16 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>9A244465-F40D-4569-B3A1-425BA7F4A21A</string>
+	<string>46399C5D-68CF-4DAB-A6DB-D2D316F49418</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>9A244465-F40D-4569-B3A1-425BA7F4A21A</string>
+			<string>46399C5D-68CF-4DAB-A6DB-D2D316F49418</string>
 			<key>IDESourceControlWCCName</key>
-			<string>MazeGameMaster</string>
+			<string>MazeGameMarjorie</string>
 		</dict>
 	</array>
 </dict>
