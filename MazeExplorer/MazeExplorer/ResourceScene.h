@@ -5,6 +5,10 @@
 //  Created by Emily Stansbury on 3/1/14.
 //
 //
+/* The ResourceScene is responsible for creating, displaying, and handleing user interaction with resources.
+ * To do this it needs to create resources when informed that hey were encountered by the player.
+ * It also needs to pass on the information that a resource has been used when one is used along with removing it.
+ */
 
 #import <SpriteKit/SpriteKit.h>
 

@@ -5,8 +5,9 @@
 //  Created by Marjorie Principato on 2/19/14.
 //
 //
-
-// Honestly, we'll probably end up replacing our character with a node. This can hopefully at least hold inventory stuff. 
+/* The PlayerCharacter object was a first attempt to keep track of the player, but subsequent changes have made it
+ * unnecessary. Now the player is the responsiblity of the MazeScene as a node.
+ */
 
 #import <Foundation/Foundation.h>
 

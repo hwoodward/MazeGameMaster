@@ -5,6 +5,8 @@
 //  Created by Emily Stansbury on 2/15/14.
 //
 //
+/* MazeCell's store the contents of a given part, cell, of the array. * 
+ */
 
 #import <Foundation/Foundation.h>
 

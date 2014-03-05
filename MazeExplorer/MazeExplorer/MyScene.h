@@ -6,6 +6,10 @@
 //  Copyright (c) 2014 __MyCompanyName__. All rights reserved.
 //
 
+/* This is the main scene. It possesses the resource and maze view controllers and thus scenes.
+ * It's job is to initialize them when needed, and pass information between them (hence its delegate status).
+ */
+
 #import <SpriteKit/SpriteKit.h>
 #import "MazeScene.h"
 #import "ResourceScene.h"

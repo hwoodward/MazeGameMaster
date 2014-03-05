@@ -5,6 +5,11 @@
 //  Created by Emily Stansbury on 2/23/14.
 //
 //
+/* MazeScene is a scene which renders the maze and lets the user interact with it.
+ * It possess a Maze object which it renders into nodes, a player node that it keeps displayed.
+ * This class is responsible for movement of the maze, launching obstacles, and passing information
+ * about encountered resources along to the appropriate place.
+ */
 
 #import <SpriteKit/SpriteKit.h>
 #import "ObstacleScene.h"

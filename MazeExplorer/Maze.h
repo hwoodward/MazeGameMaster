@@ -5,6 +5,10 @@
 //  Created by Emily Stansbury on 2/15/14.
 //
 //
+/* This is the Maze class which stores the hard coded maze which a person moves around in.
+ * This class uses an array of MazeCells to represent the maze and provides information about a given row and column
+ * when needed.
+ */
 
 #import <Foundation/Foundation.h>
 
