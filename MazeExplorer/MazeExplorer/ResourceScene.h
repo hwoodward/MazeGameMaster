@@ -17,12 +17,12 @@
 // This is where the talking methods should go for MazeScene/ResourceScene
 // They will be sent to MyScene, which will pass along the information to MazeScene
 
--(void) increaseCounterByOne; 
-
 @end
 
 @interface ResourceScene : SKScene
 
 @property (nonatomic) id <ResourceSceneDelegate> delegate;
+
+-(void) increaseCounterByOne;
 
 @end
