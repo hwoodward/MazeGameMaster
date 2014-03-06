@@ -10,6 +10,8 @@
 
 @implementation ResourceScene
 
+int resourceCounter = 0;
+
 -(id) initWithSize:(CGSize)size
 {
     self = [super initWithSize:size];
@@ -17,7 +19,7 @@
     self.backgroundColor = [SKColor purpleColor];
     
     SKLabelNode *label = [[SKLabelNode alloc] init];
-    label.text = @"Resources will go here";
+    label.text = [NSString stringWithFormat:@"%i",(int)resourceCounter];
     label.fontSize = 42;
     label.position = CGPointMake(CGRectGetMidX(self.frame),CGRectGetMidY(self.frame));
     
@@ -28,7 +30,7 @@
 
 -(void) increaseCounterByOne
 {
-    //Increases the counter by one.
+    ++resourceCounter;
 }
 
 @end

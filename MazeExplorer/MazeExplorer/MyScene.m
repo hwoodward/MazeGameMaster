@@ -69,7 +69,7 @@
 
 -(void)tellResourceSceneToIncreaseResourceCounter {
     //Unfinished; still need to figure out how to get ResourceScene to actually call this function.
-    [ resourceScene increaseCounterByOne];
+    //[self.delegate increaseCounterByOne];
 }
 
 

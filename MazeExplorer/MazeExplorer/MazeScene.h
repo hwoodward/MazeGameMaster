@@ -22,6 +22,7 @@
 
 //This function should call the function in MyScene that calls the function in ResourceScene that increases the counter.
 -(void)tellMySceneToIncreaseResourceCounter;
+-(void)tellResourceSceneToIncreaseResourceCounter; 
 
 
 @end
