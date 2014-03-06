@@ -26,4 +26,9 @@
     return self;
 }
 
+-(void) increaseCounterByOne
+{
+    //Increases the counter by one.
+}
+
 @end

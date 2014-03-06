@@ -343,6 +343,12 @@ static const int CELLNUM = 11;
             [self.view addSubview:_obstView];
             [_obstView presentScene:obstScene];
         }
+        //This should call the function in MyScene that calls the function in ResourceScene that increases the counter.
+        else if (![cont compare:@"R"] && didMove) {
+            //I'm not sure; is "R" the symbol for resource? -M
+            [self tellMySceneToIncreaseResourceCounter];
+        }
+        
         didMove = NO; 
     }
     
@@ -354,5 +360,10 @@ static const int CELLNUM = 11;
     _obstView = Nil;
 }
 
+-(void)tellMySceneToIncreaseResourceCounter
+{
+    //Unfinished; still need to figure out how to get MyScene to call this function.
+    [MyScene tellResourceSceneToIncreaseResourceCounter];
+}
 
 @end
