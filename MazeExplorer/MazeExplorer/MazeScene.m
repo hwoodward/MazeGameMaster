@@ -72,7 +72,7 @@ static const int CELLNUM = 11;
 - (void)mazeSetUp
 {
     _maze = [[Maze alloc]
-             initMazeWithString:@"*E*********  *     **      *******     **     *  ** O   * *** *  *   ****  *  ***    *   ***S*******"
+             initMazeWithString:@"*E*********  *     **      *******     **     *  ** O   * *** *  *   ****  *  ***R   *   ***S*******"
              andWidth:10];
     [_maze printMaze];
     
@@ -90,6 +90,12 @@ static const int CELLNUM = 11;
                 [self addChild:cellNode];
             } else if (![cont compare:@"O"]) {
                 SKSpriteNode *cellNode = [[SKSpriteNode alloc] initWithColor: [SKColor brownColor] size:cellSize];
+                cellNode.position = CGPointMake(_cellWidth*i + (_cellWidth/2),
+                                                self.frame.size.height - _cellWidth*j - _cellWidth/2);
+                
+                [self addChild:cellNode];
+            } else if (![cont compare:@"R"]) {
+                SKSpriteNode *cellNode = [[SKSpriteNode alloc] initWithColor: [SKColor orangeColor] size:cellSize];
                 cellNode.position = CGPointMake(_cellWidth*i + (_cellWidth/2),
                                                 self.frame.size.height - _cellWidth*j - _cellWidth/2);
                 
