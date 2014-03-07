@@ -22,7 +22,11 @@
 
 @interface ObstacleScene : SKScene
 
+@property (nonatomic, strong) SKSpriteNode *selectedNode;
+
 @property id <ObstacleSceneDelegate> delegate;
+
+- (void)moveSelectedNode:(CGPoint)translation;
 
 @end
 

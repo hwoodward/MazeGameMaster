@@ -16,24 +16,77 @@
     
     self.backgroundColor = [SKColor greenColor];
     SKLabelNode *label = [[SKLabelNode alloc] init];
-    label.text = @"This is an obstacle. Touch to dismiss";
-    label.fontSize = 42;
+    label.text = @"This is an obstacle. Drag the checkmark to the box to dismiss.";
+    label.fontSize = 27;
     label.position = CGPointMake(CGRectGetMidX(self.frame),CGRectGetMidY(self.frame));
     label.fontColor = [SKColor blackColor];
     
     [self addChild:label];
     
-    //Need to make an object node that so I can see it
-    SKSpriteNode *clickHere = [SKSpriteNode spriteNodeWithImageNamed:@"checkButton.png"];
-    clickHere.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2-200);
-    clickHere.name = @"exitNode";
-    clickHere.zPosition = 1.0;
+    SKSpriteNode *checkMark = [SKSpriteNode spriteNodeWithImageNamed:@"checkButton.png"];
+    checkMark.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2+200);
+    checkMark.name = @"checkMark";
     
-    [self addChild:clickHere];
-    
+    SKSpriteNode *blueBox = [[SKSpriteNode alloc] initWithColor:[SKColor blueColor] size:checkMark.size];
+    blueBox.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2-200);
+    blueBox.name = @"blueBox";
+    [self addChild:blueBox];
+    [self addChild:checkMark];
+
     return self;
 }
 
+//Gesture recognizer code?
+- (void)didMoveToView:(SKView *)view {
+    UIPanGestureRecognizer *gestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanFrom:)];
+    [[self view] addGestureRecognizer:gestureRecognizer];
+}
+
+- (void)handlePanFrom:(UIPanGestureRecognizer *)recognizer {
+	if (recognizer.state == UIGestureRecognizerStateBegan) {
+        
+        CGPoint touchLocation = [recognizer locationInView:recognizer.view];
+        touchLocation = [self convertPointFromView:touchLocation];
+        //Need to set a property so that in later parts can move the node!
+        SKSpriteNode *touchedNode = (SKSpriteNode *)[self nodeAtPoint:touchLocation];
+
+		if([[touchedNode name] isEqualToString:@"checkMark"]) {
+            _selectedNode = touchedNode;
+        }
+        else {
+            _selectedNode = nil;
+        }
+        
+    } else if (recognizer.state == UIGestureRecognizerStateChanged) {
+        
+        CGPoint translation = [recognizer translationInView:recognizer.view];
+        translation = CGPointMake(translation.x, -translation.y);
+        [self moveSelectedNode:translation];
+        [recognizer setTranslation:CGPointZero inView:recognizer.view];
+        
+    } else if (recognizer.state == UIGestureRecognizerStateEnded) {
+        if(_selectedNode != nil) {
+            CGPoint position = [_selectedNode position];
+            //This isn't really ideal, should probably make this box an property and also a little bigger
+            CGPoint boxPoint = CGPointMake(self.frame.size.width/2, self.frame.size.height/2-200);
+            CGRect box = {boxPoint, _selectedNode.size};
+            
+            if(CGRectContainsPoint(box, position) ) {
+                [_delegate obstacleDidFinish];
+            }
+        }
+    }
+}
+
+- (void)moveSelectedNode:(CGPoint)translation {
+    if(_selectedNode != nil) {
+        CGPoint position = [_selectedNode position];
+        [_selectedNode setPosition:CGPointMake(position.x + translation.x, position.y + translation.y)];
+    }
+}
+
+/*
+  Removed so taht gesture recognizer could be added.
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     UITouch *touch = [touches anyObject];
@@ -44,10 +97,10 @@
     //what node am I in?
     SKNode *clickedNode = [self nodeAtPoint:location];
     
-    if ([clickedNode.name isEqualToString:@"exitNode"]) {
+    if ([clickedNode.name isEqualToString:@"checkMark"]) {
         [_delegate obstacleDidFinish];
     }
-
 }
+ */
 
 @end
