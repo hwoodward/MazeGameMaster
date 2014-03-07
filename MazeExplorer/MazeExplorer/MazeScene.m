@@ -362,7 +362,6 @@ static const int CELLNUM = 11;
 
 -(void)tellMySceneToIncreaseResourceCounter
 {
-    //Unfinished; still need to figure out how to get MyScene to call this function.
     [self.delegate tellResourceSceneToIncreaseResourceCounter];
 }
 

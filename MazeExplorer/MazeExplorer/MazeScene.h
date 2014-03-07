@@ -20,8 +20,7 @@
 // This is where the talking methods should go for MazeScene/ResourceScene
 // They will be sent to MyScene, which will pass along the information to ResourceScene
 
-//This function should call the function in MyScene that calls the function in ResourceScene that increases the counter.
--(void)tellMySceneToIncreaseResourceCounter;
+//This is the functiont that MyScene calls. 
 -(void)tellResourceSceneToIncreaseResourceCounter; 
 
 
@@ -32,5 +31,6 @@
 @property (nonatomic) id <MazeSceneDelegate> delegate;
 
 -(void) obstacleDidFinish;
+-(void)tellMySceneToIncreaseResourceCounter;
 
 @end
