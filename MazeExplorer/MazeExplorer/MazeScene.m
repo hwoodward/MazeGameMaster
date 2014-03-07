@@ -336,8 +336,11 @@ static const int CELLNUM = 11;
         }
         //This should call the function in MyScene that calls the function in ResourceScene that increases the counter.
         if (![cont compare:@"R"] && didMove) {
-            //I'm not sure; is "R" the symbol for resource? -M
             [self tellMySceneToIncreaseResourceCounter];
+            //Change the MazeCell to have an empty space
+            //I think I'll need to write my own method that returns the cell (similar to isWallCellWithRow: Col:)
+            //That way, I can change the maze cell's contents to be an empty space.
+            //After that, I can figure out how to update the map (or at least recolor that one). 
         }
         
         didMove = NO; 
