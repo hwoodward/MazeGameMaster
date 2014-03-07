@@ -23,13 +23,31 @@
     
     [self addChild:label];
     
+    //Need to make an object node that so I can see it
+    SKSpriteNode *clickHere = [SKSpriteNode spriteNodeWithImageNamed:@"checkButton.png"];
+    clickHere.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2-200);
+    clickHere.name = @"exitNode";
+    clickHere.zPosition = 1.0;
+    
+    [self addChild:clickHere];
+    
     return self;
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    [_delegate obstacleDidFinish];
-}
+    UITouch *touch = [touches anyObject];
+    CGPoint location = [touch locationInNode:self];
+ 
+//    NSLog(@"%@", NSStringFromCGPoint(location));
+    
+    //what node am I in?
+    SKNode *clickedNode = [self nodeAtPoint:location];
+    
+    if ([clickedNode.name isEqualToString:@"exitNode"]) {
+        [_delegate obstacleDidFinish];
+    }
 
+}
 
 @end

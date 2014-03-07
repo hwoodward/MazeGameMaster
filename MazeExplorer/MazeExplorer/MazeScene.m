@@ -241,27 +241,12 @@ static const int CELLNUM = 11;
     
         CGPoint fingerpos = [[touches anyObject] locationInView:self.view];
     
-        NSLog(@"%@", NSStringFromCGPoint(fingerpos));
+      //  NSLog(@"%@", NSStringFromCGPoint(fingerpos));
     
     // I'm sorry, there's a simpler way to get the midpoint,
     // and it works with or without the resource panel. -E
         float xMidpoint = self.view.frame.size.width/2;
         float yMidpoint = self.view.frame.size.height/2;
-    
-    //float xMidpoint = 400;
-    //float yMidpoint = 400;
-    
-    //The farthest point I've been able to touch: {760, 996}
-    
-    //The midpoint on the left: {6, 444}
-    //The midpoint on the right: {763, 509}
-    //The midpoint on top: {384, 23}
-    //The midpoint on the bottom: {397, 1008}
-    
-    //So, the x midpoint is about 400, and the y midpoint is about 500.
-    //The origin is at the top-left-hand corner. Y'know, because that makes sense.
-    
-        //For now, I'll ignore the fact that we'll theoretically have an inventory panel at the bottom.
     
 
         NSArray *cells = [self children];

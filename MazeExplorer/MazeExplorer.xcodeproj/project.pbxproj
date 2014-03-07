@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6DDABA4018C858F200A4DDAE /* checkButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DDABA3F18C858F200A4DDAE /* checkButton.png */; };
 		93314D0B18B5E75300144303 /* PlayerCharacter.m in Sources */ = {isa = PBXBuildFile; fileRef = 93314D0A18B5E75300144303 /* PlayerCharacter.m */; };
 		93A48E1318BF1B470008E8ED /* MazeScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A48E1218BF1B470008E8ED /* MazeScene.m */; };
 		A125363818C2D70D0033FE44 /* ResourceScene.m in Sources */ = {isa = PBXBuildFile; fileRef = A125363718C2D70D0033FE44 /* ResourceScene.m */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6DDABA3F18C858F200A4DDAE /* checkButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkButton.png; sourceTree = "<group>"; };
 		93314D0918B5E75300144303 /* PlayerCharacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerCharacter.h; sourceTree = "<group>"; };
 		93314D0A18B5E75300144303 /* PlayerCharacter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerCharacter.m; sourceTree = "<group>"; };
 		93A48E1118BF1B470008E8ED /* MazeScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MazeScene.h; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 				A125363718C2D70D0033FE44 /* ResourceScene.m */,
 				A176951A18B01E1C00DDCB91 /* Spaceship.png */,
 				A176951C18B01E1C00DDCB91 /* Images.xcassets */,
+				6DDABA3F18C858F200A4DDAE /* checkButton.png */,
 				A176950618B01E1B00DDCB91 /* Supporting Files */,
 			);
 			path = MazeExplorer;
@@ -272,6 +275,7 @@
 				A176950A18B01E1B00DDCB91 /* InfoPlist.strings in Resources */,
 				A176951D18B01E1C00DDCB91 /* Images.xcassets in Resources */,
 				A176951B18B01E1C00DDCB91 /* Spaceship.png in Resources */,
+				6DDABA4018C858F200A4DDAE /* checkButton.png in Resources */,
 				A176951318B01E1B00DDCB91 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -354,7 +358,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -394,7 +397,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
