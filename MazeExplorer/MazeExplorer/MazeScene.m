@@ -337,6 +337,9 @@ static const int CELLNUM = 11;
         //This should call the function in MyScene that calls the function in ResourceScene that increases the counter.
         if (![cont compare:@"R"] && didMove) {
             [self tellMySceneToIncreaseResourceCounter];
+            NSArray * nodesAtCurrentPos = [self nodesAtPoint:_player.position];
+            SKSpriteNode * resourceNode = nodesAtCurrentPos[0];
+            resourceNode.color = [SKColor whiteColor];
         }
         
         didMove = NO; 
