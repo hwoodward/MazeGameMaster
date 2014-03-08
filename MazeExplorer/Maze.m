@@ -86,6 +86,18 @@
     return [cell isWall];
 }
 
+/*
+ * Method: returnCellWithRow: and Column:
+ *
+ * inputs: row and column indeces
+ * The method will return the MazeCell at a particular row and column.
+ */
+-(MazeCell*)returnCellWithRow:(int)row andColumn:(int)col
+{
+    MazeCell* cell = [[_cells objectAtIndex:row] objectAtIndex:col];
+    return cell;
+}
+
 
 // This should be changed to the enum type later
 - (NSString*)getContentsWithRow:(int)row andColumn:(int)col
