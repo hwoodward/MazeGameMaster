@@ -28,6 +28,9 @@
                 andWidth:(int) width;
 - (NSString*)getContentsWithRow:(int)row
                       andColumn:(int)col;
--(MazeCell*)returnCellWithRow:(int)row andColumn:(int)col;
+-(MazeCell*)returnCellWithRow:(int)row
+                    andColumn:(int)col;
+-(void)emptyContentsWithRow:(int)row
+                  andColumn:(int)col;
 
 @end
