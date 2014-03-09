@@ -16,7 +16,7 @@
     
     self.backgroundColor = [SKColor greenColor];
     SKLabelNode *label = [[SKLabelNode alloc] init];
-    label.text = @"This is an obstacle. Drag the checkmark to the box to dismiss.";
+    label.text = @"Drag the checkmark to dismiss.";
     label.fontSize = 27;
     label.position = CGPointMake(CGRectGetMidX(self.frame),CGRectGetMidY(self.frame));
     label.fontColor = [SKColor blackColor];
@@ -27,11 +27,12 @@
     checkMark.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2+200);
     checkMark.name = @"checkMark";
     
-    SKSpriteNode *blueBox = [[SKSpriteNode alloc] initWithColor:[SKColor blueColor] size:checkMark.size];
+    /*SKSpriteNode *blueBox = [[SKSpriteNode alloc] initWithColor:[SKColor blueColor] size:checkMark.size];
     blueBox.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2-200);
     blueBox.name = @"blueBox";
     [self addChild:blueBox];
-    [self addChild:checkMark];
+*/
+     [self addChild:checkMark];
 
     return self;
 }
@@ -66,14 +67,7 @@
         
     } else if (recognizer.state == UIGestureRecognizerStateEnded) {
         if(_selectedNode != nil) {
-            CGPoint position = [_selectedNode position];
-            //This isn't really ideal, should probably make this box an property and also a little bigger
-            CGPoint boxPoint = CGPointMake(self.frame.size.width/2, self.frame.size.height/2-200);
-            CGRect box = {boxPoint, _selectedNode.size};
-            
-            if(CGRectContainsPoint(box, position) ) {
                 [_delegate obstacleDidFinish];
-            }
         }
     }
 }
