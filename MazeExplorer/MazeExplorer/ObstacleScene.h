@@ -23,10 +23,14 @@
 @interface ObstacleScene : SKScene
 
 @property (nonatomic, strong) SKSpriteNode *selectedNode;
+@property (nonatomic, strong) SKSpriteNode *checkNode;
+@property BOOL inTarget;
 
 @property id <ObstacleSceneDelegate> delegate;
 
 - (void)moveSelectedNode:(CGPoint)translation;
+- (void) addTargetBox:(CGPoint) location;
+- (void)notCrossingLines;
 
 @end
 
