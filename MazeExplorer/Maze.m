@@ -86,6 +86,32 @@
     return [cell isWall];
 }
 
+/*
+ * Method: returnCellWithRow: and Column:
+ *
+ * inputs: row and column indeces
+ * The method will return the MazeCell at a particular row and column.
+ */
+-(MazeCell*)returnCellWithRow:(int)row andColumn:(int)col
+{
+    MazeCell* cell = [[_cells objectAtIndex:row] objectAtIndex:col];
+    return cell;
+}
+
+/*
+ * Method: emptyContentsWithRow: and Column:
+ *
+ * inputs: row and column indeces
+ * The method will change the MazeCell's contents to a space.
+ */
+-(void)emptyContentsWithRow:(int)row andColumn:(int)col
+{
+    MazeCell* cell = [[_cells objectAtIndex:row] objectAtIndex:col];
+    cell.contents = @" ";
+    NSLog(@"emptyContentsWithRow has run!");
+}
+
+
 
 // This should be changed to the enum type later
 - (NSString*)getContentsWithRow:(int)row andColumn:(int)col

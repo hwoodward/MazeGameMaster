@@ -20,6 +20,10 @@
 // This is where the talking methods should go for MazeScene/ResourceScene
 // They will be sent to MyScene, which will pass along the information to ResourceScene
 
+//This is the functiont that MyScene calls. 
+-(void)tellResourceSceneToIncreaseResourceCounter; 
+
+
 @end
 
 @interface MazeScene : SKScene <ObstacleSceneDelegate>
@@ -27,5 +31,6 @@
 @property (nonatomic) id <MazeSceneDelegate> delegate;
 
 -(void) obstacleDidFinish;
+-(void)tellMySceneToIncreaseResourceCounter;
 
 @end

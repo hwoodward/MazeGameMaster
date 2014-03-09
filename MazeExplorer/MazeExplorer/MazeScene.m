@@ -72,7 +72,7 @@ static const int CELLNUM = 11;
 - (void)mazeSetUp
 {
     _maze = [[Maze alloc]
-             initMazeWithString:@"*E*********  *     **      *******     **     *  ** O   * *** *  *   ****  *  ***    *   ***S*******"
+             initMazeWithString:@"*E*********  *     **      *******     **     *  ** O   * *** *  *   ****  *  ***R   *   ***S*******"
              andWidth:10];
     [_maze printMaze];
     
@@ -90,6 +90,12 @@ static const int CELLNUM = 11;
                 [self addChild:cellNode];
             } else if (![cont compare:@"O"]) {
                 SKSpriteNode *cellNode = [[SKSpriteNode alloc] initWithColor: [SKColor brownColor] size:cellSize];
+                cellNode.position = CGPointMake(_cellWidth*i + (_cellWidth/2),
+                                                self.frame.size.height - _cellWidth*j - _cellWidth/2);
+                
+                [self addChild:cellNode];
+            } else if (![cont compare:@"R"]) {
+                SKSpriteNode *cellNode = [[SKSpriteNode alloc] initWithColor: [SKColor orangeColor] size:cellSize];
                 cellNode.position = CGPointMake(_cellWidth*i + (_cellWidth/2),
                                                 self.frame.size.height - _cellWidth*j - _cellWidth/2);
                 
@@ -249,6 +255,7 @@ static const int CELLNUM = 11;
         SKAction *moveLeft = [SKAction moveByX:-_cellWidth y:0.0 duration:1.0];
         SKAction *moveRight = [SKAction moveByX:_cellWidth y:0.0 duration:1.0];
         NSString *cont;
+        NSString *contOfAdjoiningCell;
         BOOL didMove = NO;
         
         //Going up:
@@ -263,6 +270,16 @@ static const int CELLNUM = 11;
             for (int i = 0; i< [cells count]; i++) {
                 SKSpriteNode *cell = (SKSpriteNode *)[cells objectAtIndex:i];
                 [cell runAction:moveDown];
+            }
+            
+            contOfAdjoiningCell = [_maze getContentsWithRow:_playerLoc.y andColumn:_playerLoc.x];
+            if (![contOfAdjoiningCell compare:@"R"]){
+                CGPoint resourcePoint = _player.position;
+                resourcePoint.y += _cellWidth;
+                NSArray * nodesAtCurrentPos = [self nodesAtPoint: resourcePoint];
+                SKSpriteNode * resourceNode = nodesAtCurrentPos[0];
+                [resourceNode removeFromParent];
+                [self emptyMazeCellWithRow:_playerLoc.y andCol: _playerLoc.x];
             }
         
             [_player runAction: moveUp];
@@ -282,6 +299,17 @@ static const int CELLNUM = 11;
                 SKSpriteNode *cell = (SKSpriteNode *)[cells objectAtIndex:i];
                 [cell runAction:moveUp];
             }
+            
+            contOfAdjoiningCell = [_maze getContentsWithRow:_playerLoc.y andColumn:_playerLoc.x];
+            if (![contOfAdjoiningCell compare:@"R"]){
+                CGPoint resourcePoint = _player.position;
+                resourcePoint.y -= _cellWidth;
+                NSArray * nodesAtCurrentPos = [self nodesAtPoint: resourcePoint];
+                SKSpriteNode * resourceNode = nodesAtCurrentPos[0];
+                [resourceNode removeFromParent];
+                [self emptyMazeCellWithRow:_playerLoc.y andCol: _playerLoc.x];
+            }
+            
             [_player runAction: moveDown];
             didMove = YES;
             
@@ -299,6 +327,17 @@ static const int CELLNUM = 11;
                 SKSpriteNode *cell = (SKSpriteNode *)[cells objectAtIndex:i];
                 [cell runAction:moveRight];
             }
+            
+            contOfAdjoiningCell = [_maze getContentsWithRow:_playerLoc.y andColumn:_playerLoc.x];
+            if (![contOfAdjoiningCell compare:@"R"]){
+                CGPoint resourcePoint = _player.position;
+                resourcePoint.x -= _cellWidth;
+                NSArray * nodesAtCurrentPos = [self nodesAtPoint: resourcePoint];
+                SKSpriteNode * resourceNode = nodesAtCurrentPos[0];
+                [resourceNode removeFromParent];
+                [self emptyMazeCellWithRow:_playerLoc.y andCol: _playerLoc.x];
+            }
+            
             [_player runAction: moveLeft];
             didMove = YES;
         }
@@ -315,6 +354,17 @@ static const int CELLNUM = 11;
                 SKSpriteNode *cell = (SKSpriteNode *)[cells objectAtIndex:i];
                 [cell runAction:moveLeft];
             }
+            
+            contOfAdjoiningCell = [_maze getContentsWithRow:_playerLoc.y andColumn:_playerLoc.x];
+            if (![contOfAdjoiningCell compare:@"R"]){
+                CGPoint resourcePoint = _player.position;
+                resourcePoint.x += _cellWidth;
+                NSArray * nodesAtCurrentPos = [self nodesAtPoint: resourcePoint];
+                SKSpriteNode * resourceNode = nodesAtCurrentPos[0];
+                [resourceNode removeFromParent];
+                [self emptyMazeCellWithRow:_playerLoc.y andCol: _playerLoc.x];
+            }
+            
             [_player runAction: moveRight];
             didMove = YES;
         }
@@ -328,6 +378,11 @@ static const int CELLNUM = 11;
             [self.view addSubview:_obstView];
             [_obstView presentScene:obstScene];
         }
+        //This should call the function in MyScene that calls the function in ResourceScene that increases the counter.
+        if (![cont compare:@"R"] && didMove) {
+            [self tellMySceneToIncreaseResourceCounter];
+        }
+        
         didMove = NO; 
     }
     
@@ -339,5 +394,19 @@ static const int CELLNUM = 11;
     _obstView = Nil;
 }
 
+-(void)tellMySceneToIncreaseResourceCounter
+{
+    [self.delegate tellResourceSceneToIncreaseResourceCounter];
+}
+
+/*
+ emptyMazeCellWithRow: 
+ input: The row and column of a MazeCell.
+ result: Changes the MazeCell's contents to be an empty space.
+*/
+-(void)emptyMazeCellWithRow:(int) row andCol:(int) col
+{
+    [_maze emptyContentsWithRow: row andColumn: col];
+}
 
 @end

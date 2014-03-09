@@ -17,6 +17,8 @@
 @interface MyScene : SKScene <MazeSceneDelegate, ResourceSceneDelegate>
 
 // Any methods that MazeScene or ResourceScene calls on their delegates
-// must appear here, and be implemented in the .m file. 
+// must appear here, and be implemented in the .m file.
+
+-(void)tellResourceSceneToIncreaseResourceCounter; 
 
 @end
