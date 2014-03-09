@@ -392,6 +392,11 @@ static const int CELLNUM = 11;
 {
     [_obstView removeFromSuperview];
     _obstView = Nil;
+    NSArray * nodesAtCurrentPos = [self nodesAtPoint: _player.position];
+    SKNode * obstacleNode = nodesAtCurrentPos[0];
+    [obstacleNode removeFromParent];
+    [self emptyMazeCellWithRow:_playerLoc.y andCol: _playerLoc.x];
+
 }
 
 -(void)tellMySceneToIncreaseResourceCounter
