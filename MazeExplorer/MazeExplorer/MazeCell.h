@@ -9,16 +9,20 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "typedef.h"
 
 @interface MazeCell : NSObject
 
 @property (readonly) int cellRow;
 @property (readonly) int cellCol;
-@property NSString* contents;
+@property CellType contents;
 
 - (id)initWithRow: (int) row
            andColumn: (int) col
-      andContents: (NSString*) contents;
-- (BOOL)isWall;
+      andStringContents: (NSString *) contents;
+- (id)initWithRow: (int) row
+        andColumn: (int) col
+      andContents: (CellType) contents;
+//- (BOOL)isWall;
 
 @end

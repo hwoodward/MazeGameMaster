@@ -81,27 +81,36 @@ static const int CELLNUM = 11;
     {
         for (int j = 0; j < [_maze numRows]; j++)
         {
-            NSString *cont = [_maze getContentsWithRow:j andColumn:i];
-            if (![cont compare:@"*"]) {
-                SKSpriteNode *cellNode = [[SKSpriteNode alloc] initWithColor: [SKColor blackColor] size:cellSize];
-                cellNode.position = CGPointMake(_cellWidth*i + (_cellWidth/2),
-                                                self.frame.size.height - _cellWidth*j - _cellWidth/2);
-                
-                [self addChild:cellNode];
-            } else if (![cont compare:@"O"]) {
-                SKSpriteNode *cellNode = [[SKSpriteNode alloc] initWithColor: [SKColor brownColor] size:cellSize];
-                cellNode.position = CGPointMake(_cellWidth*i + (_cellWidth/2),
-                                                self.frame.size.height - _cellWidth*j - _cellWidth/2);
-                
-                [self addChild:cellNode];
-            } else if (![cont compare:@"R"]) {
-                SKSpriteNode *cellNode = [[SKSpriteNode alloc] initWithColor: [SKColor orangeColor] size:cellSize];
-                cellNode.position = CGPointMake(_cellWidth*i + (_cellWidth/2),
-                                                self.frame.size.height - _cellWidth*j - _cellWidth/2);
-                
-                [self addChild:cellNode];
+            CellType cont = [_maze getContentsWithRow:j andColumn:i];
+            switch (cont) {
+                case Wall: {
+                    SKSpriteNode *cellNode = [[SKSpriteNode alloc] initWithColor: [SKColor blackColor] size:cellSize];
+                    cellNode.position = CGPointMake(_cellWidth*i + (_cellWidth/2),
+                                                    self.frame.size.height - _cellWidth*j - _cellWidth/2);
+                    
+                    [self addChild:cellNode];
+                    break;
+                }
+                case Obstacle: {
+                    SKSpriteNode *cellNode = [[SKSpriteNode alloc] initWithColor: [SKColor brownColor] size:cellSize];
+                    cellNode.position = CGPointMake(_cellWidth*i + (_cellWidth/2),
+                                                    self.frame.size.height - _cellWidth*j - _cellWidth/2);
+                    
+                    [self addChild:cellNode];
+                    break;
+                }
+                case Resource: {
+                    SKSpriteNode *cellNode = [[SKSpriteNode alloc] initWithColor: [SKColor orangeColor] size:cellSize];
+                    cellNode.position = CGPointMake(_cellWidth*i + (_cellWidth/2),
+                                                    self.frame.size.height - _cellWidth*j - _cellWidth/2);
+                    
+                    [self addChild:cellNode];
+                    break;
+                }
+                default: {
+                    break;
+                }
             }
-            
         }
     }
     [self startAndEndInitialization];
@@ -114,7 +123,7 @@ static const int CELLNUM = 11;
  * differently than the rest of the maze. It then shifts all of the cells so that the
  * start will be centered underneath the player.
  */
-- (void)startAndEndInitialization
+-(void)startAndEndInitialization
 {
     CGSize cellSize = CGSizeMake(_cellWidth, _cellWidth);
     CGPoint start = [_maze startLoc];
@@ -140,6 +149,7 @@ static const int CELLNUM = 11;
     }
 }
 
+
 /*
  * Method: addPlayer
  *
@@ -156,79 +166,6 @@ static const int CELLNUM = 11;
 }
 
 /*
- * Method: isNode
- *
- * Takes in a direction relative to the player and the player's location.
- * Returns a boolean saying if there's another node in that direction.
- *
- * Commented out for now because I found another way to check for walls. -Marjorie
- *
- */
-
-//-(bool)isNode: (NSString*)relativeDirection withPoint:(CGPoint) playerPoint
-//{
-//    CGPoint pointToCompare;
-//    SKNode* returnedNode;
-//    // Tests to see if there's a node north of you.
-//    if ([relativeDirection isEqualToString:@"north"]){
-//        pointToCompare.x = playerPoint.x;
-//        pointToCompare.y = playerPoint.y-1;
-//        
-//        returnedNode = [self nodeAtPoint:pointToCompare];
-//    }
-//    // Tests to see if there's a node south of you.
-//    else if ([relativeDirection isEqualToString:@"south"]){
-//        pointToCompare.x = playerPoint.x;
-//        pointToCompare.y = playerPoint.y+1;
-//        
-//        returnedNode = [self nodeAtPoint:pointToCompare];
-//    }
-//    // Tests to see if there's a node east of you.
-//    else if ([relativeDirection isEqualToString:@"east"]){
-//        pointToCompare.x = playerPoint.x+1;
-//        pointToCompare.y = playerPoint.y;
-//        
-//        returnedNode = [self nodeAtPoint:pointToCompare];
-//    }
-//    // Tests to see if there's a node west of you.
-//    else if ([relativeDirection isEqualToString:@"west"]){
-//        pointToCompare.x = playerPoint.x-1;
-//        pointToCompare.y = playerPoint.y;
-//        
-//        returnedNode = [self nodeAtPoint:pointToCompare];
-//    }
-//    
-//    //nodeAtPoint returns the node it was called on if there's no node at the point.
-//    if (returnedNode == self){
-//        return false;
-//    }
-//    else
-//    {
-//        return true;
-//    }
-//}
-
-/*
- * Method: touchesBegan: withEvent:
- *
- * Currently commented out. This will just shift the maze down, leaving the 
- * player in the same place. It was a prrof of concept, and will be properly 
- * implemented/replaced as soon as possible. 
- */
-//-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-//    /* Called when a touch begins */
-//    NSArray *cells = [self children];
-//    SKAction *moveDown = [SKAction moveByX:0.0 y:-_cellWidth duration:1.0];
-//    SKAction *moveUp = [SKAction moveByX:0.0 y:_cellWidth duration:1.0];
-//    for (int i = 0; i< [cells count]; i++) {
-//        SKSpriteNode *cell = (SKSpriteNode *)[cells objectAtIndex:i];
-//        [cell runAction:moveDown];
-//    }
-//    [_player runAction: moveUp];
-//    
-//}
-
-/*
  Method: touchesBegan: Allows the player to move up, down, left, and right 
  in the maze. Shifts the maze appropriately. Makes sure that the player can't
  go through walls. Moves to the obstacle scene if the player hits an obstacle.
@@ -238,13 +175,9 @@ static const int CELLNUM = 11;
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     
     if (_obstView == Nil) {
-    
+    /*
         CGPoint fingerpos = [[touches anyObject] locationInView:self.view];
-    
-      //  NSLog(@"%@", NSStringFromCGPoint(fingerpos));
-    
-    // I'm sorry, there's a simpler way to get the midpoint,
-    // and it works with or without the resource panel. -E
+  
         float xMidpoint = self.view.frame.size.width/2;
         float yMidpoint = self.view.frame.size.height/2;
     
@@ -257,7 +190,70 @@ static const int CELLNUM = 11;
         NSString *cont;
         NSString *contOfAdjoiningCell;
         BOOL didMove = NO;
+        */
+        /* Refactoring idea:
+         * First call a "get direction" (already made) using fingerpos and SKAction *move to get the cellToMoveTo (it sets the SKAction to the correct thing. It also returns the CGPoint of the new loc.
+         * Switch on the contents of the cell: (for start use if statements and string comparing, but I have created typdef.h which defines CellType)
+         * If the cell is one that allows movement then call the move action (which moves in the right direction)
+         * (Eventually have a seperate type and case for each obstacle)
+         */
         
+        // Start of the refactored code:
+        CGPoint touchPos  =[[touches anyObject] locationInView:self.view];
+        
+        NSArray *cells = [self children];
+        SKAction *move;
+        BOOL didMove = NO;
+
+        CGPoint newPos = [self getDirection:touchPos action:move];
+        CellType cellContents = [_maze getContentsWithRow:newPos.y andColumn:newPos.y];
+        switch (cellContents) {
+            case Obstacle: {
+                for (int i = 0; i< [cells count]; i++) {
+                    SKSpriteNode *cell = (SKSpriteNode *)[cells objectAtIndex:i];
+                    [cell runAction:move];
+                }
+                didMove = YES;
+                NSLog(@"Obstacle!!");
+                _obstView = [[SKView alloc] initWithFrame:self.view.frame];
+                ObstacleScene *obstScene = [[ObstacleScene alloc] initWithSize:self.frame.size];
+                [obstScene setDelegate:self];
+                [self.view addSubview:_obstView];
+                [_obstView presentScene:obstScene];
+                break;
+            }
+            case Resource: {
+                for (int i = 0; i< [cells count]; i++) {
+                    SKSpriteNode *cell = (SKSpriteNode *)[cells objectAtIndex:i];
+                    [cell runAction:move];
+                }
+                didMove = YES;
+                [self increaseResourceCounter];
+                CGPoint resourcePoint = _player.position;
+                NSArray * nodesAtCurrentPos = [self nodesAtPoint: resourcePoint];
+                SKSpriteNode * resourceNode = nodesAtCurrentPos[0];
+                [resourceNode removeFromParent];
+                [self emptyMazeCellWithRow:_playerLoc.y andCol: _playerLoc.x];
+                break;
+            }
+            case Wall: {
+                NSLog(@"Wall");
+                break;
+            }
+            case End: {
+                NSLog(@"End of Maze!");
+            }
+            default: { //Default is that it is a path (this handles both Path and Start cases
+                for (int i = 0; i< [cells count]; i++) {
+                SKSpriteNode *cell = (SKSpriteNode *)[cells objectAtIndex:i];
+                [cell runAction:move];
+            }
+                didMove = YES;
+                break;
+            }
+        }
+
+        /*
         //Going up:
         //This ridiculously long if statement ensures that the player is touching in the right place, that the destination
         // is not a wall, and that the original position is not the start node.
@@ -368,6 +364,7 @@ static const int CELLNUM = 11;
             [_player runAction: moveRight];
             didMove = YES;
         }
+         
         //This should only run if the player actually moves.
         //Opens up the obstacle scene if you run into an obstacle.
         if (![cont compare:@"O"] && didMove) {
@@ -382,11 +379,48 @@ static const int CELLNUM = 11;
         if (![cont compare:@"R"] && didMove) {
             [self tellMySceneToIncreaseResourceCounter];
         }
-        
+    */
         didMove = NO; 
     }
     
 }
+
+-(CGPoint) getDirection:(CGPoint) touchPos action:(SKAction *)move {
+    float xMidpoint = self.view.frame.size.width/2;
+    float yMidpoint = self.view.frame.size.height/2;
+    
+    float xDif = touchPos.x - xMidpoint;
+    float yDif = touchPos.y - yMidpoint;
+    CGPoint newPos = _playerLoc;
+
+    if (abs(xDif)>abs(yDif)) {
+        if(xDif>0) { //move right
+            move = [SKAction moveByX:_cellWidth y:0.0 duration:1.0];
+            newPos.x++;
+        }
+        else { //move left
+            move = [SKAction moveByX:-_cellWidth y:0.0 duration:1.0];
+            newPos.x--;
+        }
+    }
+    else {
+        if(yDif>0) { //move up
+            move = [SKAction moveByX:0.0 y:_cellWidth duration:1.0];
+            newPos.y++;
+        }
+        else { //move down
+            move = [SKAction moveByX:0.0 y:-_cellWidth duration:1.0];
+            newPos.y--;
+        }
+    }
+    return newPos;
+}
+
+/*
+ obstacleDidFinish:
+ This is called by an obstacle using this as its delegate when it has been completed.
+ It ends the obstacle scene and also removes the obstacle node.
+ */
 
 - (void)obstacleDidFinish
 {
@@ -399,9 +433,9 @@ static const int CELLNUM = 11;
 
 }
 
--(void)tellMySceneToIncreaseResourceCounter
+-(void)increaseResourceCounter
 {
-    [self.delegate tellResourceSceneToIncreaseResourceCounter];
+    [self.delegate increaseResourceCounter];
 }
 
 /*

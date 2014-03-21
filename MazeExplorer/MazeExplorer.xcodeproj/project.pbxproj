@@ -44,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6D76EEAC18CD79B8008FBB1A /* typedef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = typedef.h; sourceTree = "<group>"; };
 		6DDABA3F18C858F200A4DDAE /* checkButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkButton.png; sourceTree = "<group>"; };
 		93314D0918B5E75300144303 /* PlayerCharacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerCharacter.h; sourceTree = "<group>"; };
 		93314D0A18B5E75300144303 /* PlayerCharacter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerCharacter.m; sourceTree = "<group>"; };
@@ -164,6 +165,7 @@
 				A176951C18B01E1C00DDCB91 /* Images.xcassets */,
 				6DDABA3F18C858F200A4DDAE /* checkButton.png */,
 				A176950618B01E1B00DDCB91 /* Supporting Files */,
+				6D76EEAC18CD79B8008FBB1A /* typedef.h */,
 			);
 			path = MazeExplorer;
 			sourceTree = "<group>";

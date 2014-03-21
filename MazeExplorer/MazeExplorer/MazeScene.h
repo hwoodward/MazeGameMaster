@@ -21,7 +21,7 @@
 // They will be sent to MyScene, which will pass along the information to ResourceScene
 
 //This is the functiont that MyScene calls. 
--(void)tellResourceSceneToIncreaseResourceCounter; 
+-(void)increaseResourceCounter;
 
 
 @end
@@ -31,6 +31,9 @@
 @property (nonatomic) id <MazeSceneDelegate> delegate;
 
 -(void) obstacleDidFinish;
--(void)tellMySceneToIncreaseResourceCounter;
+-(void)increaseResourceCounter;
+-(CGPoint)getDirection:(CGPoint) touchPos action:(SKAction *)move;
+-(void) addPlayer;
+-(void) startAndEndInitialization;
 
 @end

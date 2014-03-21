@@ -12,6 +12,7 @@
 
 #import <Foundation/Foundation.h>
 #import "MazeCell.h"
+#import "typedef.h"
 
 @interface Maze : NSObject
 
@@ -22,11 +23,11 @@
 
 - (void)printMaze;
 
-- (BOOL)isWallCellWithRow:(int)row andColumn:(int)col;
+//- (BOOL)isWallCellWithRow:(int)row andColumn:(int)col;
 
 - (id)initMazeWithString:(NSString*) mazeString
                 andWidth:(int) width;
-- (NSString*)getContentsWithRow:(int)row
+- (CellType)getContentsWithRow:(int)row
                       andColumn:(int)col;
 -(MazeCell*)returnCellWithRow:(int)row
                     andColumn:(int)col;

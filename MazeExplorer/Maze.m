@@ -37,10 +37,10 @@
         for (int j = 0; j < _numCols; j++) {
             if (j == 0 || j == _numCols -1 ||
                 i == 0 || i == _numRows -1) {
-                MazeCell *cell = [[MazeCell alloc] initWithRow:i andColumn:j andContents:@"*"];
+                MazeCell *cell = [[MazeCell alloc] initWithRow:i andColumn:j andContents: Wall];
                 [row addObject:cell];
             } else {
-                MazeCell *cell = [[MazeCell alloc] initWithRow:i andColumn:j andContents:@" "];
+                MazeCell *cell = [[MazeCell alloc] initWithRow:i andColumn:j andContents: Path];
                 [row addObject:cell];
             }
             
@@ -67,7 +67,33 @@
         
         for (int j = 0; j < _numCols; j++) {
             MazeCell* cell = [[_cells objectAtIndex:i] objectAtIndex:j];
-            [maze appendString: [cell contents]];
+            switch ([cell contents]) {
+                case Wall: {
+                    [maze appendString: @"*"];
+                    break;
+                }
+                case Obstacle: {
+                    [maze appendString:@"O"];
+                    break;
+                }
+                case Resource: {
+                    [maze appendString:@"R"];
+                    break;
+                }
+                case Start: {
+                    [maze appendString:@"S"];
+                    break;
+                }
+
+                case End: {
+                    [maze appendString:@"E"];
+                    break;
+                }
+                default: {
+                    [maze appendString:@" "];
+                    break;
+                }
+            }
         }
     }
     
@@ -79,12 +105,13 @@
  *
  * inputs: row and column indeces
  * The method will ask the MazeCell if it is a wall, and return the results of that.
- */
+ *
 - (BOOL)isWallCellWithRow:(int)row andColumn:(int)col
 {
     MazeCell* cell = [[_cells objectAtIndex:row] objectAtIndex:col];
     return [cell isWall];
 }
+ */
 
 /*
  * Method: returnCellWithRow: and Column:
@@ -107,14 +134,14 @@
 -(void)emptyContentsWithRow:(int)row andColumn:(int)col
 {
     MazeCell* cell = [[_cells objectAtIndex:row] objectAtIndex:col];
-    cell.contents = @" ";
+    cell.contents = Path;
     NSLog(@"emptyContentsWithRow has run!");
 }
 
 
 
 // This should be changed to the enum type later
-- (NSString*)getContentsWithRow:(int)row andColumn:(int)col
+- (CellType)getContentsWithRow:(int)row andColumn:(int)col
 {
     MazeCell* cell = [[_cells objectAtIndex:row] objectAtIndex:col];
     return [cell contents];
@@ -131,12 +158,7 @@
  * There is no checking to make sure that the string is the right length to come out evenly,
  * so don't be silly (unless you feel like adding checks). The program will error and exit
  * if you do that. 
- * Key for string to maze translation:
- * "*" --> wall
- * " " --> empty space (corridor)
- * "S" --> starting location (NOTE: There should only be ONE of these per maze, or weirdness will ensue)
- * "E" --> End location (NOTE: For now, there should only be one of these. If you want to build support
- *                       multiple exits, be my guest)
+ * Key for string to maze translation is in MazeCell.m above the initWith function used.
  *
  * Final note: I am sorry for the fact that it is impossible to follow the row/column of a cell in this
  * piece of code. I got it backwards about five times, finally got it straight, and haven't had the 
@@ -159,7 +181,7 @@
             NSString *contents =[mazeString substringWithRange:NSMakeRange((i*width)+j, 1)];
             MazeCell* cell =
             [[MazeCell alloc] initWithRow:j andColumn:i
-                              andContents:contents];
+                              andStringContents:contents];
             [row addObject:cell];
             if (![contents compare:@"S"]) {
                 _startLoc = CGPointMake(j, i);
