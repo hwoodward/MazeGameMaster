@@ -13,7 +13,8 @@
 
 #import <SpriteKit/SpriteKit.h>
 #import "ObstacleScene.h"
-
+#import "Maze.h"
+#import "typedef.h"
 
 @protocol MazeSceneDelegate
 
