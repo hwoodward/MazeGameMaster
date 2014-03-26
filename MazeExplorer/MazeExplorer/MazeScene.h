@@ -33,7 +33,6 @@
 
 -(void) obstacleDidFinish;
 -(void)increaseResourceCounter;
--(CGPoint)getDirection:(CGPoint) touchPos action:(SKAction *)move;
 -(void) addPlayer;
 -(void) startAndEndInitialization;
 

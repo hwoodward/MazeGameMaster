@@ -179,15 +179,50 @@ static const int CELLNUM = 11;
         
         NSArray *cells = [self children];
         SKAction *move;
+        SKAction *undoMove;
 
-        CGPoint newPos = [self getDirection:touchPos action:move];
-        CellType cellContents = [_maze getContentsWithRow:newPos.y andColumn:newPos.y];
+        float xMidpoint = self.view.frame.size.width/2;
+        float yMidpoint = self.view.frame.size.height/2;
+        
+        float xDif = touchPos.x - xMidpoint;
+        float yDif = touchPos.y - yMidpoint;
+        CGPoint newPos = _playerLoc;
+        
+        if (abs(xDif)>abs(yDif)) {
+            if(xDif>0) { //move right                NSLog(@"Try to move right");
+                move = [SKAction moveByX:-_cellWidth y:0.0 duration:1.0];
+                undoMove = [SKAction moveByX:_cellWidth y:0.0 duration:1.0];
+                newPos.x++;
+            }
+            else { //move left                NSLog(@"Try to move left");
+                move = [SKAction moveByX:_cellWidth y:0.0 duration:1.0];
+                undoMove = [SKAction moveByX:-_cellWidth y:0.0 duration:1.0];
+                newPos.x--;
+            }
+        }
+        else {
+            if(yDif<0) { //move up            NSLog(@"Try to move up");
+                move = [SKAction moveByX:0.0 y:-_cellWidth duration:1.0];
+                undoMove = [SKAction moveByX:0.0 y:_cellWidth duration:1.0];
+                newPos.y--;
+            }
+            else { //move down            NSLog(@"Try to move down");
+                move = [SKAction moveByX:0.0 y:_cellWidth duration:1.0];
+                undoMove = [SKAction moveByX:0.0 y:-_cellWidth duration:1.0];
+                newPos.y++;
+            }
+        }
+
+        CellType cellContents = [_maze getContentsWithRow:newPos.y andColumn:newPos.x];
+
         switch (cellContents) {
             case Obstacle: {
                 for (int i = 0; i< [cells count]; i++) {
                     SKSpriteNode *cell = (SKSpriteNode *)[cells objectAtIndex:i];
                     [cell runAction:move];
                 }
+                [_player runAction:undoMove];
+                _playerLoc = newPos;
                 NSLog(@"Obstacle!!");
                 _obstView = [[SKView alloc] initWithFrame:self.view.frame];
                 ObstacleScene *obstScene = [[ObstacleScene alloc] initWithSize:self.frame.size];
@@ -201,11 +236,13 @@ static const int CELLNUM = 11;
                     SKSpriteNode *cell = (SKSpriteNode *)[cells objectAtIndex:i];
                     [cell runAction:move];
                 }
+                [_player runAction:undoMove];
+                _playerLoc = newPos;
                 [self increaseResourceCounter];
-                CGPoint resourcePoint = _player.position;
-                NSArray * nodesAtCurrentPos = [self nodesAtPoint: resourcePoint];
-                SKSpriteNode * resourceNode = nodesAtCurrentPos[0];
-                [resourceNode removeFromParent];
+                //CGPoint resourcePoint = _player.position;
+                //NSArray * nodesAtCurrentPos = [self nodesAtPoint: resourcePoint];
+                //SKSpriteNode * resourceNode = nodesAtCurrentPos[0];
+                //[resourceNode removeFromParent];
                 [self emptyMazeCellWithRow:_playerLoc.y andCol: _playerLoc.x];
                 break;
             }
@@ -221,6 +258,8 @@ static const int CELLNUM = 11;
                 SKSpriteNode *cell = (SKSpriteNode *)[cells objectAtIndex:i];
                 [cell runAction:move];
             }
+                [_player runAction:undoMove];
+                _playerLoc = newPos;
                 break;
             }
         }
@@ -229,36 +268,6 @@ static const int CELLNUM = 11;
     
 }
 
--(CGPoint) getDirection:(CGPoint) touchPos action:(SKAction *)move {
-    float xMidpoint = self.view.frame.size.width/2;
-    float yMidpoint = self.view.frame.size.height/2;
-    
-    float xDif = touchPos.x - xMidpoint;
-    float yDif = touchPos.y - yMidpoint;
-    CGPoint newPos = _playerLoc;
-
-    if (abs(xDif)>abs(yDif)) {
-        if(xDif>0) { //move right
-            move = [SKAction moveByX:_cellWidth y:0.0 duration:1.0];
-            newPos.x++;
-        }
-        else { //move left
-            move = [SKAction moveByX:-_cellWidth y:0.0 duration:1.0];
-            newPos.x--;
-        }
-    }
-    else {
-        if(yDif>0) { //move up
-            move = [SKAction moveByX:0.0 y:_cellWidth duration:1.0];
-            newPos.y++;
-        }
-        else { //move down
-            move = [SKAction moveByX:0.0 y:-_cellWidth duration:1.0];
-            newPos.y--;
-        }
-    }
-    return newPos;
-}
 
 /*
  obstacleDidFinish:
