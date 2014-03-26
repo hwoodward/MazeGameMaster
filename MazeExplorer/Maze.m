@@ -143,6 +143,9 @@
 // This should be changed to the enum type later
 - (CellType)getContentsWithRow:(int)row andColumn:(int)col
 {
+    if (row < 0 || row >= _numRows || col<0 || col>=_numCols) { //Outside the maze
+        return Wall; //CANT LEAVE THE MAZE!
+    }
     MazeCell* cell = [[_cells objectAtIndex:row] objectAtIndex:col];
     return [cell contents];
 }

@@ -1,8 +1,8 @@
 typedef enum {
     Path,
+    Start,
     Wall,
     Obstacle,
     Resource,
-    Start,
     End
 } CellType;

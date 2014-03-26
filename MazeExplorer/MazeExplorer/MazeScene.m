@@ -181,6 +181,8 @@ static const int CELLNUM = 11;
         SKAction *move;
         SKAction *undoMove;
 
+        
+        //Here we get the direction we intend to move and set the actions and new position
         float xMidpoint = self.view.frame.size.width/2;
         float yMidpoint = self.view.frame.size.height/2;
         
@@ -212,9 +214,9 @@ static const int CELLNUM = 11;
                 newPos.y++;
             }
         }
-
+        
+        //Now we take action based on the new position we intend to move to
         CellType cellContents = [_maze getContentsWithRow:newPos.y andColumn:newPos.x];
-
         switch (cellContents) {
             case Obstacle: {
                 for (int i = 0; i< [cells count]; i++) {
@@ -248,13 +250,14 @@ static const int CELLNUM = 11;
                 break;
             }
             case Wall: {
+            case Start:  //After we leave the start we want to make it a wall so we don't leave the maze and error.
                 NSLog(@"Wall");
                 break;
             }
             case End: {
                 NSLog(@"End of Maze!");
             }
-            default: { //Default is that it is a path (this handles both Path and Start cases
+            default: { //Default is that it is a path (this handles Path)
                 for (int i = 0; i< [cells count]; i++) {
                 SKSpriteNode *cell = (SKSpriteNode *)[cells objectAtIndex:i];
                 [cell runAction:move];

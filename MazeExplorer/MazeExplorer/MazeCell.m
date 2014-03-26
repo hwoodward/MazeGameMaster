@@ -44,7 +44,7 @@
         _contents = Resource;
     }
     else if (![contents compare:@"S"]) {
-        _contents = End;
+        _contents = Start;
     }
     else if (![contents compare:@"E"]) {
         _contents = End;
