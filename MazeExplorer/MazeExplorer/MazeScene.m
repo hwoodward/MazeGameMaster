@@ -45,12 +45,27 @@ static const int CELLNUM = 11;
         self.backgroundColor = [SKColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
         _cellWidth = self.frame.size.width/CELLNUM;
         
-        [self mazeSetUp];
+        [self mazeSetUpwithString:@"*E*********  *     **      *******     **     *  ** O   * *** *  *   ****  *  ***R   *   ***S*******" andWidth:10];
         [self addPlayer];
     }
     
     return self;
 }
+
+-(id)initWithSize:(CGSize)size String: (NSString *)mazeString andWidth: (int) mazeWidth {
+    if (self = [super initWithSize:size]) {
+        /* Setup your scene here */
+        
+        self.backgroundColor = [SKColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
+        _cellWidth = self.frame.size.width/CELLNUM;
+        
+        [self mazeSetUpwithString:mazeString andWidth: mazeWidth];
+        [self addPlayer];
+    }
+    
+    return self;
+}
+
 
 /*
  * Method: update:
@@ -68,11 +83,11 @@ static const int CELLNUM = 11;
  * randomish string in the future). It then reads the maze, creating SKSpriteNodes for all of the
  * walls. It then calls startAndEndInitialization to finish setting up the maze.
  */
-- (void)mazeSetUp
+- (void)mazeSetUpwithString:(NSString *)mazeString andWidth: (int) mazeWidth
 {
     _maze = [[Maze alloc]
-             initMazeWithString:@"*E*********  *     **      *******     **     *  ** O   * *** *  *   ****  *  ***R   *   ***S*******"
-             andWidth:10];
+             initMazeWithString:mazeString
+             andWidth:mazeWidth];
     [_maze printMaze];
     
     CGSize cellSize = CGSizeMake(_cellWidth, _cellWidth);

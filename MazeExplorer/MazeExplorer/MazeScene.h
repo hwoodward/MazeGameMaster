@@ -35,5 +35,5 @@
 -(void)increaseResourceCounter;
 -(void) addPlayer;
 -(void) startAndEndInitialization;
-
+-(id)initWithSize:(CGSize)size String: (NSString *)mazeString andWidth: (int) mazeWidth;
 @end
