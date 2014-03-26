@@ -236,13 +236,14 @@ static const int CELLNUM = 11;
                     SKSpriteNode *cell = (SKSpriteNode *)[cells objectAtIndex:i];
                     [cell runAction:move];
                 }
-                [_player runAction:undoMove];
+                [_player runAction:undoMove completion:^{
+                    CGPoint resourcePoint = _player.position;
+                    NSArray * nodesAtCurrentPos = [self nodesAtPoint: resourcePoint];
+                    SKSpriteNode * resourceNode = nodesAtCurrentPos[0];
+                    [resourceNode removeFromParent];
+                }];
                 _playerLoc = newPos;
                 [self increaseResourceCounter];
-                //CGPoint resourcePoint = _player.position;
-                //NSArray * nodesAtCurrentPos = [self nodesAtPoint: resourcePoint];
-                //SKSpriteNode * resourceNode = nodesAtCurrentPos[0];
-                //[resourceNode removeFromParent];
                 [self emptyMazeCellWithRow:_playerLoc.y andCol: _playerLoc.x];
                 break;
             }
