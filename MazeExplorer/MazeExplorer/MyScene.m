@@ -22,8 +22,8 @@
 //These are the maze strings and widths.
 static const NSString* maze1String = @"*E*********  *     **      *******     **     *  ** O   * *** *  *   ****  *  ***R   *   ***S*******";
 static const int maze1Width = 10;
-static const NSString* maze2String;
-static const int maze2Width;
+static const NSString* maze2String = @"*****S***************           *R     **  *******  *****  **R *     *      *  *****  *  ****   *  **     *     *      **     O     ****   ** ********  *  *   **       *   *  *   **   **  *   *  *   **   *R  *          **   ******O******O***       *   *      ** ***** *   *  ******     * *** *      **   * * *   ****** **   *****        * **           *  *** ***********  *      **R          O      *****************E***";
+static const int maze2Width = 20;
 static const NSString* maze3String;
 static const int maze3Width;
 
@@ -88,7 +88,7 @@ static const int maze3Width;
     }
     if ([clickedNode.name isEqualToString:@"maze2"]) {
         NSLog(@"Selected maze2");
-        //[self launchMaze:_maze2];
+        [self launchMazewithString:maze2String andWidth:maze2Width];
     }
     if ([clickedNode.name isEqualToString:@"maze3"]) {
         NSLog(@"Selected maze3");
