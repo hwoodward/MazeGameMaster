@@ -13,6 +13,7 @@
 		6DB01A5618E38C7C00EF2923 /* help.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DB01A5518E38C7C00EF2923 /* help.png */; };
 		6DDABA4018C858F200A4DDAE /* checkButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DDABA3F18C858F200A4DDAE /* checkButton.png */; };
 		93314D0B18B5E75300144303 /* PlayerCharacter.m in Sources */ = {isa = PBXBuildFile; fileRef = 93314D0A18B5E75300144303 /* PlayerCharacter.m */; };
+		93775D8B18E3EFAA003D4360 /* resbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 93775D8A18E3EFAA003D4360 /* resbutton.png */; };
 		93A48E1318BF1B470008E8ED /* MazeScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A48E1218BF1B470008E8ED /* MazeScene.m */; };
 		A125363818C2D70D0033FE44 /* ResourceScene.m in Sources */ = {isa = PBXBuildFile; fileRef = A125363718C2D70D0033FE44 /* ResourceScene.m */; };
 		A17694FE18B01E1B00DDCB91 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A17694FD18B01E1B00DDCB91 /* Foundation.framework */; };
@@ -56,6 +57,7 @@
 		6DDABA3F18C858F200A4DDAE /* checkButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkButton.png; sourceTree = "<group>"; };
 		93314D0918B5E75300144303 /* PlayerCharacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerCharacter.h; sourceTree = "<group>"; };
 		93314D0A18B5E75300144303 /* PlayerCharacter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerCharacter.m; sourceTree = "<group>"; };
+		93775D8A18E3EFAA003D4360 /* resbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = resbutton.png; sourceTree = "<group>"; };
 		93A48E1118BF1B470008E8ED /* MazeScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MazeScene.h; sourceTree = "<group>"; };
 		93A48E1218BF1B470008E8ED /* MazeScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MazeScene.m; sourceTree = "<group>"; };
 		A125363618C2D70D0033FE44 /* ResourceScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceScene.h; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				A176951818B01E1C00DDCB91 /* MyScene.m */,
 				A125363618C2D70D0033FE44 /* ResourceScene.h */,
 				A125363718C2D70D0033FE44 /* ResourceScene.m */,
+				93775D8A18E3EFAA003D4360 /* resbutton.png */,
 				A176951A18B01E1C00DDCB91 /* Spaceship.png */,
 				A176951C18B01E1C00DDCB91 /* Images.xcassets */,
 				6DDABA3F18C858F200A4DDAE /* checkButton.png */,
@@ -292,6 +295,7 @@
 				A176951B18B01E1C00DDCB91 /* Spaceship.png in Resources */,
 				6DDABA4018C858F200A4DDAE /* checkButton.png in Resources */,
 				A176951318B01E1B00DDCB91 /* Main.storyboard in Resources */,
+				93775D8B18E3EFAA003D4360 /* resbutton.png in Resources */,
 				6DB01A5418E38B0A00EF2923 /* button3.png in Resources */,
 				6DB01A5018E38A8200EF2923 /* button1.png in Resources */,
 				6DB01A5218E38B0600EF2923 /* button2.png in Resources */,

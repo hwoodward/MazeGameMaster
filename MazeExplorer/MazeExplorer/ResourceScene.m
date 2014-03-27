@@ -26,6 +26,14 @@
     
     [self addChild:_label];
     
+    
+    // Adding a button that uses a resource.
+    SKSpriteNode *useButton = [[SKSpriteNode alloc] initWithImageNamed:@"resbutton.png"];
+    useButton.position = CGPointMake(CGRectGetMidX(self.frame)+300,CGRectGetMidY(self.frame));
+    useButton.name = @"useButton";
+    [self addChild:useButton];
+    
+    
     return self;
 }
 
@@ -34,6 +42,36 @@
     ++self.resourceCounter;
     NSLog(@"The resource counter is now: %i", self.resourceCounter);
     _label.text = [NSString stringWithFormat:@"Resource Counter: %i", self.resourceCounter];
+}
+
+-(void) decreaseCounterByOne
+{
+    --self.resourceCounter;
+    NSLog(@"The resource counter is now: %i", self.resourceCounter);
+    _label.text = [NSString stringWithFormat:@"Resource Counter: %i", self.resourceCounter];
+}
+
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    /* Called when a touch begins */
+    
+    UITouch *touch = [touches anyObject];
+ 	CGPoint location = [touch locationInNode:self];
+    
+    //what node am I in?
+    SKNode *clickedNode = [self nodeAtPoint:location];
+    
+    if ([clickedNode.name isEqualToString:@"useButton"]) {
+        if (self.resourceCounter > 0){
+            [self decreaseCounterByOne]; 
+            NSLog(@"You used a resource!");
+        }
+        else {
+            NSLog(@"You can't use a resource, you mad fool! There aren't any left!");
+        }
+    }
+    
+    
 }
 
 @end
