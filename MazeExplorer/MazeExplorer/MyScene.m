@@ -133,8 +133,12 @@ static const int maze3Width;
 }
 
 -(void)increaseResourceCounter {
-    //Unfinished; still need to figure out how to get ResourceScene to actually call this function.
     [(ResourceScene*)_resourceView.scene increaseCounterByOne];
+}
+
+-(void)useResource
+{
+    [(MazeScene*)_mazeView.scene resourceUsed];
 }
 
 

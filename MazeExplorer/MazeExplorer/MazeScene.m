@@ -320,4 +320,13 @@ static const int CELLNUM = 11;
     [_maze emptyContentsWithRow: row andColumn: col];
 }
 
+/*
+ resourceUsed:
+ result: Uses a resource. (Responds to user interaction with resourceScene.)
+ */
+-(void)resourceUsed
+{
+    NSLog(@"You called resourceUsed!");
+}
+
 @end

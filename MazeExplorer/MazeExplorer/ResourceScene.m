@@ -51,6 +51,11 @@
     _label.text = [NSString stringWithFormat:@"Resource Counter: %i", self.resourceCounter];
 }
 
+-(void) useResource
+{
+    [self.delegate useResource];
+}
+
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins */
@@ -63,7 +68,8 @@
     
     if ([clickedNode.name isEqualToString:@"useButton"]) {
         if (self.resourceCounter > 0){
-            [self decreaseCounterByOne]; 
+            [self decreaseCounterByOne];
+            [self useResource]; 
             NSLog(@"You used a resource!");
         }
         else {

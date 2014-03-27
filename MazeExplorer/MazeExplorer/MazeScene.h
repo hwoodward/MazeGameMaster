@@ -21,7 +21,7 @@
 // This is where the talking methods should go for MazeScene/ResourceScene
 // They will be sent to MyScene, which will pass along the information to ResourceScene
 
-//This is the functiont that MyScene calls. 
+//This is the function that MyScene calls.
 -(void)increaseResourceCounter;
 
 
@@ -36,4 +36,5 @@
 -(void) addPlayer;
 -(void) startAndEndInitialization;
 -(id)initWithSize:(CGSize)size String: (NSString *)mazeString andWidth: (int) mazeWidth;
+-(void)resourceUsed; 
 @end
