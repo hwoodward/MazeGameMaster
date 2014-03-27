@@ -26,6 +26,13 @@
     
     [self addChild:_label];
     
+    _instr = [[SKLabelNode alloc] init];
+    _instr.text = @"The orange boxes are resources. Collect them!";
+    _instr.fontSize = 30;
+    _instr.position = CGPointMake(CGRectGetMidX(self.frame),CGRectGetMidY(self.frame)+75);
+    
+    [self addChild:_instr];
+    
     
     // Adding a button that uses a resource.
     SKSpriteNode *useButton = [[SKSpriteNode alloc] initWithImageNamed:@"resbutton.png"];

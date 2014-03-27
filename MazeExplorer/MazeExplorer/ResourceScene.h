@@ -25,6 +25,7 @@
 
 @property (nonatomic) id <ResourceSceneDelegate> delegate;
 @property (nonatomic) int resourceCounter;
+@property (nonatomic) SKLabelNode *instr;
 @property (nonatomic) SKLabelNode *label;
 
 -(void) increaseCounterByOne;
