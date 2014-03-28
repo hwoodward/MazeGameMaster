@@ -28,6 +28,7 @@
 @property (nonatomic) SKLabelNode *instr;
 @property (nonatomic) SKLabelNode *label;
 
+
 -(void) increaseCounterByOne;
 
 @end

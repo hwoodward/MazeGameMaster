@@ -13,6 +13,7 @@
 
 #import <SpriteKit/SpriteKit.h>
 #import "ObstacleScene.h"
+#import "ResourceConfirm.h"
 #import "Maze.h"
 #import "typedef.h"
 

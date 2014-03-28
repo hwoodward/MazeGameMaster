@@ -6,8 +6,17 @@
 //
 //
 
-#import <Foundation/Foundation.h>
+#import <SpriteKit/SpriteKit.h>
 
-@interface ResourceConfirm : NSObject
+@protocol ResourceConfirmDelegate
+
+
+@end
+
+@interface ResourceConfirm : SKScene
+
+@property (nonatomic) SKLabelNode *label;
+
+@property id <ResourceConfirmDelegate> delegate;
 
 @end

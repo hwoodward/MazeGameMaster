@@ -21,6 +21,7 @@
 //@property CGPoint obstLoc;
 
 @property (nonatomic) SKView *obstView;
+@property (nonatomic) SKView *resConfirmView;
 
 @end
 
@@ -327,6 +328,14 @@ static const int CELLNUM = 11;
 -(void)resourceUsed
 {
     NSLog(@"You called resourceUsed!");
+    
+    NSLog(@"Obstacle!!");
+    _resConfirmView = [[SKView alloc] initWithFrame:self.view.frame];
+    ResourceConfirm *resConfirm;
+    resConfirm = [[ResourceConfirm alloc] initWithSize:self.frame.size];
+    [resConfirm setDelegate: self];
+    [self.view addSubview:_resConfirmView];
+    [_resConfirmView presentScene:resConfirm];
 }
 
 @end
