@@ -23,7 +23,38 @@
     
     [self addChild:_label];
     
+    // Adding a button that confirms that you want to use a resource.
+    SKSpriteNode *yesButton = [[SKSpriteNode alloc] initWithImageNamed:@"yesbutton.png"];
+    yesButton.position = CGPointMake(CGRectGetMidX(self.frame)-200,CGRectGetMidY(self.frame)-200);
+    yesButton.name = @"yesButton";
+    [self addChild:yesButton];
+    
+    // Adding a button that confirms that you do NOT want to use a resource.
+    SKSpriteNode *noButton = [[SKSpriteNode alloc] initWithImageNamed:@"stopbutton.png"];
+    noButton.position = CGPointMake(CGRectGetMidX(self.frame)+200,CGRectGetMidY(self.frame)-200);
+    noButton.name = @"noButton";
+    [self addChild:noButton];
+    
     return self;
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    /* Called when a touch begins */
+    
+    UITouch *touch = [touches anyObject];
+ 	CGPoint location = [touch locationInNode:self];
+    
+    //what node am I in?
+    SKNode *clickedNode = [self nodeAtPoint:location];
+    
+    if ([clickedNode.name isEqualToString:@"yesButton"]) {
+        [_delegate resourceConfirmDidFinish];
+    }
+    else if ([clickedNode.name isEqualToString:@"noButton"]) {
+        [_delegate resourceConfirmDidFinish];
+    }
+    
+    
 }
 
 

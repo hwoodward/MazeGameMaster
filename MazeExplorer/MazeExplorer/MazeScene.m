@@ -306,6 +306,17 @@ static const int CELLNUM = 11;
 
 }
 
+/*
+ resourceConfirmDidFinish
+ This is called by the ResourceConfirm scene when you answer "yes" or "no".
+ It gets rid of the ResourceConfirm screen.
+ */
+-(void)resourceConfirmDidFinish
+{
+    [_resConfirmView removeFromSuperview];
+    _resConfirmView = Nil;
+}
+
 -(void)increaseResourceCounter
 {
     [self.delegate increaseResourceCounter];

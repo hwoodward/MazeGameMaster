@@ -10,6 +10,8 @@
 
 @protocol ResourceConfirmDelegate
 
+-(void)resourceConfirmDidFinish; 
+
 
 @end
 

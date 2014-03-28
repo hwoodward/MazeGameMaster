@@ -106,13 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MazeExplorer/ResourceConfirm.h"
-            timestampString = "417681711.076829"
+            timestampString = "417682405.206208"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "16"
-            endingLineNumber = "16"
-            landmarkName = "@interface ResourceConfirm"
-            landmarkType = "2">
+            startingLineNumber = "17"
+            endingLineNumber = "17">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
@@ -121,11 +119,11 @@
                   symbolName = "-[ResourceConfirm label]"
                   moduleName = "MazeExplorer"
                   urlString = "file://localhost/Users/cs121/CS121/MazeGameMarjorie/MazeExplorer/MazeExplorer/ResourceConfirm.h"
-                  timestampString = "417681765.913183"
+                  timestampString = "417683271.891858"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "18"
-                  endingLineNumber = "18"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
                   offsetFromSymbolStart = "24">
                </Location>
                <Location
@@ -135,11 +133,11 @@
                   symbolName = "-[ResourceConfirm setLabel:]"
                   moduleName = "MazeExplorer"
                   urlString = "file://localhost/Users/cs121/CS121/MazeGameMarjorie/MazeExplorer/MazeExplorer/ResourceConfirm.h"
-                  timestampString = "417681765.913405"
+                  timestampString = "417683271.892199"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "18"
-                  endingLineNumber = "18"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
                   offsetFromSymbolStart = "31">
                </Location>
             </Locations>
