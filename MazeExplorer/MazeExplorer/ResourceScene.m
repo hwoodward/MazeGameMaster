@@ -26,12 +26,19 @@
     
     [self addChild:_label];
     
-    _instr = [[SKLabelNode alloc] init];
-    _instr.text = @"The orange boxes are resources. Collect them!";
-    _instr.fontSize = 30;
-    _instr.position = CGPointMake(CGRectGetMidX(self.frame),CGRectGetMidY(self.frame)+75);
+    _instr1 = [[SKLabelNode alloc] init];
+    _instr1.text = @"The orange boxes are resources. Collect them!";
+    _instr1.fontSize = 30;
+    _instr1.position = CGPointMake(CGRectGetMidX(self.frame),CGRectGetMidY(self.frame)+75);
     
-    [self addChild:_instr];
+    [self addChild:_instr1];
+    
+    _instr2 = [[SKLabelNode alloc] init];
+    _instr2.text = @"The green button uses your resources.";
+    _instr2.fontSize = 30;
+    _instr2.position = CGPointMake(CGRectGetMidX(self.frame),CGRectGetMidY(self.frame)-75);
+    
+    [self addChild:_instr2];
     
     
     // Adding a button that uses a resource.
