@@ -317,6 +317,15 @@ static const int CELLNUM = 11;
     _resConfirmView = Nil;
 }
 
+/*
+ useResourceConfirmed
+ This tells MyScene that a resource was used, so that it can tell ResourceScene.
+ */
+-(void)useResourceConfirmed
+{
+    [self.delegate useResourceConfirmed];
+}
+
 -(void)increaseResourceCounter
 {
     [self.delegate increaseResourceCounter];

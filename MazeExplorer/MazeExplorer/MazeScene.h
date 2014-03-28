@@ -24,6 +24,7 @@
 
 //This is the function that MyScene calls.
 -(void)increaseResourceCounter;
+-(void)useResourceConfirmed; 
 
 
 @end

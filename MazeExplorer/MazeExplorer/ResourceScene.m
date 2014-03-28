@@ -75,9 +75,8 @@
     
     if ([clickedNode.name isEqualToString:@"useButton"]) {
         if (self.resourceCounter > 0){
-            [self decreaseCounterByOne];
             [self useResource]; 
-            NSLog(@"You used a resource!");
+            NSLog(@"You tried to use a resource!");
         }
         else {
             NSLog(@"You can't use a resource, you mad fool! There aren't any left!");
@@ -85,6 +84,12 @@
     }
     
     
+}
+
+-(void)useResourceConfirmed
+{
+    [self decreaseCounterByOne];
+    NSLog(@"You successfully used a resource!"); 
 }
 
 @end

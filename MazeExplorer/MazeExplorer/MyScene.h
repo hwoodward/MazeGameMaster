@@ -20,5 +20,6 @@
 // must appear here, and be implemented in the .m file.
 
 -(void)increaseResourceCounter;
+-(void)useResourceConfirmed; 
 
 @end

@@ -141,6 +141,11 @@ static const int maze3Width;
     [(MazeScene*)_mazeView.scene resourceUsed];
 }
 
+-(void)useResourceConfirmed
+{
+    [(ResourceScene*)_resourceView.scene useResourceConfirmed];
+}
+
 
 
 @end

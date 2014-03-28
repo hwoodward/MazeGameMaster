@@ -30,5 +30,6 @@
 
 
 -(void) increaseCounterByOne;
+-(void) useResourceConfirmed;
 
 @end
