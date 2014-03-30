@@ -12,14 +12,13 @@
 		6DB01A5418E38B0A00EF2923 /* button3.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DB01A5318E38B0A00EF2923 /* button3.png */; };
 		6DB01A5618E38C7C00EF2923 /* help.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DB01A5518E38C7C00EF2923 /* help.png */; };
 		93314D0B18B5E75300144303 /* PlayerCharacter.m in Sources */ = {isa = PBXBuildFile; fileRef = 93314D0A18B5E75300144303 /* PlayerCharacter.m */; };
-		93775D8D18E401BE003D4360 /* resbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 93775D8C18E401BE003D4360 /* resbutton.png */; };
 		9390CED518E54ADC0073C488 /* ResourceConfirm.m in Sources */ = {isa = PBXBuildFile; fileRef = 9390CED418E54ADC0073C488 /* ResourceConfirm.m */; };
 		9398610A18E8C6A400FDE08D /* bluecircle.png in Resources */ = {isa = PBXBuildFile; fileRef = 9398610918E8C6A400FDE08D /* bluecircle.png */; };
 		9398610C18E8C6B000FDE08D /* bricktexture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9398610B18E8C6B000FDE08D /* bricktexture.jpg */; };
-		9398610E18E8C6C300FDE08D /* resbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 9398610D18E8C6C300FDE08D /* resbutton.png */; };
 		9398611018E8C6F600FDE08D /* stopbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 9398610F18E8C6F600FDE08D /* stopbutton.png */; };
 		9398611218E8C70700FDE08D /* yesbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 9398611118E8C70700FDE08D /* yesbutton.png */; };
 		9398611418E8C72900FDE08D /* checkButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 9398611318E8C72900FDE08D /* checkButton.png */; };
+		9398611618E8C86800FDE08D /* resbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 9398611518E8C86800FDE08D /* resbutton.png */; };
 		93A48E1318BF1B470008E8ED /* MazeScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A48E1218BF1B470008E8ED /* MazeScene.m */; };
 		A125363818C2D70D0033FE44 /* ResourceScene.m in Sources */ = {isa = PBXBuildFile; fileRef = A125363718C2D70D0033FE44 /* ResourceScene.m */; };
 		A17694FE18B01E1B00DDCB91 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A17694FD18B01E1B00DDCB91 /* Foundation.framework */; };
@@ -62,15 +61,14 @@
 		6DB01A5518E38C7C00EF2923 /* help.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = help.png; sourceTree = "<group>"; };
 		93314D0918B5E75300144303 /* PlayerCharacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerCharacter.h; sourceTree = "<group>"; };
 		93314D0A18B5E75300144303 /* PlayerCharacter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerCharacter.m; sourceTree = "<group>"; };
-		93775D8C18E401BE003D4360 /* resbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = resbutton.png; path = ../../../../Desktop/resbutton.png; sourceTree = "<group>"; };
 		9390CED318E54ADC0073C488 /* ResourceConfirm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceConfirm.h; sourceTree = "<group>"; };
 		9390CED418E54ADC0073C488 /* ResourceConfirm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceConfirm.m; sourceTree = "<group>"; };
 		9398610918E8C6A400FDE08D /* bluecircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bluecircle.png; sourceTree = "<group>"; };
 		9398610B18E8C6B000FDE08D /* bricktexture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bricktexture.jpg; sourceTree = "<group>"; };
-		9398610D18E8C6C300FDE08D /* resbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = resbutton.png; sourceTree = "<group>"; };
 		9398610F18E8C6F600FDE08D /* stopbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stopbutton.png; sourceTree = "<group>"; };
 		9398611118E8C70700FDE08D /* yesbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yesbutton.png; sourceTree = "<group>"; };
 		9398611318E8C72900FDE08D /* checkButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkButton.png; sourceTree = "<group>"; };
+		9398611518E8C86800FDE08D /* resbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = resbutton.png; sourceTree = "<group>"; };
 		93A48E1118BF1B470008E8ED /* MazeScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MazeScene.h; sourceTree = "<group>"; };
 		93A48E1218BF1B470008E8ED /* MazeScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MazeScene.m; sourceTree = "<group>"; };
 		A125363618C2D70D0033FE44 /* ResourceScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceScene.h; sourceTree = "<group>"; };
@@ -186,17 +184,16 @@
 				9390CED418E54ADC0073C488 /* ResourceConfirm.m */,
 				A125363618C2D70D0033FE44 /* ResourceScene.h */,
 				A125363718C2D70D0033FE44 /* ResourceScene.m */,
-				93775D8C18E401BE003D4360 /* resbutton.png */,
 				A176951A18B01E1C00DDCB91 /* Spaceship.png */,
 				A176951C18B01E1C00DDCB91 /* Images.xcassets */,
 				9398611318E8C72900FDE08D /* checkButton.png */,
 				9398610B18E8C6B000FDE08D /* bricktexture.jpg */,
 				6DB01A5118E38B0600EF2923 /* button2.png */,
+				9398611518E8C86800FDE08D /* resbutton.png */,
 				9398611118E8C70700FDE08D /* yesbutton.png */,
 				9398610918E8C6A400FDE08D /* bluecircle.png */,
 				9398610F18E8C6F600FDE08D /* stopbutton.png */,
 				6DB01A5518E38C7C00EF2923 /* help.png */,
-				9398610D18E8C6C300FDE08D /* resbutton.png */,
 				6DB01A5318E38B0A00EF2923 /* button3.png */,
 				6DB01A4F18E38A8200EF2923 /* button1.png */,
 				A176950618B01E1B00DDCB91 /* Supporting Files */,
@@ -314,15 +311,14 @@
 				9398611218E8C70700FDE08D /* yesbutton.png in Resources */,
 				6DB01A5618E38C7C00EF2923 /* help.png in Resources */,
 				A176951B18B01E1C00DDCB91 /* Spaceship.png in Resources */,
-				93775D8D18E401BE003D4360 /* resbutton.png in Resources */,
 				A176951318B01E1B00DDCB91 /* Main.storyboard in Resources */,
 				9398611018E8C6F600FDE08D /* stopbutton.png in Resources */,
 				6DB01A5418E38B0A00EF2923 /* button3.png in Resources */,
 				9398610A18E8C6A400FDE08D /* bluecircle.png in Resources */,
 				6DB01A5018E38A8200EF2923 /* button1.png in Resources */,
 				6DB01A5218E38B0600EF2923 /* button2.png in Resources */,
-				9398610E18E8C6C300FDE08D /* resbutton.png in Resources */,
 				9398611418E8C72900FDE08D /* checkButton.png in Resources */,
+				9398611618E8C86800FDE08D /* resbutton.png in Resources */,
 				9398610C18E8C6B000FDE08D /* bricktexture.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
