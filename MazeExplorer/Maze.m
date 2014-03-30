@@ -135,7 +135,6 @@
 {
     MazeCell* cell = [[_cells objectAtIndex:row] objectAtIndex:col];
     cell.contents = Path;
-    NSLog(@"emptyContentsWithRow has run!");
 }
 
 

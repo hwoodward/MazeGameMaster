@@ -260,7 +260,7 @@ static const int CELLNUM = 11;
                 }
                 [_player runAction:undoMove];
                 _playerLoc = newPos;
-                NSLog(@"Obstacle!!");
+
                 _obstView = [[SKView alloc] initWithFrame:self.view.frame];
                 ObstacleScene *obstScene = [[ObstacleScene alloc] initWithSize:self.frame.size];
                 [obstScene setDelegate:self];

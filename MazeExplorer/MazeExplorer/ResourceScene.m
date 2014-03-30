@@ -54,14 +54,12 @@
 -(void) increaseCounterByOne
 {
     ++self.resourceCounter;
-    NSLog(@"The resource counter is now: %i", self.resourceCounter);
     _label.text = [NSString stringWithFormat:@"Resource Counter: %i", self.resourceCounter];
 }
 
 -(void) decreaseCounterByOne
 {
     --self.resourceCounter;
-    NSLog(@"The resource counter is now: %i", self.resourceCounter);
     _label.text = [NSString stringWithFormat:@"Resource Counter: %i", self.resourceCounter];
 }
 
@@ -83,10 +81,6 @@
     if ([clickedNode.name isEqualToString:@"useButton"]) {
         if (self.resourceCounter > 0){
             [self useResource]; 
-            //NSLog(@"You tried to use a resource!");
-        }
-        else {
-            //NSLog(@"You can't use a resource, you mad fool! There aren't any left!");
         }
     }
     
@@ -96,7 +90,6 @@
 -(void)useResourceConfirmed
 {
     [self decreaseCounterByOne];
-    //NSLog(@"You successfully used a resource!");
 }
 
 @end

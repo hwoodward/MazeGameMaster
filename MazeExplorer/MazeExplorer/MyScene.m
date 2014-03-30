@@ -101,6 +101,7 @@ static const int maze3Width = 25;
 
 -(void) launchMazewithString: (NSString *) mazeString andWidth:(int) mazeWidth {
     if (!_didPresentGameViews) {
+        _didPresentGameViews = YES;
         
         _mazeView = [[SKView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.width)];
         MazeScene *mazeScene = [[MazeScene alloc] initWithSize:CGSizeMake(self.frame.size.width, self.frame.size.width) String:mazeString andWidth:mazeWidth];
@@ -118,9 +119,6 @@ static const int maze3Width = 25;
         [resourceScene setDelegate:self];
         [self.view addSubview:_resourceView];
         [_resourceView presentScene:resourceScene];
-        
-        
-        _didPresentGameViews = YES;
     }
 
 }
@@ -130,10 +128,12 @@ static const int maze3Width = 25;
     _mazeView = Nil;
     [_resourceView removeFromSuperview];
     _resourceView = Nil;
+    _didPresentGameViews = NO;
 }
 
 -(void) displayInstructions {
     if(!_didPresentGameViews) {
+        _didPresentGameViews = YES;
         _mazeView = [[SKView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
         InstructionScene *instructions = [[InstructionScene alloc] initWithSize:CGSizeMake(self.frame.size.width, self.frame.size.height)];
         [instructions setDelegate:self];
@@ -145,6 +145,7 @@ static const int maze3Width = 25;
 -(void) instructionsDone {
     [_mazeView removeFromSuperview];
     _mazeView = Nil;
+    _didPresentGameViews = NO;
 }
 
 -(void)update:(CFTimeInterval)currentTime {
