@@ -99,7 +99,10 @@ static const int CELLNUM = 11;
             CellType cont = [_maze getContentsWithRow:j andColumn:i];
             switch (cont) {
                 case Wall: {
-                    SKSpriteNode *cellNode = [[SKSpriteNode alloc] initWithColor: [SKColor blackColor] size:cellSize];
+                    //bricktexture.jpg's source: http://designm.ag/resources/free-stone-rock-textures/
+                    //The image is 70px by 70px
+                    SKSpriteNode *cellNode = [[SKSpriteNode alloc] initWithImageNamed:@"bricktexture.jpg"];
+                    //SKSpriteNode *cellNode = [[SKSpriteNode alloc] initWithColor: [SKColor blackColor] size:cellSize];
                     cellNode.position = CGPointMake(_cellWidth*i + (_cellWidth/2),
                                                     self.frame.size.height - _cellWidth*j - _cellWidth/2);
                     

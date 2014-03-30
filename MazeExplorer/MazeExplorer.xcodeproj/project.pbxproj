@@ -14,6 +14,7 @@
 		6DDABA4018C858F200A4DDAE /* checkButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DDABA3F18C858F200A4DDAE /* checkButton.png */; };
 		93314D0B18B5E75300144303 /* PlayerCharacter.m in Sources */ = {isa = PBXBuildFile; fileRef = 93314D0A18B5E75300144303 /* PlayerCharacter.m */; };
 		93775D8D18E401BE003D4360 /* resbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 93775D8C18E401BE003D4360 /* resbutton.png */; };
+		938E270D18E7B90300B9BC0B /* bricktexture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 938E270C18E7B90300B9BC0B /* bricktexture.jpg */; };
 		9390CED518E54ADC0073C488 /* ResourceConfirm.m in Sources */ = {isa = PBXBuildFile; fileRef = 9390CED418E54ADC0073C488 /* ResourceConfirm.m */; };
 		9390CED918E556D70073C488 /* stopbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 9390CED818E556D70073C488 /* stopbutton.png */; };
 		9390CEDB18E5573E0073C488 /* yesbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 9390CEDA18E5573E0073C488 /* yesbutton.png */; };
@@ -61,6 +62,7 @@
 		93314D0918B5E75300144303 /* PlayerCharacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerCharacter.h; sourceTree = "<group>"; };
 		93314D0A18B5E75300144303 /* PlayerCharacter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerCharacter.m; sourceTree = "<group>"; };
 		93775D8C18E401BE003D4360 /* resbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = resbutton.png; path = ../../../../Desktop/resbutton.png; sourceTree = "<group>"; };
+		938E270C18E7B90300B9BC0B /* bricktexture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bricktexture.jpg; sourceTree = "<group>"; };
 		9390CED318E54ADC0073C488 /* ResourceConfirm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceConfirm.h; sourceTree = "<group>"; };
 		9390CED418E54ADC0073C488 /* ResourceConfirm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceConfirm.m; sourceTree = "<group>"; };
 		9390CED818E556D70073C488 /* stopbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = stopbutton.png; path = ../../../../Desktop/stopbutton.png; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				6DB01A5118E38B0600EF2923 /* button2.png */,
 				6DB01A5518E38C7C00EF2923 /* help.png */,
 				6DB01A5318E38B0A00EF2923 /* button3.png */,
+				938E270C18E7B90300B9BC0B /* bricktexture.jpg */,
 				6DB01A4F18E38A8200EF2923 /* button1.png */,
 				A176950618B01E1B00DDCB91 /* Supporting Files */,
 				6D76EEAC18CD79B8008FBB1A /* typedef.h */,
@@ -301,6 +304,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A176950A18B01E1B00DDCB91 /* InfoPlist.strings in Resources */,
+				938E270D18E7B90300B9BC0B /* bricktexture.jpg in Resources */,
 				A176951D18B01E1C00DDCB91 /* Images.xcassets in Resources */,
 				6DB01A5618E38C7C00EF2923 /* help.png in Resources */,
 				A176951B18B01E1C00DDCB91 /* Spaceship.png in Resources */,
