@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6D79B51218E8C764008DB1AB /* InstructionScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D79B51118E8C764008DB1AB /* InstructionScene.m */; };
+		6D79B51818E8D605008DB1AB /* DSMultilineLabelNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D79B51718E8D605008DB1AB /* DSMultilineLabelNode.m */; };
 		6DB01A5018E38A8200EF2923 /* button1.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DB01A4F18E38A8200EF2923 /* button1.png */; };
 		6DB01A5218E38B0600EF2923 /* button2.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DB01A5118E38B0600EF2923 /* button2.png */; };
 		6DB01A5418E38B0A00EF2923 /* button3.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DB01A5318E38B0A00EF2923 /* button3.png */; };
@@ -58,6 +59,8 @@
 		6D76EEAC18CD79B8008FBB1A /* typedef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = typedef.h; sourceTree = "<group>"; };
 		6D79B51018E8C764008DB1AB /* InstructionScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstructionScene.h; sourceTree = "<group>"; };
 		6D79B51118E8C764008DB1AB /* InstructionScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstructionScene.m; sourceTree = "<group>"; };
+		6D79B51618E8D605008DB1AB /* DSMultilineLabelNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSMultilineLabelNode.h; path = ../DSMultilineLabelNode.h; sourceTree = "<group>"; };
+		6D79B51718E8D605008DB1AB /* DSMultilineLabelNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSMultilineLabelNode.m; path = ../DSMultilineLabelNode.m; sourceTree = "<group>"; };
 		6DB01A4F18E38A8200EF2923 /* button1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button1.png; sourceTree = "<group>"; };
 		6DB01A5118E38B0600EF2923 /* button2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button2.png; sourceTree = "<group>"; };
 		6DB01A5318E38B0A00EF2923 /* button3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button3.png; sourceTree = "<group>"; };
@@ -183,6 +186,8 @@
 				A1C2DA8418C41B0B00288B36 /* ObstacleScene.m */,
 				6D79B51018E8C764008DB1AB /* InstructionScene.h */,
 				6D79B51118E8C764008DB1AB /* InstructionScene.m */,
+				6D79B51618E8D605008DB1AB /* DSMultilineLabelNode.h */,
+				6D79B51718E8D605008DB1AB /* DSMultilineLabelNode.m */,
 				A176951718B01E1B00DDCB91 /* MyScene.h */,
 				A176951818B01E1C00DDCB91 /* MyScene.m */,
 				9390CED318E54ADC0073C488 /* ResourceConfirm.h */,
@@ -348,6 +353,7 @@
 				A176953B18B01F3000DDCB91 /* Maze.m in Sources */,
 				93A48E1318BF1B470008E8ED /* MazeScene.m in Sources */,
 				A176951918B01E1C00DDCB91 /* MyScene.m in Sources */,
+				6D79B51818E8D605008DB1AB /* DSMultilineLabelNode.m in Sources */,
 				A176951618B01E1B00DDCB91 /* ViewController.m in Sources */,
 				93314D0B18B5E75300144303 /* PlayerCharacter.m in Sources */,
 				A176951018B01E1B00DDCB91 /* AppDelegate.m in Sources */,
