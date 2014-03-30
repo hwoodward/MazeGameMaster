@@ -176,7 +176,12 @@ static const int CELLNUM = 11;
  */
 -(void)addPlayer
 {
-    _player = [[SKSpriteNode alloc] initWithColor:[SKColor redColor] size:CGSizeMake(_cellWidth-20, _cellWidth-20)];
+    //_player = [[SKSpriteNode alloc] initWithColor:[SKColor redColor] size:CGSizeMake(_cellWidth-20, _cellWidth-20)];
+    
+    //Player image source: http://findicons.com/icon/69390/circle_blue
+    
+    _player = [[SKSpriteNode alloc] initWithImageNamed:@"bluecircle.png"];
+    
     float playerX = (CELLNUM*_cellWidth)/2;
     float playerY = self.frame.size.height - ((CELLNUM*_cellWidth)/2);
     _player.position = CGPointMake(playerX, playerY); //Will change later
