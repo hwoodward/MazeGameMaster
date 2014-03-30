@@ -286,11 +286,10 @@ static const int CELLNUM = 11;
             }
             case Wall: {
             case Start:  //After we leave the start we want to make it a wall so we don't leave the maze and error.
-                NSLog(@"Wall");
                 break;
             }
             case End: {
-                NSLog(@"End of Maze!");
+                [_delegate mazeSolved];
             }
             default: { //Default is that it is a path (this handles Path)
                 for (int i = 0; i< [cells count]; i++) {
@@ -373,9 +372,6 @@ static const int CELLNUM = 11;
  */
 -(void)resourceUsed
 {
-    NSLog(@"You called resourceUsed!");
-    
-    NSLog(@"Obstacle!!");
     _resConfirmView = [[SKView alloc] initWithFrame:self.view.frame];
     ResourceConfirm *resConfirm;
     resConfirm = [[ResourceConfirm alloc] initWithSize:self.frame.size];

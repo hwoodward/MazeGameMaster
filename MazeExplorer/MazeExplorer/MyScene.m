@@ -125,16 +125,26 @@ static const int maze3Width = 25;
 
 }
 
+-(void) mazeSolved {
+    [_mazeView removeFromSuperview];
+    _mazeView = Nil;
+    [_resourceView removeFromSuperview];
+    _resourceView = Nil;
+}
+
 -(void) displayInstructions {
     if(!_didPresentGameViews) {
-        
-        NSLog(@"Pretend I just showed you instructions");
-        _mazeView = [[SKView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.height, self.frame.size.width)];
-        InstructionScene *instructions = [[InstructionScene alloc] initWithSize:CGSizeMake(self.frame.size.height, self.frame.size.width)];
+        _mazeView = [[SKView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+        InstructionScene *instructions = [[InstructionScene alloc] initWithSize:CGSizeMake(self.frame.size.width, self.frame.size.height)];
         [instructions setDelegate:self];
         [self.view addSubview:_mazeView];
         [_mazeView presentScene:instructions];
     }
+}
+
+-(void) instructionsDone {
+    [_mazeView removeFromSuperview];
+    _mazeView = Nil;
 }
 
 -(void)update:(CFTimeInterval)currentTime {
