@@ -137,40 +137,37 @@ static const int CELLNUM = 11;
                     break;
                     
                 }
+                case Start:{
+                    CGSize cellSize = CGSizeMake(_cellWidth, _cellWidth);
+                    CGPoint start = [_maze startLoc];
+                    SKSpriteNode *startNode = [[SKSpriteNode alloc] initWithColor:[SKColor cyanColor] size:cellSize];
+                    startNode.position = CGPointMake(_cellWidth*start.x + (_cellWidth/2),
+                                                     self.frame.size.height - _cellWidth*start.y - _cellWidth/2);
+                    _playerLoc = start;
+                    [self addChild:startNode];
+                    
+                    break;
+                    
+                }
                 default: { //Currently handles path, start, and end. Start and end nodes are actually created in startAndEndInitialization (which could be removed, but will try tht after this works.
                     break;
                 }
             }
         }
     }
-    [self startAndEndInitialization];
+    [self shiftMaze];
 }
 
 /*
  * Method: startAndEndInitialization
  *
- * This method specially goes and finds the start and end of the maze, and colors them 
- * differently than the rest of the maze. It then shifts all of the cells so that the
+ * This method shifts all of the cells so that the
  * start will be centered underneath the player.
  */
 
--(void)startAndEndInitialization
+-(void)shiftMaze
 {
-    CGSize cellSize = CGSizeMake(_cellWidth, _cellWidth);
     CGPoint start = [_maze startLoc];
-    SKSpriteNode *startNode = [[SKSpriteNode alloc] initWithColor:[SKColor cyanColor] size:cellSize];
-    startNode.position = CGPointMake(_cellWidth*start.x + (_cellWidth/2),
-                                     self.frame.size.height - _cellWidth*start.y - _cellWidth/2);
-    _playerLoc = start;
-    [self addChild:startNode];
-    
-    /*
-    _endLoc = [_maze endLoc];
-    SKSpriteNode *endNode = [[SKSpriteNode alloc] initWithColor:[SKColor blueColor] size:cellSize];
-    endNode.position = CGPointMake(_cellWidth*_endLoc.x + (_cellWidth/2),
-                                   self.frame.size.height - _cellWidth*_endLoc.y - _cellWidth/2);
-    [self addChild:endNode];
-    */
     
     int xDiff = (CELLNUM/2) - start.x;
     int yDiff = start.y - (CELLNUM/2);
