@@ -129,13 +129,11 @@ static const int maze3Width = 25;
     if(!_didPresentGameViews) {
         
         NSLog(@"Pretend I just showed you instructions");
-        /*
         _mazeView = [[SKView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.height, self.frame.size.width)];
-        InstructionScene instructions = [[InstructionScene alloc] initWithSize:CGRectMake(0, 0, self.frame.size.height, self.frame.size.width)];
+        InstructionScene *instructions = [[InstructionScene alloc] initWithSize:CGSizeMake(self.frame.size.height, self.frame.size.width)];
         [instructions setDelegate:self];
         [self.view addSubview:_mazeView];
         [_mazeView presentScene:instructions];
-        */
     }
 }
 

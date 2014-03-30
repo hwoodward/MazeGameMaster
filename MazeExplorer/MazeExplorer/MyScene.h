@@ -13,8 +13,9 @@
 #import <SpriteKit/SpriteKit.h>
 #import "MazeScene.h"
 #import "ResourceScene.h"
+#import "InstructionScene.h"
 
-@interface MyScene : SKScene <MazeSceneDelegate, ResourceSceneDelegate, ResourceConfirmDelegate, InstructionDelegate>
+@interface MyScene : SKScene <MazeSceneDelegate, ResourceSceneDelegate, ResourceConfirmDelegate, InstructionSceneDelegate>
 
 // Any methods that MazeScene or ResourceScene calls on their delegates
 // must appear here, and be implemented in the .m file.
