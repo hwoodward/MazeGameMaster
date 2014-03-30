@@ -324,6 +324,13 @@ static const int CELLNUM = 11;
 -(void)useResourceConfirmed
 {
     [self.delegate useResourceConfirmed];
+    
+    if (_obstView != nil)
+    {
+        //Get rid of the obstacle screen
+        //Get rid of the obstacle node
+        [self obstacleDidFinish]; 
+    }
 }
 
 -(void)increaseResourceCounter
