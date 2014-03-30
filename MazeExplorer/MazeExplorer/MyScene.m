@@ -22,10 +22,11 @@
 //These are the maze strings and widths.
 static const NSString* maze1String = @"*E*********  *     **      *******     **     *  ** O   * *** *  *   ****  *  ***R   *   ***S*******";
 static const int maze1Width = 10;
-static const NSString* maze2String;
-static const int maze2Width;
+static const NSString* maze2String = @"*****S***************           *R     **  *******  *****  **R *     *      *  *****  *  ****   *  **     *     *      **     O     ****   ** ********  *  *   **       *   *  *   **   **  *   *  *   **   *R  *          **   ******O******O***       *   *      ** ***** *   *  ******     * *** *      **   * * *   ****** **   *****        * **           *  *** ***********  *      **R          O      *****************E***";
+static const int maze2Width = 20;
 static const NSString* maze3String = @"**************************   *   *   *           ** * * * * * * * ******* **O* *R*   *   * *       ** * *********** * ******** *             *      O** ********************* ** *                *    **   **** ******* * * ***** * *            * * *  E* * *** * ******** *   *** *   * * *      * ****R** ***O* * * ** *  O   * ** *   * *   ** **** *** ** * *** *   **    * *   ** * *   * ******* * * **** * * * * *   *R* * *   ** *   * * * * * * * *** ** ***** * * * * *     * **      O* * * * * * * * ** ***** * * * * * * * * **     * *   *   * * *   ** * * * ********* * ****** * * *                 ********************S*****";
 static const int maze3Width = 25;
+
 
 -(id)initWithSize:(CGSize)size {    
     if (self = [super initWithSize:size]) {
@@ -143,8 +144,17 @@ static const int maze3Width = 25;
 }
 
 -(void)increaseResourceCounter {
-    //Unfinished; still need to figure out how to get ResourceScene to actually call this function.
     [(ResourceScene*)_resourceView.scene increaseCounterByOne];
+}
+
+-(void)useResource
+{
+    [(MazeScene*)_mazeView.scene resourceUsed];
+}
+
+-(void)useResourceConfirmed
+{
+    [(ResourceScene*)_resourceView.scene useResourceConfirmed];
 }
 
 

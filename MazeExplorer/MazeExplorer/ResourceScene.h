@@ -17,14 +17,20 @@
 // This is where the talking methods should go for MazeScene/ResourceScene
 // They will be sent to MyScene, which will pass along the information to MazeScene
 
+-(void) useResource;
+
 @end
 
 @interface ResourceScene : SKScene
 
 @property (nonatomic) id <ResourceSceneDelegate> delegate;
 @property (nonatomic) int resourceCounter;
+@property (nonatomic) SKLabelNode *instr1;
 @property (nonatomic) SKLabelNode *label;
+@property (nonatomic) SKLabelNode *instr2;
+
 
 -(void) increaseCounterByOne;
+-(void) useResourceConfirmed;
 
 @end

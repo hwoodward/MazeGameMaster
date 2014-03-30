@@ -21,6 +21,7 @@
 //@property CGPoint obstLoc;
 
 @property (nonatomic) SKView *obstView;
+@property (nonatomic) SKView *resConfirmView;
 
 @end
 
@@ -98,7 +99,10 @@ static const int CELLNUM = 11;
             CellType cont = [_maze getContentsWithRow:j andColumn:i];
             switch (cont) {
                 case Wall: {
-                    SKSpriteNode *cellNode = [[SKSpriteNode alloc] initWithColor: [SKColor blackColor] size:cellSize];
+                    //bricktexture.jpg's source: http://designm.ag/resources/free-stone-rock-textures/
+                    //The image is 70px by 70px
+                    SKSpriteNode *cellNode = [[SKSpriteNode alloc] initWithImageNamed:@"bricktexture.jpg"];
+                    //SKSpriteNode *cellNode = [[SKSpriteNode alloc] initWithColor: [SKColor blackColor] size:cellSize];
                     cellNode.position = CGPointMake(_cellWidth*i + (_cellWidth/2),
                                                     self.frame.size.height - _cellWidth*j - _cellWidth/2);
                     
@@ -120,6 +124,18 @@ static const int CELLNUM = 11;
                     
                     [self addChild:cellNode];
                     break;
+
+                    
+                }
+                case End: {
+                    CGSize cellSize = CGSizeMake(_cellWidth, _cellWidth);
+                    _endLoc = [_maze endLoc];
+                    SKSpriteNode *endNode = [[SKSpriteNode alloc] initWithColor:[SKColor blueColor] size:cellSize];
+                    endNode.position = CGPointMake(_cellWidth*_endLoc.x + (_cellWidth/2),
+                                                   self.frame.size.height - _cellWidth*_endLoc.y - _cellWidth/2);
+                    [self addChild:endNode];
+                    break;
+                    
                 }
                 default: { //Currently handles path, start, and end. Start and end nodes are actually created in startAndEndInitialization (which could be removed, but will try tht after this works.
                     break;
@@ -137,6 +153,7 @@ static const int CELLNUM = 11;
  * differently than the rest of the maze. It then shifts all of the cells so that the
  * start will be centered underneath the player.
  */
+
 -(void)startAndEndInitialization
 {
     CGSize cellSize = CGSizeMake(_cellWidth, _cellWidth);
@@ -147,11 +164,13 @@ static const int CELLNUM = 11;
     _playerLoc = start;
     [self addChild:startNode];
     
+    /*
     _endLoc = [_maze endLoc];
     SKSpriteNode *endNode = [[SKSpriteNode alloc] initWithColor:[SKColor blueColor] size:cellSize];
     endNode.position = CGPointMake(_cellWidth*_endLoc.x + (_cellWidth/2),
                                    self.frame.size.height - _cellWidth*_endLoc.y - _cellWidth/2);
     [self addChild:endNode];
+    */
     
     int xDiff = (CELLNUM/2) - start.x;
     int yDiff = start.y - (CELLNUM/2);
@@ -163,7 +182,6 @@ static const int CELLNUM = 11;
     }
 }
 
-
 /*
  * Method: addPlayer
  *
@@ -172,7 +190,12 @@ static const int CELLNUM = 11;
  */
 -(void)addPlayer
 {
-    _player = [[SKSpriteNode alloc] initWithColor:[SKColor redColor] size:CGSizeMake(_cellWidth-20, _cellWidth-20)];
+    //_player = [[SKSpriteNode alloc] initWithColor:[SKColor redColor] size:CGSizeMake(_cellWidth-20, _cellWidth-20)];
+    
+    //Player image source: http://findicons.com/icon/69390/circle_blue
+    
+    _player = [[SKSpriteNode alloc] initWithImageNamed:@"bluecircle.png"];
+    
     float playerX = (CELLNUM*_cellWidth)/2;
     float playerY = self.frame.size.height - ((CELLNUM*_cellWidth)/2);
     _player.position = CGPointMake(playerX, playerY); //Will change later
@@ -305,6 +328,33 @@ static const int CELLNUM = 11;
 
 }
 
+/*
+ resourceConfirmDidFinish
+ This is called by the ResourceConfirm scene when you answer "yes" or "no".
+ It gets rid of the ResourceConfirm screen.
+ */
+-(void)resourceConfirmDidFinish
+{
+    [_resConfirmView removeFromSuperview];
+    _resConfirmView = Nil;
+}
+
+/*
+ useResourceConfirmed
+ This tells MyScene that a resource was used, so that it can tell ResourceScene.
+ */
+-(void)useResourceConfirmed
+{
+    [self.delegate useResourceConfirmed];
+    
+    if (_obstView != nil)
+    {
+        //Get rid of the obstacle screen
+        //Get rid of the obstacle node
+        [self obstacleDidFinish]; 
+    }
+}
+
 -(void)increaseResourceCounter
 {
     [self.delegate increaseResourceCounter];
@@ -318,6 +368,23 @@ static const int CELLNUM = 11;
 -(void)emptyMazeCellWithRow:(int) row andCol:(int) col
 {
     [_maze emptyContentsWithRow: row andColumn: col];
+}
+
+/*
+ resourceUsed:
+ result: Uses a resource. (Responds to user interaction with resourceScene.)
+ */
+-(void)resourceUsed
+{
+    NSLog(@"You called resourceUsed!");
+    
+    NSLog(@"Obstacle!!");
+    _resConfirmView = [[SKView alloc] initWithFrame:self.view.frame];
+    ResourceConfirm *resConfirm;
+    resConfirm = [[ResourceConfirm alloc] initWithSize:self.frame.size];
+    [resConfirm setDelegate: self];
+    [self.view addSubview:_resConfirmView];
+    [_resConfirmView presentScene:resConfirm];
 }
 
 @end

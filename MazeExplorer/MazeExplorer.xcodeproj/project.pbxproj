@@ -7,12 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6D79B51218E8C764008DB1AB /* InstructionScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D79B51118E8C764008DB1AB /* InstructionScene.m */; };
 		6DB01A5018E38A8200EF2923 /* button1.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DB01A4F18E38A8200EF2923 /* button1.png */; };
 		6DB01A5218E38B0600EF2923 /* button2.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DB01A5118E38B0600EF2923 /* button2.png */; };
 		6DB01A5418E38B0A00EF2923 /* button3.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DB01A5318E38B0A00EF2923 /* button3.png */; };
 		6DB01A5618E38C7C00EF2923 /* help.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DB01A5518E38C7C00EF2923 /* help.png */; };
 		6DDABA4018C858F200A4DDAE /* checkButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DDABA3F18C858F200A4DDAE /* checkButton.png */; };
 		93314D0B18B5E75300144303 /* PlayerCharacter.m in Sources */ = {isa = PBXBuildFile; fileRef = 93314D0A18B5E75300144303 /* PlayerCharacter.m */; };
+		93775D8D18E401BE003D4360 /* resbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 93775D8C18E401BE003D4360 /* resbutton.png */; };
+		938E270D18E7B90300B9BC0B /* bricktexture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 938E270C18E7B90300B9BC0B /* bricktexture.jpg */; };
+		938E271118E7BB8300B9BC0B /* bluecircle.png in Resources */ = {isa = PBXBuildFile; fileRef = 938E271018E7BB8300B9BC0B /* bluecircle.png */; };
+		9390CED518E54ADC0073C488 /* ResourceConfirm.m in Sources */ = {isa = PBXBuildFile; fileRef = 9390CED418E54ADC0073C488 /* ResourceConfirm.m */; };
+		9390CED918E556D70073C488 /* stopbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 9390CED818E556D70073C488 /* stopbutton.png */; };
+		9390CEDB18E5573E0073C488 /* yesbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 9390CEDA18E5573E0073C488 /* yesbutton.png */; };
 		93A48E1318BF1B470008E8ED /* MazeScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A48E1218BF1B470008E8ED /* MazeScene.m */; };
 		A125363818C2D70D0033FE44 /* ResourceScene.m in Sources */ = {isa = PBXBuildFile; fileRef = A125363718C2D70D0033FE44 /* ResourceScene.m */; };
 		A17694FE18B01E1B00DDCB91 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A17694FD18B01E1B00DDCB91 /* Foundation.framework */; };
@@ -49,6 +56,8 @@
 
 /* Begin PBXFileReference section */
 		6D76EEAC18CD79B8008FBB1A /* typedef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = typedef.h; sourceTree = "<group>"; };
+		6D79B51018E8C764008DB1AB /* InstructionScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstructionScene.h; sourceTree = "<group>"; };
+		6D79B51118E8C764008DB1AB /* InstructionScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstructionScene.m; sourceTree = "<group>"; };
 		6DB01A4F18E38A8200EF2923 /* button1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button1.png; sourceTree = "<group>"; };
 		6DB01A5118E38B0600EF2923 /* button2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button2.png; sourceTree = "<group>"; };
 		6DB01A5318E38B0A00EF2923 /* button3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button3.png; sourceTree = "<group>"; };
@@ -56,6 +65,13 @@
 		6DDABA3F18C858F200A4DDAE /* checkButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkButton.png; sourceTree = "<group>"; };
 		93314D0918B5E75300144303 /* PlayerCharacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerCharacter.h; sourceTree = "<group>"; };
 		93314D0A18B5E75300144303 /* PlayerCharacter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerCharacter.m; sourceTree = "<group>"; };
+		93775D8C18E401BE003D4360 /* resbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = resbutton.png; path = ../../../../Desktop/resbutton.png; sourceTree = "<group>"; };
+		938E270C18E7B90300B9BC0B /* bricktexture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bricktexture.jpg; sourceTree = "<group>"; };
+		938E271018E7BB8300B9BC0B /* bluecircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bluecircle.png; sourceTree = "<group>"; };
+		9390CED318E54ADC0073C488 /* ResourceConfirm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceConfirm.h; sourceTree = "<group>"; };
+		9390CED418E54ADC0073C488 /* ResourceConfirm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceConfirm.m; sourceTree = "<group>"; };
+		9390CED818E556D70073C488 /* stopbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = stopbutton.png; path = ../../../../Desktop/stopbutton.png; sourceTree = "<group>"; };
+		9390CEDA18E5573E0073C488 /* yesbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = yesbutton.png; path = ../../../../Desktop/yesbutton.png; sourceTree = "<group>"; };
 		93A48E1118BF1B470008E8ED /* MazeScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MazeScene.h; sourceTree = "<group>"; };
 		93A48E1218BF1B470008E8ED /* MazeScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MazeScene.m; sourceTree = "<group>"; };
 		A125363618C2D70D0033FE44 /* ResourceScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceScene.h; sourceTree = "<group>"; };
@@ -165,16 +181,25 @@
 				93A48E1218BF1B470008E8ED /* MazeScene.m */,
 				A1C2DA8318C41B0B00288B36 /* ObstacleScene.h */,
 				A1C2DA8418C41B0B00288B36 /* ObstacleScene.m */,
+				6D79B51018E8C764008DB1AB /* InstructionScene.h */,
+				6D79B51118E8C764008DB1AB /* InstructionScene.m */,
 				A176951718B01E1B00DDCB91 /* MyScene.h */,
 				A176951818B01E1C00DDCB91 /* MyScene.m */,
+				9390CED318E54ADC0073C488 /* ResourceConfirm.h */,
+				9390CED418E54ADC0073C488 /* ResourceConfirm.m */,
 				A125363618C2D70D0033FE44 /* ResourceScene.h */,
 				A125363718C2D70D0033FE44 /* ResourceScene.m */,
+				93775D8C18E401BE003D4360 /* resbutton.png */,
 				A176951A18B01E1C00DDCB91 /* Spaceship.png */,
 				A176951C18B01E1C00DDCB91 /* Images.xcassets */,
 				6DDABA3F18C858F200A4DDAE /* checkButton.png */,
+				9390CEDA18E5573E0073C488 /* yesbutton.png */,
+				9390CED818E556D70073C488 /* stopbutton.png */,
 				6DB01A5118E38B0600EF2923 /* button2.png */,
 				6DB01A5518E38C7C00EF2923 /* help.png */,
+				938E271018E7BB8300B9BC0B /* bluecircle.png */,
 				6DB01A5318E38B0A00EF2923 /* button3.png */,
+				938E270C18E7B90300B9BC0B /* bricktexture.jpg */,
 				6DB01A4F18E38A8200EF2923 /* button1.png */,
 				A176950618B01E1B00DDCB91 /* Supporting Files */,
 				6D76EEAC18CD79B8008FBB1A /* typedef.h */,
@@ -287,12 +312,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				A176950A18B01E1B00DDCB91 /* InfoPlist.strings in Resources */,
+				938E270D18E7B90300B9BC0B /* bricktexture.jpg in Resources */,
 				A176951D18B01E1C00DDCB91 /* Images.xcassets in Resources */,
 				6DB01A5618E38C7C00EF2923 /* help.png in Resources */,
 				A176951B18B01E1C00DDCB91 /* Spaceship.png in Resources */,
 				6DDABA4018C858F200A4DDAE /* checkButton.png in Resources */,
+				9390CEDB18E5573E0073C488 /* yesbutton.png in Resources */,
+				93775D8D18E401BE003D4360 /* resbutton.png in Resources */,
+				9390CED918E556D70073C488 /* stopbutton.png in Resources */,
 				A176951318B01E1B00DDCB91 /* Main.storyboard in Resources */,
 				6DB01A5418E38B0A00EF2923 /* button3.png in Resources */,
+				938E271118E7BB8300B9BC0B /* bluecircle.png in Resources */,
 				6DB01A5018E38A8200EF2923 /* button1.png in Resources */,
 				6DB01A5218E38B0600EF2923 /* button2.png in Resources */,
 			);
@@ -313,6 +343,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9390CED518E54ADC0073C488 /* ResourceConfirm.m in Sources */,
+				6D79B51218E8C764008DB1AB /* InstructionScene.m in Sources */,
 				A176953B18B01F3000DDCB91 /* Maze.m in Sources */,
 				93A48E1318BF1B470008E8ED /* MazeScene.m in Sources */,
 				A176951918B01E1C00DDCB91 /* MyScene.m in Sources */,
