@@ -124,6 +124,18 @@ static const int CELLNUM = 11;
                     
                     [self addChild:cellNode];
                     break;
+
+                    
+                }
+                case End: {
+                    CGSize cellSize = CGSizeMake(_cellWidth, _cellWidth);
+                    _endLoc = [_maze endLoc];
+                    SKSpriteNode *endNode = [[SKSpriteNode alloc] initWithColor:[SKColor blueColor] size:cellSize];
+                    endNode.position = CGPointMake(_cellWidth*_endLoc.x + (_cellWidth/2),
+                                                   self.frame.size.height - _cellWidth*_endLoc.y - _cellWidth/2);
+                    [self addChild:endNode];
+                    break;
+                    
                 }
                 default: { //Currently handles path, start, and end. Start and end nodes are actually created in startAndEndInitialization (which could be removed, but will try tht after this works.
                     break;
@@ -141,6 +153,7 @@ static const int CELLNUM = 11;
  * differently than the rest of the maze. It then shifts all of the cells so that the
  * start will be centered underneath the player.
  */
+
 -(void)startAndEndInitialization
 {
     CGSize cellSize = CGSizeMake(_cellWidth, _cellWidth);
@@ -151,11 +164,13 @@ static const int CELLNUM = 11;
     _playerLoc = start;
     [self addChild:startNode];
     
+    /*
     _endLoc = [_maze endLoc];
     SKSpriteNode *endNode = [[SKSpriteNode alloc] initWithColor:[SKColor blueColor] size:cellSize];
     endNode.position = CGPointMake(_cellWidth*_endLoc.x + (_cellWidth/2),
                                    self.frame.size.height - _cellWidth*_endLoc.y - _cellWidth/2);
     [self addChild:endNode];
+    */
     
     int xDiff = (CELLNUM/2) - start.x;
     int yDiff = start.y - (CELLNUM/2);
@@ -166,7 +181,6 @@ static const int CELLNUM = 11;
         [cell runAction:move];
     }
 }
-
 
 /*
  * Method: addPlayer
