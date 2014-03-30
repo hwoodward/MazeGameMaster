@@ -24,8 +24,8 @@ static const NSString* maze1String = @"*E*********  *     **      *******     **
 static const int maze1Width = 10;
 static const NSString* maze2String;
 static const int maze2Width;
-static const NSString* maze3String;
-static const int maze3Width;
+static const NSString* maze3String = @"**************************   *   *   *           ** * * * * * * * ******* **O* *R*   *   * *       ** * *********** * ******** *             *      O** ********************* ** *                *    **   **** ******* * * ***** * *            * * *  E* * *** * ******** *   *** *   * * *      * ****R** ***O* * * ** *  O   * ** *   * *   ** **** *** ** * *** *   **    * *   ** * *   * ******* * * **** * * * * *   *R* * *   ** *   * * * * * * * *** ** ***** * * * * *     * **      O* * * * * * * * ** ***** * * * * * * * * **     * *   *   * * *   ** * * * ********* * ****** * * *                 ********************S*****";
+static const int maze3Width = 25;
 
 -(id)initWithSize:(CGSize)size {    
     if (self = [super initWithSize:size]) {
@@ -83,21 +83,17 @@ static const int maze3Width;
     SKNode *clickedNode = [self nodeAtPoint:location];
     
     if ([clickedNode.name isEqualToString:@"maze1"]) {
-        NSLog(@"Selected maze1");
         [self launchMazewithString:maze1String andWidth:maze1Width];
     }
     if ([clickedNode.name isEqualToString:@"maze2"]) {
-        NSLog(@"Selected maze2");
-        //[self launchMaze:_maze2];
+        [self launchMazewithString:maze2String andWidth:maze2Width];
     }
     if ([clickedNode.name isEqualToString:@"maze3"]) {
-        NSLog(@"Selected maze3");
-        //[self launchMaze:_maze3];
+        [self launchMazewithString:maze3String andWidth:maze3Width];
     }
     
     if ([clickedNode.name isEqualToString:@"help"]) {
-        NSLog(@"Selected instructions");
-        //[self displayInstructions];
+        [self displayInstructions];
     }
     
 }
@@ -126,6 +122,20 @@ static const int maze3Width;
         _didPresentGameViews = YES;
     }
 
+}
+
+-(void) displayInstructions {
+    if(!_didPresentGameViews) {
+        
+        NSLog(@"Pretend I just showed you instructions");
+        /*
+        _mazeView = [[SKView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.height, self.frame.size.width)];
+        InstructionScene instructions = [[InstructionScene alloc] initWithSize:CGRectMake(0, 0, self.frame.size.height, self.frame.size.width)];
+        [instructions setDelegate:self];
+        [self.view addSubview:_mazeView];
+        [_mazeView presentScene:instructions];
+        */
+    }
 }
 
 -(void)update:(CFTimeInterval)currentTime {
