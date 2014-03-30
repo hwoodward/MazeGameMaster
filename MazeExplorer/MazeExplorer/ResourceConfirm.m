@@ -50,13 +50,13 @@
     //Did you click the yes button?
     if ([clickedNode.name isEqualToString:@"yesButton"]) {
         [_delegate resourceConfirmDidFinish];
-        NSLog(@"Yes, I want to use that resource!");
+        //NSLog(@"Yes, I want to use that resource!");
         [_delegate useResourceConfirmed];
     }
     //Did you click the no button?
     else if ([clickedNode.name isEqualToString:@"noButton"]) {
         [_delegate resourceConfirmDidFinish];
-        NSLog(@"No, I don't want to use that resource.");
+        //NSLog(@"No, I don't want to use that resource.");
     }
     
     

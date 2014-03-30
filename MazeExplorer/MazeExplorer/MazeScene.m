@@ -149,7 +149,7 @@ static const int CELLNUM = 11;
                     break;
                     
                 }
-                default: { //Currently handles path, start, and end. Start and end nodes are actually created in startAndEndInitialization (which could be removed, but will try tht after this works.
+                default: { //Currently handles the maze-shift that puts the player over the start node.
                     break;
                 }
             }
