@@ -15,7 +15,7 @@
 #import "ResourceScene.h"
 #import "InstructionScene.h"
 
-@interface MyScene : SKScene <MazeSceneDelegate, ResourceSceneDelegate, ResourceConfirmDelegate, InstructionSceneDelegate>
+@interface MyScene : SKScene <MazeSceneDelegate, ResourceSceneDelegate, InstructionSceneDelegate>
 
 // Any methods that MazeScene or ResourceScene calls on their delegates
 // must appear here, and be implemented in the .m file.
