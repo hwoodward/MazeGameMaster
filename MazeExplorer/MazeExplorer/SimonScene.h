@@ -12,6 +12,7 @@
 @protocol SimonSceneDelegate
 
 - (void)obstacleDidFinish;
+- (void)obstacleDidFail; 
 
 @end
 

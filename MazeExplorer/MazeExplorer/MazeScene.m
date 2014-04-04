@@ -325,6 +325,18 @@ static const int CELLNUM = 11;
 }
 
 /*
+ obstacleDidFail:
+ This is called by an obstacle using this as its delegate when the user did something wrong
+ and the obstacle wants to kick the user out without removing the node
+ */
+
+- (void)obstacleDidFail
+{
+    [_obstView removeFromSuperview];
+    _obstView = Nil;
+}
+
+/*
  resourceConfirmDidFinish
  This is called by the ResourceConfirm scene when you answer "yes" or "no".
  It gets rid of the ResourceConfirm screen.

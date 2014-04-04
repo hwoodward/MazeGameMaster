@@ -25,10 +25,11 @@ static const uint32_t movableCategory    =  0x1 << 2;
     CGSize buttonSize = CGSizeMake(_buttonWidth, _buttonWidth);
     
     SKLabelNode *label = [[SKLabelNode alloc] init];
-    label.text = @"Let's play Simon!.";
+    label.text = @"Let's play Simon! Click here to start!";
     label.fontSize = 27;
     label.position = CGPointMake(CGRectGetMidX(self.frame),CGRectGetMidY(self.frame)-100);
     label.fontColor = [SKColor blackColor];
+    label.name = @"clickToStart";
     [self addChild:label];
     
     SKSpriteNode *redNode = [[SKSpriteNode alloc] initWithColor: [SKColor redColor] size:buttonSize];
@@ -57,12 +58,21 @@ static const uint32_t movableCategory    =  0x1 << 2;
 }
 
 //Running the Simon game (i.e. combining user and computer interaction for a certain number of turns)
--(void)runSimonWithNoOfTurns: (NSInteger) turns
+-(void)runSimon
 {
+    // I may have to worry about it trying to continue running after the player loses, but I hope not.
+    /*
+    for (NSInteger i=1; i <= turns; ++i) {
+        [self runOneSimonTurnWithLength:i];
+    }
+     */
+    [self runOneSimonTurnWithLength: 1];
+    [self runOneSimonTurnWithLength: 2];
+    [self runOneSimonTurnWithLength: 3];
     
 }
 
--(void)runOneCompSimonTurnWithLength: (NSInteger) length
+-(void)runOneSimonTurnWithLength: (NSInteger) length
 {
     //Create a new computer array; clears out player's array
     [self generateSimonArrayOfLength:length];
@@ -147,8 +157,14 @@ static const uint32_t movableCategory    =  0x1 << 2;
     //what node am I in?
     SKNode *clickedNode = [self nodeAtPoint:location];
     
+    //Did you click the start label?
+    if ([clickedNode.name isEqualToString:@"clickToStart"]) {
+        [self runSimon];
+        [clickedNode removeFromParent];
+    }
+    
     //Did you click the red button?
-    if ([clickedNode.name isEqualToString:@"redButton"]) {
+    else if ([clickedNode.name isEqualToString:@"redButton"]) {
         //Add 1 to the array
         _userarray[currentpos] = 1;
         ++currentpos;
@@ -180,25 +196,26 @@ static const uint32_t movableCategory    =  0x1 << 2;
     
 }
 
--(bool)checkWasUserCorrect
+-(void)checkWasUserCorrect
 {
     // Loop through and see if the arrays are equal
     for (NSInteger i = 0; i < _currentlength; i++) {
         if (_userarray[i] != _comparray[i]) {
-            return NO;
+            [self userWasNotCorrect];
         }
     }
-    return YES;
+    [self userWasCorrect];
 }
 
 -(void)userWasCorrect
 {
-    // Win conditions for one turn
+    NSLog(@"You are correct!");
 }
 
 -(void)userWasNotCorrect
 {
-    // Lose conditions; Kicks the user out of the game
+    NSLog(@"You are not correct!");
+    [_delegate obstacleDidFail];
 }
 
 -(void)winSimon

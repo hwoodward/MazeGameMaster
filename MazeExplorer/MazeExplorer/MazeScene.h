@@ -16,6 +16,7 @@
 #import "ResourceConfirm.h"
 #import "Maze.h"
 #import "typedef.h"
+#import "SimonScene.h"
 
 @protocol MazeSceneDelegate
 
@@ -29,11 +30,12 @@
 
 @end
 
-@interface MazeScene : SKScene <ObstacleSceneDelegate, ResourceConfirmDelegate>
+@interface MazeScene : SKScene <ObstacleSceneDelegate, ResourceConfirmDelegate, SimonSceneDelegate>
 
 @property (nonatomic) id <MazeSceneDelegate> delegate;
 
 -(void) obstacleDidFinish;
+-(void) obstacleDidFail; 
 -(void)increaseResourceCounter;
 -(void) addPlayer;
 -(void) shiftMaze;
