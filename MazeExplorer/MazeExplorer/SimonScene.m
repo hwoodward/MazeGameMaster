@@ -62,30 +62,54 @@ static const uint32_t movableCategory    =  0x1 << 2;
     
 }
 
--(void)runOneSimonTurn
+-(void)runOneCompSimonTurnWithLength: (NSInteger) length
 {
+    //Create a new computer array; clears out player's array
+    [self generateSimonArrayOfLength:length];
+    
+    SKNode *currentNode;
+    CGPoint position;
+    
+    //Taken from the iOS developer library SpriteKit Programmer's Guide (with changes)
+    SKAction *pulseWhite = [SKAction sequence:@[
+                                              [SKAction colorizeWithColor:[SKColor whiteColor] colorBlendFactor:1.0 duration:0.15],
+                                              [SKAction waitForDuration:0.1],
+                                              [SKAction colorizeWithColorBlendFactor:0.0 duration:0.15]]];
+    
     //Makes the boxes light up according to the array it is given.
     for (NSInteger i = 0; i < _currentlength; i++) {
         if (_comparray[i] == 1) {
             // Light up the red node
             // Wait
+            position = CGPointMake(CGRectGetMidX(self.frame)-100,CGRectGetMidY(self.frame)+200);
+            currentNode = [self nodeAtPoint:position];
+            [currentNode runAction:pulseWhite];
         }
         else if (_comparray[i] == 2) {
             // Light up the blue node
             // Wait
+            position = CGPointMake(CGRectGetMidX(self.frame)+100,CGRectGetMidY(self.frame)+200);
+            currentNode = [self nodeAtPoint:position];
+            [currentNode runAction:pulseWhite];
         }
         else if (_comparray[i] == 3) {
             // Light up the yellow node
             // Wait
+            position = CGPointMake(CGRectGetMidX(self.frame)-100,CGRectGetMidY(self.frame)+300);
+            currentNode = [self nodeAtPoint:position];
+            [currentNode runAction:pulseWhite];
         }
         else if (_comparray[i] == 4) {
             // Light up the green node
             // Wait
+            position = CGPointMake(CGRectGetMidX(self.frame)+100,CGRectGetMidY(self.frame)+300);
+            currentNode = [self nodeAtPoint:position];
+            [currentNode runAction:pulseWhite];
         }
     }
-
-    
 }
+
+
 
 // The following method is taken from Ray Wenderlich's procedural level generator.
 - (NSInteger) randomNumberBetweenMin:(NSInteger)min andMax:(NSInteger)max
@@ -156,9 +180,15 @@ static const uint32_t movableCategory    =  0x1 << 2;
     
 }
 
--(void)checkWasUserCorrect
+-(bool)checkWasUserCorrect
 {
-    // Checks to see if the user's array of inputs is the same as the one that the computer played
+    // Loop through and see if the arrays are equal
+    for (NSInteger i = 0; i < _currentlength; i++) {
+        if (_userarray[i] != _comparray[i]) {
+            return NO;
+        }
+    }
+    return YES;
 }
 
 -(void)userWasCorrect

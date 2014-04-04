@@ -23,6 +23,7 @@
 @property (nonatomic) NSInteger *userarray;
 @property (nonatomic) NSInteger *comparray; 
 @property (nonatomic) NSInteger currentlength;
+@property (nonatomic) NSInteger touchcount; 
 
 @property float buttonWidth;
 
