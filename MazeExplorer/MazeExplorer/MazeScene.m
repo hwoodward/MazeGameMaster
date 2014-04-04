@@ -262,7 +262,7 @@ static const int CELLNUM = 11;
                 _playerLoc = newPos;
 
                 _obstView = [[SKView alloc] initWithFrame:self.view.frame];
-                ObstacleScene *obstScene = [[ObstacleScene alloc] initWithSize:self.frame.size];
+                SimonScene *obstScene = [[SimonScene alloc] initWithSize:self.frame.size];
                 [obstScene setDelegate:self];
                 [self.view addSubview:_obstView];
                 [_obstView presentScene:obstScene];
@@ -327,7 +327,9 @@ static const int CELLNUM = 11;
 /*
  obstacleDidFail:
  This is called by an obstacle using this as its delegate when the user did something wrong
- and the obstacle wants to kick the user out without removing the node
+ and the obstacle wants to kick the user out without removing the node.
+ 
+ I need to improve this code so that it puts the player back where they were before starting the obstacle
  */
 
 - (void)obstacleDidFail
