@@ -8,7 +8,7 @@
 
 #import <SpriteKit/SpriteKit.h>
 #import "typedef.h"
-
+#import "DSMultilineLabelNode.h"
 
 @protocol ResourceConfirmDelegate
 
@@ -20,7 +20,6 @@
 
 @interface ResourceConfirm : SKScene
 
-@property (nonatomic) SKLabelNode *label;
 @property (nonatomic) ResourceType resourceBeingConfirmed;
 @property id <ResourceConfirmDelegate> delegate;
 -(id) initWithSize:(CGSize)size andResource:(ResourceType)resourceType;

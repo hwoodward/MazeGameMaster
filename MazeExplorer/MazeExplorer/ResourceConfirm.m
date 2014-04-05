@@ -17,12 +17,24 @@
     _resourceBeingConfirmed = resourceType;
     self.backgroundColor = [SKColor blueColor];
     
-    _label = [[SKLabelNode alloc] init];
-    _label.text = @"Are you sure you want to use this resource?";
-    _label.fontSize = 35;
-    _label.position = CGPointMake(CGRectGetMidX(self.frame),CGRectGetMidY(self.frame));
+    DSMultilineLabelNode *label = [[DSMultilineLabelNode alloc] init];
+    label.fontSize = 30;
+    label.position = CGPointMake(CGRectGetMidX(self.frame),CGRectGetMidY(self.frame));
+    label.paragraphWidth = self.frame.size.width - 100;
     
-    [self addChild:_label];
+    switch(_resourceBeingConfirmed) {
+        case Notepad: {
+            label.text = @"You are going to use a notepad resource. Using a resource cannot be undone. \n \n A notepad resource dismisses the Simon obstacle. However if used when not in a Simon obstacle the resource is used to no effect. \n \n Click the green check to confirm this action, the red x to cancel.";
+            break;
+        }
+        default: {//Devault is Test and also handles that case
+            label.text = @"You are going to use a magic resource. Using a resource cannot be undone. \n \n A magic resource dismisses the drag and drop obstacle. However if used when not in a drag and drop obstacle the resource is used to no effect. \n \n Click the green check to confirm this action, the red x to cancel.";
+            break;
+        }
+    }
+    
+    
+    [self addChild:label];
     
     // Adding a button that confirms that you want to use a resource.
     SKSpriteNode *yesButton = [[SKSpriteNode alloc] initWithImageNamed:@"yesbutton.png"];
