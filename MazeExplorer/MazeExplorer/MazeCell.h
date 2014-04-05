@@ -16,6 +16,7 @@
 @property (readonly) int cellRow;
 @property (readonly) int cellCol;
 @property CellType contents;
+@property SecondaryType secondaryType;
 
 - (id)initWithRow: (int) row
            andColumn: (int) col
@@ -23,6 +24,9 @@
 - (id)initWithRow: (int) row
         andColumn: (int) col
       andContents: (CellType) contents;
-//- (BOOL)isWall;
+- (id)initWithRow: (int) row
+        andColumn: (int) col
+      andContents: (CellType) contents
+ andSecondaryType: (SecondaryType) secondaryType;
 
 @end

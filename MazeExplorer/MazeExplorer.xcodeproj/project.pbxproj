@@ -57,6 +57,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6D51E21E18F0B51200E7AA04 /* Obstacle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Obstacle.h; sourceTree = "<group>"; };
 		6D76EEAC18CD79B8008FBB1A /* typedef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = typedef.h; sourceTree = "<group>"; };
 		6D79B51018E8C764008DB1AB /* InstructionScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstructionScene.h; sourceTree = "<group>"; };
 		6D79B51118E8C764008DB1AB /* InstructionScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstructionScene.m; sourceTree = "<group>"; };
@@ -186,6 +187,7 @@
 				93A48E1118BF1B470008E8ED /* MazeScene.h */,
 				93A48E1218BF1B470008E8ED /* MazeScene.m */,
 				A1C2DA8318C41B0B00288B36 /* ObstacleScene.h */,
+				6D51E21E18F0B51200E7AA04 /* Obstacle.h */,
 				A1C2DA8418C41B0B00288B36 /* ObstacleScene.m */,
 				6D79B51018E8C764008DB1AB /* InstructionScene.h */,
 				6D79B51118E8C764008DB1AB /* InstructionScene.m */,

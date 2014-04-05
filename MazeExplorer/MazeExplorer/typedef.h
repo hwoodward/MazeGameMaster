@@ -6,3 +6,18 @@ typedef enum {
     Resource,
     End
 } CellType;
+
+typedef enum {
+    DragDrop,
+    Simon
+} ObstacleType;
+
+typedef enum {
+    Test,
+    Notepad
+} ResourceType;
+
+typedef union {
+    ObstacleType Obstacle;
+    ResourceType Resource;
+} SecondaryType;

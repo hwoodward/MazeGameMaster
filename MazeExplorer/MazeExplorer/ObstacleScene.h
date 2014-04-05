@@ -13,14 +13,9 @@
  */
 
 #import <SpriteKit/SpriteKit.h>
+#import "Obstacle.h"
 
-@protocol ObstacleSceneDelegate
-
-- (void)obstacleDidFinish;
-
-@end
-
-@interface ObstacleScene : SKScene
+@interface ObstacleScene : SKScene <Obstacle>
 
 @property (nonatomic, strong) SKSpriteNode *selectedNode;
 @property (nonatomic, strong) SKSpriteNode *checkNode;

@@ -261,11 +261,7 @@ static const int CELLNUM = 11;
                 [_player runAction:undoMove];
                 _playerLoc = newPos;
 
-                _obstView = [[SKView alloc] initWithFrame:self.view.frame];
-                SimonScene *obstScene = [[SimonScene alloc] initWithSize:self.frame.size];
-                [obstScene setDelegate:self];
-                [self.view addSubview:_obstView];
-                [_obstView presentScene:obstScene];
+                [self launchObstacle:[_maze getSecondaryTypeWithRow:newPos.y andColumn:newPos.x].Obstacle];
                 break;
             }
             case Resource: {
@@ -280,7 +276,7 @@ static const int CELLNUM = 11;
                     [resourceNode removeFromParent];
                 }];
                 _playerLoc = newPos;
-                [self increaseResourceCounter];
+                [self obtainResource: [_maze getSecondaryTypeWithRow:newPos.y andColumn:newPos.x].Resource];
                 [self emptyMazeCellWithRow:_playerLoc.y andCol: _playerLoc.x];
                 break;
             }
@@ -306,6 +302,46 @@ static const int CELLNUM = 11;
     
 }
 
+/*
+ launchObstacle: (ObstacleType) type
+ creates and launches an obstacle of the type given by the input (it defaults to the default obstacle DragDrop.
+*/
+-(void) launchObstacle: (ObstacleType) type {
+    _obstView = [[SKView alloc] initWithFrame:self.view.frame];
+    
+    id <Obstacle> obstScene;
+    
+    switch (type) {
+        case Simon: {
+            obstScene = [[SimonScene alloc] initWithSize:self.frame.size];
+            break;
+        }
+        default: { //Default is DragDrop and also handles that case
+            obstScene = [[ObstacleScene alloc] initWithSize:self.frame.size];
+            break;
+        }
+    }
+    [obstScene setDelegate:self];
+    [self.view addSubview:_obstView];
+    [_obstView presentScene:obstScene];
+}
+
+/*
+ obtainResource: (ResourceType) type
+ tells the resourceScene (via myScene) that the player has obtained a resource of the given type
+ */
+-(void) obtainResource:(ResourceType) type {
+    switch (type) {
+        case Notepad: {
+            [self.delegate increaseResourceCounter];
+            break;
+        }
+        default: { //Default is a Test resource and also handles that case
+            [self.delegate increaseResourceCounter];
+            break;
+        }
+    }
+}
 
 /*
  obstacleDidFinish:
@@ -352,16 +388,15 @@ static const int CELLNUM = 11;
 /*
  useResourceConfirmed
  This tells MyScene that a resource was used, so that it can tell ResourceScene.
+ Then closes the confirmation screen and any obstacles in use
  */
 -(void)useResourceConfirmed
 {
     [self.delegate useResourceConfirmed];
-    
+    [self resourceConfirmDidFinish];
     if (_obstView != nil)
     {
-        //Get rid of the obstacle screen
-        //Get rid of the obstacle node
-        [self obstacleDidFinish]; 
+        [self obstacleDidFinish];
     }
 }
 

@@ -30,7 +30,7 @@
 
 @end
 
-@interface MazeScene : SKScene <ObstacleSceneDelegate, ResourceConfirmDelegate, SimonSceneDelegate>
+@interface MazeScene : SKScene <ObstacleSceneDelegate, ResourceConfirmDelegate>
 
 @property (nonatomic) id <MazeSceneDelegate> delegate;
 

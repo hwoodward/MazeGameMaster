@@ -100,18 +100,6 @@
     NSLog(@"%@", maze);
 }
 
-/*
- * Method: isWallCellWithRow: and Column:
- *
- * inputs: row and column indeces
- * The method will ask the MazeCell if it is a wall, and return the results of that.
- *
-- (BOOL)isWallCellWithRow:(int)row andColumn:(int)col
-{
-    MazeCell* cell = [[_cells objectAtIndex:row] objectAtIndex:col];
-    return [cell isWall];
-}
- */
 
 /*
  * Method: returnCellWithRow: and Column:
@@ -138,8 +126,12 @@
 }
 
 
-
-// This should be changed to the enum type later
+/*
+ * Method: getContentsWithRow: and Column:
+ *
+ * inputs: row and column indeces
+ * The method will return the contents of the cel at the give row and column.
+ */
 - (CellType)getContentsWithRow:(int)row andColumn:(int)col
 {
     if (row < 0 || row >= _numRows || col<0 || col>=_numCols) { //Outside the maze
@@ -147,6 +139,18 @@
     }
     MazeCell* cell = [[_cells objectAtIndex:row] objectAtIndex:col];
     return [cell contents];
+}
+
+/*
+ * Method: getSecondaryTypeWithRow: and Column:
+ *
+ * inputs: row and column indeces
+ * The method will return the secondaryType of the cel at the give row and column.
+ */
+- (SecondaryType)getSecondaryTypeWithRow:(int)row andColumn:(int)col
+{
+    MazeCell* cell = [[_cells objectAtIndex:row] objectAtIndex:col];
+    return [cell secondaryType];
 }
 
 
