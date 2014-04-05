@@ -21,7 +21,9 @@
  * "*" --> Wall
  * " " --> Path
  * "O" --> Obstacle (DragDrop)
+ * "1" --> Obstacle (Simon)
  * "R" --> Resource (Test)
+ * "a" --> Resource (Notepad)
  * "S" --> starting location (NOTE: There should only be ONE of these per maze, or weirdness will ensue)
  * "E" --> End location (NOTE: For now, there should only be one of these. If you want to build support
  *                       multiple exits, be my guest)
@@ -41,9 +43,17 @@
         _contents = Obstacle;
         _secondaryType.Obstacle = DragDrop;
     }
+    else if (![contents compare:@"1"]) {
+        _contents = Obstacle;
+        _secondaryType.Obstacle = Simon;
+    }
     else if (![contents compare:@"R"]) {
         _contents = Resource;
         _secondaryType.Resource = Test;
+    }
+    else if (![contents compare:@"a"]) {
+        _contents = Resource;
+        _secondaryType.Resource = Notepad;
     }
     else if (![contents compare:@"S"]) {
         _contents = Start;
