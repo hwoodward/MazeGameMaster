@@ -144,7 +144,7 @@ static const uint32_t movableCategory    =  0x1 << 2;
     }
     if ((firstBody.categoryBitMask & outlineCategory) != 0 &&
         (secondBody.categoryBitMask & movableCategory) != 0) {
-        [self notCrossingLines];
+        [self performSelector:@selector(notCrossingLines) withObject:self afterDelay:1.0];
     }
 }
 
