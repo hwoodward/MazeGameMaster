@@ -11,26 +11,29 @@
  */
 
 #import <SpriteKit/SpriteKit.h>
+#import "typedef.h"
 
 @protocol ResourceSceneDelegate
 
 // This is where the talking methods should go for MazeScene/ResourceScene
 // They will be sent to MyScene, which will pass along the information to MazeScene
 
--(void) useResource;
+-(void) useResource:(ResourceType) type;
 
 @end
 
 @interface ResourceScene : SKScene
 
 @property (nonatomic) id <ResourceSceneDelegate> delegate;
-@property (nonatomic) int resourceCounter;
+@property (nonatomic) int testCounter;
+@property (nonatomic) int notepadCounter;
 @property (nonatomic) SKLabelNode *instr1;
-@property (nonatomic) SKLabelNode *label;
+@property (nonatomic) SKLabelNode *testLabel;
+@property (nonatomic) SKLabelNode *notepadLabel;
 @property (nonatomic) SKLabelNode *instr2;
 
 
--(void) increaseCounterByOne;
--(void) useResourceConfirmed;
+-(void) increaseCounterByOne:(ResourceType)type;
+-(void) useResourceConfirmed:(ResourceType) type;
 
 @end

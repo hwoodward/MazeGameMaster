@@ -24,8 +24,8 @@
 // They will be sent to MyScene, which will pass along the information to ResourceScene
 
 //This is the function that MyScene calls.
--(void)increaseResourceCounter;
--(void)useResourceConfirmed; 
+-(void)increaseResourceCounter:(ResourceType) type;
+-(void)useResourceConfirmed:(ResourceType) type; 
 -(void)mazeSolved;
 
 @end
@@ -40,5 +40,5 @@
 -(void) addPlayer;
 -(void) shiftMaze;
 -(id)initWithSize:(CGSize)size String: (NSString *)mazeString andWidth: (int) mazeWidth;
--(void)resourceUsed; 
+-(void)resourceUsed:(ResourceType) type;
 @end

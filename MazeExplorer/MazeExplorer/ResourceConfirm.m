@@ -10,10 +10,11 @@
 
 @implementation ResourceConfirm
 
--(id) initWithSize:(CGSize)size
+-(id) initWithSize:(CGSize)size andResource:(ResourceType)resourceType
 {
     self = [super initWithSize:size];
     
+    _resourceBeingConfirmed = resourceType;
     self.backgroundColor = [SKColor blueColor];
     
     _label = [[SKLabelNode alloc] init];
@@ -51,7 +52,7 @@
     if ([clickedNode.name isEqualToString:@"yesButton"]) {
         [_delegate resourceConfirmDidFinish];
         //NSLog(@"Yes, I want to use that resource!");
-        [_delegate useResourceConfirmed];
+        [_delegate useResourceConfirmed:_resourceBeingConfirmed];
     }
     //Did you click the no button?
     else if ([clickedNode.name isEqualToString:@"noButton"]) {

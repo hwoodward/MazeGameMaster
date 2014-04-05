@@ -333,11 +333,11 @@ static const int CELLNUM = 11;
 -(void) obtainResource:(ResourceType) type {
     switch (type) {
         case Notepad: {
-            [self.delegate increaseResourceCounter];
+            [self.delegate increaseResourceCounter:Notepad];
             break;
         }
         default: { //Default is a Test resource and also handles that case
-            [self.delegate increaseResourceCounter];
+            [self.delegate increaseResourceCounter:Test];
             break;
         }
     }
@@ -390,19 +390,14 @@ static const int CELLNUM = 11;
  This tells MyScene that a resource was used, so that it can tell ResourceScene.
  Then closes the confirmation screen and any obstacles in use
  */
--(void)useResourceConfirmed
+-(void)useResourceConfirmed:(ResourceType) type
 {
-    [self.delegate useResourceConfirmed];
+    [self.delegate useResourceConfirmed:type];
     [self resourceConfirmDidFinish];
     if (_obstView != nil)
     {
         [self obstacleDidFinish];
     }
-}
-
--(void)increaseResourceCounter
-{
-    [self.delegate increaseResourceCounter];
 }
 
 /*
@@ -419,11 +414,11 @@ static const int CELLNUM = 11;
  resourceUsed:
  result: Uses a resource. (Responds to user interaction with resourceScene.)
  */
--(void)resourceUsed
+-(void)resourceUsed:(ResourceType) type
 {
     _resConfirmView = [[SKView alloc] initWithFrame:self.view.frame];
     ResourceConfirm *resConfirm;
-    resConfirm = [[ResourceConfirm alloc] initWithSize:self.frame.size];
+    resConfirm = [[ResourceConfirm alloc] initWithSize:self.frame.size andResource:type];
     [resConfirm setDelegate: self];
     [self.view addSubview:_resConfirmView];
     [_resConfirmView presentScene:resConfirm];

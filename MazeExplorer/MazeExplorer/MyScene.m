@@ -152,18 +152,18 @@ static const int maze3Width = 25;
     /* Called before each frame is rendered */
 }
 
--(void)increaseResourceCounter {
-    [(ResourceScene*)_resourceView.scene increaseCounterByOne];
+-(void)increaseResourceCounter:(ResourceType) type {
+    [(ResourceScene*)_resourceView.scene increaseCounterByOne:type];
 }
 
--(void)useResource
+-(void)useResource:(ResourceType) type
 {
-    [(MazeScene*)_mazeView.scene resourceUsed];
+    [(MazeScene*)_mazeView.scene resourceUsed:type];
 }
 
--(void)useResourceConfirmed
+-(void)useResourceConfirmed:(ResourceType) type
 {
-    [(ResourceScene*)_resourceView.scene useResourceConfirmed];
+    [(ResourceScene*)_resourceView.scene useResourceConfirmed:type];
 }
 
 
