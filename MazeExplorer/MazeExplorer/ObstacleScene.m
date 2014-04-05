@@ -16,7 +16,7 @@ static const uint32_t movableCategory    =  0x1 << 2;
 
 - (id)initWithSize:(CGSize)size
 {
-    self = [super initWithSize:size];
+    self = [super initWithSize:size];   
     self.physicsWorld.gravity = CGVectorMake(0,0);
     self.physicsWorld.contactDelegate = (id) self;
 

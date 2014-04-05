@@ -16,10 +16,9 @@
 @property (nonatomic) Maze* maze;
 
 @property CGPoint playerLoc;
-//@property CGPoint startLoc;
 @property CGPoint endLoc;
-//@property CGPoint obstLoc;
 
+@property ObstacleType obstacleInUse;
 @property (nonatomic) SKView *obstView;
 @property (nonatomic) SKView *resConfirmView;
 
@@ -314,10 +313,12 @@ static const int CELLNUM = 11;
     switch (type) {
         case Simon: {
             obstScene = [[SimonScene alloc] initWithSize:self.frame.size];
+            _obstacleInUse = Simon;
             break;
         }
         default: { //Default is DragDrop and also handles that case
             obstScene = [[ObstacleScene alloc] initWithSize:self.frame.size];
+            _obstacleInUse = DragDrop;
             break;
         }
     }
@@ -394,9 +395,22 @@ static const int CELLNUM = 11;
 {
     [self.delegate useResourceConfirmed:type];
     [self resourceConfirmDidFinish];
-    if (_obstView != nil)
-    {
-        [self obstacleDidFinish];
+    
+    if (_obstView != nil) {
+        switch (type){
+            case Notepad: {
+                if (_obstacleInUse == Simon) {
+                    [self obstacleDidFinish];
+                }
+                break;
+            }
+            default: { //Default is Test and handles that case
+                if (_obstacleInUse == DragDrop) {
+                    [self obstacleDidFinish];
+                }
+                break;
+            }
+        }
     }
 }
 

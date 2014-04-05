@@ -17,7 +17,6 @@ static const uint32_t movableCategory    =  0x1 << 2;
 - (id)initWithSize:(CGSize)size
 {
     self = [super initWithSize:size];
-    
     _buttonWidth = 100;
     
     self.backgroundColor = [SKColor whiteColor];

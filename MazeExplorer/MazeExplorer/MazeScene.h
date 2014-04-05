@@ -41,4 +41,5 @@
 -(void) shiftMaze;
 -(id)initWithSize:(CGSize)size String: (NSString *)mazeString andWidth: (int) mazeWidth;
 -(void)resourceUsed:(ResourceType) type;
+
 @end
