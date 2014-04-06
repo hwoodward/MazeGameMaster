@@ -8,15 +8,9 @@
 
 
 #import <SpriteKit/SpriteKit.h>
+#import "Obstacle.h"
 
-@protocol SimonSceneDelegate
-
-- (void)obstacleDidFinish;
-- (void)obstacleDidFail; 
-
-@end
-
-@interface SimonScene : SKScene
+@interface SimonScene : SKScene <Obstacle>
 
 @property (nonatomic, strong) SKSpriteNode *selectedNode;
 @property (nonatomic, strong) SKSpriteNode *checkNode;
@@ -28,7 +22,7 @@
 
 @property float buttonWidth;
 
-@property id <SimonSceneDelegate> delegate;
+@property id <ObstacleSceneDelegate> delegate;
 
 @end
 

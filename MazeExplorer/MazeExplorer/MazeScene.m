@@ -16,10 +16,9 @@
 @property (nonatomic) Maze* maze;
 
 @property CGPoint playerLoc;
-//@property CGPoint startLoc;
 @property CGPoint endLoc;
-//@property CGPoint obstLoc;
 
+@property ObstacleType obstacleInUse;
 @property (nonatomic) SKView *obstView;
 @property (nonatomic) SKView *resConfirmView;
 
@@ -261,11 +260,7 @@ static const int CELLNUM = 11;
                 [_player runAction:undoMove];
                 _playerLoc = newPos;
 
-                _obstView = [[SKView alloc] initWithFrame:self.view.frame];
-                SimonScene *obstScene = [[SimonScene alloc] initWithSize:self.frame.size];
-                [obstScene setDelegate:self];
-                [self.view addSubview:_obstView];
-                [_obstView presentScene:obstScene];
+                [self launchObstacle:[_maze getSecondaryTypeWithRow:newPos.y andColumn:newPos.x].Obstacle];
                 break;
             }
             case Resource: {
@@ -280,7 +275,7 @@ static const int CELLNUM = 11;
                     [resourceNode removeFromParent];
                 }];
                 _playerLoc = newPos;
-                [self increaseResourceCounter];
+                [self obtainResource: [_maze getSecondaryTypeWithRow:newPos.y andColumn:newPos.x].Resource];
                 [self emptyMazeCellWithRow:_playerLoc.y andCol: _playerLoc.x];
                 break;
             }
@@ -306,6 +301,48 @@ static const int CELLNUM = 11;
     
 }
 
+/*
+ launchObstacle: (ObstacleType) type
+ creates and launches an obstacle of the type given by the input (it defaults to the default obstacle DragDrop.
+*/
+-(void) launchObstacle: (ObstacleType) type {
+    _obstView = [[SKView alloc] initWithFrame:self.view.frame];
+    
+    id <Obstacle> obstScene;
+    
+    switch (type) {
+        case Simon: {
+            obstScene = [[SimonScene alloc] initWithSize:self.frame.size];
+            _obstacleInUse = Simon;
+            break;
+        }
+        default: { //Default is DragDrop and also handles that case
+            obstScene = [[ObstacleScene alloc] initWithSize:self.frame.size];
+            _obstacleInUse = DragDrop;
+            break;
+        }
+    }
+    [obstScene setDelegate:self];
+    [self.view addSubview:_obstView];
+    [_obstView presentScene:obstScene];
+}
+
+/*
+ obtainResource: (ResourceType) type
+ tells the resourceScene (via myScene) that the player has obtained a resource of the given type
+ */
+-(void) obtainResource:(ResourceType) type {
+    switch (type) {
+        case Notepad: {
+            [self.delegate increaseResourceCounter:Notepad];
+            break;
+        }
+        default: { //Default is a Test resource and also handles that case
+            [self.delegate increaseResourceCounter:Test];
+            break;
+        }
+    }
+}
 
 /*
  obstacleDidFinish:
@@ -352,22 +389,29 @@ static const int CELLNUM = 11;
 /*
  useResourceConfirmed
  This tells MyScene that a resource was used, so that it can tell ResourceScene.
+ Then closes the confirmation screen and any obstacles in use
  */
--(void)useResourceConfirmed
+-(void)useResourceConfirmed:(ResourceType) type
 {
-    [self.delegate useResourceConfirmed];
+    [self.delegate useResourceConfirmed:type];
+    [self resourceConfirmDidFinish];
     
-    if (_obstView != nil)
-    {
-        //Get rid of the obstacle screen
-        //Get rid of the obstacle node
-        [self obstacleDidFinish]; 
+    if (_obstView != nil) {
+        switch (type){
+            case Notepad: {
+                if (_obstacleInUse == Simon) {
+                    [self obstacleDidFinish];
+                }
+                break;
+            }
+            default: { //Default is Test and handles that case
+                if (_obstacleInUse == DragDrop) {
+                    [self obstacleDidFinish];
+                }
+                break;
+            }
+        }
     }
-}
-
--(void)increaseResourceCounter
-{
-    [self.delegate increaseResourceCounter];
 }
 
 /*
@@ -384,11 +428,11 @@ static const int CELLNUM = 11;
  resourceUsed:
  result: Uses a resource. (Responds to user interaction with resourceScene.)
  */
--(void)resourceUsed
+-(void)resourceUsed:(ResourceType) type
 {
     _resConfirmView = [[SKView alloc] initWithFrame:self.view.frame];
     ResourceConfirm *resConfirm;
-    resConfirm = [[ResourceConfirm alloc] initWithSize:self.frame.size];
+    resConfirm = [[ResourceConfirm alloc] initWithSize:self.frame.size andResource:type];
     [resConfirm setDelegate: self];
     [self.view addSubview:_resConfirmView];
     [_resConfirmView presentScene:resConfirm];

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6D51E22018F0C0DF00E7AA04 /* magic.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D51E21F18F0C0DF00E7AA04 /* magic.png */; };
+		6D51E22418F0C16D00E7AA04 /* Notepad.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D51E22318F0C16D00E7AA04 /* Notepad.png */; };
 		6D79B51218E8C764008DB1AB /* InstructionScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D79B51118E8C764008DB1AB /* InstructionScene.m */; };
 		6D79B51818E8D605008DB1AB /* DSMultilineLabelNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D79B51718E8D605008DB1AB /* DSMultilineLabelNode.m */; };
 		6DB01A5018E38A8200EF2923 /* button1.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DB01A4F18E38A8200EF2923 /* button1.png */; };
@@ -57,6 +59,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6D51E21E18F0B51200E7AA04 /* Obstacle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Obstacle.h; sourceTree = "<group>"; };
+		6D51E21F18F0C0DF00E7AA04 /* magic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = magic.png; sourceTree = "<group>"; };
+		6D51E22318F0C16D00E7AA04 /* Notepad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Notepad.png; sourceTree = "<group>"; };
 		6D76EEAC18CD79B8008FBB1A /* typedef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = typedef.h; sourceTree = "<group>"; };
 		6D79B51018E8C764008DB1AB /* InstructionScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstructionScene.h; sourceTree = "<group>"; };
 		6D79B51118E8C764008DB1AB /* InstructionScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstructionScene.m; sourceTree = "<group>"; };
@@ -185,20 +190,23 @@
 				A176951518B01E1B00DDCB91 /* ViewController.m */,
 				93A48E1118BF1B470008E8ED /* MazeScene.h */,
 				93A48E1218BF1B470008E8ED /* MazeScene.m */,
+				6D51E21E18F0B51200E7AA04 /* Obstacle.h */,
 				A1C2DA8318C41B0B00288B36 /* ObstacleScene.h */,
 				A1C2DA8418C41B0B00288B36 /* ObstacleScene.m */,
 				6D79B51018E8C764008DB1AB /* InstructionScene.h */,
 				6D79B51118E8C764008DB1AB /* InstructionScene.m */,
-				6D79B51618E8D605008DB1AB /* DSMultilineLabelNode.h */,
 				93902B7E18EE6C880018D705 /* SimonScene.h */,
 				93902B7F18EE6C880018D705 /* SimonScene.m */,
+				6D79B51618E8D605008DB1AB /* DSMultilineLabelNode.h */,
 				6D79B51718E8D605008DB1AB /* DSMultilineLabelNode.m */,
 				A176951718B01E1B00DDCB91 /* MyScene.h */,
 				A176951818B01E1C00DDCB91 /* MyScene.m */,
 				9390CED318E54ADC0073C488 /* ResourceConfirm.h */,
 				9390CED418E54ADC0073C488 /* ResourceConfirm.m */,
+				6D51E22318F0C16D00E7AA04 /* Notepad.png */,
 				A125363618C2D70D0033FE44 /* ResourceScene.h */,
 				A125363718C2D70D0033FE44 /* ResourceScene.m */,
+				6D51E21F18F0C0DF00E7AA04 /* magic.png */,
 				A176951A18B01E1C00DDCB91 /* Spaceship.png */,
 				A176951C18B01E1C00DDCB91 /* Images.xcassets */,
 				9398611318E8C72900FDE08D /* checkButton.png */,
@@ -327,8 +335,10 @@
 				6DB01A5618E38C7C00EF2923 /* help.png in Resources */,
 				A176951B18B01E1C00DDCB91 /* Spaceship.png in Resources */,
 				A176951318B01E1B00DDCB91 /* Main.storyboard in Resources */,
+				6D51E22018F0C0DF00E7AA04 /* magic.png in Resources */,
 				9398611018E8C6F600FDE08D /* stopbutton.png in Resources */,
 				6DB01A5418E38B0A00EF2923 /* button3.png in Resources */,
+				6D51E22418F0C16D00E7AA04 /* Notepad.png in Resources */,
 				9398610A18E8C6A400FDE08D /* bluecircle.png in Resources */,
 				6DB01A5018E38A8200EF2923 /* button1.png in Resources */,
 				6DB01A5218E38B0600EF2923 /* button2.png in Resources */,

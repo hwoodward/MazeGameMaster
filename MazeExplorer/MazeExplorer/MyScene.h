@@ -20,8 +20,8 @@
 // Any methods that MazeScene or ResourceScene calls on their delegates
 // must appear here, and be implemented in the .m file.
 
--(void)increaseResourceCounter;
--(void)useResourceConfirmed; 
+-(void)increaseResourceCounter:(ResourceType) type;
+-(void)useResourceConfirmed:(ResourceType) type;
 -(void)mazeSolved;
 -(void)instructionsDone;
 @end

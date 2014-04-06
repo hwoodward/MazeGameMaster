@@ -20,11 +20,11 @@
 @implementation MyScene
 
 //These are the maze strings and widths.
-static const NSString* maze1String = @"*E*********  *     **      *******     **     *  ** O   * *** *  *   ****  *  ***R   *   ***S*******";
+static const NSString* maze1String = @"*E*********  *    R**  O   *******     **     *  ** 1   * *** *  *   ****  *  ***a   *   ***S*******";
 static const int maze1Width = 10;
-static const NSString* maze2String = @"*****S***************           *R     **  *******  *****  **R *     *      *  *****  *  ****   *  **     *     *      **     O     ****   ** ********  *  *   **       *   *  *   **   **  *   *  *   **   *R  *          **   ******O******O***       *   *      ** ***** *   *  ******     * *** *      **   * * *   ****** **   *****        * **           *  *** ***********  *      **R          O      *****************E***";
+static const NSString* maze2String = @"*****S***************           *R     **  *******  *****  **R *     *      *  *****  *  ****   *  **     *     *      **     O     ****   ** ********  *  *   **       *   *  *   **   **  *   *  *   **   *R  *          **   ******1******1***       *   *      ** ***** *   *  ******     * *** *      **   * * *   ****** **   *****        * **           *  *** ***********  *      **R          1      *****************E***";
 static const int maze2Width = 20;
-static const NSString* maze3String = @"**************************   *   *   *           ** * * * * * * * ******* **O* *R*   *   * *       ** * *********** * ******** *             *      O** ********************* ** *                *    **   **** ******* * * ***** * *            * * *  E* * *** * ******** *   *** *   * * *      * ****R** ***O* * * ** *  O   * ** *   * *   ** **** *** ** * *** *   **    * *   ** * *   * ******* * * **** * * * * *   *R* * *   ** *   * * * * * * * *** ** ***** * * * * *     * **      O* * * * * * * * ** ***** * * * * * * * * **     * *   *   * * *   ** * * * ********* * ****** * * *                 ********************S*****";
+static const NSString* maze3String = @"**************************   *   *   *           ** * * * * * * * ******* **1* *R*   *   * *       ** * *********** * ******** *             *      1** ********************* ** *                *    **   **** ******* * * ***** * *            * * *  E* * *** * ******** *   *** *   * * *      * ****R** ***1* * * ** *  O   * ** *   * *   ** **** *** ** * *** *   **    * *   ** * *   * ******* * * **** * * * * *   *R* * *   ** *   * * * * * * * *** ** ***** * * * * *     * **      O* * * * * * * * ** ***** * * * * * * * * **     * *   *   * * *   ** * * * ********* * ****** * * *                 ********************S*****";
 static const int maze3Width = 25;
 
 
@@ -152,18 +152,18 @@ static const int maze3Width = 25;
     /* Called before each frame is rendered */
 }
 
--(void)increaseResourceCounter {
-    [(ResourceScene*)_resourceView.scene increaseCounterByOne];
+-(void)increaseResourceCounter:(ResourceType) type {
+    [(ResourceScene*)_resourceView.scene increaseCounterByOne:type];
 }
 
--(void)useResource
+-(void)useResource:(ResourceType) type
 {
-    [(MazeScene*)_mazeView.scene resourceUsed];
+    [(MazeScene*)_mazeView.scene resourceUsed:type];
 }
 
--(void)useResourceConfirmed
+-(void)useResourceConfirmed:(ResourceType) type
 {
-    [(ResourceScene*)_resourceView.scene useResourceConfirmed];
+    [(ResourceScene*)_resourceView.scene useResourceConfirmed:type];
 }
 
 

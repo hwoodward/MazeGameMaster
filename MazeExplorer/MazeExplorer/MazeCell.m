@@ -20,8 +20,10 @@
  * Key for string to maze translation:
  * "*" --> Wall
  * " " --> Path
- * "O" --> Obstacle
- * "R" --> Resource
+ * "O" --> Obstacle (DragDrop)
+ * "1" --> Obstacle (Simon)
+ * "R" --> Resource (Test)
+ * "a" --> Resource (Notepad)
  * "S" --> starting location (NOTE: There should only be ONE of these per maze, or weirdness will ensue)
  * "E" --> End location (NOTE: For now, there should only be one of these. If you want to build support
  *                       multiple exits, be my guest)
@@ -39,9 +41,19 @@
     }
     else if (![contents compare:@"O"]) {
         _contents = Obstacle;
+        _secondaryType.Obstacle = DragDrop;
+    }
+    else if (![contents compare:@"1"]) {
+        _contents = Obstacle;
+        _secondaryType.Obstacle = Simon;
     }
     else if (![contents compare:@"R"]) {
         _contents = Resource;
+        _secondaryType.Resource = Test;
+    }
+    else if (![contents compare:@"a"]) {
+        _contents = Resource;
+        _secondaryType.Resource = Notepad;
     }
     else if (![contents compare:@"S"]) {
         _contents = Start;
@@ -70,21 +82,33 @@
     _cellCol = col;
     _cellRow = row;
     _contents = contents;
-
+    
+    if (_contents == Obstacle) {
+        _secondaryType.Obstacle = DragDrop;
+    }
+    if (_contents == Resource) {
+        _secondaryType.Resource = Test;
+    }
+    
+    return self;
+}
+/*
+ * Method: initWithRow: andColumn
+ * Do not use init. Things will be nil, or default, or something weird. Don't do it.
+ *
+ * initializes the MazeCell with the given inputs.
+ */
+- (id)initWithRow: (int) row
+        andColumn: (int) col
+      andContents: (CellType) contents
+ andSecondaryType: (SecondaryType)secondaryType
+{
+    self = [super init];
+    _cellCol = col;
+    _cellRow = row;
+    _contents = contents;
+    _secondaryType = secondaryType;
     return self;
 }
 
-/*
- * Method: isWall
- *
- * Checks that a MazeCell is a wall or not.
- * (Note: [<NSString> compare:] returns 0 if the strings are equal, so to make this
- * return the correct boolean, I had to flip the result. Yes, this makes me angry
- * too.)
- *
-- (BOOL)isWall
-{
-    return ![_contents == (CellType)Wall];
-}
-*/
 @end

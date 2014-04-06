@@ -29,6 +29,8 @@
                 andWidth:(int) width;
 - (CellType)getContentsWithRow:(int)row
                       andColumn:(int)col;
+- (SecondaryType)getSecondaryTypeWithRow:(int)row
+                     andColumn:(int)col;
 -(MazeCell*)returnCellWithRow:(int)row
                     andColumn:(int)col;
 -(void)emptyContentsWithRow:(int)row
