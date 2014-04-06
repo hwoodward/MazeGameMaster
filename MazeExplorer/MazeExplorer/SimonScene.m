@@ -216,7 +216,7 @@ static const uint32_t movableCategory    =  0x1 << 2;
     }
     
     //If our current position is one past the end of the array, check to see if the user's string is the same as the computer's string.
-    if ((currentpos == _currentlength) && (_currentlength > 0)){
+    if ((currentpos >= _currentlength) && (_currentlength > 0)){
         NSLog(@"The _userarray is full! The _userarray is:");
         for (NSInteger i = 0; i < _currentlength; ++i) {
             NSLog(@"%i", _userarray[i]);
