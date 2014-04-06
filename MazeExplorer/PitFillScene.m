@@ -27,7 +27,7 @@ static const uint32_t borderCategory    =  0x1 << 3;
     SKLabelNode *label = [[SKLabelNode alloc] init];
     label.text = @"Drag the boulders into the blue pit to dismiss.";
     label.fontSize = 27;
-    label.position = CGPointMake(CGRectGetMidX(self.frame),CGRectGetMaxY(self.frame)-100);
+    label.position = CGPointMake(CGRectGetMidX(self.frame),CGRectGetMaxY(self.frame)-50);
     label.fontColor = [SKColor blackColor];
     [self addChild:label];
     
@@ -40,17 +40,17 @@ static const uint32_t borderCategory    =  0x1 << 3;
     [self addTargetBox:location];
  
     //add boulders
-    location = CGPointMake(self.frame.size.width/2, self.frame.size.height/2+200);
+    location = CGPointMake(self.frame.size.width/2, CGRectGetMaxY(self.frame)-100);
     [self addSmallBoulder: location];
-    location = CGPointMake(self.frame.size.width/2 + 75, self.frame.size.height/2+200);
+    location = CGPointMake(self.frame.size.width/2, CGRectGetMaxY(self.frame)-175 );
     [self addSmallBoulder: location];
-    location = CGPointMake(self.frame.size.width/2 - 200, self.frame.size.height/2+200);
+    location = CGPointMake(self.frame.size.width/2 - 150, CGRectGetMaxY(self.frame)-200);
     [self addBigBoulder: location];
-    location = CGPointMake(self.frame.size.width/2 + 250, self.frame.size.height/2+200);
+    location = CGPointMake(self.frame.size.width/2 + 250, CGRectGetMaxY(self.frame)-125);
     [self addlongBoulder: location];
-    location = CGPointMake(self.frame.size.width/2 + 250, self.frame.size.height/2+100);
+    location = CGPointMake(self.frame.size.width/2 + 250, CGRectGetMaxY(self.frame)-250);
     [self addlongBoulder: location];
-    location = CGPointMake(self.frame.size.width/2 - 250, self.frame.size.height/2+100);
+    location = CGPointMake(self.frame.size.width/2 - 250, CGRectGetMaxY(self.frame)-200);
     [self addtallBoulder: location];
 
     return self;
