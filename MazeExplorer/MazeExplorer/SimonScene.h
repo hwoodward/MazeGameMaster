@@ -15,8 +15,8 @@
 @property (nonatomic, strong) SKSpriteNode *selectedNode;
 @property (nonatomic, strong) SKSpriteNode *checkNode;
 
-@property (nonatomic) NSInteger *userarray;
-@property (nonatomic) NSInteger *comparray; 
+@property (nonatomic) NSMutableArray *userarray;
+@property (nonatomic) NSMutableArray *comparray;
 @property (nonatomic) NSInteger currentlength;
 @property (nonatomic) NSInteger touchcount;
 @property (nonatomic) NSInteger currentpos; 
