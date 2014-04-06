@@ -25,7 +25,7 @@ static const uint32_t borderCategory    =  0x1 << 3;
     
     self.backgroundColor = [SKColor greenColor];
     SKLabelNode *label = [[SKLabelNode alloc] init];
-    label.text = @"Drag the red boulders into the blue pit to dismiss.";
+    label.text = @"Drag the boulders into the blue pit to dismiss.";
     label.fontSize = 27;
     label.position = CGPointMake(CGRectGetMidX(self.frame),CGRectGetMaxY(self.frame)-100);
     label.fontColor = [SKColor blackColor];
@@ -42,12 +42,16 @@ static const uint32_t borderCategory    =  0x1 << 3;
     //add boulders
     location = CGPointMake(self.frame.size.width/2, self.frame.size.height/2+200);
     [self addSmallBoulder: location];
-    location = CGPointMake(self.frame.size.width/2 + 70, self.frame.size.height/2+200);
+    location = CGPointMake(self.frame.size.width/2 + 75, self.frame.size.height/2+200);
     [self addSmallBoulder: location];
     location = CGPointMake(self.frame.size.width/2 - 200, self.frame.size.height/2+200);
     [self addBigBoulder: location];
+    location = CGPointMake(self.frame.size.width/2 + 250, self.frame.size.height/2+200);
+    [self addlongBoulder: location];
     location = CGPointMake(self.frame.size.width/2 + 250, self.frame.size.height/2+100);
-    [self addBigBoulder: location];
+    [self addlongBoulder: location];
+    location = CGPointMake(self.frame.size.width/2 - 250, self.frame.size.height/2+100);
+    [self addtallBoulder: location];
 
     return self;
 }
@@ -62,6 +66,7 @@ static const uint32_t borderCategory    =  0x1 << 3;
     boulder.physicsBody.contactTestBitMask = targetCategory | outlineCategory;
     boulder.physicsBody.collisionBitMask = movableCategory | borderCategory;
     boulder.physicsBody.usesPreciseCollisionDetection = YES;
+    boulder.physicsBody.allowsRotation = NO;
     [self addChild:boulder];
 }
 -(void) addBigBoulder: (CGPoint) location {
@@ -75,6 +80,37 @@ static const uint32_t borderCategory    =  0x1 << 3;
     boulder.physicsBody.contactTestBitMask = targetCategory | outlineCategory;
     boulder.physicsBody.collisionBitMask = movableCategory | borderCategory;
     boulder.physicsBody.usesPreciseCollisionDetection = YES;
+    boulder.physicsBody.allowsRotation = NO;
+    [self addChild:boulder];
+}
+
+-(void) addlongBoulder: (CGPoint) location {
+    
+    SKSpriteNode *boulder = [[SKSpriteNode alloc]initWithImageNamed:@"longBoulder.png"];
+    boulder.position = location;
+    boulder.name = @"Boulder";
+    boulder.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:boulder.size];
+    boulder.physicsBody.dynamic = YES;
+    boulder.physicsBody.categoryBitMask = movableCategory;
+    boulder.physicsBody.contactTestBitMask = targetCategory | outlineCategory;
+    boulder.physicsBody.collisionBitMask = movableCategory | borderCategory;
+    boulder.physicsBody.usesPreciseCollisionDetection = YES;
+    boulder.physicsBody.allowsRotation = NO;
+    [self addChild:boulder];
+}
+
+-(void) addtallBoulder: (CGPoint) location {
+    
+    SKSpriteNode *boulder = [[SKSpriteNode alloc]initWithImageNamed:@"tallBoulder.png"];
+    boulder.position = location;
+    boulder.name = @"Boulder";
+    boulder.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:boulder.size];
+    boulder.physicsBody.dynamic = YES;
+    boulder.physicsBody.categoryBitMask = movableCategory;
+    boulder.physicsBody.contactTestBitMask = targetCategory | outlineCategory;
+    boulder.physicsBody.collisionBitMask = movableCategory | borderCategory;
+    boulder.physicsBody.usesPreciseCollisionDetection = YES;
+    boulder.physicsBody.allowsRotation = NO;
     [self addChild:boulder];
 }
 
@@ -181,7 +217,7 @@ static const uint32_t borderCategory    =  0x1 << 3;
 
 
 - (void)notCrossingLines {
-    if(_inTarget == 4) { //inTarget needs to equal the total number of boulders.
+    if(_inTarget == 6) { //inTarget needs to equal the total number of boulders.
         [_delegate obstacleDidFinish];
     }
 }
