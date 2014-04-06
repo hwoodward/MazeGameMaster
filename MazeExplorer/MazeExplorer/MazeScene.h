@@ -17,6 +17,7 @@
 #import "Maze.h"
 #import "typedef.h"
 #import "SimonScene.h"
+#import "PitFillScene.h"
 
 @protocol MazeSceneDelegate
 

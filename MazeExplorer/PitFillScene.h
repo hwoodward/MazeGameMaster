@@ -1,0 +1,26 @@
+//
+//  PitFillScene.h
+//  MazeExplorer
+//
+//  Created by Helen Woodward on 4/6/14.
+//
+//
+/* This is an obstacle where you will drag a number of "boulders" into a pit to fill it. When they are all inside the "pit" it will dismiss.
+ */
+
+
+#import <SpriteKit/SpriteKit.h>
+#import "Obstacle.h"
+
+@interface PitFillScene : SKScene <Obstacle>
+
+@property (nonatomic, strong) SKSpriteNode *selectedNode;
+@property int inTarget;
+
+@property id <ObstacleSceneDelegate> delegate;
+
+- (void) moveSelectedNode:(CGPoint)translation;
+- (void) addTargetBox:(CGPoint) location;
+- (void) notCrossingLines;
+
+@end

@@ -28,7 +28,7 @@
             break;
         }
         default: {//Devault is Test and also handles that case
-            label.text = @"You are going to use a magic resource. Using a resource cannot be undone. \n \n A magic resource dismisses the drag and drop obstacle. However if used when not in a drag and drop obstacle the resource is used to no effect. \n \n Click the green check to confirm this action, the red x to cancel.";
+            label.text = @"You are going to use a magic resource. Using a resource cannot be undone. \n \n A magic resource dismisses the drag and drop and pit obstacle. However if used when not in a drag and drop obstacle the resource is used to no effect. \n \n Click the green check to confirm this action, the red x to cancel.";
             break;
         }
     }
