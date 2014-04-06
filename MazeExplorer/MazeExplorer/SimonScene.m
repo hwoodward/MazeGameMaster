@@ -10,10 +10,6 @@
 
 @implementation SimonScene
 
-static const uint32_t targetCategory     =  0x1 << 0;
-static const uint32_t outlineCategory    =  0x1 << 1;
-static const uint32_t movableCategory    =  0x1 << 2;
-
 - (id)initWithSize:(CGSize)size
 {
     self = [super initWithSize:size];
@@ -23,6 +19,7 @@ static const uint32_t movableCategory    =  0x1 << 2;
     
     CGSize buttonSize = CGSizeMake(_buttonWidth, _buttonWidth);
     
+    //Creating the label node that you click to start the game.
     SKLabelNode *label = [[SKLabelNode alloc] init];
     label.text = @"Let's play Simon! Click here to start!";
     label.fontSize = 27;
@@ -31,6 +28,7 @@ static const uint32_t movableCategory    =  0x1 << 2;
     label.name = @"clickToStart";
     [self addChild:label];
     
+    //Creating the label node that you click to end the game prematurely.
     SKLabelNode *debuglabel = [[SKLabelNode alloc] init];
     debuglabel.text = @"Click to close Simon.";
     debuglabel.fontSize = 27;
@@ -39,24 +37,25 @@ static const uint32_t movableCategory    =  0x1 << 2;
     debuglabel.name = @"debugLabel";
     [self addChild:debuglabel];
     
-    
+    // Creating the red Simon button
     SKSpriteNode *redNode = [[SKSpriteNode alloc] initWithColor: [SKColor redColor] size:buttonSize];
     redNode.position = CGPointMake(CGRectGetMidX(self.frame)-100,CGRectGetMidY(self.frame)+100);
     redNode.name = @"redButton";
     [self addChild:redNode];
     
+    // Creating the blue Simon button
     SKSpriteNode *blueNode = [[SKSpriteNode alloc] initWithColor: [SKColor blueColor] size:buttonSize];
     blueNode.position = CGPointMake(CGRectGetMidX(self.frame)+100,CGRectGetMidY(self.frame)+100);
     blueNode.name = @"blueButton";
     [self addChild:blueNode];
 
-    
+    // Creating the yellow Simon button
     SKSpriteNode *yellowNode = [[SKSpriteNode alloc] initWithColor: [SKColor yellowColor] size:buttonSize];
     yellowNode.position = CGPointMake(CGRectGetMidX(self.frame)-100,CGRectGetMidY(self.frame)-100);
     yellowNode.name = @"yellowButton";
     [self addChild:yellowNode];
 
-    
+    // Creating the green Simon button
     SKSpriteNode *greenNode = [[SKSpriteNode alloc] initWithColor: [SKColor greenColor] size:buttonSize];
     greenNode.position = CGPointMake(CGRectGetMidX(self.frame)+100,CGRectGetMidY(self.frame)-100);
     greenNode.name = @"greenButton";
@@ -84,13 +83,16 @@ static const uint32_t movableCategory    =  0x1 << 2;
     [self generateSimonArrayOfLength:length];
     [SKAction waitForDuration:5];
     
+    //What is my current position in the _userarray (used by touchesbegan)?
+    _currentpos = 0;
+    
     SKNode *currentNode;
     CGPoint position;
     
     //Taken from the iOS developer library SpriteKit Programmer's Guide (with changes)
-    SKAction *pulseWhite = [SKAction sequence:@[
-                                              [SKAction colorizeWithColor:[SKColor whiteColor] colorBlendFactor:1.0 duration:0.15],
-                                              [SKAction waitForDuration:0.1],
+    SKAction *pulsePurple = [SKAction sequence:@[
+                                              [SKAction colorizeWithColor:[SKColor purpleColor] colorBlendFactor:1.0 duration:0.15],
+                                              [SKAction waitForDuration:0.5],
                                               [SKAction colorizeWithColorBlendFactor:0.0 duration:0.15]]];
     
     //Makes the boxes light up according to the array it is given.
@@ -100,7 +102,7 @@ static const uint32_t movableCategory    =  0x1 << 2;
             // Wait
             position = CGPointMake(CGRectGetMidX(self.frame)-100,CGRectGetMidY(self.frame)+100);
             currentNode = [self nodeAtPoint:position];
-            [currentNode runAction:pulseWhite];
+            [currentNode runAction:pulsePurple];
             NSLog(@"The red node should pulse.");
         }
         else if (_comparray[i] == 2) {
@@ -108,7 +110,7 @@ static const uint32_t movableCategory    =  0x1 << 2;
             // Wait
             position = CGPointMake(CGRectGetMidX(self.frame)+100,CGRectGetMidY(self.frame)+100);
             currentNode = [self nodeAtPoint:position];
-            [currentNode runAction:pulseWhite];
+            [currentNode runAction:pulsePurple];
             NSLog(@"The blue node should pulse.");
         }
         else if (_comparray[i] == 3) {
@@ -116,7 +118,7 @@ static const uint32_t movableCategory    =  0x1 << 2;
             // Wait
             position = CGPointMake(CGRectGetMidX(self.frame)-100,CGRectGetMidY(self.frame)-100);
             currentNode = [self nodeAtPoint:position];
-            [currentNode runAction:pulseWhite];
+            [currentNode runAction:pulsePurple];
             NSLog(@"The yellow node should pulse.");
         }
         else if (_comparray[i] == 4) {
@@ -124,7 +126,7 @@ static const uint32_t movableCategory    =  0x1 << 2;
             // Wait
             position = CGPointMake(CGRectGetMidX(self.frame)+100,CGRectGetMidY(self.frame)-100);
             currentNode = [self nodeAtPoint:position];
-            [currentNode runAction:pulseWhite];
+            [currentNode runAction:pulsePurple];
             NSLog(@"The green node should pulse.");
         }
     }
@@ -167,9 +169,6 @@ static const uint32_t movableCategory    =  0x1 << 2;
     UITouch *touch = [touches anyObject];
  	CGPoint location = [touch locationInNode:self];
     
-    //What is my current position in the array?
-    NSInteger currentpos = 0;
-    
     //what node am I in?
     SKNode *clickedNode = [self nodeAtPoint:location];
     
@@ -188,34 +187,42 @@ static const uint32_t movableCategory    =  0x1 << 2;
     //Did you click the red button?
     else if ([clickedNode.name isEqualToString:@"redButton"]) {
         //Add 1 to the array
-        _userarray[currentpos] = 1;
-        ++currentpos;
+        _userarray[_currentpos] = 1;
+        _currentpos = _currentpos + 1;
+        [self userArrayIsFull];
         NSLog(@"You clicked the red button.");
     }
     //Did you click the blue button?
     else if ([clickedNode.name isEqualToString:@"blueButton"]) {
         //Add 2 to the array
-        _userarray[currentpos] = 2;
-        ++currentpos;
+        _userarray[_currentpos] = 2;
+        _currentpos = _currentpos + 1;
+        [self userArrayIsFull];
         NSLog(@"You clicked the blue button.");
     }
     //Did you click the yellow button?
     else if ([clickedNode.name isEqualToString:@"yellowButton"]) {
         //Add 3 to the array
-        _userarray[currentpos] = 3;
-        ++currentpos;
+        _userarray[_currentpos] = 3;
+        _currentpos = _currentpos + 1;
+        [self userArrayIsFull];
         NSLog(@"You clicked the yellow button.");
     }
     //Did you click the green button?
     else if ([clickedNode.name isEqualToString:@"greenButton"]) {
         //Add 4 to the array
-        _userarray[currentpos] = 4;
-        ++currentpos;
+        _userarray[_currentpos] = 4;
+        _currentpos = _currentpos + 1;
+        [self userArrayIsFull];
         NSLog(@"You clicked the green button.");
     }
     
+}
+
+-(void)userArrayIsFull
+{
     //If our current position is one past the end of the array, check to see if the user's string is the same as the computer's string.
-    if ((currentpos >= _currentlength) && (_currentlength > 0)){
+    if (((_currentpos) == _currentlength) && (_currentlength > 0)){
         NSLog(@"The _userarray is full! The _userarray is:");
         for (NSInteger i = 0; i < _currentlength; ++i) {
             NSLog(@"%i", _userarray[i]);
@@ -223,8 +230,11 @@ static const uint32_t movableCategory    =  0x1 << 2;
         
         [self checkWasUserCorrect];
     }
-    
-    
+    else{
+        NSLog(@"The userarray is either not full or too full!");
+        NSLog(@"currentpos is: %i", _currentpos);
+        NSLog(@"currentlength is: %i", _currentlength);
+    }
 }
 
 -(void)checkWasUserCorrect

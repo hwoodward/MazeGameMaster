@@ -97,6 +97,36 @@
             endingLineNumber = "32"
             landmarkName = "@interface ResourceScene"
             landmarkType = "2">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ResourceScene notepadLabel]"
+                  moduleName = "MazeExplorer"
+                  urlString = "file://localhost/Users/cs121/CS121/MazeGameMarjorie/MazeExplorer/MazeExplorer/ResourceScene.h"
+                  timestampString = "418438633.12541"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ResourceScene setNotepadLabel:]"
+                  moduleName = "MazeExplorer"
+                  urlString = "file://localhost/Users/cs121/CS121/MazeGameMarjorie/MazeExplorer/MazeExplorer/ResourceScene.h"
+                  timestampString = "418438633.12567"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "31">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -116,28 +146,28 @@
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "-[ResourceConfirm label]"
+                  symbolName = "-[ResourceConfirm resourceBeingConfirmed]"
                   moduleName = "MazeExplorer"
                   urlString = "file://localhost/Users/cs121/CS121/MazeGameMarjorie/MazeExplorer/MazeExplorer/ResourceConfirm.h"
-                  timestampString = "418331989.407469"
+                  timestampString = "418438633.125891"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "21"
-                  endingLineNumber = "21"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
                   offsetFromSymbolStart = "24">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "-[ResourceConfirm setLabel:]"
+                  symbolName = "-[ResourceConfirm setResourceBeingConfirmed:]"
                   moduleName = "MazeExplorer"
                   urlString = "file://localhost/Users/cs121/CS121/MazeGameMarjorie/MazeExplorer/MazeExplorer/ResourceConfirm.h"
-                  timestampString = "418331989.407844"
+                  timestampString = "418438633.126167"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "21"
-                  endingLineNumber = "21"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
                   offsetFromSymbolStart = "31">
                </Location>
             </Locations>
@@ -146,7 +176,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MazeExplorer/MazeScene.m"
@@ -155,14 +185,14 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "401"
             endingLineNumber = "401"
-            landmarkName = "@implementation MazeScene"
-            landmarkType = "3">
+            landmarkName = "-useResourceConfirmed:"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MazeExplorer/MazeScene.m"
@@ -171,8 +201,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "402"
             endingLineNumber = "402"
-            landmarkName = "@implementation MazeScene"
-            landmarkType = "3">
+            landmarkName = "-useResourceConfirmed:"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -214,11 +244,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MazeExplorer/SimonScene.m"
-            timestampString = "418330203.504801"
+            timestampString = "418438577.206472"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "149"
-            endingLineNumber = "149"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
             landmarkName = "-generateSimonArrayOfLength:"
             landmarkType = "5">
          </BreakpointContent>
@@ -230,11 +260,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MazeExplorer/SimonScene.m"
-            timestampString = "418330203.504801"
+            timestampString = "418438577.206472"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
             landmarkName = "-runOneSimonTurnWithLength:"
             landmarkType = "5">
          </BreakpointContent>
