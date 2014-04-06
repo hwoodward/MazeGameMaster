@@ -159,6 +159,14 @@
     for (NSInteger i=0; i < length; ++i) {
         NSLog(@"%i", _comparray[i]);
     }
+    
+    for (NSInteger i=0; i < length; ++i) {
+        _userarray[i] = 0;
+    }
+    NSLog(@"_userarray is:");
+    for (NSInteger i=0; i < length; ++i) {
+        NSLog(@"%i", _userarray[i]);
+    }
 }
 
 // Handles the interactions with the user
@@ -168,6 +176,9 @@
     
     UITouch *touch = [touches anyObject];
  	CGPoint location = [touch locationInNode:self];
+    
+    // Setting the value for each item in the user array.
+    NSInteger userVal = 0;
     
     //what node am I in?
     SKNode *clickedNode = [self nodeAtPoint:location];
@@ -180,14 +191,16 @@
     }
     //Did you click the debug label?
     else if ([clickedNode.name isEqualToString:@"debugLabel"]) {
-        [self userWasNotCorrect];
+        [self winSimon];
         NSLog(@"You clicked the debug label!");
     }
     
     //Did you click the red button?
     else if ([clickedNode.name isEqualToString:@"redButton"]) {
         //Add 1 to the array
-        _userarray[_currentpos] = 1;
+        userVal = 1;
+        _userarray[_currentpos] = userVal;
+        NSLog(@"_userarray[currentpos] is: %i",_userarray[_currentpos]);
         _currentpos = _currentpos + 1;
         [self userArrayIsFull];
         NSLog(@"You clicked the red button.");
@@ -195,7 +208,9 @@
     //Did you click the blue button?
     else if ([clickedNode.name isEqualToString:@"blueButton"]) {
         //Add 2 to the array
-        _userarray[_currentpos] = 2;
+        userVal = 2;
+        _userarray[_currentpos] = userVal;
+        NSLog(@"_userarray[currentpos] is: %i",_userarray[_currentpos]);
         _currentpos = _currentpos + 1;
         [self userArrayIsFull];
         NSLog(@"You clicked the blue button.");
@@ -203,7 +218,9 @@
     //Did you click the yellow button?
     else if ([clickedNode.name isEqualToString:@"yellowButton"]) {
         //Add 3 to the array
-        _userarray[_currentpos] = 3;
+        userVal = 3;
+        _userarray[_currentpos] = userVal;
+        NSLog(@"_userarray[currentpos] is: %i",_userarray[_currentpos]);
         _currentpos = _currentpos + 1;
         [self userArrayIsFull];
         NSLog(@"You clicked the yellow button.");
@@ -211,7 +228,9 @@
     //Did you click the green button?
     else if ([clickedNode.name isEqualToString:@"greenButton"]) {
         //Add 4 to the array
-        _userarray[_currentpos] = 4;
+        userVal = 4;
+        _userarray[_currentpos] = userVal;
+        NSLog(@"_userarray[currentpos] is: %i",_userarray[_currentpos]);
         _currentpos = _currentpos + 1;
         [self userArrayIsFull];
         NSLog(@"You clicked the green button.");
@@ -239,13 +258,19 @@
 
 -(void)checkWasUserCorrect
 {
+    BOOL failFlag = false;
     // Loop through and see if the arrays are equal
     for (NSInteger i = 0; i < _currentlength; i++) {
         if (_userarray[i] != _comparray[i]) {
             [self userWasNotCorrect];
+            failFlag = true;
+            break; 
         }
     }
-    [self userWasCorrect];
+    if (failFlag == false)
+    {
+        [self userWasCorrect];
+    }
 }
 
 -(void)userWasCorrect
