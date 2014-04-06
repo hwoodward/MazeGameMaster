@@ -357,13 +357,14 @@ static const int CELLNUM = 11;
 
 - (void)obstacleDidFinish
 {
-    [_obstView removeFromSuperview];
-    _obstView = Nil;
-    NSArray * nodesAtCurrentPos = [self nodesAtPoint: _player.position];
-    SKNode * obstacleNode = nodesAtCurrentPos[0];
-    [obstacleNode removeFromParent];
-    [self emptyMazeCellWithRow:_playerLoc.y andCol: _playerLoc.x];
-
+    if(_obstView != nil) {
+        [_obstView removeFromSuperview];
+        _obstView = Nil;
+        NSArray * nodesAtCurrentPos = [self nodesAtPoint: _player.position];
+        SKNode * obstacleNode = nodesAtCurrentPos[0];
+        [obstacleNode removeFromParent];
+        [self emptyMazeCellWithRow:_playerLoc.y andCol: _playerLoc.x];
+    }
 }
 
 /*
