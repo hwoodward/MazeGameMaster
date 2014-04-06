@@ -97,7 +97,7 @@
     
     //Makes the boxes light up according to the array it is given.
     for (NSInteger i = 0; i < _currentlength; ++i) {
-        if (_comparray[i] == 1) {
+        if ([_comparray[i] intValue] == 1) {
             // Light up the red node
             // Wait
             position = CGPointMake(CGRectGetMidX(self.frame)-100,CGRectGetMidY(self.frame)+100);
@@ -105,7 +105,7 @@
             [currentNode runAction:pulsePurple];
             NSLog(@"The red node should pulse.");
         }
-        else if (_comparray[i] == 2) {
+        else if ([_comparray[i] intValue] == 2) {
             // Light up the blue node
             // Wait
             position = CGPointMake(CGRectGetMidX(self.frame)+100,CGRectGetMidY(self.frame)+100);
@@ -113,7 +113,7 @@
             [currentNode runAction:pulsePurple];
             NSLog(@"The blue node should pulse.");
         }
-        else if (_comparray[i] == 3) {
+        else if ([_comparray[i] intValue] == 3) {
             // Light up the yellow node
             // Wait
             position = CGPointMake(CGRectGetMidX(self.frame)-100,CGRectGetMidY(self.frame)-100);
@@ -121,7 +121,7 @@
             [currentNode runAction:pulsePurple];
             NSLog(@"The yellow node should pulse.");
         }
-        else if (_comparray[i] == 4) {
+        else if ([_comparray[i] intValue] == 4) {
             // Light up the green node
             // Wait
             position = CGPointMake(CGRectGetMidX(self.frame)+100,CGRectGetMidY(self.frame)-100);
@@ -143,29 +143,25 @@
 -(void)generateSimonArrayOfLength: (NSInteger) length
 {
     NSLog(@"GenerateSimonArrayofLength was called.");
-    NSInteger array1[length];
-    NSInteger array2[length];
     // Making sure the user input array is the same length as the computer's array.
-    _comparray = array1;
-    _userarray = array2;
     _currentlength = length;
     
     NSInteger element;
     for (NSInteger i=0; i < length; ++i) {
         element = [self randomNumberBetweenMin:1 andMax:5];
-        _comparray[i] = element;
+        [_comparray insertObject:[NSNumber numberWithInteger: element] atIndex:i];
     }
     NSLog(@"_comparray is:");
     for (NSInteger i=0; i < length; ++i) {
-        NSLog(@"%i", _comparray[i]);
+        NSLog(@"%i", [_comparray[i] intValue]);
     }
     
     for (NSInteger i=0; i < length; ++i) {
-        _userarray[i] = 0;
+        [_userarray insertObject:[NSNumber numberWithInteger: 0] atIndex:i];
     }
     NSLog(@"_userarray is:");
     for (NSInteger i=0; i < length; ++i) {
-        NSLog(@"%i", _userarray[i]);
+        NSLog(@"%i", [_userarray[i] intValue]);
     }
 }
 
@@ -199,8 +195,12 @@
     else if ([clickedNode.name isEqualToString:@"redButton"]) {
         //Add 1 to the array
         userVal = 1;
-        _userarray[_currentpos] = userVal;
-        NSLog(@"_userarray[currentpos] is: %i",_userarray[_currentpos]);
+        [_userarray insertObject:[NSNumber numberWithInteger: userVal] atIndex:_currentpos];
+        NSLog(@"_userarray[currentpos] is: %i",[_userarray[_currentpos] intValue]);
+        NSLog(@"The _userarray is:");
+        for (NSInteger i = 0; i < _currentlength; ++i) {
+            NSLog(@"%i", [_userarray[i] intValue]);
+        }
         _currentpos = _currentpos + 1;
         [self userArrayIsFull];
         NSLog(@"You clicked the red button.");
@@ -209,8 +209,12 @@
     else if ([clickedNode.name isEqualToString:@"blueButton"]) {
         //Add 2 to the array
         userVal = 2;
-        _userarray[_currentpos] = userVal;
-        NSLog(@"_userarray[currentpos] is: %i",_userarray[_currentpos]);
+        [_userarray insertObject:[NSNumber numberWithInteger: userVal] atIndex:_currentpos];
+        NSLog(@"_userarray[currentpos] is: %i", [_userarray[_currentpos] intValue]);
+        NSLog(@"The _userarray is:");
+        for (NSInteger i = 0; i < _currentlength; ++i) {
+            NSLog(@"%i", [_userarray[i] intValue]);
+        }
         _currentpos = _currentpos + 1;
         [self userArrayIsFull];
         NSLog(@"You clicked the blue button.");
@@ -219,8 +223,13 @@
     else if ([clickedNode.name isEqualToString:@"yellowButton"]) {
         //Add 3 to the array
         userVal = 3;
-        _userarray[_currentpos] = userVal;
-        NSLog(@"_userarray[currentpos] is: %i",_userarray[_currentpos]);
+        [_userarray insertObject:[NSNumber numberWithInteger: userVal] atIndex:_currentpos];
+        NSLog(@"_userarray[currentpos] is: %i", [_userarray[_currentpos] intValue]);
+        NSLog(@"The _userarray is:");
+        for (NSInteger i = 0; i < _currentlength; ++i) {
+            NSLog(@"%i", [_userarray[i] intValue]);
+        }
+
         _currentpos = _currentpos + 1;
         [self userArrayIsFull];
         NSLog(@"You clicked the yellow button.");
@@ -229,8 +238,12 @@
     else if ([clickedNode.name isEqualToString:@"greenButton"]) {
         //Add 4 to the array
         userVal = 4;
-        _userarray[_currentpos] = userVal;
-        NSLog(@"_userarray[currentpos] is: %i",_userarray[_currentpos]);
+        [_userarray insertObject:[NSNumber numberWithInteger: userVal] atIndex:_currentpos];
+        NSLog(@"_userarray[currentpos] is: %i", [_userarray[_currentpos] intValue]);
+        NSLog(@"The _userarray is:");
+        for (NSInteger i = 0; i < _currentlength; ++i) {
+            NSLog(@"%i", [_userarray[i] intValue]);
+        }
         _currentpos = _currentpos + 1;
         [self userArrayIsFull];
         NSLog(@"You clicked the green button.");
@@ -244,7 +257,7 @@
     if (((_currentpos) == _currentlength) && (_currentlength > 0)){
         NSLog(@"The _userarray is full! The _userarray is:");
         for (NSInteger i = 0; i < _currentlength; ++i) {
-            NSLog(@"%i", _userarray[i]);
+            NSLog(@"%i", [_userarray[i] intValue]);
         }
         
         [self checkWasUserCorrect];
