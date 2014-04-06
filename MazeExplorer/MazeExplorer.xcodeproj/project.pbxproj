@@ -12,6 +12,7 @@
 		6D79B51218E8C764008DB1AB /* InstructionScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D79B51118E8C764008DB1AB /* InstructionScene.m */; };
 		6D79B51818E8D605008DB1AB /* DSMultilineLabelNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D79B51718E8D605008DB1AB /* DSMultilineLabelNode.m */; };
 		6D8412ED18F1F29C002B87FE /* PitFillScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D8412EC18F1F29C002B87FE /* PitFillScene.m */; };
+		6D8412F318F1FFC5002B87FE /* boulder.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D8412F218F1FFC5002B87FE /* boulder.png */; };
 		6DB01A5018E38A8200EF2923 /* button1.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DB01A4F18E38A8200EF2923 /* button1.png */; };
 		6DB01A5218E38B0600EF2923 /* button2.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DB01A5118E38B0600EF2923 /* button2.png */; };
 		6DB01A5418E38B0A00EF2923 /* button3.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DB01A5318E38B0A00EF2923 /* button3.png */; };
@@ -70,6 +71,7 @@
 		6D79B51718E8D605008DB1AB /* DSMultilineLabelNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSMultilineLabelNode.m; path = ../DSMultilineLabelNode.m; sourceTree = "<group>"; };
 		6D8412EB18F1F29C002B87FE /* PitFillScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PitFillScene.h; path = ../PitFillScene.h; sourceTree = "<group>"; };
 		6D8412EC18F1F29C002B87FE /* PitFillScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PitFillScene.m; path = ../PitFillScene.m; sourceTree = "<group>"; };
+		6D8412F218F1FFC5002B87FE /* boulder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boulder.png; sourceTree = "<group>"; };
 		6DB01A4F18E38A8200EF2923 /* button1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button1.png; sourceTree = "<group>"; };
 		6DB01A5118E38B0600EF2923 /* button2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button2.png; sourceTree = "<group>"; };
 		6DB01A5318E38B0A00EF2923 /* button3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button3.png; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 				9398610918E8C6A400FDE08D /* bluecircle.png */,
 				9398610F18E8C6F600FDE08D /* stopbutton.png */,
 				6DB01A5518E38C7C00EF2923 /* help.png */,
+				6D8412F218F1FFC5002B87FE /* boulder.png */,
 				6DB01A5318E38B0A00EF2923 /* button3.png */,
 				6DB01A4F18E38A8200EF2923 /* button1.png */,
 				A176950618B01E1B00DDCB91 /* Supporting Files */,
@@ -346,6 +349,7 @@
 				6D51E22418F0C16D00E7AA04 /* Notepad.png in Resources */,
 				9398610A18E8C6A400FDE08D /* bluecircle.png in Resources */,
 				6DB01A5018E38A8200EF2923 /* button1.png in Resources */,
+				6D8412F318F1FFC5002B87FE /* boulder.png in Resources */,
 				6DB01A5218E38B0600EF2923 /* button2.png in Resources */,
 				9398611418E8C72900FDE08D /* checkButton.png in Resources */,
 				9398611618E8C86800FDE08D /* resbutton.png in Resources */,

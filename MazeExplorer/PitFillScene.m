@@ -13,6 +13,7 @@
 static const uint32_t targetCategory     =  0x1 << 0;
 static const uint32_t outlineCategory    =  0x1 << 1;
 static const uint32_t movableCategory    =  0x1 << 2;
+static const uint32_t borderCategory    =  0x1 << 3;
 
 - (id)initWithSize:(CGSize)size
 {
@@ -29,21 +30,28 @@ static const uint32_t movableCategory    =  0x1 << 2;
     label.position = CGPointMake(CGRectGetMidX(self.frame),CGRectGetMaxY(self.frame)-100);
     label.fontColor = [SKColor blackColor];
     [self addChild:label];
-   
+    
+    self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
+    self.physicsBody.categoryBitMask = borderCategory;
+    self.physicsBody.contactTestBitMask = 0;
+    
     //add pit
-    CGPoint location =CGPointMake(CGRectGetMidX(self.frame), CGRectGetMinY(self.frame)+150);
+    CGPoint location =CGPointMake(CGRectGetMidX(self.frame), CGRectGetMinY(self.frame)+151);
     [self addTargetBox:location];
  
     //add boulders
     location = CGPointMake(self.frame.size.width/2, self.frame.size.height/2+200);
-    [self addBoulder: location];
-    location = CGPointMake(self.frame.size.width/2 + 100, self.frame.size.height/2+200);
-    [self addBoulder: location];
-
+    [self addSmallBoulder: location];
+    location = CGPointMake(self.frame.size.width/2 + 70, self.frame.size.height/2+200);
+    [self addSmallBoulder: location];
+    location = CGPointMake(self.frame.size.width/2 - 200, self.frame.size.height/2+200);
+    [self addBigBoulder: location];
+    location = CGPointMake(self.frame.size.width/2 + 250, self.frame.size.height/2+100);
+    [self addBigBoulder: location];
 
     return self;
 }
--(void) addBoulder: (CGPoint) location {
+-(void) addSmallBoulder: (CGPoint) location {
     
     SKSpriteNode *boulder = [[SKSpriteNode alloc]initWithImageNamed:@"bricktexture.jpg"];
     boulder.position = location;
@@ -52,13 +60,26 @@ static const uint32_t movableCategory    =  0x1 << 2;
     boulder.physicsBody.dynamic = YES;
     boulder.physicsBody.categoryBitMask = movableCategory;
     boulder.physicsBody.contactTestBitMask = targetCategory | outlineCategory;
-    boulder.physicsBody.collisionBitMask = movableCategory;
+    boulder.physicsBody.collisionBitMask = movableCategory | borderCategory;
+    boulder.physicsBody.usesPreciseCollisionDetection = YES;
+    [self addChild:boulder];
+}
+-(void) addBigBoulder: (CGPoint) location {
+    
+    SKSpriteNode *boulder = [[SKSpriteNode alloc]initWithImageNamed:@"boulder.png"];
+    boulder.position = location;
+    boulder.name = @"Boulder";
+    boulder.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:boulder.size];
+    boulder.physicsBody.dynamic = YES;
+    boulder.physicsBody.categoryBitMask = movableCategory;
+    boulder.physicsBody.contactTestBitMask = targetCategory | outlineCategory;
+    boulder.physicsBody.collisionBitMask = movableCategory | borderCategory;
     boulder.physicsBody.usesPreciseCollisionDetection = YES;
     [self addChild:boulder];
 }
 
 - (void) addTargetBox:(CGPoint) location {
-    SKSpriteNode *blueBox = [[SKSpriteNode alloc] initWithColor:[SKColor blueColor] size:CGSizeMake(self.frame.size.width, 300)];
+    SKSpriteNode *blueBox = [[SKSpriteNode alloc] initWithColor:[SKColor blueColor] size:CGSizeMake(self.frame.size.width-2, 300)];
     blueBox.position = location;
     blueBox.name = @"blueBox";
     blueBox.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:blueBox.size];
@@ -68,7 +89,7 @@ static const uint32_t movableCategory    =  0x1 << 2;
     blueBox.physicsBody.collisionBitMask = 0;
     [self addChild:blueBox];
     
-    SKNode *boxOutline = [[SKNode alloc] init];
+    SKSpriteNode *boxOutline = [[SKSpriteNode alloc] init];
     CGRect rect = CGRectMake(blueBox.position.x-self.frame.size.width/2, blueBox.position.y-150, blueBox.size.width, blueBox.size.height);
     boxOutline.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:rect];
     boxOutline.physicsBody.categoryBitMask = outlineCategory;
@@ -160,7 +181,7 @@ static const uint32_t movableCategory    =  0x1 << 2;
 
 
 - (void)notCrossingLines {
-    if(_inTarget == 2) { //inTarget needs to equal the total number of boulders.
+    if(_inTarget == 4) { //inTarget needs to equal the total number of boulders.
         [_delegate obstacleDidFinish];
     }
 }
