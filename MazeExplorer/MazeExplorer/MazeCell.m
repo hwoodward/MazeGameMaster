@@ -20,9 +20,10 @@
  * Key for string to maze translation:
  * "*" --> Wall
  * " " --> Path
- * "O" --> Obstacle (Pit)
+ * "O" --> Obstacle (DragDrop)
  * "1" --> Obstacle (Simon)
- * "2" --> Obstacle (DragDrop)
+ * "2" --> Obstacle (Pit)
+ * "3" --> Obstacle (Avalanche)
  * "R" --> Resource (Magic)
  * "a" --> Resource (Notepad)
  * "b" --> Resource (Potion)
@@ -43,7 +44,7 @@
     }
     else if (![contents compare:@"O"]) {
         _contents = Obstacle;
-        _secondaryType.Obstacle = Pit;
+        _secondaryType.Obstacle = DragDrop;
     }
     else if (![contents compare:@"1"]) {
         _contents = Obstacle;
@@ -51,7 +52,11 @@
     }
     else if (![contents compare:@"2"]) {
         _contents = Obstacle;
-        _secondaryType.Obstacle = DragDrop;
+        _secondaryType.Obstacle = Pit;
+    }
+    else if (![contents compare:@"3"]) {
+        _contents = Obstacle;
+        _secondaryType.Obstacle = Avalanche;
     }
     else if (![contents compare:@"R"]) {
         _contents = Resource;

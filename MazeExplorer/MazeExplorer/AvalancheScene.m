@@ -21,11 +21,11 @@ static const uint32_t borderCategory    =  0x1 << 3;
     self.physicsWorld.gravity = CGVectorMake(0,0);
     self.physicsWorld.contactDelegate = (id) self;
     
-    _inTarget = 6;
+    _inTarget = 0;
     
     self.backgroundColor = [SKColor greenColor];
     SKLabelNode *label = [[SKLabelNode alloc] init];
-    label.text = @"Drag the boulders to off the blue box to clear a large enough path.";
+    label.text = @"Drag the boulders to off the blue box to clear a path.";
     label.fontSize = 27;
     label.position = CGPointMake(CGRectGetMidX(self.frame),CGRectGetMaxY(self.frame)-50);
     label.fontColor = [SKColor blackColor];
@@ -36,21 +36,23 @@ static const uint32_t borderCategory    =  0x1 << 3;
     self.physicsBody.contactTestBitMask = 0;
     
     //add pit
-    CGPoint location =CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame)-100);
+    CGPoint location =CGPointMake(CGRectGetMidX(self.frame)+50, CGRectGetMidY(self.frame)-125);
     [self addTargetBox:location];
     
     //add boulders
-    location = CGPointMake(self.frame.size.width/2, CGRectGetMidY(self.frame)+50);
+    location = CGPointMake(CGRectGetMidX(self.frame) + 100, CGRectGetMinY(self.frame) + 75);
     [self addSmallBoulder: location];
-    location = CGPointMake(self.frame.size.width/2, CGRectGetMidY(self.frame)-50);
+    location = CGPointMake(CGRectGetMidX(self.frame) + 100, CGRectGetMinY(self.frame) + 150);
     [self addSmallBoulder: location];
-    location = CGPointMake(self.frame.size.width/2 - 150, CGRectGetMidY(self.frame));
+    location = CGPointMake(CGRectGetMidX(self.frame) + 100, CGRectGetMinY(self.frame) + 225);
+    [self addSmallBoulder: location];
+    location = CGPointMake(CGRectGetMidX(self.frame) - 100, CGRectGetMinY(self.frame) + 150);
     [self addBigBoulder: location];
-    location = CGPointMake(self.frame.size.width/2 + 250, CGRectGetMidY(self.frame)+50);
+    location = CGPointMake(CGRectGetMidX(self.frame) + 200, CGRectGetMinY(self.frame) + 375);
     [self addlongBoulder: location];
-    location = CGPointMake(self.frame.size.width/2 + 250, CGRectGetMidY(self.frame)-50);
+    location = CGPointMake(CGRectGetMidX(self.frame) - 100, CGRectGetMinY(self.frame) + 375);
     [self addlongBoulder: location];
-    location = CGPointMake(self.frame.size.width/2 - 250, CGRectGetMidY(self.frame));
+    location = CGPointMake(CGRectGetMidX(self.frame) + 250, CGRectGetMinY(self.frame) + 150);
     [self addtallBoulder: location];
     
     return self;
@@ -115,7 +117,7 @@ static const uint32_t borderCategory    =  0x1 << 3;
 }
 
 - (void) addTargetBox:(CGPoint) location {
-    SKSpriteNode *blueBox = [[SKSpriteNode alloc] initWithColor:[SKColor blueColor] size:CGSizeMake(self.frame.size.width-202, self.frame.size.height-302)];
+    SKSpriteNode *blueBox = [[SKSpriteNode alloc] initWithColor:[SKColor blueColor] size:CGSizeMake(self.frame.size.width-202, self.frame.size.height-277)];
     blueBox.position = location;
     blueBox.name = @"blueBox";
     blueBox.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:blueBox.size];
@@ -126,7 +128,7 @@ static const uint32_t borderCategory    =  0x1 << 3;
     [self addChild:blueBox];
     
     SKSpriteNode *boxOutline = [[SKSpriteNode alloc] init];
-    CGRect rect = CGRectMake(blueBox.position.x-(self.frame.size.width-202)/2, blueBox.position.y-(self.frame.size.height-302)/2, blueBox.size.width, blueBox.size.height);
+    CGRect rect = CGRectMake(blueBox.position.x-blueBox.size.width/2, blueBox.position.y-blueBox.size.height/2, blueBox.size.width, blueBox.size.height);
     boxOutline.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:rect];
     boxOutline.physicsBody.categoryBitMask = outlineCategory;
     boxOutline.physicsBody.contactTestBitMask = movableCategory;
@@ -186,7 +188,6 @@ static const uint32_t borderCategory    =  0x1 << 3;
     if ((firstBody.categoryBitMask & targetCategory) != 0 &&
         (secondBody.categoryBitMask & movableCategory) != 0) {
         _inTarget++;
-        //   NSLog(@"Overlapping pit");
     }
 }
 
@@ -206,7 +207,6 @@ static const uint32_t borderCategory    =  0x1 << 3;
     if ((firstBody.categoryBitMask & targetCategory) != 0 &&
         (secondBody.categoryBitMask & movableCategory) != 0) {
         _inTarget--;
-        //     NSLog(@"Not overlapping pit");
     }
     if ((firstBody.categoryBitMask & outlineCategory) != 0 &&
         (secondBody.categoryBitMask & movableCategory) != 0) {

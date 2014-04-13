@@ -10,7 +10,8 @@ typedef enum {
 typedef enum {
     DragDrop,
     Simon,
-    Pit
+    Pit,
+    Avalanche
 } ObstacleType;
 
 typedef enum {

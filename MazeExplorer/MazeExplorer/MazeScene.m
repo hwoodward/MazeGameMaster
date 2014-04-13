@@ -321,6 +321,11 @@ static const int CELLNUM = 11;
             _obstacleInUse = Pit;
             break;
         }
+        case Avalanche: {
+            obstScene = [[AvalancheScene alloc] initWithSize:self.frame.size];
+            _obstacleInUse = Avalanche;
+            break;
+        }
         default: { //Default is DragDrop and also handles that case
             obstScene = [[ObstacleScene alloc] initWithSize:self.frame.size];
             _obstacleInUse = DragDrop;
@@ -415,7 +420,7 @@ static const int CELLNUM = 11;
                 break;
             }
             case Potion: {
-                if (_obstacleInUse == Pit) {
+                if (_obstacleInUse == Pit || _obstacleInUse == Avalanche) {
                     [self obstacleDidFinish];
                 }
                 break;
