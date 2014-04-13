@@ -14,7 +14,7 @@
 {
     self = [super initWithSize:size];
     _buttonWidth = 100;
-    _winLength = 5;
+    _winLength = 7;
     _comparray = [[NSMutableArray alloc] init];
     _userarray = [[NSMutableArray alloc] init];
     _currentlength = 0;
@@ -27,10 +27,18 @@
     SKLabelNode *label = [[SKLabelNode alloc] init];
     label.text = @"Let's play Simon! Click here to start!";
     label.fontSize = 27;
-    label.position = CGPointMake(CGRectGetMidX(self.frame),CGRectGetMidY(self.frame)+300);
+    label.position = CGPointMake(CGRectGetMidX(self.frame),CGRectGetMaxY(self.frame)-150);
     label.fontColor = [SKColor blackColor];
     label.name = @"clickToStart";
     [self addChild:label];
+    
+    SKLabelNode *instructions = [[SKLabelNode alloc] init];
+    instructions.text = @"This is Simon, click the buttons in the order they wiggle.";
+    instructions.fontSize = 30;
+    instructions.position = CGPointMake(CGRectGetMidX(self.frame),CGRectGetMaxY(self.frame)-75);
+    instructions.fontColor = [SKColor blackColor];
+    instructions.name = @"instructions";
+    [self addChild:instructions];
     
     // Creating the red Simon button
     SKSpriteNode *redNode = [[SKSpriteNode alloc] initWithColor: [SKColor redColor] size:buttonSize];
@@ -80,16 +88,8 @@
     else {
         [self winSimon];
     }
-    /*
-     general idea is as follows:
-     while _currentlength is less then the length we want to stop at:
-     -add a new random element to the comparray
-     -play the full sequence
-     then wait for the user to make an attempt of the correct length, which calls this again
-     if _currentlength isn't less than winLength they win
-     */
-
 }
+
 float degToRad(float degree) {
 	return degree / 180.0f * M_PI;
 }
