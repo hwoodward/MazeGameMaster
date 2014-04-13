@@ -311,6 +311,10 @@ static const int CELLNUM = 11;
     id <Obstacle> obstScene;
     
     switch (type) {
+        case RandomO: {
+            [self launchObstacle:(ObstacleType) (arc4random() % (int) RandomO)]; //This randomly picks an obstacle before RandomO in the list
+            return;
+        }
         case Simon: {
             obstScene = [[SimonScene alloc] initWithSize:self.frame.size];
             _obstacleInUse = Simon;
@@ -343,6 +347,10 @@ static const int CELLNUM = 11;
  */
 -(void) obtainResource:(ResourceType) type {
     switch (type) {
+        case RandomR: {
+            [self obtainResource: (ResourceType) (arc4random() % (int) RandomR)]; //Randomly select a resource before RandomR
+            break;
+        }
         case Notepad: {
             [self.delegate increaseResourceCounter:Notepad];
             break;

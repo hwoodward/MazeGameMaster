@@ -8,16 +8,18 @@ typedef enum {
 } CellType;
 
 typedef enum {
-    DragDrop,
+    DragDrop = 0,
     Simon,
     Pit,
-    Avalanche
+    Avalanche,
+    RandomO //KEEP THIS LAST
 } ObstacleType;
 
 typedef enum {
-    Magic,
+    Magic = 0,
     Notepad,
-    Potion
+    Potion,
+    RandomR //KEEP THIS LAST
 } ResourceType;
 
 typedef union {

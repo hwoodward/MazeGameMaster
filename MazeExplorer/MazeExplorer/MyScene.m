@@ -20,7 +20,7 @@
 @implementation MyScene
 
 //These are the maze strings and widths.
-static const NSString* maze1String = @"*E*********  *    b**  3   *******     **     *  ** 1   * *** *  *   ****  *  ***a   *   ***S*******";
+static const NSString* maze1String = @"*E*********  *    b**  3   *******     **     *  ** O   * *** *  *   ****  *  ***R   *   ***S*******";
 static const int maze1Width = 10;
 static const NSString* maze2String = @"*****S***************           *a     **  *******  *****  **b *     *      *  *****  *  ****   *  **     *     *      **     2     ****   ** ********  *  *   **       *   *  *   **   **  *   *  *   **   *b  *          **   ******1******2***       *   *      ** ***** *   *  ******     * *** *      **   * * *   ****** **   *****        * **           *  *** ***********  *      **a          2      *****************E***";
 static const int maze2Width = 20;

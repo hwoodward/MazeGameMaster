@@ -20,13 +20,15 @@
  * Key for string to maze translation:
  * "*" --> Wall
  * " " --> Path
- * "O" --> Obstacle (DragDrop)
+ * "O" --> Obstacle (Random)
  * "1" --> Obstacle (Simon)
  * "2" --> Obstacle (Pit)
  * "3" --> Obstacle (Avalanche)
- * "R" --> Resource (Magic)
+ * "4" --> Obstacle (DragDrop)
+ * "R" --> Resource (Random)
  * "a" --> Resource (Notepad)
  * "b" --> Resource (Potion)
+ * "c" --> Resource (Magic)
  * "S" --> starting location (NOTE: There should only be ONE of these per maze, or weirdness will ensue)
  * "E" --> End location (NOTE: For now, there should only be one of these. If you want to build support
  *                       multiple exits, be my guest)
@@ -44,7 +46,7 @@
     }
     else if (![contents compare:@"O"]) {
         _contents = Obstacle;
-        _secondaryType.Obstacle = DragDrop;
+        _secondaryType.Obstacle = RandomO;
     }
     else if (![contents compare:@"1"]) {
         _contents = Obstacle;
@@ -58,9 +60,13 @@
         _contents = Obstacle;
         _secondaryType.Obstacle = Avalanche;
     }
+    else if (![contents compare:@"4"]){
+        _contents = Obstacle;
+        _secondaryType.Obstacle = DragDrop;
+    }
     else if (![contents compare:@"R"]) {
         _contents = Resource;
-        _secondaryType.Resource = Magic;
+        _secondaryType.Resource = RandomR;
     }
     else if (![contents compare:@"a"]) {
         _contents = Resource;
@@ -69,6 +75,10 @@
     else if (![contents compare:@"b"]) {
         _contents = Resource;
         _secondaryType.Resource = Potion;
+    }
+    else if (![contents compare:@"c"]) {
+        _contents = Resource;
+        _secondaryType.Resource = Magic;
     }
     else if (![contents compare:@"S"]) {
         _contents = Start;
