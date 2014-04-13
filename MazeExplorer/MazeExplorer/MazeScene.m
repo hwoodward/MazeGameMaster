@@ -316,7 +316,7 @@ static const int CELLNUM = 11;
             _obstacleInUse = Simon;
             break;
         }
-        case Pit: { //Default is DragDrop and also handles that case
+        case Pit: {
             obstScene = [[PitFillScene alloc] initWithSize:self.frame.size];
             _obstacleInUse = Pit;
             break;
@@ -342,8 +342,12 @@ static const int CELLNUM = 11;
             [self.delegate increaseResourceCounter:Notepad];
             break;
         }
-        default: { //Default is a Test resource and also handles that case
-            [self.delegate increaseResourceCounter:Test];
+        case Potion: {
+            [self.delegate increaseResourceCounter:Potion];
+            break;
+        }
+        default: { //Default is a Magic resource and also handles that case
+            [self.delegate increaseResourceCounter:Magic];
             break;
         }
     }
@@ -410,8 +414,14 @@ static const int CELLNUM = 11;
                 }
                 break;
             }
-            default: { //Default is Test and handles that case
-                if (_obstacleInUse == DragDrop || _obstacleInUse == Pit) {
+            case Potion: {
+                if (_obstacleInUse == Pit) {
+                    [self obstacleDidFinish];
+                }
+                break;
+            }
+            default: { //Default is Magic and handles that case
+                if (_obstacleInUse == DragDrop) {
                     [self obstacleDidFinish];
                 }
                 break;

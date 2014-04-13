@@ -15,17 +15,10 @@
 {
     self = [super initWithSize:size];
     
-    _testCounter = 0;
+    _magicCounter = 0;
     _notepadCounter = 0;
     self.backgroundColor = [SKColor purpleColor];
-/*
-    _label = [[SKLabelNode alloc] init];
-    _label.text = [NSString stringWithFormat:@"Resource Counter: %i", 0];
-    _label.fontSize = 42;
-    _label.position = CGPointMake(CGRectGetMidX(self.frame),CGRectGetMidY(self.frame));
-    
-    [self addChild:_label];
-*/
+
     _instr1 = [[SKLabelNode alloc] init];
     _instr1.text = @"The orange boxes are resources. Collect them!";
     _instr1.fontSize = 30;
@@ -42,26 +35,38 @@
     
     
     // Adding buttons and counter labels for each resource.
-    //Test resource
-    SKSpriteNode *testButton = [[SKSpriteNode alloc] initWithImageNamed:@"magic.png"];
-    testButton.position = CGPointMake(CGRectGetMidX(self.frame)-100,CGRectGetMidY(self.frame)+20);
-    testButton.name = @"test";
-    [self addChild:testButton];
-    _testLabel = [[SKLabelNode alloc] init];
-    _testLabel.text = [NSString stringWithFormat:@"%i",_testCounter];
-    _testLabel.fontSize = 25;
-    _testLabel.position = CGPointMake(CGRectGetMidX(self.frame)-100,CGRectGetMidY(self.frame)-60);
-    [self addChild:_testLabel];
+    //magic resource
+    SKSpriteNode *magicButton = [[SKSpriteNode alloc] initWithImageNamed:@"magic.png"];
+    magicButton.position = CGPointMake(CGRectGetMidX(self.frame)-150,CGRectGetMidY(self.frame)+20);
+    magicButton.name = @"magic";
+    [self addChild:magicButton];
+    _magicLabel = [[SKLabelNode alloc] init];
+    _magicLabel.text = [NSString stringWithFormat:@"%i",_magicCounter];
+    _magicLabel.fontSize = 25;
+    _magicLabel.position = CGPointMake(CGRectGetMidX(self.frame)-150,CGRectGetMidY(self.frame)-60);
+    [self addChild:_magicLabel];
     
+    //notepad resource
     SKSpriteNode *notepadButton = [[SKSpriteNode alloc] initWithImageNamed:@"Notepad.png"];
-    notepadButton.position = CGPointMake(CGRectGetMidX(self.frame)+100,CGRectGetMidY(self.frame)+20);
+    notepadButton.position = CGPointMake(CGRectGetMidX(self.frame),CGRectGetMidY(self.frame)+20);
     notepadButton.name = @"notepad";
     [self addChild:notepadButton];
     _notepadLabel = [[SKLabelNode alloc] init];
     _notepadLabel.text = [NSString stringWithFormat:@"%i",_notepadCounter];
     _notepadLabel.fontSize = 25;
-    _notepadLabel.position = CGPointMake(CGRectGetMidX(self.frame)+100,CGRectGetMidY(self.frame)-60);
+    _notepadLabel.position = CGPointMake(CGRectGetMidX(self.frame),CGRectGetMidY(self.frame)-60);
     [self addChild:_notepadLabel];
+    
+    //potion resource
+    SKSpriteNode *potionButton = [[SKSpriteNode alloc] initWithImageNamed:@"potion.png"];
+    potionButton.position = CGPointMake(CGRectGetMidX(self.frame)+150,CGRectGetMidY(self.frame)+20);
+    potionButton.name = @"potion";
+    [self addChild:potionButton];
+    _potionLabel = [[SKLabelNode alloc] init];
+    _potionLabel.text = [NSString stringWithFormat:@"%i",_potionCounter];
+    _potionLabel.fontSize = 25;
+    _potionLabel.position = CGPointMake(CGRectGetMidX(self.frame)+150,CGRectGetMidY(self.frame)-60);
+    [self addChild:_potionLabel];
     
     return self;
 }
@@ -74,9 +79,14 @@
             _notepadLabel.text = [NSString stringWithFormat:@"%i",_notepadCounter];
             break;
         }
-        default: {//Default is test and handles that case
-            ++_testCounter;
-            _testLabel.text = [NSString stringWithFormat:@"%i",_testCounter];
+        case Potion:{
+            _potionCounter++;
+            _potionLabel.text = [NSString stringWithFormat:@"%i",_potionCounter];
+            break;
+        }
+        default: {//Default is magic and handles that case
+            ++_magicCounter;
+            _magicLabel.text = [NSString stringWithFormat:@"%i",_magicCounter];
             break;
         }
     }
@@ -90,9 +100,14 @@
             _notepadLabel.text = [NSString stringWithFormat:@"%i",_notepadCounter];
             break;
         }
-        default: {//Default is test and handles that case
-            --_testCounter;
-            _testLabel.text = [NSString stringWithFormat:@"%i",_testCounter];
+        case Potion:{
+            _potionCounter--;
+            _potionLabel.text = [NSString stringWithFormat:@"%i",_potionCounter];
+            break;
+        }
+        default: {//Default is magic and handles that case
+            --_magicCounter;
+            _magicLabel.text = [NSString stringWithFormat:@"%i",_magicCounter];
             break;
         }
     }
@@ -113,14 +128,19 @@
     //what node am I in?
     SKNode *clickedNode = [self nodeAtPoint:location];
     
-    if ([clickedNode.name isEqualToString:@"test"]) {
-        if (_testCounter > 0){
-            [self useResource:Test];
+    if ([clickedNode.name isEqualToString:@"magic"]) {
+        if (_magicCounter > 0){
+            [self useResource:Magic];
         }
     }
     if ([clickedNode.name isEqualToString:@"notepad"]) {
         if (_notepadCounter > 0){
             [self useResource:Notepad];
+        }
+    }
+    if ([clickedNode.name isEqualToString:@"potion"]) {
+        if (_potionCounter > 0){
+            [self useResource:Potion];
         }
     }
     

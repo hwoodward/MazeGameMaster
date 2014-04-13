@@ -14,8 +14,9 @@ typedef enum {
 } ObstacleType;
 
 typedef enum {
-    Test,
-    Notepad
+    Magic,
+    Notepad,
+    Potion
 } ResourceType;
 
 typedef union {

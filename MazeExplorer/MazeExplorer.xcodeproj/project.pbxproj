@@ -29,6 +29,7 @@
 		9398611418E8C72900FDE08D /* checkButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 9398611318E8C72900FDE08D /* checkButton.png */; };
 		9398611618E8C86800FDE08D /* resbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 9398611518E8C86800FDE08D /* resbutton.png */; };
 		93A48E1318BF1B470008E8ED /* MazeScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A48E1218BF1B470008E8ED /* MazeScene.m */; };
+		93C7BADF18FA1EA5002DB691 /* potion.png in Resources */ = {isa = PBXBuildFile; fileRef = 93C7BADE18FA1EA5002DB691 /* potion.png */; };
 		A125363818C2D70D0033FE44 /* ResourceScene.m in Sources */ = {isa = PBXBuildFile; fileRef = A125363718C2D70D0033FE44 /* ResourceScene.m */; };
 		A17694FE18B01E1B00DDCB91 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A17694FD18B01E1B00DDCB91 /* Foundation.framework */; };
 		A176950018B01E1B00DDCB91 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A17694FF18B01E1B00DDCB91 /* CoreGraphics.framework */; };
@@ -94,6 +95,7 @@
 		9398611518E8C86800FDE08D /* resbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = resbutton.png; sourceTree = "<group>"; };
 		93A48E1118BF1B470008E8ED /* MazeScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MazeScene.h; sourceTree = "<group>"; };
 		93A48E1218BF1B470008E8ED /* MazeScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MazeScene.m; sourceTree = "<group>"; };
+		93C7BADE18FA1EA5002DB691 /* potion.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = potion.png; sourceTree = "<group>"; };
 		A125363618C2D70D0033FE44 /* ResourceScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceScene.h; sourceTree = "<group>"; };
 		A125363718C2D70D0033FE44 /* ResourceScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceScene.m; sourceTree = "<group>"; };
 		A17694FA18B01E1B00DDCB91 /* MazeExplorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MazeExplorer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -190,13 +192,6 @@
 				A176953A18B01F3000DDCB91 /* Maze.m */,
 				A176953C18B01F5100DDCB91 /* MazeCell.h */,
 				A176953D18B01F5100DDCB91 /* MazeCell.m */,
-				93314D0918B5E75300144303 /* PlayerCharacter.h */,
-				93314D0A18B5E75300144303 /* PlayerCharacter.m */,
-				A176950E18B01E1B00DDCB91 /* AppDelegate.h */,
-				A176950F18B01E1B00DDCB91 /* AppDelegate.m */,
-				A176951118B01E1B00DDCB91 /* Main.storyboard */,
-				A176951418B01E1B00DDCB91 /* ViewController.h */,
-				A176951518B01E1B00DDCB91 /* ViewController.m */,
 				93A48E1118BF1B470008E8ED /* MazeScene.h */,
 				93A48E1218BF1B470008E8ED /* MazeScene.m */,
 				6D51E21E18F0B51200E7AA04 /* Obstacle.h */,
@@ -214,18 +209,20 @@
 				A176951818B01E1C00DDCB91 /* MyScene.m */,
 				9390CED318E54ADC0073C488 /* ResourceConfirm.h */,
 				9390CED418E54ADC0073C488 /* ResourceConfirm.m */,
-				6D51E22318F0C16D00E7AA04 /* Notepad.png */,
 				A125363618C2D70D0033FE44 /* ResourceScene.h */,
 				A125363718C2D70D0033FE44 /* ResourceScene.m */,
-				6D51E21F18F0C0DF00E7AA04 /* magic.png */,
-				A176951A18B01E1C00DDCB91 /* Spaceship.png */,
+				6D76EEAC18CD79B8008FBB1A /* typedef.h */,
 				A176951C18B01E1C00DDCB91 /* Images.xcassets */,
+				6D51E21F18F0C0DF00E7AA04 /* magic.png */,
 				9398611318E8C72900FDE08D /* checkButton.png */,
+				A176951A18B01E1C00DDCB91 /* Spaceship.png */,
 				9398610B18E8C6B000FDE08D /* bricktexture.jpg */,
 				6DB01A5118E38B0600EF2923 /* button2.png */,
+				93C7BADE18FA1EA5002DB691 /* potion.png */,
 				9398611518E8C86800FDE08D /* resbutton.png */,
 				9398611118E8C70700FDE08D /* yesbutton.png */,
 				9398610918E8C6A400FDE08D /* bluecircle.png */,
+				6D51E22318F0C16D00E7AA04 /* Notepad.png */,
 				6D8412F618F20628002B87FE /* longBoulder.png */,
 				9398610F18E8C6F600FDE08D /* stopbutton.png */,
 				6DB01A5518E38C7C00EF2923 /* help.png */,
@@ -233,8 +230,14 @@
 				6D8412F218F1FFC5002B87FE /* boulder.png */,
 				6DB01A5318E38B0A00EF2923 /* button3.png */,
 				6DB01A4F18E38A8200EF2923 /* button1.png */,
+				A176951118B01E1B00DDCB91 /* Main.storyboard */,
+				93314D0918B5E75300144303 /* PlayerCharacter.h */,
+				93314D0A18B5E75300144303 /* PlayerCharacter.m */,
+				A176950E18B01E1B00DDCB91 /* AppDelegate.h */,
+				A176950F18B01E1B00DDCB91 /* AppDelegate.m */,
+				A176951418B01E1B00DDCB91 /* ViewController.h */,
+				A176951518B01E1B00DDCB91 /* ViewController.m */,
 				A176950618B01E1B00DDCB91 /* Supporting Files */,
-				6D76EEAC18CD79B8008FBB1A /* typedef.h */,
 			);
 			path = MazeExplorer;
 			sourceTree = "<group>";
@@ -349,6 +352,7 @@
 				6DB01A5618E38C7C00EF2923 /* help.png in Resources */,
 				A176951B18B01E1C00DDCB91 /* Spaceship.png in Resources */,
 				6D8412F718F20628002B87FE /* longBoulder.png in Resources */,
+				93C7BADF18FA1EA5002DB691 /* potion.png in Resources */,
 				A176951318B01E1B00DDCB91 /* Main.storyboard in Resources */,
 				6D51E22018F0C0DF00E7AA04 /* magic.png in Resources */,
 				9398611018E8C6F600FDE08D /* stopbutton.png in Resources */,

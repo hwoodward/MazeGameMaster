@@ -23,8 +23,9 @@
  * "O" --> Obstacle (Pit)
  * "1" --> Obstacle (Simon)
  * "2" --> Obstacle (DragDrop)
- * "R" --> Resource (Test)
+ * "R" --> Resource (Magic)
  * "a" --> Resource (Notepad)
+ * "b" --> Resource (Potion)
  * "S" --> starting location (NOTE: There should only be ONE of these per maze, or weirdness will ensue)
  * "E" --> End location (NOTE: For now, there should only be one of these. If you want to build support
  *                       multiple exits, be my guest)
@@ -54,11 +55,15 @@
     }
     else if (![contents compare:@"R"]) {
         _contents = Resource;
-        _secondaryType.Resource = Test;
+        _secondaryType.Resource = Magic;
     }
     else if (![contents compare:@"a"]) {
         _contents = Resource;
         _secondaryType.Resource = Notepad;
+    }
+    else if (![contents compare:@"b"]) {
+        _contents = Resource;
+        _secondaryType.Resource = Potion;
     }
     else if (![contents compare:@"S"]) {
         _contents = Start;
@@ -77,7 +82,7 @@
  * Method: initWithRow: andColumn
  * Do not use init. Things will be nil, or default, or something weird. Don't do it.
  *
- * initializes the MazeCell with the given inputs.
+ * initializes the MazeCell with the given inputs, and uses the default obstacle or resource type if needed.
  */
 - (id)initWithRow: (int) row
         andColumn: (int) col
@@ -92,7 +97,7 @@
         _secondaryType.Obstacle = DragDrop;
     }
     if (_contents == Resource) {
-        _secondaryType.Resource = Test;
+        _secondaryType.Resource = Magic;
     }
     
     return self;

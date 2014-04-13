@@ -58,22 +58,6 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MazeExplorer/ResourceScene.m"
-            timestampString = "415863784.964121"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
-            landmarkName = "-initWithSize:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MazeExplorer/ResourceScene.m"
             timestampString = "415785848.020483"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
@@ -90,13 +74,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MazeExplorer/ResourceScene.h"
-            timestampString = "417685850.841963"
+            timestampString = "419044918.207236"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
-            landmarkName = "@interface ResourceScene"
-            landmarkType = "2">
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "notepadLabel"
+            landmarkType = "19">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
@@ -105,11 +89,11 @@
                   symbolName = "-[ResourceScene notepadLabel]"
                   moduleName = "MazeExplorer"
                   urlString = "file://localhost/Users/cs121/CS121/MazeExplorer/MazeExplorer/MazeExplorer/ResourceScene.h"
-                  timestampString = "418884147.174789"
+                  timestampString = "419045096.139254"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "32"
-                  endingLineNumber = "32"
+                  startingLineNumber = "33"
+                  endingLineNumber = "33"
                   offsetFromSymbolStart = "24">
                </Location>
                <Location
@@ -119,11 +103,11 @@
                   symbolName = "-[ResourceScene setNotepadLabel:]"
                   moduleName = "MazeExplorer"
                   urlString = "file://localhost/Users/cs121/CS121/MazeExplorer/MazeExplorer/MazeExplorer/ResourceScene.h"
-                  timestampString = "418884147.175081"
+                  timestampString = "419045096.139539"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "32"
-                  endingLineNumber = "32"
+                  startingLineNumber = "33"
+                  endingLineNumber = "33"
                   offsetFromSymbolStart = "31">
                </Location>
             </Locations>
@@ -132,7 +116,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MazeExplorer/ResourceConfirm.h"
@@ -140,16 +124,18 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "18"
-            endingLineNumber = "18">
+            endingLineNumber = "18"
+            landmarkName = "@protocol ResourceConfirmDelegate"
+            landmarkType = "2">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "-[ResourceConfirm resourceBeingConfirmed]"
                   moduleName = "MazeExplorer"
                   urlString = "file://localhost/Users/cs121/CS121/MazeExplorer/MazeExplorer/MazeExplorer/ResourceConfirm.h"
-                  timestampString = "418884147.175285"
+                  timestampString = "419044138.371024"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "23"
@@ -157,13 +143,13 @@
                   offsetFromSymbolStart = "24">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "-[ResourceConfirm setResourceBeingConfirmed:]"
                   moduleName = "MazeExplorer"
                   urlString = "file://localhost/Users/cs121/CS121/MazeExplorer/MazeExplorer/MazeExplorer/ResourceConfirm.h"
-                  timestampString = "418884147.175461"
+                  timestampString = "419044138.371226"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "23"
@@ -180,11 +166,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MazeExplorer/MazeScene.m"
-            timestampString = "418329427.875328"
+            timestampString = "419044918.207236"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "401"
-            endingLineNumber = "401"
+            startingLineNumber = "405"
+            endingLineNumber = "405"
             landmarkName = "-useResourceConfirmed:"
             landmarkType = "5">
          </BreakpointContent>
@@ -196,11 +182,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MazeExplorer/MazeScene.m"
-            timestampString = "418329427.875328"
+            timestampString = "419044918.207236"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "402"
-            endingLineNumber = "402"
+            startingLineNumber = "406"
+            endingLineNumber = "406"
             landmarkName = "-useResourceConfirmed:"
             landmarkType = "5">
          </BreakpointContent>
@@ -267,6 +253,52 @@
             endingLineNumber = "88"
             landmarkName = "-runOneSimonTurnWithLength:"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MazeExplorer/ResourceConfirm.h"
+            timestampString = "419044640.752322"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "@protocol ResourceConfirmDelegate"
+            landmarkType = "2">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ResourceConfirm resourceBeingConfirmed]"
+                  moduleName = "MazeExplorer"
+                  urlString = "file://localhost/Users/cs121/CS121/MazeExplorer/MazeExplorer/MazeExplorer/ResourceConfirm.h"
+                  timestampString = "419044640.753796"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ResourceConfirm setResourceBeingConfirmed:]"
+                  moduleName = "MazeExplorer"
+                  urlString = "file://localhost/Users/cs121/CS121/MazeExplorer/MazeExplorer/MazeExplorer/ResourceConfirm.h"
+                  timestampString = "419044640.754021"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "31">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

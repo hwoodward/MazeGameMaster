@@ -25,11 +25,13 @@
 @interface ResourceScene : SKScene
 
 @property (nonatomic) id <ResourceSceneDelegate> delegate;
-@property (nonatomic) int testCounter;
+@property (nonatomic) int magicCounter;
 @property (nonatomic) int notepadCounter;
+@property (nonatomic) int potionCounter;
 @property (nonatomic) SKLabelNode *instr1;
-@property (nonatomic) SKLabelNode *testLabel;
+@property (nonatomic) SKLabelNode *magicLabel;
 @property (nonatomic) SKLabelNode *notepadLabel;
+@property (nonatomic) SKLabelNode *potionLabel;
 @property (nonatomic) SKLabelNode *instr2;
 
 
