@@ -32,15 +32,6 @@
     label.name = @"clickToStart";
     [self addChild:label];
     
-    //Creating the label node that you click to end the game prematurely.
-    SKLabelNode *debuglabel = [[SKLabelNode alloc] init];
-    debuglabel.text = @"Click to close Simon.";
-    debuglabel.fontSize = 27;
-    debuglabel.position = CGPointMake(CGRectGetMidX(self.frame),CGRectGetMidY(self.frame)+250);
-    debuglabel.fontColor = [SKColor blackColor];
-    debuglabel.name = @"debugLabel";
-    [self addChild:debuglabel];
-    
     // Creating the red Simon button
     SKSpriteNode *redNode = [[SKSpriteNode alloc] initWithColor: [SKColor redColor] size:buttonSize];
     redNode.position = CGPointMake(CGRectGetMidX(self.frame)-100,CGRectGetMidY(self.frame)+100);
@@ -103,27 +94,14 @@ float degToRad(float degree) {
 	return degree / 180.0f * M_PI;
 }
 
-
--(void)runOneSimonTurnWithLength: (NSInteger) length
-{
-    //Create a new computer array; clears out player's arrays
-    [self generateSimonArrayOfLength:length];
-    [SKAction waitForDuration:5];
-    
-    _currentpos = 0;
-    
-    
-    [self displayCompArray];
-}
-
 -(void) displayCompArray {
     SKNode *currentNode;
     CGPoint position;
     
     //Taken from the iOS developer library SpriteKit Programmer's Guide (with changes)
-    SKAction *indicate = [SKAction sequence:@[[SKAction rotateByAngle:degToRad(-4.0f) duration:.5],
-                                              [SKAction rotateByAngle:degToRad(8.0f) duration:1],
-                                              [SKAction rotateByAngle:degToRad(-4.0f) duration:.5]]];
+    SKAction *indicate = [SKAction sequence:@[[SKAction rotateByAngle:degToRad(-10.0f) duration:.5],
+                                              [SKAction rotateByAngle:degToRad(20.0f) duration:1],
+                                              [SKAction rotateByAngle:degToRad(-10.0f) duration:.5]]];
 
     //Makes the boxes light up according to the array it is given.
     for (NSInteger i = 0; i < _currentlength; ++i) {
@@ -166,32 +144,6 @@ float degToRad(float degree) {
     return min + arc4random() % (max - min);
 }
 
--(void)generateSimonArrayOfLength: (NSInteger) length
-{
-    NSLog(@"GenerateSimonArrayofLength was called.");
-    // Making sure the user input array is the same length as the computer's array.
-    _currentlength = length;
-    
-    NSInteger element;
-    for (NSInteger i=0; i < length; ++i) {
-        element = [self randomNumberBetweenMin:1 andMax:5];
-        NSLog(@"CompArray has %d at index %d", element, i);
-        [_comparray insertObject: [NSNumber numberWithInteger: element] atIndex:i];
-    }
-    NSLog(@"_comparray is:");
-    for (NSInteger i=0; i < length; ++i) {
-        NSLog(@"%i", [_comparray[i] intValue]);
-    }
-    
-    for (NSInteger i=0; i < length; ++i) {
-        [_userarray insertObject:[NSNumber numberWithInteger: 0] atIndex:i];
-    }
-    NSLog(@"_userarray is:");
-    for (NSInteger i=0; i < length; ++i) {
-        NSLog(@"%i", [_userarray[i] intValue]);
-    }
-}
-
 // Handles the interactions with the user
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -211,17 +163,13 @@ float degToRad(float degree) {
         [clickedNode removeFromParent];
         [self runSimon];
     }
-    //Did you click the debug label?
-    else if ([clickedNode.name isEqualToString:@"debugLabel"]) {
-        [self winSimon];
-        NSLog(@"You clicked the debug label!");
-    }
     
     //Did you click the red button?
     else if ([clickedNode.name isEqualToString:@"redButton"]) {
         //Add 1 to the array
         userVal = 1;
-        _currentpos = _currentpos + 1;
+        [_userarray insertObject:[NSNumber numberWithInteger: userVal] atIndex:_currentpos];
+        _currentpos++;
         [self userArrayIsFull];
     }
     //Did you click the blue button?
@@ -229,7 +177,7 @@ float degToRad(float degree) {
         //Add 2 to the array
         userVal = 2;
         [_userarray insertObject:[NSNumber numberWithInteger: userVal] atIndex:_currentpos];
-        _currentpos = _currentpos + 1;
+        _currentpos++;
         [self userArrayIsFull];
     }
     //Did you click the yellow button?
@@ -237,7 +185,7 @@ float degToRad(float degree) {
         //Add 3 to the array
         userVal = 3;
         [_userarray insertObject:[NSNumber numberWithInteger: userVal] atIndex:_currentpos];
-        _currentpos = _currentpos + 1;
+        _currentpos++;
         [self userArrayIsFull];
     }
     //Did you click the green button?
@@ -245,7 +193,7 @@ float degToRad(float degree) {
         //Add 4 to the array
         userVal = 4;
         [_userarray insertObject:[NSNumber numberWithInteger: userVal] atIndex:_currentpos];
-        _currentpos = _currentpos + 1;
+        _currentpos++;
         [self userArrayIsFull];
     }
     
@@ -255,11 +203,6 @@ float degToRad(float degree) {
 {
     //If our current position is one past the end of the array, check to see if the user's string is the same as the computer's string.
     if (((_currentpos) == _currentlength) && (_currentlength > 0)){
-        NSLog(@"The _userarray is full! The _userarray is:");
-        for (NSInteger i = 0; i < _currentlength; ++i) {
-            NSLog(@"%i", [_userarray[i] intValue]);
-        }
-        
         [self checkWasUserCorrect];
     }
 }
@@ -278,6 +221,7 @@ float degToRad(float degree) {
     if (failFlag == false)
     {
         [self userWasCorrect];
+        _currentpos = 0;
     }
 }
 

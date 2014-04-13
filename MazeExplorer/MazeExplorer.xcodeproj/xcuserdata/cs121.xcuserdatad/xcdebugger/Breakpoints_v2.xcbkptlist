@@ -89,7 +89,7 @@
                   symbolName = "-[ResourceScene notepadLabel]"
                   moduleName = "MazeExplorer"
                   urlString = "file://localhost/Users/cs121/CS121/MazeExplorer/MazeExplorer/MazeExplorer/ResourceScene.h"
-                  timestampString = "419052934.755391"
+                  timestampString = "419053697.693974"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "33"
@@ -103,7 +103,7 @@
                   symbolName = "-[ResourceScene setNotepadLabel:]"
                   moduleName = "MazeExplorer"
                   urlString = "file://localhost/Users/cs121/CS121/MazeExplorer/MazeExplorer/MazeExplorer/ResourceScene.h"
-                  timestampString = "419052934.755598"
+                  timestampString = "419053697.694188"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "33"
@@ -220,22 +220,6 @@
             startingLineNumber = "20"
             endingLineNumber = "20"
             landmarkName = "-initWithSize:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MazeExplorer/SimonScene.m"
-            timestampString = "419052400.977088"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "173"
-            endingLineNumber = "173"
-            landmarkName = "-generateSimonArrayOfLength:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
