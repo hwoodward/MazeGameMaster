@@ -14,6 +14,10 @@
 {
     self = [super initWithSize:size];
     _buttonWidth = 100;
+    _winLength = 5;
+    _comparray = [[NSMutableArray alloc] init];
+    _userarray = [[NSMutableArray alloc] init];
+    _currentlength = 0;
     
     self.backgroundColor = [SKColor whiteColor];
     
@@ -67,15 +71,38 @@
 //Running the Simon game (i.e. combining user and computer interaction for a certain number of turns)
 -(void)runSimon
 {
-    // I may have to worry about it trying to continue running after the player loses, but I hope not.
-    /*
-    for (NSInteger i=1; i <= turns; ++i) {
-        [self runOneSimonTurnWithLength:i];
+
+    NSInteger element;
+
+    if (_currentlength < _winLength){
+        
+        //Add another element to the end of the computer's sequence
+        _currentlength++;
+        element = [self randomNumberBetweenMin:1 andMax:5];
+        [_comparray addObject: [NSNumber numberWithInteger: element]];
+
+        //show the user the sequence
+        [self displayCompArray];
+        
     }
-     */
-    [self runOneSimonTurnWithLength: 3];
     
+    else {
+        [self winSimon];
+    }
+    /*
+     general idea is as follows:
+     while _currentlength is less then the length we want to stop at:
+     -add a new random element to the comparray
+     -play the full sequence
+     then wait for the user to make an attempt of the correct length, which calls this again
+     if _currentlength isn't less than winLength they win
+     */
+
 }
+float degToRad(float degree) {
+	return degree / 180.0f * M_PI;
+}
+
 
 -(void)runOneSimonTurnWithLength: (NSInteger) length
 {
@@ -83,18 +110,21 @@
     [self generateSimonArrayOfLength:length];
     [SKAction waitForDuration:5];
     
-    //What is my current position in the _userarray (used by touchesbegan)?
     _currentpos = 0;
     
+    
+    [self displayCompArray];
+}
+
+-(void) displayCompArray {
     SKNode *currentNode;
     CGPoint position;
     
     //Taken from the iOS developer library SpriteKit Programmer's Guide (with changes)
-    SKAction *pulsePurple = [SKAction sequence:@[
-                                              [SKAction colorizeWithColor:[SKColor purpleColor] colorBlendFactor:1.0 duration:0.15],
-                                              [SKAction waitForDuration:0.5],
-                                              [SKAction colorizeWithColorBlendFactor:0.0 duration:0.15]]];
-    
+    SKAction *indicate = [SKAction sequence:@[[SKAction rotateByAngle:degToRad(-4.0f) duration:.5],
+                                              [SKAction rotateByAngle:degToRad(8.0f) duration:1],
+                                              [SKAction rotateByAngle:degToRad(-4.0f) duration:.5]]];
+
     //Makes the boxes light up according to the array it is given.
     for (NSInteger i = 0; i < _currentlength; ++i) {
         if ([_comparray[i] intValue] == 1) {
@@ -102,32 +132,28 @@
             // Wait
             position = CGPointMake(CGRectGetMidX(self.frame)-100,CGRectGetMidY(self.frame)+100);
             currentNode = [self nodeAtPoint:position];
-            [currentNode runAction:pulsePurple];
-            NSLog(@"The red node should pulse.");
+            [currentNode performSelector:@selector(runAction:) withObject:indicate afterDelay:2*i];
         }
         else if ([_comparray[i] intValue] == 2) {
             // Light up the blue node
             // Wait
             position = CGPointMake(CGRectGetMidX(self.frame)+100,CGRectGetMidY(self.frame)+100);
             currentNode = [self nodeAtPoint:position];
-            [currentNode runAction:pulsePurple];
-            NSLog(@"The blue node should pulse.");
+            [currentNode performSelector:@selector(runAction:) withObject:indicate afterDelay:2*i];
         }
         else if ([_comparray[i] intValue] == 3) {
             // Light up the yellow node
             // Wait
             position = CGPointMake(CGRectGetMidX(self.frame)-100,CGRectGetMidY(self.frame)-100);
             currentNode = [self nodeAtPoint:position];
-            [currentNode runAction:pulsePurple];
-            NSLog(@"The yellow node should pulse.");
+            [currentNode performSelector:@selector(runAction:) withObject:indicate afterDelay:2*i];
         }
         else if ([_comparray[i] intValue] == 4) {
             // Light up the green node
             // Wait
             position = CGPointMake(CGRectGetMidX(self.frame)+100,CGRectGetMidY(self.frame)-100);
             currentNode = [self nodeAtPoint:position];
-            [currentNode runAction:pulsePurple];
-            NSLog(@"The green node should pulse.");
+            [currentNode performSelector:@selector(runAction:) withObject:indicate afterDelay:2*i];
         }
     }
 }
@@ -149,7 +175,8 @@
     NSInteger element;
     for (NSInteger i=0; i < length; ++i) {
         element = [self randomNumberBetweenMin:1 andMax:5];
-        [_comparray insertObject:[NSNumber numberWithInteger: element] atIndex:i];
+        NSLog(@"CompArray has %d at index %d", element, i);
+        [_comparray insertObject: [NSNumber numberWithInteger: element] atIndex:i];
     }
     NSLog(@"_comparray is:");
     for (NSInteger i=0; i < length; ++i) {
@@ -181,7 +208,6 @@
     
     //Did you click the start label?
     if ([clickedNode.name isEqualToString:@"clickToStart"]) {
-        NSLog(@"You clicked the start label!");
         [clickedNode removeFromParent];
         [self runSimon];
     }
@@ -195,58 +221,32 @@
     else if ([clickedNode.name isEqualToString:@"redButton"]) {
         //Add 1 to the array
         userVal = 1;
-        [_userarray insertObject:[NSNumber numberWithInteger: userVal] atIndex:_currentpos];
-        NSLog(@"_userarray[currentpos] is: %i",[_userarray[_currentpos] intValue]);
-        NSLog(@"The _userarray is:");
-        for (NSInteger i = 0; i < _currentlength; ++i) {
-            NSLog(@"%i", [_userarray[i] intValue]);
-        }
         _currentpos = _currentpos + 1;
         [self userArrayIsFull];
-        NSLog(@"You clicked the red button.");
     }
     //Did you click the blue button?
     else if ([clickedNode.name isEqualToString:@"blueButton"]) {
         //Add 2 to the array
         userVal = 2;
         [_userarray insertObject:[NSNumber numberWithInteger: userVal] atIndex:_currentpos];
-        NSLog(@"_userarray[currentpos] is: %i", [_userarray[_currentpos] intValue]);
-        NSLog(@"The _userarray is:");
-        for (NSInteger i = 0; i < _currentlength; ++i) {
-            NSLog(@"%i", [_userarray[i] intValue]);
-        }
         _currentpos = _currentpos + 1;
         [self userArrayIsFull];
-        NSLog(@"You clicked the blue button.");
     }
     //Did you click the yellow button?
     else if ([clickedNode.name isEqualToString:@"yellowButton"]) {
         //Add 3 to the array
         userVal = 3;
         [_userarray insertObject:[NSNumber numberWithInteger: userVal] atIndex:_currentpos];
-        NSLog(@"_userarray[currentpos] is: %i", [_userarray[_currentpos] intValue]);
-        NSLog(@"The _userarray is:");
-        for (NSInteger i = 0; i < _currentlength; ++i) {
-            NSLog(@"%i", [_userarray[i] intValue]);
-        }
-
         _currentpos = _currentpos + 1;
         [self userArrayIsFull];
-        NSLog(@"You clicked the yellow button.");
     }
     //Did you click the green button?
     else if ([clickedNode.name isEqualToString:@"greenButton"]) {
         //Add 4 to the array
         userVal = 4;
         [_userarray insertObject:[NSNumber numberWithInteger: userVal] atIndex:_currentpos];
-        NSLog(@"_userarray[currentpos] is: %i", [_userarray[_currentpos] intValue]);
-        NSLog(@"The _userarray is:");
-        for (NSInteger i = 0; i < _currentlength; ++i) {
-            NSLog(@"%i", [_userarray[i] intValue]);
-        }
         _currentpos = _currentpos + 1;
         [self userArrayIsFull];
-        NSLog(@"You clicked the green button.");
     }
     
 }
@@ -261,11 +261,6 @@
         }
         
         [self checkWasUserCorrect];
-    }
-    else{
-        NSLog(@"The userarray is either not full or too full!");
-        NSLog(@"currentpos is: %i", _currentpos);
-        NSLog(@"currentlength is: %i", _currentlength);
     }
 }
 
@@ -288,9 +283,8 @@
 
 -(void)userWasCorrect
 {
-    // For now, only handles one turn.
     NSLog(@"You are correct!");
-    [self winSimon];
+    [self runSimon];
 }
 
 -(void)userWasNotCorrect

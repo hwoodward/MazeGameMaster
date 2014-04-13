@@ -89,7 +89,7 @@
                   symbolName = "-[ResourceScene notepadLabel]"
                   moduleName = "MazeExplorer"
                   urlString = "file://localhost/Users/cs121/CS121/MazeExplorer/MazeExplorer/MazeExplorer/ResourceScene.h"
-                  timestampString = "419048187.282134"
+                  timestampString = "419052934.755391"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "33"
@@ -103,7 +103,7 @@
                   symbolName = "-[ResourceScene setNotepadLabel:]"
                   moduleName = "MazeExplorer"
                   urlString = "file://localhost/Users/cs121/CS121/MazeExplorer/MazeExplorer/MazeExplorer/ResourceScene.h"
-                  timestampString = "419048187.282345"
+                  timestampString = "419052934.755598"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "33"
@@ -230,28 +230,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MazeExplorer/SimonScene.m"
-            timestampString = "418509915.906964"
+            timestampString = "419052400.977088"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "147"
-            endingLineNumber = "147"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
             landmarkName = "-generateSimonArrayOfLength:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MazeExplorer/SimonScene.m"
-            timestampString = "418438577.206472"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
-            landmarkName = "-runOneSimonTurnWithLength:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

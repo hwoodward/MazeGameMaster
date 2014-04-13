@@ -34,6 +34,7 @@ static const uint32_t borderCategory    =  0x1 << 3;
     self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
     self.physicsBody.categoryBitMask = borderCategory;
     self.physicsBody.contactTestBitMask = 0;
+    self.physicsBody.usesPreciseCollisionDetection = YES;
     
     //add pit
     CGPoint location =CGPointMake(CGRectGetMidX(self.frame)+50, CGRectGetMidY(self.frame)-125);

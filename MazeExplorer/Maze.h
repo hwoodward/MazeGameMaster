@@ -23,8 +23,6 @@
 
 - (void)printMaze;
 
-//- (BOOL)isWallCellWithRow:(int)row andColumn:(int)col;
-
 - (id)initMazeWithString:(NSString*) mazeString
                 andWidth:(int) width;
 - (CellType)getContentsWithRow:(int)row

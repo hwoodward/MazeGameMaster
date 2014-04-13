@@ -20,7 +20,7 @@
 @property (nonatomic) NSInteger currentlength;
 @property (nonatomic) NSInteger touchcount;
 @property (nonatomic) NSInteger currentpos; 
-
+@property (nonatomic) NSInteger winLength;
 @property float buttonWidth;
 
 @property id <ObstacleSceneDelegate> delegate;
