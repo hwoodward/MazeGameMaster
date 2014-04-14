@@ -169,6 +169,7 @@ static const int CELLNUM = 11;
 
 -(void)shiftMaze
 {
+    NSLog(@"moving maze to where it belongs");
     CGPoint start = [_maze startLoc];
     
     int xDiff = (CELLNUM/2) - start.x;

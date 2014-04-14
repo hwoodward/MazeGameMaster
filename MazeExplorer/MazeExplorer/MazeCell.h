@@ -28,5 +28,6 @@
         andColumn: (int) col
       andContents: (CellType) contents
  andSecondaryType: (SecondaryType) secondaryType;
+-(void)makeCellIntoObstacle;
 
 @end

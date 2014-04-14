@@ -180,6 +180,7 @@
     _numRows = height;
     _numCols = width;
     _cells = [[NSMutableArray alloc] init];
+    NSMutableArray* cluster = [[NSMutableArray alloc] init];
     
     for (int i = 0; i < height; i++) {
         NSMutableArray* row = [[NSMutableArray alloc] init];
@@ -193,9 +194,17 @@
                 _startLoc = CGPointMake(j, i);
             } else if (![contents compare:@"E"]) {
                 _endLoc = CGPointMake(j, i);
+            } else if (![contents compare:@"o"]) {
+                [cluster addObject:cell];
             }
         }
         [_cells addObject: row];
+        
+    }
+    if ([cluster count] > 0) {
+        int random = arc4random() % [cluster count];
+        MazeCell* newObstacle = [cluster objectAtIndex:random];
+        [newObstacle makeCellIntoObstacle];
     }
     return self;
 }

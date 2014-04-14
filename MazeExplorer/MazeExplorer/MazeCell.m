@@ -141,4 +141,10 @@
     return self;
 }
 
+- (void) makeCellIntoObstacle
+{
+    _contents = Obstacle;
+    _secondaryType.Obstacle = Pit;
+}
+
 @end
