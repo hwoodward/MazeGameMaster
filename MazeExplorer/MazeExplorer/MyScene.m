@@ -22,6 +22,7 @@
 //These are the maze strings and widths.
 // BE CAREFUL WITH MAZE STRINGS, see the mazeCell.m to check the translation of characters to cell contents and make sure the maze stays solvable
 
+
 static const NSString* maze1String = @"*E*********  *    c**  5   *******     **     *  ** O   * *** *  *   ****  *  ***R   *   ***S*******";
 static const int maze1Width = 10;
 static const NSString* maze2String = @"*****S***************           *a     **  *******  *****  **b *     *      *  *****  *  ****   *  **     *     *      **     2     ****   ** ********  *  *   **       *   *  *   **   **  *   *  *   **   *b  *          **   ******1******2***       *   *      ** ***** *   *  ******     * *** *      **   * * *   ****** **   *****        * **           *  *** ***********  *      **a          2      *****************E***";

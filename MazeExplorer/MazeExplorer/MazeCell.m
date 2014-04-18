@@ -144,7 +144,13 @@
 - (void) makeCellIntoObstacle
 {
     _contents = Obstacle;
-    _secondaryType.Obstacle = Pit;
+    _secondaryType.Obstacle = RandomO;
+}
+
+- (void) makeCellIntoResource
+{
+    _contents = Resource;
+    _secondaryType.Resource = RandomR;
 }
 
 @end

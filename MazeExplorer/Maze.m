@@ -180,7 +180,8 @@
     _numRows = height;
     _numCols = width;
     _cells = [[NSMutableArray alloc] init];
-    NSMutableArray* cluster = [[NSMutableArray alloc] init];
+    NSMutableDictionary* obstClusters = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary* resClusters = [[NSMutableDictionary alloc] init];
     
     for (int i = 0; i < height; i++) {
         NSMutableArray* row = [[NSMutableArray alloc] init];
@@ -194,18 +195,43 @@
                 _startLoc = CGPointMake(j, i);
             } else if (![contents compare:@"E"]) {
                 _endLoc = CGPointMake(j, i);
-            } else if (![contents compare:@"o"]) {
+            
+            } else if ((![contents compare:@"!"]) || (![contents compare:@"#"]) ||
+                       (![contents compare:@"$"]) || (![contents compare:@"%"])){
+                NSMutableArray* cluster = [obstClusters valueForKey:contents];
+                if (cluster == Nil) {
+                    cluster = [[NSMutableArray alloc] init];
+                }
                 [cluster addObject:cell];
+                [obstClusters setObject:cluster forKey:contents];
+            
+            } else if ((![contents compare:@"^"]) || (![contents compare:@"&"]) ||
+                       (![contents compare:@"+"]) || (![contents compare:@"?"])) {
+                NSMutableArray* cluster = [resClusters valueForKey:contents];
+                if (cluster == Nil) {
+                    cluster = [[NSMutableArray alloc] init];
+                }
+                [cluster addObject:cell];
+                [resClusters setObject:cluster forKey:contents];
             }
         }
         [_cells addObject: row];
         
     }
-    if ([cluster count] > 0) {
+    for (NSString* key in [obstClusters allKeys]) {
+        NSMutableArray* cluster = [obstClusters objectForKey:key];
         int random = arc4random() % [cluster count];
         MazeCell* newObstacle = [cluster objectAtIndex:random];
         [newObstacle makeCellIntoObstacle];
     }
+    
+    for (NSString* key in [resClusters allKeys]) {
+        NSMutableArray* cluster = [resClusters objectForKey:key];
+        int random = arc4random() % [cluster count];
+        MazeCell* newObstacle = [cluster objectAtIndex:random];
+        [newObstacle makeCellIntoResource];
+    }
+    
     return self;
 }
 
