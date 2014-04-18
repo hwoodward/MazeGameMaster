@@ -25,7 +25,7 @@ static const uint32_t borderCategory    =  0x1 << 3;
     
     self.backgroundColor = [SKColor greenColor];
     SKLabelNode *label = [[SKLabelNode alloc] init];
-    label.text = @"Drag the boulders into the blue pit to dismiss.";
+    label.text = @"This is actually the trace obstacle, dismiss with magic wand or solve like pit fill.";
     label.fontSize = 27;
     label.position = CGPointMake(CGRectGetMidX(self.frame),CGRectGetMaxY(self.frame)-50);
     label.fontColor = [SKColor blackColor];
