@@ -12,6 +12,7 @@ typedef enum {
     Simon,
     Pit,
     Avalanche,
+    Trace,
     RandomO //KEEP THIS LAST
 } ObstacleType;
 

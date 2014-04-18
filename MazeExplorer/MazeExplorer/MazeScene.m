@@ -330,6 +330,11 @@ static const int CELLNUM = 11;
             _obstacleInUse = Avalanche;
             break;
         }
+        case Trace: {
+            obstScene = [[TraceScene alloc] initWithSize:self.frame.size];
+            _obstacleInUse = Trace;
+            break;
+        }
         default: { //Default is DragDrop and also handles that case
             obstScene = [[ObstacleScene alloc] initWithSize:self.frame.size];
             _obstacleInUse = DragDrop;
@@ -434,7 +439,7 @@ static const int CELLNUM = 11;
                 break;
             }
             default: { //Default is Magic and handles that case
-                if (_obstacleInUse == DragDrop) {
+                if (_obstacleInUse == DragDrop ||  _obstacleInUse == Trace) {
                     [self obstacleDidFinish];
                 }
                 break;

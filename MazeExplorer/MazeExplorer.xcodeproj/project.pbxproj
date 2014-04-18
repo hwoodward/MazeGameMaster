@@ -31,6 +31,7 @@
 		93A48E1318BF1B470008E8ED /* MazeScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A48E1218BF1B470008E8ED /* MazeScene.m */; };
 		93C7BADF18FA1EA5002DB691 /* potion.png in Resources */ = {isa = PBXBuildFile; fileRef = 93C7BADE18FA1EA5002DB691 /* potion.png */; };
 		93C7BAE218FA2101002DB691 /* AvalancheScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C7BAE118FA2101002DB691 /* AvalancheScene.m */; };
+		93C7BAE51900CAD4002DB691 /* TraceScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C7BAE41900CAD4002DB691 /* TraceScene.m */; };
 		A125363818C2D70D0033FE44 /* ResourceScene.m in Sources */ = {isa = PBXBuildFile; fileRef = A125363718C2D70D0033FE44 /* ResourceScene.m */; };
 		A17694FE18B01E1B00DDCB91 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A17694FD18B01E1B00DDCB91 /* Foundation.framework */; };
 		A176950018B01E1B00DDCB91 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A17694FF18B01E1B00DDCB91 /* CoreGraphics.framework */; };
@@ -99,6 +100,8 @@
 		93C7BADE18FA1EA5002DB691 /* potion.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = potion.png; sourceTree = "<group>"; };
 		93C7BAE018FA2101002DB691 /* AvalancheScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvalancheScene.h; sourceTree = "<group>"; };
 		93C7BAE118FA2101002DB691 /* AvalancheScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvalancheScene.m; sourceTree = "<group>"; };
+		93C7BAE31900CAD4002DB691 /* TraceScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TraceScene.h; sourceTree = "<group>"; };
+		93C7BAE41900CAD4002DB691 /* TraceScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TraceScene.m; sourceTree = "<group>"; };
 		A125363618C2D70D0033FE44 /* ResourceScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceScene.h; sourceTree = "<group>"; };
 		A125363718C2D70D0033FE44 /* ResourceScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceScene.m; sourceTree = "<group>"; };
 		A17694FA18B01E1B00DDCB91 /* MazeExplorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MazeExplorer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -195,6 +198,8 @@
 				A176953A18B01F3000DDCB91 /* Maze.m */,
 				A176953C18B01F5100DDCB91 /* MazeCell.h */,
 				A176953D18B01F5100DDCB91 /* MazeCell.m */,
+				A176951718B01E1B00DDCB91 /* MyScene.h */,
+				A176951818B01E1C00DDCB91 /* MyScene.m */,
 				93A48E1118BF1B470008E8ED /* MazeScene.h */,
 				93A48E1218BF1B470008E8ED /* MazeScene.m */,
 				6D51E21E18F0B51200E7AA04 /* Obstacle.h */,
@@ -202,6 +207,8 @@
 				A1C2DA8418C41B0B00288B36 /* ObstacleScene.m */,
 				6D8412EB18F1F29C002B87FE /* PitFillScene.h */,
 				6D8412EC18F1F29C002B87FE /* PitFillScene.m */,
+				93C7BAE31900CAD4002DB691 /* TraceScene.h */,
+				93C7BAE41900CAD4002DB691 /* TraceScene.m */,
 				93C7BAE018FA2101002DB691 /* AvalancheScene.h */,
 				93C7BAE118FA2101002DB691 /* AvalancheScene.m */,
 				6D79B51018E8C764008DB1AB /* InstructionScene.h */,
@@ -210,8 +217,6 @@
 				93902B7F18EE6C880018D705 /* SimonScene.m */,
 				6D79B51618E8D605008DB1AB /* DSMultilineLabelNode.h */,
 				6D79B51718E8D605008DB1AB /* DSMultilineLabelNode.m */,
-				A176951718B01E1B00DDCB91 /* MyScene.h */,
-				A176951818B01E1C00DDCB91 /* MyScene.m */,
 				9390CED318E54ADC0073C488 /* ResourceConfirm.h */,
 				9390CED418E54ADC0073C488 /* ResourceConfirm.m */,
 				A125363618C2D70D0033FE44 /* ResourceScene.h */,
@@ -390,6 +395,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9390CED518E54ADC0073C488 /* ResourceConfirm.m in Sources */,
+				93C7BAE51900CAD4002DB691 /* TraceScene.m in Sources */,
 				6D79B51218E8C764008DB1AB /* InstructionScene.m in Sources */,
 				A176953B18B01F3000DDCB91 /* Maze.m in Sources */,
 				93A48E1318BF1B470008E8ED /* MazeScene.m in Sources */,

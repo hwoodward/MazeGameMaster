@@ -19,6 +19,7 @@
 #import "SimonScene.h"
 #import "PitFillScene.h"
 #import "AvalancheScene.h"
+#import "TraceScene.h"
 
 @protocol MazeSceneDelegate
 
