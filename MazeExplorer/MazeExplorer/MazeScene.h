@@ -29,7 +29,7 @@
 //This is the function that MyScene calls.
 -(void)increaseResourceCounter:(ResourceType) type;
 -(void)useResourceConfirmed:(ResourceType) type; 
--(void)mazeSolved;
+-(void)mazeSolved:(int) score;
 
 @end
 
@@ -44,5 +44,4 @@
 -(void) shiftMaze;
 -(id)initWithSize:(CGSize)size String: (NSString *)mazeString andWidth: (int) mazeWidth;
 -(void)resourceUsed:(ResourceType) type;
-
 @end

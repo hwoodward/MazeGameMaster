@@ -22,6 +22,6 @@
 
 -(void)increaseResourceCounter:(ResourceType) type;
 -(void)useResourceConfirmed:(ResourceType) type;
--(void)mazeSolved;
+-(void)mazeSolved:(int) score;
 -(void)instructionsDone;
 @end

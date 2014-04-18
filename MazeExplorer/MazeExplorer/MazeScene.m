@@ -22,6 +22,7 @@
 @property (nonatomic) SKView *obstView;
 @property (nonatomic) SKView *resConfirmView;
 
+@property int score;
 @end
 
 /* 
@@ -47,6 +48,7 @@ static const int CELLNUM = 11;
         
         [self mazeSetUpwithString:@"*E*********  *     **      *******     **     *  ** O   * *** *  *   ****  *  ***R   *   ***S*******" andWidth:10];
         [self addPlayer];
+        _score = 0;
     }
     
     return self;
@@ -61,6 +63,7 @@ static const int CELLNUM = 11;
         
         [self mazeSetUpwithString:mazeString andWidth: mazeWidth];
         [self addPlayer];
+        _score = 0;
     }
     
     return self;
@@ -284,7 +287,7 @@ static const int CELLNUM = 11;
                 break;
             }
             case End: {
-                [_delegate mazeSolved];
+                [_delegate mazeSolved:_score];
             }
             default: { //Default is that it is a path (this handles Path)
                 for (int i = 0; i< [cells count]; i++) {
@@ -354,7 +357,7 @@ static const int CELLNUM = 11;
     switch (type) {
         case RandomR: {
             [self obtainResource: (ResourceType) (arc4random() % (int) RandomR)]; //Randomly select a resource before RandomR
-            break;
+            return;
         }
         case Notepad: {
             [self.delegate increaseResourceCounter:Notepad];
@@ -369,6 +372,7 @@ static const int CELLNUM = 11;
             break;
         }
     }
+    _score++; //Do this here so we don't gain twice for randomR case
 }
 
 /*
@@ -386,6 +390,7 @@ static const int CELLNUM = 11;
         SKNode * obstacleNode = nodesAtCurrentPos[0];
         [obstacleNode removeFromParent];
         [self emptyMazeCellWithRow:_playerLoc.y andCol: _playerLoc.x];
+        _score += 3;
     }
 }
 
@@ -399,8 +404,11 @@ static const int CELLNUM = 11;
 
 - (void)obstacleDidFail
 {
-    [_obstView removeFromSuperview];
-    _obstView = Nil;
+    if(_obstView != nil) {
+        [_obstView removeFromSuperview];
+        _obstView = Nil;
+        _score--;
+    }
 }
 
 /*
@@ -421,6 +429,7 @@ static const int CELLNUM = 11;
  */
 -(void)useResourceConfirmed:(ResourceType) type
 {
+    _score--;
     [self.delegate useResourceConfirmed:type];
     [self resourceConfirmDidFinish];
     

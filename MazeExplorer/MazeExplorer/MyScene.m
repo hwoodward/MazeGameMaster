@@ -124,7 +124,8 @@ static const int maze3Width = 25;
 
 }
 
--(void) mazeSolved {
+-(void) mazeSolved:(int) score {
+    NSLog(@"%d", score);
     [_mazeView removeFromSuperview];
     _mazeView = Nil;
     [_resourceView removeFromSuperview];
