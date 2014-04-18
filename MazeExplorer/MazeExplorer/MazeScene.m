@@ -14,10 +14,10 @@
 @property float cellWidth;
 @property (nonatomic) SKSpriteNode *player;
 @property (nonatomic) Maze* maze;
-
+@property CGPoint newPos;
 @property CGPoint playerLoc;
 @property CGPoint endLoc;
-
+@property SKAction *move;
 @property ObstacleType obstacleInUse;
 @property (nonatomic) SKView *obstView;
 @property (nonatomic) SKView *resConfirmView;
@@ -215,70 +215,30 @@ static const int CELLNUM = 11;
         CGPoint touchPos  =[[touches anyObject] locationInView:self.view];
         
         NSArray *cells = [self children];
-        SKAction *move;
-        SKAction *undoMove;
 
-        
-        //Here we get the direction we intend to move and set the actions and new position
-        float xMidpoint = self.view.frame.size.width/2;
-        float yMidpoint = self.view.frame.size.height/2;
-        
-        float xDif = touchPos.x - xMidpoint;
-        float yDif = touchPos.y - yMidpoint;
-        CGPoint newPos = _playerLoc;
-        
-        if (abs(xDif)>abs(yDif)) {
-            if(xDif>0) { //move right                NSLog(@"Try to move right");
-                move = [SKAction moveByX:-_cellWidth y:0.0 duration:1.0];
-                undoMove = [SKAction moveByX:_cellWidth y:0.0 duration:1.0];
-                newPos.x++;
-            }
-            else { //move left                NSLog(@"Try to move left");
-                move = [SKAction moveByX:_cellWidth y:0.0 duration:1.0];
-                undoMove = [SKAction moveByX:-_cellWidth y:0.0 duration:1.0];
-                newPos.x--;
-            }
-        }
-        else {
-            if(yDif<0) { //move up            NSLog(@"Try to move up");
-                move = [SKAction moveByX:0.0 y:-_cellWidth duration:1.0];
-                undoMove = [SKAction moveByX:0.0 y:_cellWidth duration:1.0];
-                newPos.y--;
-            }
-            else { //move down            NSLog(@"Try to move down");
-                move = [SKAction moveByX:0.0 y:_cellWidth duration:1.0];
-                undoMove = [SKAction moveByX:0.0 y:-_cellWidth duration:1.0];
-                newPos.y++;
-            }
-        }
-        
+        //Get the players new position and the movement to shift the maze by
+        [self setMoveandnewPosfromTouch:touchPos];
+
         //Now we take action based on the new position we intend to move to
-        CellType cellContents = [_maze getContentsWithRow:newPos.y andColumn:newPos.x];
+        CellType cellContents = [_maze getContentsWithRow:_newPos.y andColumn:_newPos.x];
         switch (cellContents) {
             case Obstacle: {
-                for (int i = 0; i< [cells count]; i++) {
-                    SKSpriteNode *cell = (SKSpriteNode *)[cells objectAtIndex:i];
-                    [cell runAction:move];
-                }
-                [_player runAction:undoMove];
-                _playerLoc = newPos;
-
-                [self launchObstacle:[_maze getSecondaryTypeWithRow:newPos.y andColumn:newPos.x].Obstacle];
+                [self launchObstacle:[_maze getSecondaryTypeWithRow:_newPos.y andColumn:_newPos.x].Obstacle];
                 break;
             }
             case Resource: {
                 for (int i = 0; i< [cells count]; i++) {
                     SKSpriteNode *cell = (SKSpriteNode *)[cells objectAtIndex:i];
-                    [cell runAction:move];
+                    [cell runAction:_move];
                 }
-                [_player runAction:undoMove completion:^{
+                [_player runAction:_move.reversedAction completion:^{
                     CGPoint resourcePoint = _player.position;
                     NSArray * nodesAtCurrentPos = [self nodesAtPoint: resourcePoint];
                     SKSpriteNode * resourceNode = nodesAtCurrentPos[0];
                     [resourceNode removeFromParent];
                 }];
-                _playerLoc = newPos;
-                [self obtainResource: [_maze getSecondaryTypeWithRow:newPos.y andColumn:newPos.x].Resource];
+                _playerLoc = _newPos;
+                [self obtainResource: [_maze getSecondaryTypeWithRow:_newPos.y andColumn:_newPos.x].Resource];
                 [self emptyMazeCellWithRow:_playerLoc.y andCol: _playerLoc.x];
                 break;
             }
@@ -292,16 +252,49 @@ static const int CELLNUM = 11;
             default: { //Default is that it is a path (this handles Path)
                 for (int i = 0; i< [cells count]; i++) {
                 SKSpriteNode *cell = (SKSpriteNode *)[cells objectAtIndex:i];
-                [cell runAction:move];
+                [cell runAction:_move];
             }
-                [_player runAction:undoMove];
-                _playerLoc = newPos;
+                [_player runAction:_move.reversedAction];
+                _playerLoc = _newPos;
                 break;
             }
         }
 
     }
     
+}
+
+
+-(void) setMoveandnewPosfromTouch: (CGPoint) touchPos
+{
+    //Here we get the direction we intend to move and set the actions and new position
+    float xMidpoint = self.view.frame.size.width/2;
+    float yMidpoint = self.view.frame.size.height/2;
+    
+    float xDif = touchPos.x - xMidpoint;
+    float yDif = touchPos.y - yMidpoint;
+    _newPos = _playerLoc;
+    
+    if (abs(xDif)>abs(yDif)) {
+        if(xDif>0) { //move right                NSLog(@"Try to move right");
+            _move = [SKAction moveByX:-_cellWidth y:0.0 duration:1.0];
+            _newPos.x++;
+        }
+        else { //move left                NSLog(@"Try to move left");
+            _move = [SKAction moveByX:_cellWidth y:0.0 duration:1.0];
+            _newPos.x--;
+        }
+    }
+    else {
+        if(yDif<0) { //move up            NSLog(@"Try to move up");
+            _move = [SKAction moveByX:0.0 y:-_cellWidth duration:1.0];
+            _newPos.y--;
+        }
+        else { //move down            NSLog(@"Try to move down");
+            _move = [SKAction moveByX:0.0 y:_cellWidth duration:1.0];
+            _newPos.y++;
+        }
+    }
 }
 
 /*
@@ -384,15 +377,24 @@ static const int CELLNUM = 11;
 - (void)obstacleDidFinish
 {
     if(_obstView != nil) {
+        NSArray *cells = [self children];
+        for (int i = 0; i< [cells count]; i++) {
+            SKSpriteNode *cell = (SKSpriteNode *)[cells objectAtIndex:i];
+            [cell runAction:_move];
+        }
+        [_player runAction:_move.reversedAction completion:^{
+                NSArray * nodesAtCurrentPos = [self nodesAtPoint: _player.position];
+                SKNode * obstacleNode = nodesAtCurrentPos[0];
+                [obstacleNode removeFromParent];
+        }];
+        _playerLoc = _newPos;
         [_obstView removeFromSuperview];
         _obstView = Nil;
-        NSArray * nodesAtCurrentPos = [self nodesAtPoint: _player.position];
-        SKNode * obstacleNode = nodesAtCurrentPos[0];
-        [obstacleNode removeFromParent];
+        ;
         [self emptyMazeCellWithRow:_playerLoc.y andCol: _playerLoc.x];
         _score += 3;
     }
-}
+   }
 
 /*
  obstacleDidFail:
