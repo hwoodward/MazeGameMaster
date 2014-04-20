@@ -166,9 +166,28 @@
  * if you do that. 
  * Key for string to maze translation is in MazeCell.m above the initWith function used.
  *
+ * Cluster Processing:
+ * This will now have semi-random placement of resources and obstacles. 
+ * This is done by picking randomly from a set of potential locations. 
+ * 
+ * Character key for obstacle clusters:
+ * - !
+ * - #
+ * - $
+ * - %
+ *
+ * Character key for resource clusters:
+ * - ^
+ * - &
+ * - +
+ * - ?
+ *
+ * All of the above characters are preprocessed, but MazeCell will still see them, so do not
+ * use these for specialized cell types. 
+ *
  * Final note: I am sorry for the fact that it is impossible to follow the row/column of a cell in this
  * piece of code. I got it backwards about five times, finally got it straight, and haven't had the 
- * heart to touch it since. Again, apologies. 
+ * heart to touch it since. Again, apologies.
  */
 - (id)initMazeWithString:(NSString*) mazeString
                 andWidth:(int) width
