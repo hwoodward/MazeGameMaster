@@ -460,7 +460,8 @@ static const int CELLNUM = 11;
                 break;
             }
             default: { //Default is Magic and handles that case
-                if (_obstacleInUse == DragDrop ||  _obstacleInUse == Trace) {
+                if (_obstacleInUse == DragDrop ||  _obstacleInUse == Trace ||
+                    _obstacleInUse == Rope) {
                     [self obstacleDidFinish];
                 }
                 break;

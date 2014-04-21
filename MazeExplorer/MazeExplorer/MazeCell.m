@@ -70,7 +70,7 @@
         _contents = Obstacle;
         _secondaryType.Obstacle = Trace;
     }
-    else if (![contents compare:@"5"]) {
+    else if (![contents compare:@"6"]) {
         _contents = Obstacle;
         _secondaryType.Obstacle = Rope;
     }
