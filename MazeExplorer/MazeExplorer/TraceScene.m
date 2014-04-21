@@ -36,16 +36,50 @@ static const uint32_t borderCategory    =  0x1 << 3;
     //make path
     [self makePath];
     
-    //make target
-    CGPoint location =CGPointMake(CGRectGetMaxX(self.frame)-100, CGRectGetMidY(self.frame));
+    //make target (At last point in path)
+    CGPoint location =CGPointMake(CGRectGetMinX(self.frame)+75, CGRectGetMinY(self.frame)+100);
     [self addTargetBox:location];
     
-    //add movable item
-    location = CGPointMake(CGRectGetMinX(self.frame)+100, CGRectGetMidY(self.frame));
+    //add movable item (at first point in path)
+    location = CGPointMake(CGRectGetMinX(self.frame)+75, CGRectGetMaxY(self.frame)-150);
     [self addMovable: location];
     
     return self;
 }
+
+- (void) makePath {
+    CGPathRef path = CGPathCreateMutable();
+    CGPathMoveToPoint(path, NULL,0,0);
+    CGPoint points[] = {CGPointMake(CGRectGetMinX(self.frame)+75, CGRectGetMaxY(self.frame)-150),
+                        CGPointMake(CGRectGetMidX(self.frame)-50, CGRectGetMaxY(self.frame)-150),
+                        CGPointMake(CGRectGetMidX(self.frame)-50, CGRectGetMaxY(self.frame)-250),
+                        CGPointMake(CGRectGetMidX(self.frame)+75, CGRectGetMaxY(self.frame)-150),
+                        CGPointMake(CGRectGetMaxX(self.frame)-75, CGRectGetMaxY(self.frame)-150),
+                        CGPointMake(CGRectGetMaxX(self.frame)-75, CGRectGetMidY(self.frame)+75),
+                        CGPointMake(CGRectGetMinX(self.frame)+75, CGRectGetMidY(self.frame)+75),
+                        CGPointMake(CGRectGetMinX(self.frame)+75, CGRectGetMidY(self.frame)-100),
+                        CGPointMake(CGRectGetMinX(self.frame)+200, CGRectGetMidY(self.frame)+25),
+                        CGPointMake(CGRectGetMidX(self.frame)-50, CGRectGetMidY(self.frame)-100),
+                        CGPointMake(CGRectGetMidX(self.frame)+50, CGRectGetMidY(self.frame)+25),
+                        CGPointMake(CGRectGetMaxX(self.frame)-150, CGRectGetMidY(self.frame)-100),
+                        CGPointMake(CGRectGetMaxX(self.frame)-75, CGRectGetMidY(self.frame)-25),
+                        CGPointMake(CGRectGetMaxX(self.frame)-75, CGRectGetMinY(self.frame)+100),
+                        CGPointMake(CGRectGetMidX(self.frame)+50, CGRectGetMinY(self.frame)+100),
+                        CGPointMake(CGRectGetMidX(self.frame)+50, CGRectGetMinY(self.frame)+225),
+                        CGPointMake(CGRectGetMidX(self.frame)-75, CGRectGetMinY(self.frame)+100),
+                        CGPointMake(CGRectGetMinX(self.frame)+75, CGRectGetMinY(self.frame)+100)};
+    CGPathAddLines(path, NULL, points, 18);
+    
+    SKShapeNode *line = [[SKShapeNode alloc] init];
+    line.path = path;
+    line.physicsBody = [SKPhysicsBody bodyWithEdgeChainFromPath:path];
+    line.physicsBody.categoryBitMask = lineCategory;
+    line.physicsBody.contactTestBitMask = movableCategory;
+    line.physicsBody.collisionBitMask = 0;
+    [self addChild:line];
+    
+}
+
 -(void) addMovable: (CGPoint) location {
     
     SKSpriteNode *movable = [[SKSpriteNode alloc]initWithImageNamed:@"bluecircle.png"];
@@ -71,21 +105,6 @@ static const uint32_t borderCategory    =  0x1 << 3;
     blueBox.physicsBody.contactTestBitMask = movableCategory;
     blueBox.physicsBody.collisionBitMask = 0;
     [self addChild:blueBox];
-}
-
-- (void) makePath {
-    CGPathRef path = CGPathCreateMutable();
-    CGPoint points[] = {CGPointMake(CGRectGetMinX(self.frame)+100, CGRectGetMidY(self.frame)), CGPointMake(CGRectGetMaxX(self.frame)-100, CGRectGetMidY(self.frame))};
-    CGPathAddLines(path, NULL, points, 2);
-    
-    SKShapeNode *line = [[SKShapeNode alloc] init];
-    line.path = path;
-    line.physicsBody = [SKPhysicsBody bodyWithEdgeChainFromPath:path];
-    line.physicsBody.categoryBitMask = lineCategory;
-    line.physicsBody.contactTestBitMask = movableCategory;
-    line.physicsBody.collisionBitMask = 0;
-    [self addChild:line];
-    
 }
 
 //Gesture recognizer code
@@ -137,6 +156,10 @@ static const uint32_t borderCategory    =  0x1 << 3;
         firstBody = contact.bodyB;
         secondBody = contact.bodyA;
     }
+    if ((firstBody.categoryBitMask & lineCategory) != 0 &&
+         (secondBody.categoryBitMask & movableCategory) != 0) {
+        _onPath++;
+    }
     if ((firstBody.categoryBitMask & targetCategory) != 0 &&
         (secondBody.categoryBitMask & movableCategory) != 0) {
         [_delegate obstacleDidFinish];
@@ -158,8 +181,16 @@ static const uint32_t borderCategory    =  0x1 << 3;
     
     if ((firstBody.categoryBitMask & lineCategory) != 0 &&
         (secondBody.categoryBitMask & movableCategory) != 0) {
+        _onPath--;
+        [self performSelector:@selector(notOnPath) withObject:self afterDelay:0.2];
+    }
+}
+
+- (void)notOnPath {
+    if(_onPath == 0) {
         [_delegate obstacleDidFail];
     }
 }
+
 
 @end
