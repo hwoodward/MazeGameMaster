@@ -12,7 +12,6 @@
 @interface TraceScene : SKScene <Obstacle>
 
 @property (nonatomic, strong) SKSpriteNode *selectedNode;
-@property int inTarget;
 
 @property id <ObstacleSceneDelegate> delegate;
 
