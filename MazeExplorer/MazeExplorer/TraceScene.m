@@ -21,7 +21,7 @@ static const uint32_t borderCategory    =  0x1 << 3;
     self.physicsWorld.gravity = CGVectorMake(0,0);
     self.physicsWorld.contactDelegate = (id) self;
     
-    self.backgroundColor = [SKColor greenColor];
+    self.backgroundColor = [SKColor colorWithRed:0.0 green:.7 blue:0.05 alpha:1.0];
     SKLabelNode *label = [[SKLabelNode alloc] init];
     label.text = @"Drag the blue circle along the path to the end to dismiss.";
     label.fontSize = 27;

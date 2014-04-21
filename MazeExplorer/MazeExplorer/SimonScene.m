@@ -59,7 +59,8 @@
     [self addChild:yellowNode];
 
     // Creating the green Simon button
-    SKSpriteNode *greenNode = [[SKSpriteNode alloc] initWithColor: [SKColor greenColor] size:buttonSize];
+    SKSpriteNode *greenNode = [[SKSpriteNode alloc] initWithColor: [SKColor colorWithRed:0.0 green:.7 blue:0.05 alpha:1.0]
+                                                             size:buttonSize];
     greenNode.position = CGPointMake(CGRectGetMidX(self.frame)+100,CGRectGetMidY(self.frame)-100);
     greenNode.name = @"greenButton";
     [self addChild:greenNode];
