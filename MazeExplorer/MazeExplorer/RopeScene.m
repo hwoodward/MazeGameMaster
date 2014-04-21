@@ -11,10 +11,12 @@
 static const uint32_t ropeCategory     =  0x1 << 0;
 static const uint32_t pivotCategory    =  0x1 << 1;
 static const uint32_t barCategory      =  0x1 << 2;
+static const uint32_t playerCategory   =  0x1 << 3;
 
 @interface RopeScene ()
 
 @property (nonatomic) SKSpriteNode* rope;
+@property (nonatomic) SKSpriteNode* player;
 @property (nonatomic) SKSpriteNode* speedButton;
 @property CGFloat rotation;
 @property (nonatomic) NSTimeInterval lastUpdateTimeInterval;
@@ -32,7 +34,15 @@ static const uint32_t barCategory      =  0x1 << 2;
         self.backgroundColor = [SKColor blackColor];
         [self initRopeAndPivot];
         [self initCliffSides];
+        [self initPlayer];
         [self initSpeedButton];
+        
+        SKLabelNode *label = [[SKLabelNode alloc] init];
+        label.text = @"Jump onto and off the rope to swing across.";
+        label.fontSize = 27;
+        label.position = CGPointMake(CGRectGetMidX(self.frame),CGRectGetMaxY(self.frame)-50);
+        label.fontColor = [SKColor whiteColor];
+        [self addChild:label];
     }
     return self;
 }
@@ -126,6 +136,16 @@ static const uint32_t barCategory      =  0x1 << 2;
     [self addChild:rightCliff];
 }
 
+- (void) initPlayer
+{
+    //Player image source: http://findicons.com/icon/69390/circle_blue
+    
+    _player = [[SKSpriteNode alloc] initWithImageNamed:@"bluecircle.png"];
+    _player.position = CGPointMake(CGRectGetWidth(self.frame)*(.35/2),
+                                   CGRectGetMidY(self.frame)/2+(_player.size.height/2));
+    [self addChild:_player];
+}
+
 - (void) initSpeedButton
 {
     _speedButton = [[SKSpriteNode alloc]
@@ -175,11 +195,12 @@ static const uint32_t barCategory      =  0x1 << 2;
                 NSLog(@"at edge");
                 if (_onRope) {
                     if (touchLoc.x >= CGRectGetWidth(self.frame)*.65){
-                        [_delegate obstacleDidFinish];
+                        [self finish];
                     }
                 } else {
                     if (touchLoc.x <= CGRectGetWidth(self.frame)*.35){
                         _onRope = YES;
+                        _player.position = _rope.position;
                         NSLog(@"On rope");
                     }
                 }
@@ -188,8 +209,22 @@ static const uint32_t barCategory      =  0x1 << 2;
     }
 }
 
--(void)update:(CFTimeInterval)currentTime {
+- (void) finish
+{
+    _onRope = NO;
+    SKAction* jump = [SKAction moveTo:CGPointMake(CGRectGetWidth(self.frame)*(.65 + .35/2),
+                                                   CGRectGetMidY(self.frame)/2+(_player.size.height/2))
+                             duration:.5];
     
+    [_player runAction:jump  completion:^{
+        [_delegate obstacleDidFinish];
+    }];
+}
+
+-(void)update:(CFTimeInterval)currentTime {
+    if (_onRope) {
+        _player.position = _rope.position;
+    }
 }
 
 
@@ -207,9 +242,7 @@ static const uint32_t barCategory      =  0x1 << 2;
         secondBody = contact.bodyA;
     }
     
-    if (firstBody.categoryBitMask == ropeCategory) {
-        //do nothing
-    } else if (firstBody.categoryBitMask == pivotCategory &&
+    if (firstBody.categoryBitMask == pivotCategory &&
                secondBody.categoryBitMask == barCategory) {
         firstBody.velocity = CGVectorMake(0, 0);
     }
