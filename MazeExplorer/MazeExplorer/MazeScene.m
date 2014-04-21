@@ -123,7 +123,7 @@ static const int CELLNUM = 11;
                     SKSpriteNode *cellNode = [[SKSpriteNode alloc] initWithColor: [SKColor orangeColor] size:cellSize];
                     cellNode.position = CGPointMake(_cellWidth*i + (_cellWidth/2),
                                                     self.frame.size.height - _cellWidth*j - _cellWidth/2);
-                    
+                    cellNode.name = @"Resource";
                     [self addChild:cellNode];
                     break;
 
@@ -235,8 +235,12 @@ static const int CELLNUM = 11;
                 [_player runAction:_move.reversedAction completion:^{
                     CGPoint resourcePoint = _player.position;
                     NSArray * nodesAtCurrentPos = [self nodesAtPoint: resourcePoint];
-                    SKSpriteNode * resourceNode = nodesAtCurrentPos[0];
-                    [resourceNode removeFromParent];
+                    for (int i = 0; i<[nodesAtCurrentPos count]; i++) {
+                        SKSpriteNode * node = nodesAtCurrentPos[i];
+                        if(node.name == @"Resource") {
+                            [node removeFromParent];
+                        }
+                    }
                 }];
                 _playerLoc = _newPos;
                 [self obtainResource: [_maze getSecondaryTypeWithRow:_newPos.y andColumn:_newPos.x].Resource];
