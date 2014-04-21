@@ -20,6 +20,7 @@
 #import "PitFillScene.h"
 #import "AvalancheScene.h"
 #import "TraceScene.h"
+#import "RopeScene.h"
 
 @protocol MazeSceneDelegate
 

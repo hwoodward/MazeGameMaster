@@ -336,6 +336,11 @@ static const int CELLNUM = 11;
             _obstacleInUse = Trace;
             break;
         }
+        case Rope: {
+            obstScene = [[RopeScene alloc] initWithSize:self.frame.size];
+            _obstacleInUse = Rope;
+            break;
+        }
         default: { //Default is DragDrop and also handles that case
             obstScene = [[ObstacleScene alloc] initWithSize:self.frame.size];
             _obstacleInUse = DragDrop;
