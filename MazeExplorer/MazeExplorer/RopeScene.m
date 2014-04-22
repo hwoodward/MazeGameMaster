@@ -121,15 +121,19 @@ static const uint32_t playerCategory   =  0x1 << 3;
 
 - (void) initCliffSides
 {
+    
+    SKTexture* masonry = [SKTexture textureWithImageNamed:@"bricktexture.jpg"];
     SKSpriteNode* leftCliff = [[SKSpriteNode alloc]
-                               initWithColor:[SKColor grayColor]
+                               initWithTexture:masonry
+                               color:[SKColor grayColor]
                                size:CGSizeMake(CGRectGetWidth(self.frame)*.35, CGRectGetMidY(self.frame)/2)];
     leftCliff.anchorPoint = CGPointMake(0,0);
     leftCliff.position = CGPointMake(0,0);
     [self addChild:leftCliff];
     
     SKSpriteNode* rightCliff = [[SKSpriteNode alloc]
-                                initWithColor:[SKColor grayColor]
+                                initWithTexture:masonry
+                                color:[SKColor grayColor]
                                 size:CGSizeMake(CGRectGetWidth(self.frame)*.35, CGRectGetMidY(self.frame)/2)];
     rightCliff.anchorPoint = CGPointMake(1,0);
     rightCliff.position = CGPointMake(CGRectGetWidth(self.frame),0);
@@ -150,10 +154,18 @@ static const uint32_t playerCategory   =  0x1 << 3;
 {
     _speedButton = [[SKSpriteNode alloc]
                     initWithColor:[SKColor blueColor]
-                    size:CGSizeMake(150, 70)];
+                    size:CGSizeMake(160, 70)];
     _speedButton.position = CGPointMake(CGRectGetMidX(self.frame),
                                         (1.57)*CGRectGetMidY(self.frame));
     [self addChild:_speedButton];
+    
+    SKLabelNode* speedLabel = [[SKLabelNode alloc] init];
+    speedLabel.text = @"Rope Speed Button";
+    speedLabel.fontSize = 27;
+    speedLabel.position = CGPointMake(CGRectGetMidX(self.frame),
+                                      _speedButton.position.y + _speedButton.size.height/2);
+    speedLabel.fontColor = [SKColor whiteColor];
+    [self addChild:speedLabel];
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {

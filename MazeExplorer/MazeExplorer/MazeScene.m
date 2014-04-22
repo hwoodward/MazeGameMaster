@@ -370,6 +370,10 @@ static const int CELLNUM = 11;
             [self.delegate increaseResourceCounter:Potion];
             break;
         }
+        case Wing: {
+            [self.delegate increaseResourceCounter:Wing];
+            break;
+        }
         default: { //Default is a Magic resource and also handles that case
             [self.delegate increaseResourceCounter:Magic];
             break;

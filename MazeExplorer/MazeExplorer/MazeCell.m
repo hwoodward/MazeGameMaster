@@ -31,6 +31,7 @@
  * "a" --> Resource (Notepad)
  * "b" --> Resource (Potion)
  * "c" --> Resource (Magic)
+ * "f" --> Resource (Wing)
  * "S" --> starting location (NOTE: There should only be ONE of these per maze, or weirdness will ensue)
  * "E" --> End location (NOTE: For now, there should only be one of these. If you want to build support
  *                       multiple exits, be my guest)
@@ -89,6 +90,10 @@
     else if (![contents compare:@"c"]) {
         _contents = Resource;
         _secondaryType.Resource = Magic;
+    }
+    else if (![contents compare:@"f"]) {
+        _contents = Resource;
+        _secondaryType.Resource = Wing;
     }
     else if (![contents compare:@"S"]) {
         _contents = Start;

@@ -21,6 +21,7 @@ typedef enum {
     Magic = 0,
     Notepad,
     Potion,
+    Wing,
     RandomR //KEEP THIS LAST
 } ResourceType;
 

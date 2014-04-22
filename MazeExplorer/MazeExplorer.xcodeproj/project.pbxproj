@@ -33,7 +33,7 @@
 		93C7BAE218FA2101002DB691 /* AvalancheScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C7BAE118FA2101002DB691 /* AvalancheScene.m */; };
 		93C7BAE51900CAD4002DB691 /* TraceScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C7BAE41900CAD4002DB691 /* TraceScene.m */; };
 		A125363818C2D70D0033FE44 /* ResourceScene.m in Sources */ = {isa = PBXBuildFile; fileRef = A125363718C2D70D0033FE44 /* ResourceScene.m */; };
-		A15F5E9F1905A1D1008CBC2E /* RopeObstacle.m in Sources */ = {isa = PBXBuildFile; fileRef = A15F5E9E1905A1D1008CBC2E /* RopeObstacle.m */; };
+		A15F5E9F1905A1D1008CBC2E /* RopeScene.m in Sources */ = {isa = PBXBuildFile; fileRef = A15F5E9E1905A1D1008CBC2E /* RopeScene.m */; };
 		A17694FE18B01E1B00DDCB91 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A17694FD18B01E1B00DDCB91 /* Foundation.framework */; };
 		A176950018B01E1B00DDCB91 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A17694FF18B01E1B00DDCB91 /* CoreGraphics.framework */; };
 		A176950218B01E1B00DDCB91 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A176950118B01E1B00DDCB91 /* UIKit.framework */; };
@@ -106,7 +106,7 @@
 		A125363618C2D70D0033FE44 /* ResourceScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceScene.h; sourceTree = "<group>"; };
 		A125363718C2D70D0033FE44 /* ResourceScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceScene.m; sourceTree = "<group>"; };
 		A15F5E9D1905A1D1008CBC2E /* RopeScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RopeScene.h; sourceTree = "<group>"; };
-		A15F5E9E1905A1D1008CBC2E /* RopeObstacle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RopeObstacle.m; sourceTree = "<group>"; };
+		A15F5E9E1905A1D1008CBC2E /* RopeScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RopeScene.m; sourceTree = "<group>"; };
 		A17694FA18B01E1B00DDCB91 /* MazeExplorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MazeExplorer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A17694FD18B01E1B00DDCB91 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A17694FF18B01E1B00DDCB91 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -207,7 +207,7 @@
 				93A48E1218BF1B470008E8ED /* MazeScene.m */,
 				6D51E21E18F0B51200E7AA04 /* Obstacle.h */,
 				A15F5E9D1905A1D1008CBC2E /* RopeScene.h */,
-				A15F5E9E1905A1D1008CBC2E /* RopeObstacle.m */,
+				A15F5E9E1905A1D1008CBC2E /* RopeScene.m */,
 				A1C2DA8318C41B0B00288B36 /* ObstacleScene.h */,
 				A1C2DA8418C41B0B00288B36 /* ObstacleScene.m */,
 				6D8412EB18F1F29C002B87FE /* PitFillScene.h */,
@@ -413,7 +413,7 @@
 				A1C2DA8518C41B0B00288B36 /* ObstacleScene.m in Sources */,
 				6D8412ED18F1F29C002B87FE /* PitFillScene.m in Sources */,
 				93C7BAE218FA2101002DB691 /* AvalancheScene.m in Sources */,
-				A15F5E9F1905A1D1008CBC2E /* RopeObstacle.m in Sources */,
+				A15F5E9F1905A1D1008CBC2E /* RopeScene.m in Sources */,
 				93902B8018EE6C880018D705 /* SimonScene.m in Sources */,
 				A176950C18B01E1B00DDCB91 /* main.m in Sources */,
 				A125363818C2D70D0033FE44 /* ResourceScene.m in Sources */,

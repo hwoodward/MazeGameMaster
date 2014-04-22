@@ -37,36 +37,51 @@
     // Adding buttons and counter labels for each resource.
     //magic resource
     SKSpriteNode *magicButton = [[SKSpriteNode alloc] initWithImageNamed:@"magic.png"];
-    magicButton.position = CGPointMake(CGRectGetMidX(self.frame)-150,CGRectGetMidY(self.frame)+20);
+    CGFloat magicX = CGRectGetMaxX(self.frame)*(2.0/9.0);
+    magicButton.position = CGPointMake(magicX,CGRectGetMidY(self.frame)+20);
     magicButton.name = @"magic";
     [self addChild:magicButton];
     _magicLabel = [[SKLabelNode alloc] init];
     _magicLabel.text = [NSString stringWithFormat:@"%i",_magicCounter];
     _magicLabel.fontSize = 25;
-    _magicLabel.position = CGPointMake(CGRectGetMidX(self.frame)-150,CGRectGetMidY(self.frame)-60);
+    _magicLabel.position = CGPointMake(magicX,CGRectGetMidY(self.frame)-60);
     [self addChild:_magicLabel];
     
     //notepad resource
     SKSpriteNode *notepadButton = [[SKSpriteNode alloc] initWithImageNamed:@"Notepad.png"];
-    notepadButton.position = CGPointMake(CGRectGetMidX(self.frame),CGRectGetMidY(self.frame)+20);
+    CGFloat notepadX = CGRectGetMaxX(self.frame)*(5.0/9.0)*(1/3.0) + magicX;
+    notepadButton.position = CGPointMake(notepadX,CGRectGetMidY(self.frame)+20);
     notepadButton.name = @"notepad";
     [self addChild:notepadButton];
     _notepadLabel = [[SKLabelNode alloc] init];
     _notepadLabel.text = [NSString stringWithFormat:@"%i",_notepadCounter];
     _notepadLabel.fontSize = 25;
-    _notepadLabel.position = CGPointMake(CGRectGetMidX(self.frame),CGRectGetMidY(self.frame)-60);
+    _notepadLabel.position = CGPointMake(notepadX,CGRectGetMidY(self.frame)-60);
     [self addChild:_notepadLabel];
     
     //potion resource
     SKSpriteNode *potionButton = [[SKSpriteNode alloc] initWithImageNamed:@"potion.png"];
-    potionButton.position = CGPointMake(CGRectGetMidX(self.frame)+150,CGRectGetMidY(self.frame)+20);
+    CGFloat potionX = CGRectGetMaxX(self.frame)*(5.0/9.0)*(2/3.0) + magicX;
+    potionButton.position = CGPointMake(potionX,CGRectGetMidY(self.frame)+20);
     potionButton.name = @"potion";
     [self addChild:potionButton];
     _potionLabel = [[SKLabelNode alloc] init];
     _potionLabel.text = [NSString stringWithFormat:@"%i",_potionCounter];
     _potionLabel.fontSize = 25;
-    _potionLabel.position = CGPointMake(CGRectGetMidX(self.frame)+150,CGRectGetMidY(self.frame)-60);
+    _potionLabel.position = CGPointMake(potionX,CGRectGetMidY(self.frame)-60);
     [self addChild:_potionLabel];
+    
+    //wing resource
+    SKSpriteNode *wingButton = [[SKSpriteNode alloc] initWithImageNamed:@"bricktexture.jpg"];
+    CGFloat wingX = CGRectGetMaxX(self.frame)*(7.0/9.0);
+    wingButton.position = CGPointMake(wingX,CGRectGetMidY(self.frame)+20);
+    wingButton.name = @"wing";
+    [self addChild:wingButton];
+    _wingLabel = [[SKLabelNode alloc] init];
+    _wingLabel.text = [NSString stringWithFormat:@"%i",_wingCounter];
+    _wingLabel.fontSize = 25;
+    _wingLabel.position = CGPointMake(wingX,CGRectGetMidY(self.frame)-60);
+    [self addChild:_wingLabel];
     
     return self;
 }
@@ -82,6 +97,11 @@
         case Potion:{
             _potionCounter++;
             _potionLabel.text = [NSString stringWithFormat:@"%i",_potionCounter];
+            break;
+        }
+        case Wing:{
+            _wingCounter++;
+            _wingLabel.text = [NSString stringWithFormat:@"%i",_wingCounter];
             break;
         }
         default: {//Default is magic and handles that case
@@ -141,6 +161,11 @@
     if ([clickedNode.name isEqualToString:@"potion"]) {
         if (_potionCounter > 0){
             [self useResource:Potion];
+        }
+    }
+    if ([clickedNode.name isEqualToString:@"wing"]) {
+        if (_wingCounter > 0){
+            [self useResource:Wing];
         }
     }
     

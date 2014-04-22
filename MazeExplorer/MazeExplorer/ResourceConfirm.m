@@ -28,7 +28,11 @@
             break;
         }
         case Potion: {
-            label.text = @"You are going to use a potion of super strength. Once used a potion is irretrivably consummed. \n \n A potion of super strengthallows you to easily complete the pit fill and avalanche clearing obstacles. However if used when not in those situations there is no effect. \n \n Click the green check to confirm this action, the red x to cancel.";
+            label.text = @"You are going to use a potion of super strength. Once used a potion is irretrivably consumed. \n \n A potion of super strength allows you to easily complete the pit fill and avalanche clearing obstacles. However if used when not in those situations there is no effect. \n \n Click the green check to confirm this action, the red x to cancel.";
+            break;
+        }
+        case Wing: {
+            label.text = @"You are going to use a wing resource. Using the wings of Icarus cannot be undone. \n \n A wing resource dismisses the Rope obstacle. However, if used when not in a Rope obstacle, the resource is used to no effect. \n \n Click the green check to confirm this action, the red x to cancel.";
             break;
         }
         default: {//Default is Magic and also handles that case
