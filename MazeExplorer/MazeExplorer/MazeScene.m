@@ -114,7 +114,7 @@ static const int CELLNUM = 11;
                     SKSpriteNode *cellNode = [[SKSpriteNode alloc] initWithColor: [SKColor brownColor] size:cellSize];
                     cellNode.position = CGPointMake(_cellWidth*i + (_cellWidth/2),
                                                     self.frame.size.height - _cellWidth*j - _cellWidth/2);
-                    
+                    cellNode.name = @"Obstascle";
                     [self addChild:cellNode];
                     break;
                 }
@@ -396,11 +396,15 @@ static const int CELLNUM = 11;
             [cell runAction:_move];
         }
         [_player runAction:_move.reversedAction completion:^{
-                NSArray * nodesAtCurrentPos = [self nodesAtPoint: _player.position];
-                SKNode * obstacleNode = nodesAtCurrentPos[0];
-                [obstacleNode removeFromParent];
-        }];
-        _playerLoc = _newPos;
+            CGPoint obstaclePoint = _player.position;
+            NSArray * nodesAtCurrentPos = [self nodesAtPoint: obstaclePoint];
+            for (int i = 0; i<[nodesAtCurrentPos count]; i++) {
+                SKSpriteNode * node = nodesAtCurrentPos[i];
+                if([node.name  isEqual: @"Obstacle"]) {
+                    [node removeFromParent];
+                }
+            }
+        }];        _playerLoc = _newPos;
         [_obstView removeFromSuperview];
         _obstView = Nil;
         ;
