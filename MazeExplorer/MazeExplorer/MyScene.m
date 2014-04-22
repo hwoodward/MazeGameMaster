@@ -72,6 +72,20 @@ static const int maze3Width = 25;
         maze3.name = @"maze3";
         [self addChild:maze3];
         
+        SKSpriteNode *maze4 = [[SKSpriteNode alloc] initWithImageNamed:@"button4.png"];
+        maze4.position = CGPointMake(CGRectGetMidX(self.frame)-200,CGRectGetMaxY(self.frame)-400);
+        maze4.name = @"maze4";
+        [self addChild:maze4];
+        
+        SKSpriteNode *maze5 = [[SKSpriteNode alloc] initWithImageNamed:@"button5.png"];
+        maze5.position = CGPointMake(CGRectGetMidX(self.frame),CGRectGetMaxY(self.frame)-400);
+        maze5.name = @"maze5";
+        [self addChild:maze5];
+        
+        SKSpriteNode *maze6 = [[SKSpriteNode alloc] initWithImageNamed:@"button6.png"];
+        maze6.position = CGPointMake(CGRectGetMidX(self.frame)+200,CGRectGetMaxY(self.frame)-400);
+        maze6.name = @"maze6";
+        [self addChild:maze6];
         
         SKSpriteNode *help = [[SKSpriteNode alloc] initWithImageNamed:@"help.png"];
         help.position = CGPointMake(CGRectGetMidX(self.frame),CGRectGetMinY(self.frame)+150);
@@ -103,7 +117,15 @@ static const int maze3Width = 25;
     if ([clickedNode.name isEqualToString:@"maze3"]) {
         [self launchMazewithString:maze3String andWidth:maze3Width];
     }
-    
+    if ([clickedNode.name isEqualToString:@"maze4"]) {
+        [self launchMazewithString:maze1String andWidth:maze1Width];
+    }
+    if ([clickedNode.name isEqualToString:@"maze5"]) {
+        [self launchMazewithString:maze2String andWidth:maze2Width];
+    }
+    if ([clickedNode.name isEqualToString:@"maze6"]) {
+        [self launchMazewithString:maze3String andWidth:maze3Width];
+    }
     if ([clickedNode.name isEqualToString:@"help"]) {
         [self displayInstructions];
     }
