@@ -14,7 +14,7 @@
 @property BOOL didPresentGameViews;
 @property (nonatomic) SKView *mazeView;
 @property (nonatomic) SKView *resourceView;
-
+@property SKLabelNode *scoreLabel;
 @end
 
 @implementation MyScene
@@ -35,12 +35,20 @@ static const int maze3Width = 25;
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
         self.backgroundColor = [SKColor lightGrayColor];
+        
         SKLabelNode *title = [[SKLabelNode alloc] init];
         title.text = @"Maze Explorer";
         title.fontSize = 40;
         title.position = CGPointMake(CGRectGetMidX(self.frame),CGRectGetMaxY(self.frame)-100);
         title.fontColor = [SKColor blackColor];
         [self addChild:title];
+        
+        _scoreLabel = [[SKLabelNode alloc] init];
+        _scoreLabel.text = @"";
+        _scoreLabel.fontSize = 30;
+        _scoreLabel.position = CGPointMake(CGRectGetMidX(self.frame),CGRectGetMidY(self.frame)-100);
+        _scoreLabel.fontColor = [SKColor blackColor];
+        [self addChild:_scoreLabel];
 
         SKLabelNode *instructions = [[SKLabelNode alloc] init];
         instructions.text = @"Select a maze to play or click below for details on how to play.";
@@ -127,7 +135,7 @@ static const int maze3Width = 25;
 }
 
 -(void) mazeSolved:(int) score {
-    NSLog(@"%d", score);
+    _scoreLabel.text = [NSString stringWithFormat:@"You scored %d on the last maze", score];
     [_mazeView removeFromSuperview];
     _mazeView = Nil;
     [_resourceView removeFromSuperview];

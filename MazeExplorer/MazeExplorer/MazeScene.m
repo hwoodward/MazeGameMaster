@@ -210,7 +210,7 @@ static const int CELLNUM = 11;
 //Attempting to make a version of this that responds to up, down, left, right touches
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     
-    if (_obstView == Nil) {
+    if (_obstView == Nil && _resConfirmView == Nil) {
   
         CGPoint touchPos  =[[touches anyObject] locationInView:self.view];
         

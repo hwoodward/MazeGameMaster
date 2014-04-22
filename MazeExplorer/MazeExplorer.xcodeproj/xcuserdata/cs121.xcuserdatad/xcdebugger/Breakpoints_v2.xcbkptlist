@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MazeExplorer/MyScene.m"
-            timestampString = "419482435.048445"
+            timestampString = "419839734.890988"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
             landmarkName = "-initWithSize:"
             landmarkType = "5">
          </BreakpointContent>
@@ -47,8 +47,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "11"
             endingLineNumber = "11"
-            landmarkName = "@implementation ResourceScene"
-            landmarkType = "3">
+            landmarkName = "@interface ResourceScene()"
+            landmarkType = "2">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -65,36 +65,6 @@
             endingLineNumber = "33"
             landmarkName = "notepadLabel"
             landmarkType = "19">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[ResourceScene notepadLabel]"
-                  moduleName = "MazeExplorer"
-                  urlString = "file://localhost/Users/cs121/CS121/MazeExplorer/MazeExplorer/MazeExplorer/ResourceScene.h"
-                  timestampString = "419754219.445527"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "33"
-                  endingLineNumber = "33"
-                  offsetFromSymbolStart = "24">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[ResourceScene setNotepadLabel:]"
-                  moduleName = "MazeExplorer"
-                  urlString = "file://localhost/Users/cs121/CS121/MazeExplorer/MazeExplorer/MazeExplorer/ResourceScene.h"
-                  timestampString = "419754219.445888"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "33"
-                  endingLineNumber = "33"
-                  offsetFromSymbolStart = "31">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -155,7 +125,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "437"
             endingLineNumber = "437"
-            landmarkName = "-useResourceConfirmed:"
+            landmarkName = "-resourceConfirmDidFinish"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -171,8 +141,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "439"
             endingLineNumber = "439"
-            landmarkName = "-useResourceConfirmed:"
-            landmarkType = "5">
+            landmarkName = "@implementation MazeScene"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -187,8 +157,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "18"
             endingLineNumber = "18"
-            landmarkName = "-initWithSize:"
-            landmarkType = "5">
+            landmarkName = "magicLabel"
+            landmarkType = "19">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -203,8 +173,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "20"
             endingLineNumber = "20"
-            landmarkName = "-initWithSize:"
-            landmarkType = "5">
+            landmarkName = "potionLabel"
+            landmarkType = "19">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
