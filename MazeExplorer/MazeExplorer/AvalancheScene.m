@@ -8,6 +8,17 @@
 
 #import "AvalancheScene.h"
 
+@interface AvalancheScene ()
+
+@property (nonatomic, strong) SKSpriteNode *selectedNode;
+@property int inTarget;
+
+- (void) moveSelectedNode:(CGPoint)translation;
+- (void) addTargetBox:(CGPoint) location;
+- (void) notCrossingLines;
+
+@end
+
 @implementation AvalancheScene
 
 static const uint32_t targetCategory     =  0x1 << 0;

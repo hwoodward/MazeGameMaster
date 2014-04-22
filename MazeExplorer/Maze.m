@@ -97,7 +97,7 @@
         }
     }
     
-    NSLog(@"%@", maze);
+    //NSLog(@"%@", maze);
 }
 
 

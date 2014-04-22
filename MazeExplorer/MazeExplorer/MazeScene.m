@@ -9,8 +9,7 @@
 #import "MazeScene.h"
 
 @interface MazeScene ()
-//Gesture recognizer is currently broken
-@property (nonatomic) UISwipeGestureRecognizer* swipeGR;
+
 @property float cellWidth;
 @property (nonatomic) SKSpriteNode *player;
 @property (nonatomic) Maze* maze;
@@ -169,7 +168,7 @@ static const int CELLNUM = 11;
 
 -(void)shiftMaze
 {
-    NSLog(@"moving maze to where it belongs");
+    //NSLog(@"moving maze to where it belongs");
     CGPoint start = [_maze startLoc];
     
     int xDiff = (CELLNUM/2) - start.x;
@@ -237,7 +236,7 @@ static const int CELLNUM = 11;
                     NSArray * nodesAtCurrentPos = [self nodesAtPoint: resourcePoint];
                     for (int i = 0; i<[nodesAtCurrentPos count]; i++) {
                         SKSpriteNode * node = nodesAtCurrentPos[i];
-                        if(node.name == @"Resource") {
+                        if([node.name  isEqual: @"Resource"]) {
                             [node removeFromParent];
                         }
                     }
@@ -349,7 +348,7 @@ static const int CELLNUM = 11;
     }
     [obstScene setDelegate:self];
     [self.view addSubview:_obstView];
-    [_obstView presentScene:obstScene];
+    [_obstView presentScene:(SKScene*)obstScene];
 }
 
 /*

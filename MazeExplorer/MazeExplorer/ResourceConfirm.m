@@ -8,6 +8,12 @@
 
 #import "ResourceConfirm.h"
 
+@interface ResourceConfirm ()
+
+@property (nonatomic) ResourceType resourceBeingConfirmed;
+
+@end
+
 @implementation ResourceConfirm
 
 -(id) initWithSize:(CGSize)size andResource:(ResourceType)resourceType
@@ -24,11 +30,11 @@
     
     switch(_resourceBeingConfirmed) {
         case Notepad: {
-            label.text = @"You are going to use a notepad resource. Using a resource cannot be undone. \n \n A notepad resource dismisses the Simon obstacle. However if used when not in a Simon obstacle the resource is used to no effect. \n \n Click the green check to confirm this action, the red x to cancel.";
+            label.text = @"You are going to use a notepad resource. Using a resource cannot be undone. \n \n A notepad resource dismisses the Simon obstacle. However, if used when not in a Simon obstacle, the resource is used to no effect. \n \n Click the green check to confirm this action, the red x to cancel.";
             break;
         }
         case Potion: {
-            label.text = @"You are going to use a potion of super strength. Once used a potion is irretrivably consumed. \n \n A potion of super strength allows you to easily complete the pit fill and avalanche clearing obstacles. However if used when not in those situations there is no effect. \n \n Click the green check to confirm this action, the red x to cancel.";
+            label.text = @"You are going to use a potion of super strength. Once used a potion is irretrivably consumed. \n \n A potion of super strength allows you to easily complete the pit fill and avalanche clearing obstacles. However, if used when not in those situations, there is no effect. \n \n Click the green check to confirm this action, the red x to cancel.";
             break;
         }
         case Wing: {
@@ -36,7 +42,7 @@
             break;
         }
         default: {//Default is Magic and also handles that case
-            label.text = @"You are going to use a magic resource. Using a resource cannot be undone. \n \n A magic resource dismisses the drag and drop and trace obstacles. However if used when not in these obstacles the resource is used to no effect. \n \n Click the green check to confirm this action, the red x to cancel.";
+            label.text = @"You are going to use a magic resource. Using a resource cannot be undone. \n \n A magic resource dismisses the drag and drop and trace obstacles. However, if used when not in these obstacles, the resource is used to no effect. \n \n Click the green check to confirm this action, the red x to cancel.";
             break;
         }
     }

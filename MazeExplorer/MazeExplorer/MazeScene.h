@@ -37,12 +37,6 @@
 @interface MazeScene : SKScene <ObstacleSceneDelegate, ResourceConfirmDelegate>
 
 @property (nonatomic) id <MazeSceneDelegate> delegate;
-
--(void) obstacleDidFinish;
--(void) obstacleDidFail; 
--(void)increaseResourceCounter;
--(void) addPlayer;
--(void) shiftMaze;
 -(id)initWithSize:(CGSize)size String: (NSString *)mazeString andWidth: (int) mazeWidth;
 -(void)resourceUsed:(ResourceType) type;
 @end

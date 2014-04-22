@@ -16,8 +16,8 @@
 
 @end
 
-
 @interface InstructionScene : SKScene
+
 @property id <InstructionSceneDelegate> delegate;
 
 @end

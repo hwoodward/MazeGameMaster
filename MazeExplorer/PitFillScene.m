@@ -8,6 +8,18 @@
 
 #import "PitFillScene.h"
 
+@interface PitFillScene ()
+
+@property (nonatomic, strong) SKSpriteNode *selectedNode;
+@property (nonatomic, strong) SKTexture* masonryTexture;
+@property int inTarget;
+
+- (void) moveSelectedNode:(CGPoint)translation;
+- (void) addTargetBox:(CGPoint) location;
+- (void) notCrossingLines;
+
+@end
+
 @implementation PitFillScene
 
 static const uint32_t targetCategory     =  0x1 << 0;
@@ -20,6 +32,7 @@ static const uint32_t borderCategory    =  0x1 << 3;
     self = [super initWithSize:size];
     self.physicsWorld.gravity = CGVectorMake(0,0);
     self.physicsWorld.contactDelegate = (id) self;
+    _masonryTexture = [SKTexture textureWithImageNamed:@"bricktexture.jpg"];
     
     _inTarget = 0;
     
@@ -71,7 +84,11 @@ static const uint32_t borderCategory    =  0x1 << 3;
 }
 -(void) addBigBoulder: (CGPoint) location {
     
-    SKSpriteNode *boulder = [[SKSpriteNode alloc]initWithImageNamed:@"boulder.png"];
+    //SKSpriteNode *boulder = [[SKSpriteNode alloc]initWithImageNamed:@"boulder.png"];
+    SKSpriteNode* boulder = [[SKSpriteNode alloc] initWithTexture:_masonryTexture
+                                                            color:[SKColor grayColor]
+                                                             size:CGSizeMake(247.0, 247.0)];
+    //NSLog(@"Boulder dimensions: %f, %f", boulder.size.width, boulder.size.height);
     boulder.position = location;
     boulder.name = @"Boulder";
     boulder.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:boulder.size];
@@ -86,7 +103,11 @@ static const uint32_t borderCategory    =  0x1 << 3;
 
 -(void) addlongBoulder: (CGPoint) location {
     
-    SKSpriteNode *boulder = [[SKSpriteNode alloc]initWithImageNamed:@"longBoulder.png"];
+    //SKSpriteNode *boulder = [[SKSpriteNode alloc]initWithImageNamed:@"longBoulder.png"];
+    SKSpriteNode* boulder = [[SKSpriteNode alloc] initWithTexture:_masonryTexture
+                                                            color:[SKColor grayColor]
+                                                             size:CGSizeMake(246.0, 122.0)];
+    //NSLog(@"Long boulder dimensions: %f, %f", boulder.size.width, boulder.size.height);
     boulder.position = location;
     boulder.name = @"Boulder";
     boulder.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:boulder.size];
@@ -101,7 +122,11 @@ static const uint32_t borderCategory    =  0x1 << 3;
 
 -(void) addtallBoulder: (CGPoint) location {
     
-    SKSpriteNode *boulder = [[SKSpriteNode alloc]initWithImageNamed:@"tallBoulder.png"];
+    //SKSpriteNode *boulder = [[SKSpriteNode alloc]initWithImageNamed:@"tallBoulder.png"];
+    SKSpriteNode* boulder = [[SKSpriteNode alloc] initWithTexture:_masonryTexture
+                                                            color:[SKColor grayColor]
+                                                             size:CGSizeMake(123.0, 245.0)];
+    //NSLog(@"Tall boulder dimensions: %f, %f", boulder.size.width, boulder.size.height);
     boulder.position = location;
     boulder.name = @"Boulder";
     boulder.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:boulder.size];

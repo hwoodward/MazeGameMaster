@@ -174,7 +174,6 @@ static const uint32_t playerCategory   =  0x1 << 3;
     CGPoint touchLoc = [touch locationInNode:self.scene];
     
     if (_speedButton == [self.scene nodeAtPoint:touchLoc]){
-        NSLog(@"reset");
         _rope.physicsBody.angularVelocity *= 5;
     } else {
         BOOL didTouchRope = NO;
@@ -202,9 +201,8 @@ static const uint32_t playerCategory   =  0x1 << 3;
             }
         }
         if (didTouchRope) {
-            NSLog(@"did touch rope");
             if (_rope.physicsBody.angularVelocity <= .4 && _rope.physicsBody.angularVelocity >= -.4) {
-                NSLog(@"at edge");
+                //NSLog(@"at edge");
                 if (_onRope) {
                     if (touchLoc.x >= CGRectGetWidth(self.frame)*.65){
                         [self finish];
@@ -213,7 +211,7 @@ static const uint32_t playerCategory   =  0x1 << 3;
                     if (touchLoc.x <= CGRectGetWidth(self.frame)*.35){
                         _onRope = YES;
                         _player.position = _rope.position;
-                        NSLog(@"On rope");
+                        //NSLog(@"On rope");
                     }
                 }
             }

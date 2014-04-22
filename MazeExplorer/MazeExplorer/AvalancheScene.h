@@ -11,14 +11,6 @@
 
 @interface AvalancheScene : SKScene <Obstacle>
 
-@property (nonatomic, strong) SKSpriteNode *selectedNode;
-@property int inTarget;
-
 @property id <ObstacleSceneDelegate> delegate;
-
-- (void) moveSelectedNode:(CGPoint)translation;
-- (void) addTargetBox:(CGPoint) location;
-- (void) notCrossingLines;
-
 
 @end

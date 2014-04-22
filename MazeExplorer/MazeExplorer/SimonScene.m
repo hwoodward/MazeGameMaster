@@ -8,6 +8,21 @@
 
 #import "SimonScene.h"
 
+@interface SimonScene ()
+
+@property (nonatomic, strong) SKSpriteNode *selectedNode;
+@property (nonatomic, strong) SKSpriteNode *checkNode;
+
+@property (nonatomic) NSMutableArray *userarray;
+@property (nonatomic) NSMutableArray *comparray;
+@property (nonatomic) NSInteger currentlength;
+@property (nonatomic) NSInteger touchcount;
+@property (nonatomic) NSInteger currentpos;
+@property (nonatomic) NSInteger winLength;
+@property float buttonWidth;
+
+@end
+
 @implementation SimonScene
 
 - (id)initWithSize:(CGSize)size
@@ -228,13 +243,13 @@ float degToRad(float degree) {
 
 -(void)userWasCorrect
 {
-    NSLog(@"You are correct!");
+    //NSLog(@"You are correct!");
     [self runSimon];
 }
 
 -(void)userWasNotCorrect
 {
-    NSLog(@"You are not correct!");
+    //NSLog(@"You are not correct!");
     [_delegate obstacleDidFail];
 }
 

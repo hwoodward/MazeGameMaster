@@ -8,6 +8,16 @@
 
 #import "TraceScene.h"
 
+@interface TraceScene ()
+
+@property (nonatomic, strong) SKSpriteNode *selectedNode;
+@property int onPath;
+
+- (void) moveSelectedNode:(CGPoint)translation;
+- (void) addTargetBox:(CGPoint) location;
+
+@end
+
 @implementation TraceScene
 
 static const uint32_t targetCategory     =  0x1 << 0;

@@ -8,6 +8,18 @@
 
 #import "ObstacleScene.h"
 
+@interface ObstacleScene ()
+
+@property (nonatomic, strong) SKSpriteNode *selectedNode;
+@property (nonatomic, strong) SKSpriteNode *checkNode;
+@property BOOL inTarget;
+
+- (void)moveSelectedNode:(CGPoint)translation;
+- (void) addTargetBox:(CGPoint) location;
+- (void)notCrossingLines;
+
+@end
+
 @implementation ObstacleScene
 
 static const uint32_t targetCategory     =  0x1 << 0;

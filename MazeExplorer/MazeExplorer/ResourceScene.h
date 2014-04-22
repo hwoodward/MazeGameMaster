@@ -25,17 +25,6 @@
 @interface ResourceScene : SKScene
 
 @property (nonatomic) id <ResourceSceneDelegate> delegate;
-@property (nonatomic) int magicCounter;
-@property (nonatomic) int notepadCounter;
-@property (nonatomic) int potionCounter;
-@property (nonatomic) int wingCounter;
-@property (nonatomic) SKLabelNode *instr1;
-@property (nonatomic) SKLabelNode *magicLabel;
-@property (nonatomic) SKLabelNode *notepadLabel;
-@property (nonatomic) SKLabelNode *potionLabel;
-@property (nonatomic) SKLabelNode *wingLabel;
-@property (nonatomic) SKLabelNode *instr2;
-
 
 -(void) increaseCounterByOne:(ResourceType)type;
 -(void) useResourceConfirmed:(ResourceType) type;

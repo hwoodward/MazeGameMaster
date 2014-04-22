@@ -20,7 +20,6 @@
 
 @interface ResourceConfirm : SKScene
 
-@property (nonatomic) ResourceType resourceBeingConfirmed;
 @property id <ResourceConfirmDelegate> delegate;
 -(id) initWithSize:(CGSize)size andResource:(ResourceType)resourceType;
 

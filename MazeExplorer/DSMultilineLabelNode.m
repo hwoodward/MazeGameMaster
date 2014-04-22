@@ -135,7 +135,7 @@
 	
 	if (!font) {
 		font = [DSMultiLineLabelFont fontWithName:@"Helvetica" size:self.fontSize];
-		NSLog(@"The font you specified was unavailable. Defaulted to Helvetica.");
+		//NSLog(@"The font you specified was unavailable. Defaulted to Helvetica.");
 //		NSLog(@"The font you specified was unavailable. Defaulted to Helvetica. Here is a list of available fonts: %@", [DSMultiLineLabelFont familyNames]); //only available for debugging on iOS
 //		NSLog(@"Here is a list of variations to %@: %@", _fontName, [DSMultiLineLabelFont familyNames]);
 	}
