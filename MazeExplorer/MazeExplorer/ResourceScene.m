@@ -141,6 +141,11 @@
             _potionLabel.text = [NSString stringWithFormat:@"%i",_potionCounter];
             break;
         }
+        case Wing: {
+            _wingCounter--;
+            _wingLabel.text = [NSString stringWithFormat:@"%i",_wingCounter];
+            break;
+        }
         default: {//Default is magic and handles that case
             --_magicCounter;
             _magicLabel.text = [NSString stringWithFormat:@"%i",_magicCounter];

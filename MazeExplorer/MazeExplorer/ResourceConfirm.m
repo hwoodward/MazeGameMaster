@@ -79,6 +79,7 @@
         [_delegate resourceConfirmDidFinish];
         //NSLog(@"Yes, I want to use that resource!");
         [_delegate useResourceConfirmed:_resourceBeingConfirmed];
+        //ADD A STALL COMMAND
     }
     //Did you click the no button?
     else if ([clickedNode.name isEqualToString:@"noButton"]) {
@@ -88,6 +89,4 @@
     
     
 }
-
-
 @end

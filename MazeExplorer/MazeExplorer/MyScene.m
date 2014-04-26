@@ -103,35 +103,36 @@ static const int maze4Width = 50;
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins */
-    
-    UITouch *touch = [touches anyObject];
- 	CGPoint location = [touch locationInNode:self];
-    
-    //what node am I in?
-    SKNode *clickedNode = [self nodeAtPoint:location];
-    
-    if ([clickedNode.name isEqualToString:@"maze1"]) {
-        [self launchMazewithString:maze1String andWidth:maze1Width];
+    if(_didPresentGameViews == NO) {
+        UITouch *touch = [touches anyObject];
+        CGPoint location = [touch locationInNode:self];
+        
+        //what node am I in?
+        SKNode *clickedNode = [self nodeAtPoint:location];
+        NSLog(clickedNode.name);
+        
+        if ([clickedNode.name isEqualToString:@"maze1"]) {
+            [self launchMazewithString:maze1String andWidth:maze1Width];
+        }
+        if ([clickedNode.name isEqualToString:@"maze2"]) {
+            [self launchMazewithString:maze2String andWidth:maze2Width];
+        }
+        if ([clickedNode.name isEqualToString:@"maze3"]) {
+            [self launchMazewithString:maze3String andWidth:maze3Width];
+        }
+        if ([clickedNode.name isEqualToString:@"maze4"]) {
+            [self launchMazewithString:maze4String andWidth:maze4Width];
+        }
+        if ([clickedNode.name isEqualToString:@"maze5"]) {
+            [self launchMazewithString:maze2String andWidth:maze2Width];
+        }
+        if ([clickedNode.name isEqualToString:@"maze6"]) {
+            [self launchMazewithString:maze3String andWidth:maze3Width];
+        }
+        if ([clickedNode.name isEqualToString:@"help"]) {
+            [self displayInstructions];
+        }
     }
-    if ([clickedNode.name isEqualToString:@"maze2"]) {
-        [self launchMazewithString:maze2String andWidth:maze2Width];
-    }
-    if ([clickedNode.name isEqualToString:@"maze3"]) {
-        [self launchMazewithString:maze3String andWidth:maze3Width];
-    }
-    if ([clickedNode.name isEqualToString:@"maze4"]) {
-        [self launchMazewithString:maze4String andWidth:maze4Width];
-    }
-    if ([clickedNode.name isEqualToString:@"maze5"]) {
-        [self launchMazewithString:maze2String andWidth:maze2Width];
-    }
-    if ([clickedNode.name isEqualToString:@"maze6"]) {
-        [self launchMazewithString:maze3String andWidth:maze3Width];
-    }
-    if ([clickedNode.name isEqualToString:@"help"]) {
-        [self displayInstructions];
-    }
-    
 }
 
 -(void) launchMazewithString: (NSString *) mazeString andWidth:(int) mazeWidth {

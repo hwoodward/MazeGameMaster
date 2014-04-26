@@ -114,7 +114,7 @@ static const int CELLNUM = 11;
                     SKSpriteNode *cellNode = [[SKSpriteNode alloc] initWithColor: [SKColor brownColor] size:cellSize];
                     cellNode.position = CGPointMake(_cellWidth*i + (_cellWidth/2),
                                                     self.frame.size.height - _cellWidth*j - _cellWidth/2);
-                    cellNode.name = @"Obstascle";
+                    cellNode.name = @"Obstacle";
                     [self addChild:cellNode];
                     break;
                 }
