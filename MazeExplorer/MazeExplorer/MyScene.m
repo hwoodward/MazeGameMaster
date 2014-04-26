@@ -29,6 +29,8 @@ static const NSString* maze2String = @"*****S***************           *a     **
 static const int maze2Width = 20;
 static const NSString* maze3String = @"**************************   *   *   *           ** * * * * * * * ******* **1* *b*   *   * *       ** * *********** * ******** *             *      1** ********************* ** *                *    **   **** ******* * * ***** * *            * * *  E* * *** * ******** *   *** *   * * *      * ****a** ***2* * * ** *  1   * ** *   * *   ** **** *** ** * *** *   **    * *   ** * *   * ******* * * **** * * * * *   *a* * *   ** *   * * * * * * * *** ** ***** * * * * *     * **      2* * * * * * * * ** ***** * * * * * * * * **     * *   *   * * *   ** * * * ********* * ****** * * *                 ********************S*****";
 static const int maze3Width = 25;
+static const NSString* maze4String = @"***********************E***************************          O          *      1                   **** ********************************** ************f                              6               a************************* **************************                                                ****************************************4***********    !        !          !       *               ************* ***********^***** ************* ******abcfR*                ^*^      !               b****OO************* *****^************* ************   O         *     &             &*             ******** ****************** ********************O***         *&                       &        O    **&********************** ***************** ********                &          *     &              ********S******************************************";
+static const int maze4Width = 50;
 
 
 -(id)initWithSize:(CGSize)size {    
@@ -118,7 +120,7 @@ static const int maze3Width = 25;
         [self launchMazewithString:maze3String andWidth:maze3Width];
     }
     if ([clickedNode.name isEqualToString:@"maze4"]) {
-        [self launchMazewithString:maze1String andWidth:maze1Width];
+        [self launchMazewithString:maze4String andWidth:maze4Width];
     }
     if ([clickedNode.name isEqualToString:@"maze5"]) {
         [self launchMazewithString:maze2String andWidth:maze2Width];

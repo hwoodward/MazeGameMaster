@@ -407,7 +407,6 @@ static const int CELLNUM = 11;
         }];        _playerLoc = _newPos;
         [_obstView removeFromSuperview];
         _obstView = Nil;
-        ;
         [self emptyMazeCellWithRow:_playerLoc.y andCol: _playerLoc.x];
         _score += 3;
     }
