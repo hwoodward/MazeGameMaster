@@ -8,13 +8,13 @@ typedef enum {
 } CellType;
 
 typedef enum {
-    DragDrop = 0,
+    Pit = 0,
     Simon,
-    Pit,
     Avalanche,
     Trace,
     Rope,
-    RandomO //KEEP THIS LAST
+    RandomO, //Anthing after this won't be randomly generated EVER
+    DragDrop
 } ObstacleType;
 
 typedef enum {
@@ -22,7 +22,7 @@ typedef enum {
     Notepad,
     Potion,
     Wing,
-    RandomR //KEEP THIS LAST
+    RandomR //Anything after this won't be randomly generated EVER
 } ResourceType;
 
 typedef union {
