@@ -33,6 +33,7 @@ static const uint32_t movableCategory    =  0x1 << 2;
     self.physicsWorld.contactDelegate = (id) self;
 
     self.backgroundColor = [SKColor colorWithRed:0.0 green:.7 blue:0.05 alpha:1.0];
+
     SKLabelNode *label = [[SKLabelNode alloc] init];
     label.text = @"Drag the red box into the blue box to dismiss.";
     label.fontSize = 27;

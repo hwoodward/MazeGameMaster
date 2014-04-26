@@ -38,6 +38,8 @@ static const int maze4Width = 50;
         /* Setup your scene here */
         self.backgroundColor = [SKColor lightGrayColor];
         
+        SKColor *teal = [SKColor colorWithRed:0.004 green:0.82 blue:0.906 alpha:1.0];
+        
         SKLabelNode *title = [[SKLabelNode alloc] init];
         title.text = @"Maze Explorer";
         title.fontSize = 40;
@@ -59,35 +61,77 @@ static const int maze4Width = 50;
         instructions.fontColor = [SKColor blackColor];
         [self addChild:instructions];
         
-        SKSpriteNode *maze1 = [[SKSpriteNode alloc] initWithImageNamed:@"button1.png"];
-        maze1.position = CGPointMake(CGRectGetMidX(self.frame)-200,CGRectGetMaxY(self.frame)-220);
+        SKSpriteNode *maze1 = [[SKSpriteNode alloc] initWithColor:teal size:CGSizeMake(100, 100)];
+        maze1.position =  CGPointMake(CGRectGetMidX(self.frame)-200,CGRectGetMaxY(self.frame)-200);
         maze1.name = @"maze1";
         [self addChild:maze1];
         
-        SKSpriteNode *maze2 = [[SKSpriteNode alloc] initWithImageNamed:@"button2.png"];
-        maze2.position = CGPointMake(CGRectGetMidX(self.frame),CGRectGetMaxY(self.frame)-220);
+        SKLabelNode *maze1num = [[SKLabelNode alloc] init];
+        maze1num.position = CGPointMake(CGRectGetMidX(self.frame)-200,CGRectGetMaxY(self.frame)-225);
+        maze1num.text = @"1";
+        maze1num.fontColor = [SKColor blackColor];
+        maze1num.fontSize = 70;
+        [self addChild:maze1num];
+        
+        SKSpriteNode *maze2 = [[SKSpriteNode alloc] initWithColor:teal size:CGSizeMake(100, 100)];
+        maze2.position = CGPointMake(CGRectGetMidX(self.frame),CGRectGetMaxY(self.frame)-200);
         maze2.name = @"maze2";
         [self addChild:maze2];
         
-        SKSpriteNode *maze3 = [[SKSpriteNode alloc] initWithImageNamed:@"button3.png"];
-        maze3.position = CGPointMake(CGRectGetMidX(self.frame)+200,CGRectGetMaxY(self.frame)-220);
+        SKLabelNode *maze2num = [[SKLabelNode alloc] init];
+        maze2num.position = CGPointMake(CGRectGetMidX(self.frame),CGRectGetMaxY(self.frame)-225);
+        maze2num.text = @"2";
+        maze2num.fontColor = [SKColor blackColor];
+        maze2num.fontSize = 70;
+        [self addChild:maze2num];
+        
+        SKSpriteNode *maze3 = [[SKSpriteNode alloc] initWithColor:teal size:CGSizeMake(100, 100)];
+        maze3.position = CGPointMake(CGRectGetMidX(self.frame)+200,CGRectGetMaxY(self.frame)-200);
         maze3.name = @"maze3";
         [self addChild:maze3];
         
-        SKSpriteNode *maze4 = [[SKSpriteNode alloc] initWithImageNamed:@"button4.png"];
-        maze4.position = CGPointMake(CGRectGetMidX(self.frame)-200,CGRectGetMaxY(self.frame)-400);
+        SKLabelNode *maze3num = [[SKLabelNode alloc] init];
+        maze3num.position = CGPointMake(CGRectGetMidX(self.frame)+200,CGRectGetMaxY(self.frame)-225);
+        maze3num.text = @"3";
+        maze3num.fontColor = [SKColor blackColor];
+        maze3num.fontSize = 70;
+        [self addChild:maze3num];
+        
+        SKSpriteNode *maze4 = [[SKSpriteNode alloc] initWithColor:teal size:CGSizeMake(100, 100)];
+        maze4.position = CGPointMake(CGRectGetMidX(self.frame)-200,CGRectGetMaxY(self.frame)-350);
         maze4.name = @"maze4";
         [self addChild:maze4];
         
-        SKSpriteNode *maze5 = [[SKSpriteNode alloc] initWithImageNamed:@"button5.png"];
-        maze5.position = CGPointMake(CGRectGetMidX(self.frame),CGRectGetMaxY(self.frame)-400);
+        SKLabelNode *maze4num = [[SKLabelNode alloc] init];
+        maze4num.position = CGPointMake(CGRectGetMidX(self.frame)-200 ,CGRectGetMaxY(self.frame)-375);
+        maze4num.text = @"4";
+        maze4num.fontColor = [SKColor blackColor];
+        maze4num.fontSize = 70;
+        [self addChild:maze4num];
+        
+        SKSpriteNode *maze5 = [[SKSpriteNode alloc] initWithColor:teal size:CGSizeMake(100, 100)];
+        maze5.position = CGPointMake(CGRectGetMidX(self.frame),CGRectGetMaxY(self.frame)-350);
         maze5.name = @"maze5";
         [self addChild:maze5];
         
-        SKSpriteNode *maze6 = [[SKSpriteNode alloc] initWithImageNamed:@"button6.png"];
-        maze6.position = CGPointMake(CGRectGetMidX(self.frame)+200,CGRectGetMaxY(self.frame)-400);
+        SKLabelNode *maze5num = [[SKLabelNode alloc] init];
+        maze5num.position = CGPointMake(CGRectGetMidX(self.frame),CGRectGetMaxY(self.frame)-375);
+        maze5num.text = @"5";
+        maze5num.fontColor = [SKColor blackColor];
+        maze5num.fontSize = 70;
+        [self addChild:maze5num];
+        
+        SKSpriteNode *maze6 = [[SKSpriteNode alloc] initWithColor:teal size:CGSizeMake(100, 100)];
+        maze6.position = CGPointMake(CGRectGetMidX(self.frame)+200,CGRectGetMaxY(self.frame)-350);
         maze6.name = @"maze6";
         [self addChild:maze6];
+        
+        SKLabelNode *maze6num = [[SKLabelNode alloc] init];
+        maze6num.position = CGPointMake(CGRectGetMidX(self.frame)+200,CGRectGetMaxY(self.frame)-375);
+        maze6num.text = @"6";
+        maze6num.fontColor = [SKColor blackColor];
+        maze6num.fontSize = 70;
+        [self addChild:maze6num];
         
         SKSpriteNode *help = [[SKSpriteNode alloc] initWithImageNamed:@"help.png"];
         help.position = CGPointMake(CGRectGetMidX(self.frame),CGRectGetMinY(self.frame)+150);
