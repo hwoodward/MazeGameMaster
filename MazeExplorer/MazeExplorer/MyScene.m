@@ -31,6 +31,9 @@ static const NSString* maze3String = @"**************************   *   *   *   
 static const int maze3Width = 25;
 static const NSString* maze4String = @"***********************E***************************          O          *      1                   **** ********************************** ************f                              6               a************************* **************************                                                ****************************************2***********    !        !          !       *               ************* ***********^***** ************* ******abcfR*                ^*^      !               b****OO************* *****^************* ************   O         *     &             &*             ******** ****************** ********************O***         *&                       &        O    **&********************** ***************** ********                &          *     &              ********S******************************************";
 static const int maze4Width = 50;
+static const NSString* maze5String = @"***********************E**     %   %     %   %   **R************************    $    $    $   $    ************************ **      ^  ^     ^    ^  ** ************************   #     #    #      # ************************ **    &    &    &     &  ** ************************  !     !     !    !   ************************ **     ?    ?     ?  ?   **S***********************";
+
+static const int maze5Width = 25;
 
 -(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
@@ -173,7 +176,7 @@ static const int maze4Width = 50;
             [self launchMazewithString:maze4String andWidth:maze4Width];
         }
         if ([clickedNode.name isEqualToString:@"maze5"]) {
-            [self launchMazewithString:maze2String andWidth:maze2Width];
+            [self launchMazewithString:maze5String andWidth:maze5Width];
         }
         if ([clickedNode.name isEqualToString:@"maze6"]) {
             [self launchMazewithString:maze3String andWidth:maze3Width];
