@@ -21,6 +21,7 @@
 @property (nonatomic) NSInteger winLength;
 @property float buttonWidth;
 
+
 @end
 
 @implementation SimonScene

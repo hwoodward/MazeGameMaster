@@ -20,6 +20,8 @@
 @property ObstacleType obstacleInUse;
 @property (nonatomic) SKView *obstView;
 @property (nonatomic) SKView *resConfirmView;
+@property (nonatomic) NSMutableDictionary* resourceDict;
+@property (nonatomic) SKSpriteNode* resToRemove;
 
 @property int score;
 @end
@@ -124,6 +126,13 @@ static const int CELLNUM = 11;
                                                     self.frame.size.height - _cellWidth*j - _cellWidth/2);
                     cellNode.name = @"Resource";
                     [self addChild:cellNode];
+                    
+                    if (_resourceDict == Nil) {
+                        _resourceDict = [[NSMutableDictionary alloc] init];
+                    }
+                    NSArray* mazeLoc = @[[NSNumber numberWithInt:i], [NSNumber numberWithInt:j]];
+                    [_resourceDict setObject:cellNode forKey:mazeLoc];
+                    
                     break;
 
                     
@@ -221,25 +230,26 @@ static const int CELLNUM = 11;
 
         //Now we take action based on the new position we intend to move to
         CellType cellContents = [_maze getContentsWithRow:_newPos.y andColumn:_newPos.x];
+        if (_resToRemove != Nil) {
+            [_resToRemove removeFromParent];
+        }
         switch (cellContents) {
             case Obstacle: {
                 [self launchObstacle:[_maze getSecondaryTypeWithRow:_newPos.y andColumn:_newPos.x].Obstacle];
                 break;
             }
             case Resource: {
+                
                 for (int i = 0; i< [cells count]; i++) {
                     SKSpriteNode *cell = (SKSpriteNode *)[cells objectAtIndex:i];
                     [cell runAction:_move];
                 }
+                _resToRemove = [_resourceDict
+                                objectForKey:@[[NSNumber numberWithFloat:_newPos.x],
+                                               [NSNumber numberWithFloat:_newPos.y]]];
                 [_player runAction:_move.reversedAction completion:^{
-                    CGPoint resourcePoint = _player.position;
-                    NSArray * nodesAtCurrentPos = [self nodesAtPoint: resourcePoint];
-                    for (int i = 0; i<[nodesAtCurrentPos count]; i++) {
-                        SKSpriteNode * node = nodesAtCurrentPos[i];
-                        if([node.name  isEqual: @"Resource"]) {
-                            [node removeFromParent];
-                        }
-                    }
+                    [_resToRemove removeFromParent];
+                    _resToRemove = Nil;
                 }];
                 _playerLoc = _newPos;
                 [self obtainResource: [_maze getSecondaryTypeWithRow:_newPos.y andColumn:_newPos.x].Resource];
