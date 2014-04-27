@@ -88,7 +88,7 @@
     [self addChild:_potionLabel];
     
     //wing resource
-    SKSpriteNode *wingButton = [[SKSpriteNode alloc] initWithImageNamed:@"bricktexture.jpg"];
+    SKSpriteNode *wingButton = [[SKSpriteNode alloc] initWithImageNamed:@"wings.jpg"];
     CGFloat wingX = CGRectGetMaxX(self.frame)*(7.0/9.0);
     wingButton.position = CGPointMake(wingX,CGRectGetMidY(self.frame)+20);
     wingButton.name = @"wing";

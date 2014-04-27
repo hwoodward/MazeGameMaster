@@ -20,10 +20,10 @@
 @implementation MyScene
 
 //These are the maze strings and widths.
-// BE CAREFUL WITH MAZE STRINGS, see the mazeCell.m to check the translation of characters to cell contents and make sure the maze stays solvable
+//BE CAREFUL WITH MAZE STRINGS, see the mazeCell.m to check the translation of characters to cell contents and make sure the maze stays solvable
 
 
-static const NSString* maze1String = @"*E*********  *    f**  6   *******     **     *  ** 2   * *** *  *   ****  *  ***R   *   ***S*******";
+static const NSString* maze1String = @"*E*********  *    f**  6   *******     **     *  ** 3   * *** *  *   ****  *  ***b   *   ***S*******";
 static const int maze1Width = 10;
 static const NSString* maze2String = @"*****S***************           *a     **  *******  *****  **b *     *      *  *****  *  ****   *  **     *     *      **     2     ****   ** ********  *  *   **       *   *  *   **   **  *   *  *   **   *b  *          **   ******1******2***       *   *      ** ***** *   *  ******     * *** *      **   * * *   ****** **   *****        * **           *  *** ***********  *      **a          2      *****************E***";
 static const int maze2Width = 20;
@@ -32,8 +32,7 @@ static const int maze3Width = 25;
 static const NSString* maze4String = @"***********************E***************************          O          *      1                   **** ********************************** ************f                              6               a************************* **************************                                                ****************************************2***********    !        !          !       *               ************* ***********^***** ************* ******abcfR*                ^*^      !               b****OO************* *****^************* ************   O         *     &             &*             ******** ****************** ********************O***         *&                       &        O    **&********************** ***************** ********                &          *     &              ********S******************************************";
 static const int maze4Width = 50;
 
-
--(id)initWithSize:(CGSize)size {    
+-(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
         self.backgroundColor = [SKColor lightGrayColor];
@@ -68,6 +67,7 @@ static const int maze4Width = 50;
         
         SKLabelNode *maze1num = [[SKLabelNode alloc] init];
         maze1num.position = CGPointMake(CGRectGetMidX(self.frame)-200,CGRectGetMaxY(self.frame)-225);
+        maze1num.name = @"maze1";
         maze1num.text = @"1";
         maze1num.fontColor = [SKColor blackColor];
         maze1num.fontSize = 70;
@@ -80,6 +80,7 @@ static const int maze4Width = 50;
         
         SKLabelNode *maze2num = [[SKLabelNode alloc] init];
         maze2num.position = CGPointMake(CGRectGetMidX(self.frame),CGRectGetMaxY(self.frame)-225);
+        maze2num.name = @"maze2";
         maze2num.text = @"2";
         maze2num.fontColor = [SKColor blackColor];
         maze2num.fontSize = 70;
@@ -92,6 +93,7 @@ static const int maze4Width = 50;
         
         SKLabelNode *maze3num = [[SKLabelNode alloc] init];
         maze3num.position = CGPointMake(CGRectGetMidX(self.frame)+200,CGRectGetMaxY(self.frame)-225);
+        maze3num.name = @"maze3";
         maze3num.text = @"3";
         maze3num.fontColor = [SKColor blackColor];
         maze3num.fontSize = 70;
@@ -104,6 +106,7 @@ static const int maze4Width = 50;
         
         SKLabelNode *maze4num = [[SKLabelNode alloc] init];
         maze4num.position = CGPointMake(CGRectGetMidX(self.frame)-200 ,CGRectGetMaxY(self.frame)-375);
+        maze4num.name = @"maze4";
         maze4num.text = @"4";
         maze4num.fontColor = [SKColor blackColor];
         maze4num.fontSize = 70;
@@ -116,6 +119,7 @@ static const int maze4Width = 50;
         
         SKLabelNode *maze5num = [[SKLabelNode alloc] init];
         maze5num.position = CGPointMake(CGRectGetMidX(self.frame),CGRectGetMaxY(self.frame)-375);
+        maze5num.name = @"maze5";
         maze5num.text = @"5";
         maze5num.fontColor = [SKColor blackColor];
         maze5num.fontSize = 70;
@@ -128,6 +132,7 @@ static const int maze4Width = 50;
         
         SKLabelNode *maze6num = [[SKLabelNode alloc] init];
         maze6num.position = CGPointMake(CGRectGetMidX(self.frame)+200,CGRectGetMaxY(self.frame)-375);
+        maze6num.name = @"maze6";
         maze6num.text = @"6";
         maze6num.fontColor = [SKColor blackColor];
         maze6num.fontSize = 70;
@@ -153,7 +158,7 @@ static const int maze4Width = 50;
         
         //what node am I in?
         SKNode *clickedNode = [self nodeAtPoint:location];
-        NSLog(clickedNode.name);
+       // NSLog(clickedNode.name);
         
         if ([clickedNode.name isEqualToString:@"maze1"]) {
             [self launchMazewithString:maze1String andWidth:maze1Width];

@@ -200,6 +200,7 @@ static const uint32_t borderCategory    =  0x1 << 3;
     if ((firstBody.categoryBitMask & targetCategory) != 0 &&
         (secondBody.categoryBitMask & movableCategory) != 0) {
         _inTarget++;
+        //NSLog([NSString stringWithFormat:@"%i",_inTarget]);
     }
 }
 
@@ -219,11 +220,12 @@ static const uint32_t borderCategory    =  0x1 << 3;
     if ((firstBody.categoryBitMask & targetCategory) != 0 &&
         (secondBody.categoryBitMask & movableCategory) != 0) {
         _inTarget--;
+        //NSLog([NSString stringWithFormat:@"%i",_inTarget]);
     }
     if ((firstBody.categoryBitMask & outlineCategory) != 0 &&
         (secondBody.categoryBitMask & movableCategory) != 0) {
         [self performSelector:@selector(notCrossingLines) withObject:self afterDelay:1.0];
-        //    NSLog(@"Not crossing lines");
+        //NSLog(@"Not crossing lines");
     }
 }
 
