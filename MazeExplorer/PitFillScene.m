@@ -48,6 +48,20 @@ static const uint32_t borderCategory    =  0x1 << 3;
     self.physicsBody.categoryBitMask = borderCategory;
     self.physicsBody.contactTestBitMask = 0;
     
+    //Add quit button
+    SKSpriteNode *quit = [[SKSpriteNode alloc] initWithColor:[SKColor redColor] size:CGSizeMake(100, 50)];
+    quit.position = CGPointMake(CGRectGetMinX(self.frame)+75,CGRectGetMaxY(self.frame)-90);
+    quit.name = @"quit";
+    [self addChild:quit];
+    
+    SKLabelNode *quitLabel = [[SKLabelNode alloc] init];
+    quitLabel.position = CGPointMake(CGRectGetMinX(self.frame)+75,CGRectGetMaxY(self.frame)-100);
+    quitLabel.name = @"quit";
+    quitLabel.text = @"Quit";
+    quitLabel.fontColor = [SKColor blackColor];
+    quitLabel.fontSize = 27;
+    [self addChild:quitLabel];
+    
     //add pit
     CGPoint location =CGPointMake(CGRectGetMidX(self.frame), CGRectGetMinY(self.frame)+151);
     [self addTargetBox:location];
@@ -63,7 +77,7 @@ static const uint32_t borderCategory    =  0x1 << 3;
     [self addlongBoulder: location];
     location = CGPointMake(self.frame.size.width/2 + 250, CGRectGetMaxY(self.frame)-250);
     [self addlongBoulder: location];
-    location = CGPointMake(self.frame.size.width/2 - 250, CGRectGetMaxY(self.frame)-200);
+    location = CGPointMake(self.frame.size.width/2 - 250, CGRectGetMaxY(self.frame)-250);
     [self addtallBoulder: location];
 
     return self;
@@ -157,6 +171,15 @@ static const uint32_t borderCategory    =  0x1 << 3;
     boxOutline.physicsBody.contactTestBitMask = movableCategory;
     boxOutline.physicsBody.collisionBitMask = 0;
     [self addChild:boxOutline];
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    UITouch *touch = [touches anyObject];
+    CGPoint location = [touch locationInNode:self];
+    SKNode *clickedNode = [self nodeAtPoint:location];
+    if(clickedNode.name == @"quit") {
+        [_delegate obstacleDidFail];
+    }
 }
 
 //Gesture recognizer code

@@ -169,9 +169,7 @@ static const uint32_t borderCategory    =  0x1 << 3;
     if(clickedNode.name == @"quit") {
         [_delegate obstacleDidFail];
     }
-    
 }
-
 
 //Gesture recognizer code
 - (void)didMoveToView:(SKView *)view {

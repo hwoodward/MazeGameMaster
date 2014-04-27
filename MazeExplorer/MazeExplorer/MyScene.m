@@ -23,7 +23,7 @@
 //BE CAREFUL WITH MAZE STRINGS, see the mazeCell.m to check the translation of characters to cell contents and make sure the maze stays solvable
 
 
-static const NSString* maze1String = @"*E*********  *    f**  6   *******     **     *  ** 3   * *** *  *   ****  *  ***b   *   ***S*******";
+static const NSString* maze1String = @"*E*********  *    f**  6   *******     **     *  ** 2   * *** *  *   ****  *  ***b   *   ***S*******";
 static const int maze1Width = 10;
 static const NSString* maze2String = @"*****S***************           *a     **  *******  *****  **b *     *      *  *****  *  ****   *  **     *     *      **     5     ****   ** ********  *  *   **       *   *  *   **   **  *   *  *   **   *c  *          **   ******1******3***       *   *      **!***** *   *  ******     * *** *      **   * * *   ****** **   *****        * **!          *  *** *********** !*      **R          2      *****************E***";
 static const int maze2Width = 20;
