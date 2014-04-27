@@ -47,6 +47,20 @@ static const uint32_t borderCategory    =  0x1 << 3;
     self.physicsBody.contactTestBitMask = 0;
     self.physicsBody.usesPreciseCollisionDetection = YES;
     
+    //Add quit button
+    SKSpriteNode *quit = [[SKSpriteNode alloc] initWithColor:[SKColor redColor] size:CGSizeMake(100, 50)];
+    quit.position = CGPointMake(CGRectGetMinX(self.frame)+75,CGRectGetMinY(self.frame)+30);
+    quit.name = @"quit";
+    [self addChild:quit];
+    
+    SKLabelNode *quitLabel = [[SKLabelNode alloc] init];
+    quitLabel.position = CGPointMake(CGRectGetMinX(self.frame)+75,CGRectGetMinY(self.frame)+20);
+    quitLabel.name = @"quit";
+    quitLabel.text = @"Quit";
+    quitLabel.fontColor = [SKColor blackColor];
+    quitLabel.fontSize = 27;
+    [self addChild:quitLabel];
+    
     //add pit
     CGPoint location =CGPointMake(CGRectGetMidX(self.frame)+50, CGRectGetMidY(self.frame)-125);
     [self addTargetBox:location];
@@ -147,6 +161,17 @@ static const uint32_t borderCategory    =  0x1 << 3;
     boxOutline.physicsBody.collisionBitMask = 0;
     [self addChild:boxOutline];
 }
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    UITouch *touch = [touches anyObject];
+    CGPoint location = [touch locationInNode:self];
+    SKNode *clickedNode = [self nodeAtPoint:location];
+    if(clickedNode.name == @"quit") {
+        [_delegate obstacleDidFail];
+    }
+    
+}
+
 
 //Gesture recognizer code
 - (void)didMoveToView:(SKView *)view {
