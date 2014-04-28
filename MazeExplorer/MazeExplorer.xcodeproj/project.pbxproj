@@ -30,6 +30,12 @@
 		93C7BAE51900CAD4002DB691 /* TraceScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C7BAE41900CAD4002DB691 /* TraceScene.m */; };
 		93C7BAED190CAC1F002DB691 /* wings.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 93C7BAEC190CAC1F002DB691 /* wings.jpg */; };
 		93C7BAF1190EE8D0002DB691 /* Mario_Jumping.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 93C7BAF0190EE8D0002DB691 /* Mario_Jumping.mp3 */; };
+		93C7BAF5190EEFCF002DB691 /* ObstLaunch.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 93C7BAF4190EEFCF002DB691 /* ObstLaunch.mp3 */; };
+		93C7BAF7190EF097002DB691 /* Nope.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 93C7BAF6190EF097002DB691 /* Nope.mp3 */; };
+		93C7BAF9190EF29D002DB691 /* Wall_hit.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 93C7BAF8190EF29D002DB691 /* Wall_hit.mp3 */; };
+		93C7BAFB190EF33A002DB691 /* Mac_Start.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 93C7BAFA190EF33A002DB691 /* Mac_Start.mp3 */; };
+		93C7BAFD190EF48F002DB691 /* obst_fail.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 93C7BAFC190EF48F002DB691 /* obst_fail.mp3 */; };
+		93C7BAFF190EF525002DB691 /* TaDa.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 93C7BAFE190EF525002DB691 /* TaDa.mp3 */; };
 		A125363818C2D70D0033FE44 /* ResourceScene.m in Sources */ = {isa = PBXBuildFile; fileRef = A125363718C2D70D0033FE44 /* ResourceScene.m */; };
 		A15F5E9F1905A1D1008CBC2E /* RopeScene.m in Sources */ = {isa = PBXBuildFile; fileRef = A15F5E9E1905A1D1008CBC2E /* RopeScene.m */; };
 		A17694FE18B01E1B00DDCB91 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A17694FD18B01E1B00DDCB91 /* Foundation.framework */; };
@@ -98,6 +104,12 @@
 		93C7BAE41900CAD4002DB691 /* TraceScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TraceScene.m; sourceTree = "<group>"; };
 		93C7BAEC190CAC1F002DB691 /* wings.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wings.jpg; sourceTree = "<group>"; };
 		93C7BAF0190EE8D0002DB691 /* Mario_Jumping.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Mario_Jumping.mp3; sourceTree = "<group>"; };
+		93C7BAF4190EEFCF002DB691 /* ObstLaunch.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ObstLaunch.mp3; sourceTree = "<group>"; };
+		93C7BAF6190EF097002DB691 /* Nope.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Nope.mp3; sourceTree = "<group>"; };
+		93C7BAF8190EF29D002DB691 /* Wall_hit.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Wall_hit.mp3; sourceTree = "<group>"; };
+		93C7BAFA190EF33A002DB691 /* Mac_Start.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Mac_Start.mp3; sourceTree = "<group>"; };
+		93C7BAFC190EF48F002DB691 /* obst_fail.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = obst_fail.mp3; sourceTree = "<group>"; };
+		93C7BAFE190EF525002DB691 /* TaDa.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = TaDa.mp3; sourceTree = "<group>"; };
 		A125363618C2D70D0033FE44 /* ResourceScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceScene.h; sourceTree = "<group>"; };
 		A125363718C2D70D0033FE44 /* ResourceScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceScene.m; sourceTree = "<group>"; };
 		A15F5E9D1905A1D1008CBC2E /* RopeScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RopeScene.h; sourceTree = "<group>"; };
@@ -205,10 +217,15 @@
 				A15F5E9E1905A1D1008CBC2E /* RopeScene.m */,
 				A1C2DA8318C41B0B00288B36 /* ObstacleScene.h */,
 				A1C2DA8418C41B0B00288B36 /* ObstacleScene.m */,
+				93C7BAFE190EF525002DB691 /* TaDa.mp3 */,
+				93C7BAFC190EF48F002DB691 /* obst_fail.mp3 */,
 				6D8412EB18F1F29C002B87FE /* PitFillScene.h */,
 				6D8412EC18F1F29C002B87FE /* PitFillScene.m */,
 				93C7BAE31900CAD4002DB691 /* TraceScene.h */,
+				93C7BAF6190EF097002DB691 /* Nope.mp3 */,
+				93C7BAF8190EF29D002DB691 /* Wall_hit.mp3 */,
 				93C7BAE41900CAD4002DB691 /* TraceScene.m */,
+				93C7BAFA190EF33A002DB691 /* Mac_Start.mp3 */,
 				93C7BAE018FA2101002DB691 /* AvalancheScene.h */,
 				93C7BAE118FA2101002DB691 /* AvalancheScene.m */,
 				6D79B51018E8C764008DB1AB /* InstructionScene.h */,
@@ -223,6 +240,7 @@
 				A125363618C2D70D0033FE44 /* ResourceScene.h */,
 				A125363718C2D70D0033FE44 /* ResourceScene.m */,
 				6D76EEAC18CD79B8008FBB1A /* typedef.h */,
+				93C7BAF4190EEFCF002DB691 /* ObstLaunch.mp3 */,
 				A176951C18B01E1C00DDCB91 /* Images.xcassets */,
 				93C7BAEC190CAC1F002DB691 /* wings.jpg */,
 				6D51E21F18F0C0DF00E7AA04 /* magic.png */,
@@ -362,15 +380,21 @@
 				A176951B18B01E1C00DDCB91 /* Spaceship.png in Resources */,
 				6D8412F718F20628002B87FE /* longBoulder.png in Resources */,
 				93C7BADF18FA1EA5002DB691 /* potion.png in Resources */,
+				93C7BAF7190EF097002DB691 /* Nope.mp3 in Resources */,
 				A176951318B01E1B00DDCB91 /* Main.storyboard in Resources */,
+				93C7BAF5190EEFCF002DB691 /* ObstLaunch.mp3 in Resources */,
 				6D51E22018F0C0DF00E7AA04 /* magic.png in Resources */,
 				9398611018E8C6F600FDE08D /* stopbutton.png in Resources */,
 				6D51E22418F0C16D00E7AA04 /* Notepad.png in Resources */,
 				6D8412F518F20625002B87FE /* tallBoulder.png in Resources */,
 				9398610A18E8C6A400FDE08D /* bluecircle.png in Resources */,
+				93C7BAFF190EF525002DB691 /* TaDa.mp3 in Resources */,
+				93C7BAF9190EF29D002DB691 /* Wall_hit.mp3 in Resources */,
 				6D8412F318F1FFC5002B87FE /* boulder.png in Resources */,
 				9398611418E8C72900FDE08D /* checkButton.png in Resources */,
 				9398611618E8C86800FDE08D /* resbutton.png in Resources */,
+				93C7BAFB190EF33A002DB691 /* Mac_Start.mp3 in Resources */,
+				93C7BAFD190EF48F002DB691 /* obst_fail.mp3 in Resources */,
 				9398610C18E8C6B000FDE08D /* bricktexture.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

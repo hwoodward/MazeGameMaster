@@ -194,6 +194,8 @@ static const int maze6Width = 59;
 -(void) launchMazewithString: (NSString *) mazeString andWidth:(int) mazeWidth {
     if (!_didPresentGameViews) {
         _didPresentGameViews = YES;
+        [self runAction:[SKAction playSoundFileNamed:@"Mac_Start.mp3" waitForCompletion:NO]];
+
         
         _mazeView = [[SKView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.width)];
         MazeScene *mazeScene = [[MazeScene alloc] initWithSize:CGSizeMake(self.frame.size.width, self.frame.size.width) String:mazeString andWidth:mazeWidth];
@@ -216,6 +218,7 @@ static const int maze6Width = 59;
 }
 
 -(void) mazeSolved:(int) score {
+    [self runAction:[SKAction playSoundFileNamed:@"TaDa.mp3" waitForCompletion:NO]];
     _scoreLabel.text = [NSString stringWithFormat:@"You scored %d on the last maze", score];
     [_mazeView removeFromSuperview];
     _mazeView = Nil;

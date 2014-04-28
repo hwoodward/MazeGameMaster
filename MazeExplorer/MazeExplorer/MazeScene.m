@@ -227,11 +227,11 @@ static const int CELLNUM = 11;
     
     if (_obstView == Nil && _resConfirmView == Nil) {
         
-        if(_obstToRemove != Nil) {
+/*        if(_obstToRemove != Nil) {
             [_obstToRemove removeFromParent];
             _obstToRemove = Nil;
         }
-  
+*/
         CGPoint touchPos  =[[touches anyObject] locationInView:self.view];
         
         NSArray *cells = [self children];
@@ -243,6 +243,7 @@ static const int CELLNUM = 11;
         CellType cellContents = [_maze getContentsWithRow:_newPos.y andColumn:_newPos.x];
         switch (cellContents) {
             case Obstacle: {
+                [self runAction:[SKAction playSoundFileNamed:@"ObstLaunch.mp3" waitForCompletion:NO]];
                 _obstToRemove = [_obstacleDict
                                 objectForKey:@[[NSNumber numberWithFloat:_newPos.x],
                                                [NSNumber numberWithFloat:_newPos.y]]];
@@ -250,7 +251,7 @@ static const int CELLNUM = 11;
                 break;
             }
             case Resource: {
-                
+                [self runAction:[SKAction playSoundFileNamed:@"Mario_Jumping.mp3" waitForCompletion:NO]];
                 for (int i = 0; i< [cells count]; i++) {
                     SKSpriteNode *cell = (SKSpriteNode *)[cells objectAtIndex:i];
                     [cell runAction:_move];
@@ -274,13 +275,13 @@ static const int CELLNUM = 11;
             }
             case Wall: {
             case Start:  //After we leave the start we want to make it a wall so we don't leave the maze and error.
+                [self runAction:[SKAction playSoundFileNamed:@"Wall_hit.mp3" waitForCompletion:NO]];
                 break;
             }
             case End: {
                 [_delegate mazeSolved:_score];
             }
             default: { //Default is that it is a path (this handles Path)
-                [self runAction:[SKAction playSoundFileNamed:@"Mario_Jumping.mp3" waitForCompletion:NO]];
                 for (int i = 0; i< [cells count]; i++) {
                 SKSpriteNode *cell = (SKSpriteNode *)[cells objectAtIndex:i];
                 [cell runAction:_move];
@@ -417,6 +418,7 @@ static const int CELLNUM = 11;
 - (void)obstacleDidFinish
 {
     if(_obstView != nil) {
+        [self runAction:[SKAction playSoundFileNamed:@"TaDa.mp3" waitForCompletion:NO]];
         NSArray *cells = [self children];
         for (int i = 0; i< [cells count]; i++) {
             SKSpriteNode *cell = (SKSpriteNode *)[cells objectAtIndex:i];
@@ -448,6 +450,7 @@ static const int CELLNUM = 11;
         [_obstView removeFromSuperview];
         _obstView = Nil;
         _score--;
+        [self runAction:[SKAction playSoundFileNamed:@"obst_fail.mp3" waitForCompletion:NO]];
     }
 }
 
