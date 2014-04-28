@@ -22,6 +22,8 @@
 @property (nonatomic) SKView *resConfirmView;
 @property (nonatomic) NSMutableDictionary* resourceDict;
 @property (nonatomic) SKSpriteNode* resToRemove;
+@property (nonatomic) NSMutableDictionary* obstacleDict;
+@property (nonatomic) SKSpriteNode* obstToRemove;
 
 @property int score;
 @end
@@ -116,15 +118,19 @@ static const int CELLNUM = 11;
                     SKSpriteNode *cellNode = [[SKSpriteNode alloc] initWithColor: [SKColor brownColor] size:cellSize];
                     cellNode.position = CGPointMake(_cellWidth*i + (_cellWidth/2),
                                                     self.frame.size.height - _cellWidth*j - _cellWidth/2);
-                    cellNode.name = @"Obstacle";
                     [self addChild:cellNode];
+                    
+                    if (_obstacleDict == Nil) {
+                        _obstacleDict = [[NSMutableDictionary alloc] init];
+                    }
+                    NSArray* mazeLoc = @[[NSNumber numberWithInt:i], [NSNumber numberWithInt:j]];
+                    [_obstacleDict setObject:cellNode forKey:mazeLoc];
                     break;
                 }
                 case Resource: {
                     SKSpriteNode *cellNode = [[SKSpriteNode alloc] initWithColor: [SKColor orangeColor] size:cellSize];
                     cellNode.position = CGPointMake(_cellWidth*i + (_cellWidth/2),
                                                     self.frame.size.height - _cellWidth*j - _cellWidth/2);
-                    cellNode.name = @"Resource";
                     [self addChild:cellNode];
                     
                     if (_resourceDict == Nil) {
@@ -220,6 +226,11 @@ static const int CELLNUM = 11;
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     
     if (_obstView == Nil && _resConfirmView == Nil) {
+        
+        if(_obstToRemove != Nil) {
+            [_obstToRemove removeFromParent];
+            _obstToRemove = Nil;
+        }
   
         CGPoint touchPos  =[[touches anyObject] locationInView:self.view];
         
@@ -230,11 +241,11 @@ static const int CELLNUM = 11;
 
         //Now we take action based on the new position we intend to move to
         CellType cellContents = [_maze getContentsWithRow:_newPos.y andColumn:_newPos.x];
-        if (_resToRemove != Nil) {
-            [_resToRemove removeFromParent];
-        }
         switch (cellContents) {
             case Obstacle: {
+                _obstToRemove = [_obstacleDict
+                                objectForKey:@[[NSNumber numberWithFloat:_newPos.x],
+                                               [NSNumber numberWithFloat:_newPos.y]]];
                 [self launchObstacle:[_maze getSecondaryTypeWithRow:_newPos.y andColumn:_newPos.x].Obstacle];
                 break;
             }
@@ -244,10 +255,15 @@ static const int CELLNUM = 11;
                     SKSpriteNode *cell = (SKSpriteNode *)[cells objectAtIndex:i];
                     [cell runAction:_move];
                 }
-                _resToRemove = [_resourceDict
-                                objectForKey:@[[NSNumber numberWithFloat:_newPos.x],
-                                               [NSNumber numberWithFloat:_newPos.y]]];
+                
+                CGPoint resLoc = _newPos;
                 [_player runAction:_move.reversedAction completion:^{
+                    if (_resToRemove != Nil) {
+                        [_resToRemove removeFromParent];
+                    }
+                    _resToRemove = [_resourceDict
+                                    objectForKey:@[[NSNumber numberWithFloat:resLoc.x],
+                                                   [NSNumber numberWithFloat:resLoc.y]]];
                     [_resToRemove removeFromParent];
                     _resToRemove = Nil;
                 }];
@@ -406,15 +422,10 @@ static const int CELLNUM = 11;
             [cell runAction:_move];
         }
         [_player runAction:_move.reversedAction completion:^{
-            CGPoint obstaclePoint = _player.position;
-            NSArray * nodesAtCurrentPos = [self nodesAtPoint: obstaclePoint];
-            for (int i = 0; i<[nodesAtCurrentPos count]; i++) {
-                SKSpriteNode * node = nodesAtCurrentPos[i];
-                if([node.name  isEqual: @"Obstacle"]) {
-                    [node removeFromParent];
-                }
-            }
-        }];        _playerLoc = _newPos;
+            [_obstToRemove removeFromParent];
+            _obstToRemove = Nil;
+        }];
+        _playerLoc = _newPos;
         [_obstView removeFromSuperview];
         _obstView = Nil;
         [self emptyMazeCellWithRow:_playerLoc.y andCol: _playerLoc.x];
