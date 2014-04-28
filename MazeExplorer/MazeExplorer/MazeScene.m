@@ -264,10 +264,11 @@ static const int CELLNUM = 11;
                 [_delegate mazeSolved:_score];
             }
             default: { //Default is that it is a path (this handles Path)
+                [self runAction:[SKAction playSoundFileNamed:@"Mario_Jumping.mp3" waitForCompletion:NO]];
                 for (int i = 0; i< [cells count]; i++) {
                 SKSpriteNode *cell = (SKSpriteNode *)[cells objectAtIndex:i];
                 [cell runAction:_move];
-            }
+                }
                 [_player runAction:_move.reversedAction];
                 _playerLoc = _newPos;
                 break;

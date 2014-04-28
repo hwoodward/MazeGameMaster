@@ -29,6 +29,7 @@
 		93C7BAE218FA2101002DB691 /* AvalancheScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C7BAE118FA2101002DB691 /* AvalancheScene.m */; };
 		93C7BAE51900CAD4002DB691 /* TraceScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C7BAE41900CAD4002DB691 /* TraceScene.m */; };
 		93C7BAED190CAC1F002DB691 /* wings.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 93C7BAEC190CAC1F002DB691 /* wings.jpg */; };
+		93C7BAF1190EE8D0002DB691 /* Mario_Jumping.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 93C7BAF0190EE8D0002DB691 /* Mario_Jumping.mp3 */; };
 		A125363818C2D70D0033FE44 /* ResourceScene.m in Sources */ = {isa = PBXBuildFile; fileRef = A125363718C2D70D0033FE44 /* ResourceScene.m */; };
 		A15F5E9F1905A1D1008CBC2E /* RopeScene.m in Sources */ = {isa = PBXBuildFile; fileRef = A15F5E9E1905A1D1008CBC2E /* RopeScene.m */; };
 		A17694FE18B01E1B00DDCB91 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A17694FD18B01E1B00DDCB91 /* Foundation.framework */; };
@@ -96,6 +97,7 @@
 		93C7BAE31900CAD4002DB691 /* TraceScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TraceScene.h; sourceTree = "<group>"; };
 		93C7BAE41900CAD4002DB691 /* TraceScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TraceScene.m; sourceTree = "<group>"; };
 		93C7BAEC190CAC1F002DB691 /* wings.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wings.jpg; sourceTree = "<group>"; };
+		93C7BAF0190EE8D0002DB691 /* Mario_Jumping.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Mario_Jumping.mp3; sourceTree = "<group>"; };
 		A125363618C2D70D0033FE44 /* ResourceScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceScene.h; sourceTree = "<group>"; };
 		A125363718C2D70D0033FE44 /* ResourceScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceScene.m; sourceTree = "<group>"; };
 		A15F5E9D1905A1D1008CBC2E /* RopeScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RopeScene.h; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 				93C7BAE018FA2101002DB691 /* AvalancheScene.h */,
 				93C7BAE118FA2101002DB691 /* AvalancheScene.m */,
 				6D79B51018E8C764008DB1AB /* InstructionScene.h */,
+				93C7BAF0190EE8D0002DB691 /* Mario_Jumping.mp3 */,
 				6D79B51118E8C764008DB1AB /* InstructionScene.m */,
 				93902B7E18EE6C880018D705 /* SimonScene.h */,
 				93902B7F18EE6C880018D705 /* SimonScene.m */,
@@ -354,6 +357,7 @@
 				A176951D18B01E1C00DDCB91 /* Images.xcassets in Resources */,
 				9398611218E8C70700FDE08D /* yesbutton.png in Resources */,
 				6DB01A5618E38C7C00EF2923 /* help.png in Resources */,
+				93C7BAF1190EE8D0002DB691 /* Mario_Jumping.mp3 in Resources */,
 				93C7BAED190CAC1F002DB691 /* wings.jpg in Resources */,
 				A176951B18B01E1C00DDCB91 /* Spaceship.png in Resources */,
 				6D8412F718F20628002B87FE /* longBoulder.png in Resources */,
