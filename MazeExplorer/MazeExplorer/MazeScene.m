@@ -368,6 +368,11 @@ static const int CELLNUM = 11;
             _obstacleInUse = Rope;
             break;
         }
+        case Catapult: {
+            obstScene = [[CatapultScene alloc] initWithSize:self.frame.size];
+            _obstacleInUse = Catapult;
+            break;
+        }
         default: { //Default is DragDrop and also handles that case
             obstScene = [[ObstacleScene alloc] initWithSize:self.frame.size];
             _obstacleInUse = DragDrop;
@@ -490,9 +495,14 @@ static const int CELLNUM = 11;
                 }
                 break;
             }
+            case Wing: {
+                if (_obstacleInUse == Rope || _obstacleInUse == Catapult) {
+                    [self obstacleDidFinish];
+                }
+                break;
+            }
             default: { //Default is Magic and handles that case
-                if (_obstacleInUse == DragDrop ||  _obstacleInUse == Trace ||
-                    _obstacleInUse == Rope) {
+                if (_obstacleInUse == DragDrop ||  _obstacleInUse == Trace) {
                     [self obstacleDidFinish];
                 }
                 break;

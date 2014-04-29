@@ -13,6 +13,7 @@ typedef enum {
     Avalanche,
     Trace,
     Rope,
+    Catapult,
     RandomO, //Anthing after this won't be randomly generated EVER
     DragDrop
 } ObstacleType;

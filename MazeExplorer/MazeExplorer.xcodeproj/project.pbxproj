@@ -57,6 +57,7 @@
 		A176953018B01E1C00DDCB91 /* MazeExplorerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A176952F18B01E1C00DDCB91 /* MazeExplorerTests.m */; };
 		A176953B18B01F3000DDCB91 /* Maze.m in Sources */ = {isa = PBXBuildFile; fileRef = A176953A18B01F3000DDCB91 /* Maze.m */; };
 		A176953E18B01F5100DDCB91 /* MazeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A176953D18B01F5100DDCB91 /* MazeCell.m */; };
+		A18CDE06190EE86500DD9BF7 /* CatapultScene.m in Sources */ = {isa = PBXBuildFile; fileRef = A18CDE05190EE86500DD9BF7 /* CatapultScene.m */; };
 		A1C2DA8518C41B0B00288B36 /* ObstacleScene.m in Sources */ = {isa = PBXBuildFile; fileRef = A1C2DA8418C41B0B00288B36 /* ObstacleScene.m */; };
 /* End PBXBuildFile section */
 
@@ -141,6 +142,8 @@
 		A176953A18B01F3000DDCB91 /* Maze.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Maze.m; path = ../Maze.m; sourceTree = "<group>"; };
 		A176953C18B01F5100DDCB91 /* MazeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MazeCell.h; sourceTree = "<group>"; };
 		A176953D18B01F5100DDCB91 /* MazeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MazeCell.m; sourceTree = "<group>"; };
+		A18CDE04190EE86500DD9BF7 /* CatapultScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CatapultScene.h; sourceTree = "<group>"; };
+		A18CDE05190EE86500DD9BF7 /* CatapultScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CatapultScene.m; sourceTree = "<group>"; };
 		A1C2DA8318C41B0B00288B36 /* ObstacleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObstacleScene.h; sourceTree = "<group>"; };
 		A1C2DA8418C41B0B00288B36 /* ObstacleScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObstacleScene.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -215,6 +218,8 @@
 				6D51E21E18F0B51200E7AA04 /* Obstacle.h */,
 				A15F5E9D1905A1D1008CBC2E /* RopeScene.h */,
 				A15F5E9E1905A1D1008CBC2E /* RopeScene.m */,
+				A18CDE04190EE86500DD9BF7 /* CatapultScene.h */,
+				A18CDE05190EE86500DD9BF7 /* CatapultScene.m */,
 				A1C2DA8318C41B0B00288B36 /* ObstacleScene.h */,
 				A1C2DA8418C41B0B00288B36 /* ObstacleScene.m */,
 				93C7BAFE190EF525002DB691 /* TaDa.mp3 */,
@@ -420,6 +425,7 @@
 				A176953B18B01F3000DDCB91 /* Maze.m in Sources */,
 				93A48E1318BF1B470008E8ED /* MazeScene.m in Sources */,
 				A176951918B01E1C00DDCB91 /* MyScene.m in Sources */,
+				A18CDE06190EE86500DD9BF7 /* CatapultScene.m in Sources */,
 				6D79B51818E8D605008DB1AB /* DSMultilineLabelNode.m in Sources */,
 				A176951618B01E1B00DDCB91 /* ViewController.m in Sources */,
 				A176951018B01E1B00DDCB91 /* AppDelegate.m in Sources */,

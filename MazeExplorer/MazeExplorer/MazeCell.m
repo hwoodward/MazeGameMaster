@@ -27,6 +27,7 @@
  * "4" --> Obstacle (DragDrop)
  * "5" --> Obstacle (Trace)
  * "6" --> Obstacle (Rope)
+ * "7" --> Obstacle (Catapult)
  * "R" --> Resource (Random)
  * "a" --> Resource (Notepad)
  * "b" --> Resource (Potion)
@@ -74,6 +75,10 @@
     else if (![contents compare:@"6"]) {
         _contents = Obstacle;
         _secondaryType.Obstacle = Rope;
+    }
+    else if (![contents compare:@"7"]) {
+        _contents = Obstacle;
+        _secondaryType.Obstacle = Catapult;
     }
     else if (![contents compare:@"R"]) {
         _contents = Resource;

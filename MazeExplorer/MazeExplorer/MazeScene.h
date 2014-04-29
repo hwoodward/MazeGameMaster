@@ -21,6 +21,7 @@
 #import "AvalancheScene.h"
 #import "TraceScene.h"
 #import "RopeScene.h"
+#import "CatapultScene.h"
 
 @protocol MazeSceneDelegate
 

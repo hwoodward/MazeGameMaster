@@ -38,7 +38,7 @@
             break;
         }
         case Wing: {
-            label.text = @"You are going to use a wing resource. Using the wings of Icarus cannot be undone. \n \n A wing resource dismisses the Rope obstacle. However, if used when not in a Rope obstacle, the resource is used to no effect. \n \n Click the green check to confirm this action, the red x to cancel.";
+            label.text = @"You are going to use a wing resource. Using the wings of Icarus cannot be undone. \n \n A wing resource dismisses the Rope and Catapult obstacles. However, if used when not in a Rope obstacle, the resource is used to no effect. \n \n Click the green check to confirm this action, the red x to cancel.";
             break;
         }
         default: {//Default is Magic and also handles that case
