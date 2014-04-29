@@ -22,6 +22,7 @@
 #import "TraceScene.h"
 #import "RopeScene.h"
 #import "CatapultScene.h"
+#import "EndGameScene.h"
 
 @protocol MazeSceneDelegate
 
@@ -35,7 +36,7 @@
 
 @end
 
-@interface MazeScene : SKScene <ObstacleSceneDelegate, ResourceConfirmDelegate>
+@interface MazeScene : SKScene <ObstacleSceneDelegate, ResourceConfirmDelegate, EndGameSceneDelegate>
 
 @property (nonatomic) id <MazeSceneDelegate> delegate;
 -(id)initWithSize:(CGSize)size String: (NSString *)mazeString andWidth: (int) mazeWidth;

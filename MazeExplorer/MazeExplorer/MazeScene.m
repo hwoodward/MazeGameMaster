@@ -24,6 +24,7 @@
 @property (nonatomic) SKSpriteNode* resToRemove;
 @property (nonatomic) NSMutableDictionary* obstacleDict;
 @property (nonatomic) SKSpriteNode* obstToRemove;
+@property (nonatomic) SKView* endView;
 
 @property int score;
 @end
@@ -279,7 +280,13 @@ static const int CELLNUM = 11;
                 break;
             }
             case End: {
-                [_delegate mazeSolved:_score];
+                _endView = [[SKView alloc] initWithFrame:self.view.frame];
+                CGSize size = self.frame.size;
+                EndGameScene* endScene = [[EndGameScene alloc] initWithSize:self.frame.size];
+                [endScene setDelegate:self];
+                [self.view addSubview:(SKView*)_endView];
+                [_endView presentScene:(SKScene*)endScene];
+                [endScene displayScore];
             }
             default: { //Default is that it is a path (this handles Path)
                 for (int i = 0; i< [cells count]; i++) {
@@ -534,5 +541,17 @@ static const int CELLNUM = 11;
     [self.view addSubview:_resConfirmView];
     [_resConfirmView presentScene:resConfirm];
 }
+
+-(int)getScore
+{
+    return _score;
+}
+
+-(void)endGameSceneDidFinish
+{
+    [_delegate mazeSolved:_score];
+}
+
+
 
 @end

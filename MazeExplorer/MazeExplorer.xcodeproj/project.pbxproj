@@ -58,6 +58,7 @@
 		A176953B18B01F3000DDCB91 /* Maze.m in Sources */ = {isa = PBXBuildFile; fileRef = A176953A18B01F3000DDCB91 /* Maze.m */; };
 		A176953E18B01F5100DDCB91 /* MazeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A176953D18B01F5100DDCB91 /* MazeCell.m */; };
 		A18CDE06190EE86500DD9BF7 /* CatapultScene.m in Sources */ = {isa = PBXBuildFile; fileRef = A18CDE05190EE86500DD9BF7 /* CatapultScene.m */; };
+		A18CDE09190F3A4F00DD9BF7 /* EndGameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = A18CDE08190F3A4F00DD9BF7 /* EndGameScene.m */; };
 		A1C2DA8518C41B0B00288B36 /* ObstacleScene.m in Sources */ = {isa = PBXBuildFile; fileRef = A1C2DA8418C41B0B00288B36 /* ObstacleScene.m */; };
 /* End PBXBuildFile section */
 
@@ -144,6 +145,8 @@
 		A176953D18B01F5100DDCB91 /* MazeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MazeCell.m; sourceTree = "<group>"; };
 		A18CDE04190EE86500DD9BF7 /* CatapultScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CatapultScene.h; sourceTree = "<group>"; };
 		A18CDE05190EE86500DD9BF7 /* CatapultScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CatapultScene.m; sourceTree = "<group>"; };
+		A18CDE07190F3A4F00DD9BF7 /* EndGameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EndGameScene.h; path = ../EndGameScene.h; sourceTree = "<group>"; };
+		A18CDE08190F3A4F00DD9BF7 /* EndGameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EndGameScene.m; path = ../EndGameScene.m; sourceTree = "<group>"; };
 		A1C2DA8318C41B0B00288B36 /* ObstacleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObstacleScene.h; sourceTree = "<group>"; };
 		A1C2DA8418C41B0B00288B36 /* ObstacleScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObstacleScene.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -207,6 +210,8 @@
 		A176950518B01E1B00DDCB91 /* MazeExplorer */ = {
 			isa = PBXGroup;
 			children = (
+				A18CDE07190F3A4F00DD9BF7 /* EndGameScene.h */,
+				A18CDE08190F3A4F00DD9BF7 /* EndGameScene.m */,
 				A176953918B01F3000DDCB91 /* Maze.h */,
 				A176953A18B01F3000DDCB91 /* Maze.m */,
 				A176953C18B01F5100DDCB91 /* MazeCell.h */,
@@ -428,6 +433,7 @@
 				A18CDE06190EE86500DD9BF7 /* CatapultScene.m in Sources */,
 				6D79B51818E8D605008DB1AB /* DSMultilineLabelNode.m in Sources */,
 				A176951618B01E1B00DDCB91 /* ViewController.m in Sources */,
+				A18CDE09190F3A4F00DD9BF7 /* EndGameScene.m in Sources */,
 				A176951018B01E1B00DDCB91 /* AppDelegate.m in Sources */,
 				A176953E18B01F5100DDCB91 /* MazeCell.m in Sources */,
 				A1C2DA8518C41B0B00288B36 /* ObstacleScene.m in Sources */,
